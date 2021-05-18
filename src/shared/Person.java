@@ -50,6 +50,15 @@ public abstract class Person
     return address;
   }
 
+  public void setLastName(String lastName)
+  {
+    this.lastName = lastName;
+  }
+
+  public void setAddress(Address address)
+  {
+    this.address = address;
+  }
 
   @Override public String toString()
   {

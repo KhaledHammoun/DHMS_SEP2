@@ -35,6 +35,26 @@ public class Address
     return city;
   }
 
+  public void setStreet(String street)
+  {
+    this.street = street;
+  }
+
+  public void setNumber(String number)
+  {
+    this.number = number;
+  }
+
+  public void setZipcode(String zipcode)
+  {
+    this.zipcode = zipcode;
+  }
+
+  public void setCity(String city)
+  {
+    this.city = city;
+  }
+
   @Override public String toString()
   {
     return "Address{" + "street='" + street + '\'' + ", number='" + number
