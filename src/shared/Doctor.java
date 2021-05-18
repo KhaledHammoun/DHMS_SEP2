@@ -17,6 +17,11 @@ public class Doctor extends Employee
     return specialization;
   }
 
+  public void setSpecialization(String specialization)
+  {
+    this.specialization = specialization;
+  }
+
   @Override public String toString()
   {
     return super.toString() + "specialization='" + specialization + '\'';

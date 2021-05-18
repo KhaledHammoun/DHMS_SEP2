@@ -23,6 +23,11 @@ public abstract class Employee extends Person
     return education;
   }
 
+  public void setEducation(String education)
+  {
+    this.education = education;
+  }
+
   @Override public String toString()
   {
     return super.toString() + "startDate=" + startDate + ", education='" + education

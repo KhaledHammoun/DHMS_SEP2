@@ -52,7 +52,32 @@ public class DateTime
     return min;
   }
 
-///only date
+  public void setDay(int day)
+  {
+    this.day = day;
+  }
+
+  public void setMonth(int month)
+  {
+    this.month = month;
+  }
+
+  public void setYear(int year)
+  {
+    this.year = year;
+  }
+
+  public void setHour(int hour)
+  {
+    this.hour = hour;
+  }
+
+  public void setMin(int min)
+  {
+    this.min = min;
+  }
+
+  ///only date
   @Override public String toString()
   {
     return "DateTime{" + "day=" + day + ", month=" + month + ", year=" + year

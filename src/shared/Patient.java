@@ -30,6 +30,11 @@ public class Patient extends Person
     return gender;
   }
 
+  public void setMedical_description(String medical_description)
+  {
+    this.medical_description = medical_description;
+  }
+
   @Override public String toString()
   {
     return super.toString() + "Patient{" + "blood_type='" + blood_type + '\''
