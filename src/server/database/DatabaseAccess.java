@@ -9,8 +9,6 @@ public class DatabaseAccess
   private String user = "yunjxnkw";
   private String pw= "D5YTBHvbbrXKkABkXyFqK-L4jQDNVsBH";
 
-
-
   private DatabaseAccess instance = new DatabaseAccess();
 
   private DatabaseAccess()
@@ -29,8 +27,6 @@ public class DatabaseAccess
       throw new RuntimeException("Failed to get DB connection!");
     }
   }
-
-
 
   public DatabaseAccess getInstance()
   {
