@@ -35,7 +35,7 @@ public class LoginClientImpl implements LoginClient
       }
       catch (RemoteException e)
       {
-        throw new RuntimeException("Could not connect to the server, the login failed.");
+        throw new RuntimeException("Error while logging in. Please try again.");
       }
     }
 }
