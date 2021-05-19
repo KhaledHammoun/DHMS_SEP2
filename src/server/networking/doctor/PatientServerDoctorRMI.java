@@ -1,9 +1,7 @@
 package server.networking.doctor;
 
-import client.core.ClientFactory;
-import client.core.InterfaceEnum;
-import client.model.doctor.PatientModelDoctor;
-import client.model.doctor.PatientModelDoctorImpl;
+import server.model.doctor.PatientServerModelDoctor;
+import server.model.doctor.PatientServerModelDoctorImpl;
 import shared.Patient;
 
 import java.rmi.AlreadyBoundException;
@@ -14,11 +12,11 @@ import java.util.ArrayList;
 
 public class PatientServerDoctorRMI implements PatientServerDoctor
 {
-    private PatientModelDoctor modelDoctor;
+    private PatientServerModelDoctor modelDoctor;
 
     public PatientServerDoctorRMI(Registry registry) throws AlreadyBoundException, RemoteException
     {
-        modelDoctor = new PatientModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_PATIENT));
+        modelDoctor = new PatientServerModelDoctorImpl();
         UnicastRemoteObject.exportObject(this, 0);
         startServer(registry);
     }
@@ -38,6 +36,6 @@ public class PatientServerDoctorRMI implements PatientServerDoctor
     @Override
     public Patient getPatientBySNN(int SSN)
     {
-        return modelDoctor.getPatientBySSN(SSN);
+        return modelDoctor.getPatientBySNN(SSN);
     }
 }

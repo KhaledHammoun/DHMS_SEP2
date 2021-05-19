@@ -1,9 +1,7 @@
 package server.networking.doctor;
 
-import client.core.ClientFactory;
-import client.core.InterfaceEnum;
-import client.model.doctor.TreatAndUpdateModelDoctor;
-import client.model.doctor.TreatAndUpdateModelDoctorImpl;
+import server.model.doctor.TreatAndUpdateServerModelDoctor;
+import server.model.doctor.TreatAndUpdateServerModelDoctorImpl;
 import shared.Disease;
 import shared.Doctor;
 import shared.Patient;
@@ -16,11 +14,11 @@ import java.util.ArrayList;
 
 public class TreatAndUpdateServerDoctorRMI implements TreatAndUpdateServerDoctor
 {
-    private TreatAndUpdateModelDoctor modelDoctor;
+    private TreatAndUpdateServerModelDoctor modelDoctor;
 
     public TreatAndUpdateServerDoctorRMI(Registry registry) throws AlreadyBoundException, RemoteException
     {
-        modelDoctor = new TreatAndUpdateModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_TREAT_UPDATE));
+        modelDoctor = new TreatAndUpdateServerModelDoctorImpl();
         UnicastRemoteObject.exportObject(this, 0);
         startServer(registry);
     }
@@ -46,6 +44,6 @@ public class TreatAndUpdateServerDoctorRMI implements TreatAndUpdateServerDoctor
     @Override
     public ArrayList<Disease> getAllDiseasesOfPatient(Patient patient)
     {
-        return modelDoctor.getAllDiseaseOfPatient(patient);
+        return modelDoctor.getAllDiseasesOfPatient(patient);
     }
 }
