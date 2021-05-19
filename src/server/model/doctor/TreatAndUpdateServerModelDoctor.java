@@ -1,5 +1,6 @@
 package server.model.doctor;
 
+import shared.Disease;
 import shared.Doctor;
 import shared.Patient;
 
