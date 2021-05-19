@@ -1,11 +1,10 @@
 package server.database.nurse;
 
+import shared.Appointment;
 import shared.Patient;
 
 public interface AppointmentsDBAccessNurse
 {
-    void addPatient(Patient patient);
-    void editPatient(Patient patient);
-    void removePatient(Patient patient);
-    Patient getPatientBySNN(int SNN);
+    void createAppointment(Appointment appointment);
+    void editAppointment(Appointment appointment);
 }
