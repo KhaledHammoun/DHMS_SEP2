@@ -10,14 +10,26 @@ public class Sample implements Serializable
     private int priority;
     private Date deadline;
     private long patient_ssn;
+    private int sample_id;
 
-    public Sample(String type, String result, int priority, Date deadline, long patient_ssn)
+    public Sample(String type, String result, int priority, Date deadline, long patient_ssn, int sample_id)
     {
         this.type = type;
         this.result = result;
         this.priority = priority;
         this.deadline = deadline;
         this.patient_ssn = patient_ssn;
+        this.sample_id = sample_id;
+    }
+
+    public int getSample_id()
+    {
+        return sample_id;
+    }
+
+    public void setSample_id(int sample_id)
+    {
+        this.sample_id = sample_id;
     }
 
     public long getPatient_ssn()
