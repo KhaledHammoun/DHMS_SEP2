@@ -7,7 +7,7 @@ public abstract class Person implements Serializable
   private String firstName;
   private String middleName;
   private String lastName;
-  private int ssn;
+  private long ssn;
   private DateTime dob;
   private Address address;
   private String contactFirstName;
@@ -15,7 +15,7 @@ public abstract class Person implements Serializable
   private String contactLastName;
   private String contactPhoneNumber;
 
-  public Person(String firstName, String middleName, String lastName, int ssn,
+  public Person(String firstName, String middleName, String lastName, long ssn,
       DateTime dob, Address address, String contactFirstName, String contactMiddleName, String contactLastName, String contactPhoneNumber)
   {
     this.firstName = firstName;
@@ -45,7 +45,7 @@ public abstract class Person implements Serializable
     return lastName;
   }
 
-  public int getSsn()
+  public long getSsn()
   {
     return ssn;
   }
