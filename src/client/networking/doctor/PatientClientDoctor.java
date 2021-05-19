@@ -2,10 +2,12 @@ package client.networking.doctor;
 
 import shared.Patient;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public interface PatientClientDoctor
+public interface PatientClientDoctor extends Remote
 {
-  ArrayList<Patient> getAllPatients();
-  Patient getPatientBySSN(int ssn);
+  ArrayList<Patient> getAllPatients() throws RemoteException;
+  Patient getPatientBySSN(int ssn) throws RemoteException;
 }

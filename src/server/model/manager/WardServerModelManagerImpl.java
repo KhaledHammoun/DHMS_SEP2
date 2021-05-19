@@ -28,9 +28,9 @@ public class WardServerModelManagerImpl implements WardServerModelManager
     }
 
     @Override
-    public void editWard(Ward ward)
+    public String editWard(Ward ward)
     {
-        dbAccessManager.editWard(ward);
+        return dbAccessManager.editWard(ward);
     }
 
     @Override

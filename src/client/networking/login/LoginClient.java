@@ -2,15 +2,11 @@ package client.networking.login;
 
 import shared.AccessType;
 import shared.LoginUser;
-import shared.Patient;
 
-public interface LoginClient
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface LoginClient extends Remote
 {
-  AccessType loginClient(LoginUser user);
-
- void addPatient(Patient patient);
- void editPatient(Patient patient);
- void removePatient(Patient patient);
- Patient getPatientBySSN(int ssn);
-
+    AccessType login(LoginUser user) throws RemoteException;
 }

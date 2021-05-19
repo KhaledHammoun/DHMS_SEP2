@@ -25,8 +25,8 @@ public class PatientModelNurseImpl implements PatientModelNurse
 
   }
 
-  @Override public void getPatientBySSN(int ssn)
+  @Override public Patient getPatientBySSN(int ssn)
   {
-
+    return null;
   }
 }

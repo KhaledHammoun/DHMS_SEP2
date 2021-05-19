@@ -2,8 +2,11 @@ package client.networking.nurse;
 
 import shared.Appointment;
 
-public interface AppointmentsClientNurse
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface AppointmentsClientNurse extends Remote
 {
-  void createAppointment(Appointment appointment);
-  void editAppointment(Appointment appointment);
+  void createAppointment(Appointment appointment) throws RemoteException;
+  void editAppointment(Appointment appointment) throws RemoteException;
 }

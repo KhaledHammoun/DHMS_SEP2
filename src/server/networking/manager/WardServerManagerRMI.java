@@ -40,9 +40,9 @@ public class WardServerManagerRMI implements WardServerManager
     }
 
     @Override
-    public void editWard(Ward ward)
+    public String editWard(Ward ward)
     {
-        modelManager.editWard(ward);
+        return modelManager.editWard(ward);
     }
 
     @Override
