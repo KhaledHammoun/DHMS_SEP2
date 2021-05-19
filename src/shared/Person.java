@@ -1,6 +1,7 @@
 package shared;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public abstract class Person implements Serializable
 {
@@ -8,7 +9,7 @@ public abstract class Person implements Serializable
   private String middleName;
   private String lastName;
   private long ssn;
-  private DateTime dob;
+  private Date dob;
   private Address address;
   private String contactFirstName;
   private String contactMiddleName;
@@ -16,7 +17,7 @@ public abstract class Person implements Serializable
   private String contactPhoneNumber;
 
   public Person(String firstName, String middleName, String lastName, long ssn,
-      DateTime dob, Address address, String contactFirstName, String contactMiddleName, String contactLastName, String contactPhoneNumber)
+      Date dob, Address address, String contactFirstName, String contactMiddleName, String contactLastName, String contactPhoneNumber)
   {
     this.firstName = firstName;
     this.middleName = middleName;
@@ -50,7 +51,7 @@ public abstract class Person implements Serializable
     return ssn;
   }
 
-  public DateTime getDob()
+  public Date getDob()
   {
     return dob;
   }
