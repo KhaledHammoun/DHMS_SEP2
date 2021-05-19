@@ -1,23 +1,25 @@
 package shared;
 
-public class Ward
+import java.io.Serializable;
+
+public class Ward implements Serializable
 {
-    private String wardsName;
-    private int roomNumber;
+  private String wardName;
+  private int roomNumber;
 
-    public Ward(String wardsName, int roomNumber)
-    {
-        this.wardsName = wardsName;
-        this.roomNumber = roomNumber;
-    }
+  public Ward(String wardName, int roomNumber)
+  {
+    this.wardName = wardName;
+    this.roomNumber = roomNumber;
+  }
 
-    public String getWardsName()
-    {
-        return wardsName;
-    }
+  public String getWardName()
+  {
+    return wardName;
+  }
 
-    public int getRoomNumber()
-    {
-        return roomNumber;
-    }
+  public int getRoomNumber()
+  {
+    return roomNumber;
+  }
 }
