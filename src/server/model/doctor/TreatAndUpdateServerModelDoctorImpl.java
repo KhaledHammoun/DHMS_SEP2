@@ -2,6 +2,7 @@ package server.model.doctor;
 
 import server.database.doctor.TreatAndUpdateDBAccessDoctor;
 import server.database.doctor.TreatAndUpdateDBAccessDoctorImpl;
+import shared.Disease;
 import shared.Doctor;
 import shared.Patient;
 
