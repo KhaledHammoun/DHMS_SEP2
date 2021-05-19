@@ -9,6 +9,7 @@ import server.networking.manager.EmployeeServerManager;
 import server.networking.manager.EmployeeServerManagerRMI;
 import server.networking.manager.WardServerManager;
 import server.networking.manager.WardServerManagerRMI;
+import server.networking.nurse.*;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -38,6 +39,9 @@ public class StartServer
         System.out.println();
 
         //Nurse server start
+        AppointmentsServerNurse appointmentsServerNurse = new AppointmentsServerNurseRMI(registry);
+        GetRequiredDataServerNurse getRequiredDataServerNurse = new GetRequiredDataServerNurseRMI(registry);
+        PatientServerNurse patientServerNurse = new PatientServerNurseRMI(registry);
     }
 
 }
