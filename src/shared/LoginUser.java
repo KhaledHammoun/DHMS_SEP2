@@ -29,11 +29,4 @@ public class LoginUser implements Serializable
   {
     return accessType;
   }
-
-
-
-
-
-
->>>>>>> origin/Tabita
 }
