@@ -47,7 +47,6 @@ public class AppointmentsClientNurseRMI implements AppointmentsClientNurse
     catch (RemoteException e)
     {
       throw new RuntimeException("Error while editing appointment. Please try again.");
-
     }
   }
 }

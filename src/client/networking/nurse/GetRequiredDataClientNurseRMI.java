@@ -13,54 +13,57 @@ import java.util.ArrayList;
 
 public class GetRequiredDataClientNurseRMI implements GetRequiredDataClientNurse
 {
-  private GetRequiredDataServerNurse serverNurse;
+    private GetRequiredDataServerNurse serverNurse;
 
-  public GetRequiredDataClientNurseRMI()
-  {
-    try
+    public GetRequiredDataClientNurseRMI()
     {
-      Registry registry = LocateRegistry.getRegistry(1099);
-      serverNurse = (GetRequiredDataServerNurse) registry.lookup("GerRequiredDataServer");
+        try
+        {
+            Registry registry = LocateRegistry.getRegistry(1099);
+            serverNurse = (GetRequiredDataServerNurse) registry.lookup("GerRequiredDataServer");
+        }
+        catch (RemoteException | NotBoundException e)
+        {
+            throw new RuntimeException("Could not connect to the server, please try again later.");
+        }
     }
-    catch (RemoteException | NotBoundException e)
-    {
-      throw new RuntimeException("Could not connect to the server, please try again later.");
-    }
-  }
 
-  @Override public ArrayList<Patient> getAllPatients()
-  {
-    try
+    @Override
+    public ArrayList<Patient> getAllPatients()
     {
-      return serverNurse.getAllPatients();
+        try
+        {
+            return serverNurse.getAllPatients();
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching all patients. Please try again.");
+        }
     }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while fetching all patients. Please try again.");
-    }
-  }
 
-  @Override public ArrayList<Doctor> getAllDoctors()
-  {
-    try
+    @Override
+    public ArrayList<Doctor> getAllDoctors()
     {
-      return serverNurse.getAllDoctors();
+        try
+        {
+            return serverNurse.getAllDoctors();
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching all doctors. Please try again.");
+        }
     }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while fetching all doctors. Please try again.");
-    }
-  }
 
-  @Override public ArrayList<Appointment> getAllAppointments()
-  {
-    try
+    @Override
+    public ArrayList<Appointment> getAllAppointments()
     {
-      return serverNurse.getAllAppointments();
+        try
+        {
+            return serverNurse.getAllAppointments();
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching all appointments. Please try again.");
+        }
     }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while fetching all appointments. Please try again.");
-    }
-  }
 }
