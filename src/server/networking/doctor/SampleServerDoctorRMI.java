@@ -1,6 +1,7 @@
 package server.networking.doctor;
 
-import client.model.doctor.PatientModelDoctorImpl;
+import client.core.ClientFactory;
+import client.core.InterfaceEnum;
 import client.model.doctor.SampleModelDoctor;
 import client.model.doctor.SampleModelDoctorImpl;
 import shared.Sample;
@@ -17,7 +18,7 @@ public class SampleServerDoctorRMI implements SampleServerDoctor
 
     public SampleServerDoctorRMI(Registry registry) throws AlreadyBoundException, RemoteException
     {
-        modelDoctor = new SampleModelDoctorImpl();
+        modelDoctor = new SampleModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_SAMPLE));
         UnicastRemoteObject.exportObject(this, 0);
         startServer(registry);
     }

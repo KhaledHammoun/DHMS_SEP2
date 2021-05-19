@@ -1,6 +1,7 @@
 package server.networking.doctor;
 
-import client.model.doctor.SampleModelDoctorImpl;
+import client.core.ClientFactory;
+import client.core.InterfaceEnum;
 import client.model.doctor.TreatAndUpdateModelDoctor;
 import client.model.doctor.TreatAndUpdateModelDoctorImpl;
 import shared.Disease;
@@ -19,7 +20,7 @@ public class TreatAndUpdateServerDoctorRMI implements TreatAndUpdateServerDoctor
 
     public TreatAndUpdateServerDoctorRMI(Registry registry) throws AlreadyBoundException, RemoteException
     {
-        modelDoctor = new TreatAndUpdateModelDoctorImpl();
+        modelDoctor = new TreatAndUpdateModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_TREAT_UPDATE));
         UnicastRemoteObject.exportObject(this, 0);
         startServer(registry);
     }

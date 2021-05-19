@@ -1,6 +1,7 @@
 package server.networking.doctor;
 
-import client.model.doctor.NursesModelDoctorImpl;
+import client.core.ClientFactory;
+import client.core.InterfaceEnum;
 import client.model.doctor.PatientModelDoctor;
 import client.model.doctor.PatientModelDoctorImpl;
 import shared.Patient;
@@ -17,7 +18,7 @@ public class PatientServerDoctorRMI implements PatientServerDoctor
 
     public PatientServerDoctorRMI(Registry registry) throws AlreadyBoundException, RemoteException
     {
-        modelDoctor = new PatientModelDoctorImpl();
+        modelDoctor = new PatientModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_PATIENT));
         UnicastRemoteObject.exportObject(this, 0);
         startServer(registry);
     }

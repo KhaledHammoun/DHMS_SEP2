@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GetRequiredDataModelNurseImpl implements GetRequiredDataModelNurse
 {
 
-  public GetRequiredDataModelNurseImpl()
+  public GetRequiredDataModelNurseImpl(Object client)
   {
     //
   }

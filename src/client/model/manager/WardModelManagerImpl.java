@@ -8,7 +8,7 @@ public class WardModelManagerImpl implements WardModelManager
 {
 
 
-  public WardModelManagerImpl()
+  public WardModelManagerImpl(Object client)
   {
     //
   }
