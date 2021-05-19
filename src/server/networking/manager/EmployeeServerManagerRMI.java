@@ -1,62 +1,79 @@
 package server.networking.manager;
 
+import client.model.manager.EmployeeModelManager;
+import server.model.manager.EmployeeServerModelManager;
+import server.model.manager.EmployeeServerModelManagerImpl;
 import shared.Doctor;
 import shared.Nurse;
 
+import java.rmi.AlreadyBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 public class EmployeeServerManagerRMI implements EmployeeServerManager
 {
-    public EmployeeServerManagerRMI()
-    {
+    private EmployeeServerModelManager modelManager;
 
+    public EmployeeServerManagerRMI(Registry registry) throws AlreadyBoundException, RemoteException
+    {
+        modelManager = new EmployeeServerModelManagerImpl();
+        UnicastRemoteObject.exportObject(this, 0);
+        startServer(registry);
+    }
+
+    private void startServer(Registry registry) throws AlreadyBoundException, RemoteException
+    {
+        registry.bind("EmployeeServerManager", this);
+        System.out.println("EmployeeServerManager is running.");
     }
 
     @Override
     public String addDoctor(Doctor doctor)
     {
-        return null;
+        return modelManager.addDoctor(doctor);
     }
 
     @Override
     public String addNurse(Nurse nurse)
     {
-        return null;
+        return modelManager.addNurse(nurse);
     }
 
     @Override
     public String editDoctor(Doctor doctor)
     {
-        return null;
+        return modelManager.editDoctor(doctor);
     }
 
     @Override
     public String editNurse(Nurse nurse)
     {
-        return null;
+        return modelManager.editNurse(nurse);
     }
 
     @Override
     public ArrayList<Doctor> getAllDoctors()
     {
-        return null;
+        return modelManager.getAllDoctors();
     }
 
     @Override
     public ArrayList<Nurse> getAllNurses()
     {
-        return null;
+        return modelManager.getAllNurses();
     }
 
     @Override
     public String removeDoctor(Doctor doctor)
     {
-        return null;
+        return modelManager.removeDoctor(doctor);
     }
 
     @Override
     public String removeNurse(Nurse nurse)
     {
-        return null;
+        return modelManager.removeNurse(nurse);
     }
 }
