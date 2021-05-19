@@ -1,6 +1,8 @@
 package shared;
 
-public class Sample
+import java.io.Serializable;
+
+public class Sample implements Serializable
 {
     private String type;
     private String result;
@@ -26,5 +28,26 @@ public class Sample
     public int getPriority()
     {
         return priority;
+    }
+
+    public void setType(String type)
+    {
+        this.type = type;
+    }
+
+    public void setResult(String result)
+    {
+        this.result = result;
+    }
+
+    public void setPriority(int priority)
+    {
+        this.priority = priority;
+    }
+
+    @Override public String toString()
+    {
+        return "Sample{" + "type='" + type + '\'' + ", result='" + result + '\''
+            + ", priority=" + priority + '}';
     }
 }

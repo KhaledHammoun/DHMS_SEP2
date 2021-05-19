@@ -1,14 +1,16 @@
 package shared;
 
-public abstract class Employee extends Person
+import java.io.Serializable;
+
+public abstract class Employee extends Person implements Serializable
 {
   private DateTime startDate;
   private String education;
 
   public Employee(String firstName, String middleName, String lastName, int ssn,
-      DateTime dob, Address address, DateTime startDate, String education)
+      DateTime dob, Address address,String contactFirstName, String contactMiddleName, String contactLastName, String contactPhoneNumber, DateTime startDate, String education)
   {
-    super(firstName, middleName, lastName, ssn, dob, address);
+    super(firstName, middleName, lastName, ssn, dob, address,contactFirstName,  contactMiddleName, contactLastName,  contactPhoneNumber );
     this.startDate = startDate;
     this.education = education;
   }

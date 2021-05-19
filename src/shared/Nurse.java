@@ -1,13 +1,16 @@
 package shared;
 
-public class Nurse extends Employee
+import java.io.Serializable;
+
+public class Nurse extends Employee implements Serializable
 {
   private String experience;
 
   public Nurse(String firstName, String middleName, String lastName, int ssn,
-      DateTime dob, Address address, DateTime startDate, String education, String experience)
+      DateTime dob, Address address,String contactFirstName, String contactMiddleName, String contactLastName,
+      String contactPhoneNumber, DateTime startDate, String education, String experience)
   {
-    super(firstName, middleName, lastName, ssn, dob, address, startDate,
+    super(firstName, middleName, lastName, ssn, dob, address, contactFirstName, contactMiddleName, contactLastName,  contactPhoneNumber, startDate,
         education);
     this.experience = experience;
   }

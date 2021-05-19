@@ -1,15 +1,18 @@
 package shared;
 
-public class Patient extends Person
+import java.io.Serializable;
+
+public class Patient extends Person implements Serializable
 {
   private String blood_type;
   private String medical_description;
   private char gender;
 
   public Patient(String firstName, String middleName, String lastName, int ssn,
-      DateTime dob, Address address, String blood_type, String medical_description, char gender)
+      DateTime dob, Address address,String contactFirstName, String contactMiddleName, String contactLastName,
+      String contactPhoneNumber, String blood_type, String medical_description, char gender)
   {
-    super(firstName, middleName, lastName, ssn, dob, address);
+    super(firstName, middleName, lastName, ssn, dob, address,contactFirstName, contactMiddleName, contactLastName,  contactPhoneNumber);
     this.blood_type = blood_type;
     this.medical_description = medical_description;
     this.gender = gender;
