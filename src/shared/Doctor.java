@@ -6,7 +6,7 @@ public class Doctor extends Employee implements Serializable
 {
   private String specialization;
 
-  public Doctor(String firstName, String middleName, String lastName, int ssn,
+  public Doctor(String firstName, String middleName, String lastName, long ssn,
       DateTime dob, Address address,String contactFirstName, String contactMiddleName, String contactLastName,
       String contactPhoneNumber, DateTime startDate, String education, String specialization)
   {
