@@ -1,5 +1,12 @@
 package server.networking.login;
 
-public interface LoginServer
+import shared.AccessType;
+import shared.LoginUser;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface LoginServer extends Remote
 {
+    AccessType login(LoginUser user) throws RemoteException;
 }
