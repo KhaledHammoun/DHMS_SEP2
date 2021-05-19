@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class PatientModelDoctorImpl implements PatientModelDoctor
 {
 
-  public PatientModelDoctorImpl()
+  public PatientModelDoctorImpl(Object client)
   {
     //
   }

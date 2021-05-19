@@ -7,7 +7,7 @@ public class LoginImpl implements Login
 {
 
 
-  public LoginImpl()
+  public LoginImpl(Object client)
   {
     //
   }

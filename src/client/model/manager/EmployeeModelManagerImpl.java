@@ -9,7 +9,7 @@ public class EmployeeModelManagerImpl implements EmployeeModelManager
 {
 
 
-  public EmployeeModelManagerImpl()
+  public EmployeeModelManagerImpl(Object client)
   {
     //
   }

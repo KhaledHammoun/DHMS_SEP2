@@ -4,7 +4,7 @@ import shared.Appointment;
 
 public class AppointmentsModelNurseImpl implements AppointmentsModelNurse
 {
-  public AppointmentsModelNurseImpl()
+  public AppointmentsModelNurseImpl(Object client)
   {
     //
   }

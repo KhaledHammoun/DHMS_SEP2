@@ -5,7 +5,7 @@ import shared.Patient;
 
 public class PatientModelNurseImpl implements PatientModelNurse
 {
-  public PatientModelNurseImpl()
+  public PatientModelNurseImpl(Object client)
   {
     //
   }

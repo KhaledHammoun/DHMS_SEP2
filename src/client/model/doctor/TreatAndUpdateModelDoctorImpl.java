@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
 {
 
- public TreatAndUpdateModelDoctorImpl()
+ public TreatAndUpdateModelDoctorImpl(Object client)
  {
    //
  }

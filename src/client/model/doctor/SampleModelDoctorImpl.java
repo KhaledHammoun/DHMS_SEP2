@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class SampleModelDoctorImpl implements SampleModelDoctor
 {
-  public SampleModelDoctorImpl()
+  public SampleModelDoctorImpl(Object client)
   {
     //
   }

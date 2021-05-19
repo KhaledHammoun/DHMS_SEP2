@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class AppointmentsModelDoctorImpl implements AppointmentsModelDoctor
 {
 
-  public AppointmentsModelDoctorImpl()
+  public AppointmentsModelDoctorImpl(Object client)
   {
     //
   }
