@@ -1,5 +1,5 @@
 package server.database.nurse;
 
-public class GetRequiredDataDBAccessNurseImpl implements GetRequiredDataAccessNurse
+public class GetRequiredDataDBAccessNurseImpl implements GetRequiredDataDBAccessNurse
 {
 }

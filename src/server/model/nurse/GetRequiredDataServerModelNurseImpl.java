@@ -1,5 +1,8 @@
 package server.model.nurse;
 
+import server.database.nurse.GetRequiredDataDBAccessNurse;
+import server.database.nurse.GetRequiredDataDBAccessNurseImpl;
+import shared.Appointment;
 import shared.Doctor;
 import shared.Patient;
 
@@ -7,28 +10,28 @@ import java.util.ArrayList;
 
 public class GetRequiredDataServerModelNurseImpl implements GetRequiredDataServerModelNurse
 {
-    // TODO: 19/05/2021 Implement methods
+    private GetRequiredDataDBAccessNurse dbAccessNurse;
 
     public GetRequiredDataServerModelNurseImpl()
     {
-
+        dbAccessNurse = new GetRequiredDataDBAccessNurseImpl();
     }
 
     @Override
     public ArrayList<Patient> getAllPatients()
     {
-        return null;
+        return dbAccessNurse.getAllPatients();
     }
 
     @Override
     public ArrayList<Doctor> getAllDoctors()
     {
-        return null;
+        return dbAccessNurse.getAllDoctors();
     }
 
     @Override
     public ArrayList<Appointment> getAllAppointments()
     {
-        return null;
+        return dbAccessNurse.getAllAppointments();
     }
 }
