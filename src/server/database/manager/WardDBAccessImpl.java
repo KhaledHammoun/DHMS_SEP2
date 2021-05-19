@@ -19,9 +19,9 @@ public class WardDBAccessImpl implements WardDBAccessManager
     }
 
     @Override
-    public void editWard(Ward ward)
+    public String editWard(Ward ward)
     {
-
+        return null;
     }
 
     @Override
