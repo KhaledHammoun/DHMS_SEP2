@@ -2,10 +2,10 @@ package server.model.nurse;
 
 import shared.Patient;
 
-public interface PatientServerModelNurse
+public interface AppointmentsServerModelNurse
 {
     void addPatient(Patient patient);
     void editPatient(Patient patient);
     void removePatient(Patient patient);
-    Patient getPatientBySSN(int SSN);
+    Patient getPatientBySNN(int SNN);
 }
