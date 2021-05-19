@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class WardServerModelManagerImpl implements WardServerModelManager
 {
-    // TODO: 19/05/2021 FInish implementation of the class
+    // TODO: 19/05/2021 Finish implementation of the class
     public WardServerModelManagerImpl()
     {
 
