@@ -7,5 +7,5 @@ import java.util.ArrayList;
 public interface PatientDBAccessDoctor
 {
     ArrayList<Patient> getAllPatients();
-    Patient getPatientBySNN(int SSN);
+    Patient getPatientBySNN(long SSN);
 }
