@@ -1,15 +1,16 @@
 package shared;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class Appointment implements Serializable
 {
-  private DateTime from;
-  private DateTime to;
+  private Timestamp from;
+  private Timestamp to;
   private int doctorSSN;
   private int patientSSN;
 
-  public Appointment(DateTime from, DateTime to, int doctorSSN, int patientSSN)
+  public Appointment(Timestamp from, Timestamp to, int doctorSSN, int patientSSN)
   {
     this.from = from;
     this.to = to;
@@ -17,12 +18,12 @@ public class Appointment implements Serializable
     this.patientSSN = patientSSN;
   }
 
-  public DateTime getFrom()
+  public Timestamp getFrom()
   {
     return from;
   }
 
-  public DateTime getTo()
+  public Timestamp getTo()
   {
     return to;
   }
@@ -37,12 +38,12 @@ public class Appointment implements Serializable
     return patientSSN;
   }
 
-  public void setFrom(DateTime from)
+  public void setFrom(Timestamp from)
   {
     this.from = from;
   }
 
-  public void setTo(DateTime to)
+  public void setTo(Timestamp to)
   {
     this.to = to;
   }

@@ -9,7 +9,7 @@ public class DatabaseAccess
   private String user = "yunjxnkw";
   private String pw= "D5YTBHvbbrXKkABkXyFqK-L4jQDNVsBH";
 
-  private DatabaseAccess instance = new DatabaseAccess();
+  private static DatabaseAccess instance = new DatabaseAccess();
 
   private DatabaseAccess()
   {
@@ -28,7 +28,7 @@ public class DatabaseAccess
     }
   }
 
-  public DatabaseAccess getInstance()
+  public synchronized static DatabaseAccess getInstance()
   {
     return instance;
   }
