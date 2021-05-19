@@ -2,12 +2,14 @@ package server.networking.doctor;
 
 import shared.Sample;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public interface SampleServerDoctor
+public interface SampleServerDoctor extends Remote
 {
-    ArrayList<Sample> getAllSamples();
-    void createSample(Sample sample);
-    void editSample(Sample sample);
-    Sample getSampleById(int id);
+    ArrayList<Sample> getAllSamples() throws RemoteException;
+    void createSample(Sample sample) throws RemoteException;
+    void editSample(Sample sample) throws RemoteException;
+    Sample getSampleById(int id) throws RemoteException;
 }
