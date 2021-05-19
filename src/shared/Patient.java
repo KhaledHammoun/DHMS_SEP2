@@ -1,6 +1,7 @@
 package shared;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Patient extends Person implements Serializable
 {
@@ -8,8 +9,8 @@ public class Patient extends Person implements Serializable
   private String medical_description;
   private char gender;
 
-  public Patient(String firstName, String middleName, String lastName, int ssn,
-      DateTime dob, Address address,String contactFirstName, String contactMiddleName, String contactLastName,
+  public Patient(String firstName, String middleName, String lastName, long ssn,
+      Date dob, Address address,String contactFirstName, String contactMiddleName, String contactLastName,
       String contactPhoneNumber, String blood_type, String medical_description, char gender)
   {
     super(firstName, middleName, lastName, ssn, dob, address,contactFirstName, contactMiddleName, contactLastName,  contactPhoneNumber);
