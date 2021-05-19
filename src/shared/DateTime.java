@@ -1,6 +1,8 @@
 package shared;
 
-public class DateTime
+import java.io.Serializable;
+
+public class DateTime implements Serializable
 {
   private int day;
   private int month;
