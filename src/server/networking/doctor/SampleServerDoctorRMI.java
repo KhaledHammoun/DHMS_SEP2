@@ -1,9 +1,7 @@
 package server.networking.doctor;
 
-import client.core.ClientFactory;
-import client.core.InterfaceEnum;
-import client.model.doctor.SampleModelDoctor;
-import client.model.doctor.SampleModelDoctorImpl;
+import server.model.doctor.SampleServerModelDoctor;
+import server.model.doctor.SampleServerModelDoctorImpl;
 import shared.Sample;
 
 import java.rmi.AlreadyBoundException;
@@ -14,11 +12,11 @@ import java.util.ArrayList;
 
 public class SampleServerDoctorRMI implements SampleServerDoctor
 {
-    private SampleModelDoctor modelDoctor;
+    private SampleServerModelDoctor modelDoctor;
 
     public SampleServerDoctorRMI(Registry registry) throws AlreadyBoundException, RemoteException
     {
-        modelDoctor = new SampleModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_SAMPLE));
+        modelDoctor = new SampleServerModelDoctorImpl();
         UnicastRemoteObject.exportObject(this, 0);
         startServer(registry);
     }
@@ -50,6 +48,6 @@ public class SampleServerDoctorRMI implements SampleServerDoctor
     @Override
     public Sample getSampleById(int id)
     {
-        return modelDoctor.getSampleByID(id);
+        return modelDoctor.getSampleById(id);
     }
 }
