@@ -22,7 +22,7 @@ public class PatientServerModelDoctorImpl implements PatientServerModelDoctor
     }
 
     @Override
-    public Patient getPatientBySNN(int SSN)
+    public Patient getPatientBySNN(long SSN)
     {
         return dbAccessDoctor.getPatientBySNN(SSN);
     }
