@@ -12,9 +12,8 @@ public class Diagnosis implements Serializable
   private Date dateFrom;
   private Date dateTo = null;
 
-  public Diagnosis(int id, String name, int severityLevel, String description, Date dateFrom)
+  public Diagnosis(String name, int severityLevel, String description, Date dateFrom)
   {
-    this.id = id;
     this.name = name;
     this.severityLevel = severityLevel;
     this.description = description;
