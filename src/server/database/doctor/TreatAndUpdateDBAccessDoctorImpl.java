@@ -1,5 +1,4 @@
 package server.database.doctor;
-
 import server.database.DatabaseAccess;
 import shared.Diagnosis;
 import shared.Doctor;
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 public class TreatAndUpdateDBAccessDoctorImpl
     implements TreatAndUpdateDBAccessDoctor
 {
+
   @Override public void addDiagnosisToPatient(Patient patient,
       Diagnosis diagnosis)
   {

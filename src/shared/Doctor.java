@@ -13,6 +13,7 @@ public class Doctor extends Employee implements Serializable
       String contactMiddleName, String contactLastName,
       String contactPhoneNumber, Date startDate, String education,
       String specialization, Ward ward, String email, String password)
+
   {
     super(firstName, middleName, lastName, ssn, dob, address, contactFirstName,
         contactMiddleName, contactLastName, contactPhoneNumber, startDate,
