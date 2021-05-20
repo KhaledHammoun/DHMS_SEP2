@@ -24,17 +24,13 @@ public class TreatAndUpdateDBAccessDoctorImpl
         PreparedStatement preparedStatement2 = connection.prepareStatement(
             "INSERT INTO suffer_from(patient_ssn, diagnosis_id, severity_level, date_from) VALUES (?, ?, ?, ?)"))
     {
-      preparedStatement1.setInt(1, diagnosis.getSeverityLevel());
-      preparedStatement1.setString(2, diagnosis.getName());
-      preparedStatement1.setString(3, diagnosis.getDescription());
-
+      setStatementDiagnosis(preparedStatement1, diagnosis);
       preparedStatement1.execute();
 
       PreparedStatement getIdOfDiagnosis = connection.prepareStatement(
           "SELECT id FROM diagnosis WHERE severity_level = ? and name = ? and description = ?");
-      getIdOfDiagnosis.setInt(1, diagnosis.getSeverityLevel());
-      getIdOfDiagnosis.setString(2, diagnosis.getName());
-      getIdOfDiagnosis.setString(3, diagnosis.getDescription());
+
+      setStatementDiagnosis(getIdOfDiagnosis, diagnosis);
 
       ResultSet resultSet = getIdOfDiagnosis.executeQuery();
 
@@ -52,6 +48,14 @@ public class TreatAndUpdateDBAccessDoctorImpl
     {
       e.printStackTrace();
     }
+  }
+
+  private void setStatementDiagnosis(PreparedStatement preparedStatement,
+      Diagnosis diagnosis) throws SQLException
+  {
+    preparedStatement.setInt(1, diagnosis.getSeverityLevel());
+    preparedStatement.setString(2, diagnosis.getName());
+    preparedStatement.setString(3, diagnosis.getDescription());
   }
 
   @Override public void treatPatient(Patient patient, Diagnosis diagnosis,

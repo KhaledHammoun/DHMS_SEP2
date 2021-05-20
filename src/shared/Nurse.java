@@ -12,11 +12,11 @@ public class Nurse extends Employee implements Serializable
       String lastName, Date dob, Address address, String contactFirstName,
       String contactMiddleName, String contactLastName,
       String contactPhoneNumber, Date startDate, String education,
-      String experience)
+      String experience, String email, String password)
   {
     super(firstName, middleName, lastName, ssn, dob, address, contactFirstName,
         contactMiddleName, contactLastName, contactPhoneNumber, startDate,
-        education);
+        education, email, password);
     this.experience = experience;
     this.doctor_ssn = doctor_ssn;
   }

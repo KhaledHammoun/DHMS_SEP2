@@ -59,7 +59,8 @@ public class NursesDBAccessDoctorImpl implements NursesDBAccessDoctor
             r.getString("contact_f_name"), r.getString("contact_mid_name"),
             r.getString("contact_l_name"), r.getString("contact_phone"),
             r.getDate("start_date"), r.getString("education"),
-            r.getString("experience")));
+            r.getString("experience"), r.getString("email"),
+            r.getString("password")));
       }
       return result;
     }
