@@ -1,7 +1,7 @@
 package client.networking.doctor;
 
 import server.networking.doctor.TreatAndUpdateServerDoctor;
-import shared.Disease;
+import shared.Diagnosis;
 import shared.Doctor;
 import shared.Patient;
 
@@ -28,11 +28,11 @@ public class TreatAndUpdateClientDoctorRMI implements TreatAndUpdateClientDoctor
     }
   }
 
-  @Override public void addDiagnosisToPatient(Patient patient, Disease disease)
+  @Override public void addDiagnosisToPatient(Patient patient, Diagnosis diagnosis)
   {
     try
     {
-      serverDoctor.addDiagnosisToPatient(patient,disease);
+      serverDoctor.addDiagnosisToPatient(patient, diagnosis);
     }
     catch (RemoteException e)
     {
@@ -40,11 +40,11 @@ public class TreatAndUpdateClientDoctorRMI implements TreatAndUpdateClientDoctor
     }
   }
 
-  @Override public void treatPatient(Patient patient, Disease disease, Doctor doctor)
+  @Override public void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor)
   {
     try
     {
-      serverDoctor.treatPatient(patient, disease, doctor);
+      serverDoctor.treatPatient(patient, diagnosis, doctor);
     }
     catch (RemoteException e)
     {
@@ -52,7 +52,7 @@ public class TreatAndUpdateClientDoctorRMI implements TreatAndUpdateClientDoctor
     }
   }
 
-  @Override public ArrayList<Disease> getAllDiseasesOfPatient(Patient patient)
+  @Override public ArrayList<Diagnosis> getAllDiseasesOfPatient(Patient patient)
   {
     try
     {

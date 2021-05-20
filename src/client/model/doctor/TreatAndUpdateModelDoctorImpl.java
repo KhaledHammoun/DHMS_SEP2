@@ -1,7 +1,7 @@
 package client.model.doctor;
 
 import client.networking.doctor.TreatAndUpdateClientDoctor;
-import shared.Disease;
+import shared.Diagnosis;
 import shared.Doctor;
 import shared.Patient;
 
@@ -17,11 +17,11 @@ public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
    clientDoctor = (TreatAndUpdateClientDoctor) client;
  }
 
-  @Override public void addDiagnosisToPatient(Patient patient, Disease disease)
+  @Override public void addDiagnosisToPatient(Patient patient, Diagnosis diagnosis)
   {
    try
    {
-    clientDoctor.addDiagnosisToPatient(patient, disease);
+    clientDoctor.addDiagnosisToPatient(patient, diagnosis);
    }
    catch (RemoteException e)
    {
@@ -29,11 +29,11 @@ public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
    }
   }
 
-  @Override public void treatPatient(Patient patient, Disease disease, Doctor doctor)
+  @Override public void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor)
   {
    try
    {
-    clientDoctor.treatPatient(patient, disease, doctor);
+    clientDoctor.treatPatient(patient, diagnosis, doctor);
    }
    catch (RemoteException e)
    {
@@ -41,7 +41,7 @@ public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
    }
   }
 
-  @Override public ArrayList<Disease> getAllDiseaseOfPatient(Patient patient)
+  @Override public ArrayList<Diagnosis> getAllDiseaseOfPatient(Patient patient)
   {
    try
    {
