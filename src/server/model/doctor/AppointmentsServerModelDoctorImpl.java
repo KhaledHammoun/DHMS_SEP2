@@ -3,6 +3,7 @@ package server.model.doctor;
 import server.database.doctor.AppointmentsDBAccessDoctor;
 import server.database.doctor.AppointmentsDBAccessDoctorImpl;
 import shared.Appointment;
+import shared.Doctor;
 
 import java.util.ArrayList;
 
@@ -16,9 +17,9 @@ public class AppointmentsServerModelDoctorImpl implements AppointmentsServerMode
     }
 
     @Override
-    public ArrayList<Appointment> getAllAppointments()
+    public ArrayList<Appointment> getAllAppointments(Doctor doctor)
     {
-        return dbAccessDoctor.getAllAppointments();
+        return dbAccessDoctor.getAllAppointments(doctor);
     }
 
     @Override

@@ -4,6 +4,7 @@ import server.networking.doctor.TreatAndUpdateServerDoctor;
 import shared.Diagnosis;
 import shared.Doctor;
 import shared.Patient;
+import shared.Treatment;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -20,15 +21,18 @@ public class TreatAndUpdateClientDoctorRMI implements TreatAndUpdateClientDoctor
     try
     {
       Registry registry = LocateRegistry.getRegistry(1099);
-      serverDoctor = (TreatAndUpdateServerDoctor) registry.lookup("TreatAndUpdateServerDoctor");
+      serverDoctor = (TreatAndUpdateServerDoctor) registry
+          .lookup("TreatAndUpdateServerDoctor");
     }
     catch (RemoteException | NotBoundException e)
     {
-      throw new RuntimeException("Could not connect to the server, please try again later");
+      throw new RuntimeException(
+          "Could not connect to the server, please try again later");
     }
   }
 
-  @Override public void addDiagnosisToPatient(Patient patient, Diagnosis diagnosis)
+  @Override public void addDiagnosisToPatient(Patient patient,
+      Diagnosis diagnosis)
   {
     try
     {
@@ -36,19 +40,22 @@ public class TreatAndUpdateClientDoctorRMI implements TreatAndUpdateClientDoctor
     }
     catch (RemoteException e)
     {
-      throw new RuntimeException("Error while adding patient diagnosis. Please try again.");
+      throw new RuntimeException(
+          "Error while adding patient diagnosis. Please try again.");
     }
   }
 
-  @Override public void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor)
+  @Override public void treatPatient(Patient patient, Diagnosis diagnosis,
+      Doctor doctor, Treatment treatment)
   {
     try
     {
-      serverDoctor.treatPatient(patient, diagnosis, doctor);
+      serverDoctor.treatPatient(patient, diagnosis, doctor, treatment);
     }
     catch (RemoteException e)
     {
-      throw new RuntimeException("Error while adding patient treatment. Please try again.");
+      throw new RuntimeException(
+          "Error while adding patient treatment. Please try again.");
     }
   }
 
@@ -60,7 +67,21 @@ public class TreatAndUpdateClientDoctorRMI implements TreatAndUpdateClientDoctor
     }
     catch (RemoteException e)
     {
-      throw new RuntimeException("Error while fetching patient data. Please try again.");
+      throw new RuntimeException(
+          "Error while fetching patient data. Please try again.");
+    }
+  }
+
+  @Override public void editDiagnosis(Diagnosis diagnosis)
+  {
+    try
+    {
+      serverDoctor.editDiagnosis(diagnosis);
+    }
+    catch (RemoteException e)
+    {
+      throw new RuntimeException(
+          "Error while editing diagnosis data. Please try again.");
     }
   }
 }
