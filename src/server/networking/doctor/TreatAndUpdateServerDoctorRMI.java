@@ -2,7 +2,7 @@ package server.networking.doctor;
 
 import server.model.doctor.TreatAndUpdateServerModelDoctor;
 import server.model.doctor.TreatAndUpdateServerModelDoctorImpl;
-import shared.Disease;
+import shared.Diagnosis;
 import shared.Doctor;
 import shared.Patient;
 
@@ -30,19 +30,19 @@ public class TreatAndUpdateServerDoctorRMI implements TreatAndUpdateServerDoctor
     }
 
     @Override
-    public void addDiagnosisToPatient(Patient patient, Disease disease)
+    public void addDiagnosisToPatient(Patient patient, Diagnosis diagnosis)
     {
-        modelDoctor.addDiagnosisToPatient(patient,disease);
+        modelDoctor.addDiagnosisToPatient(patient, diagnosis);
     }
 
     @Override
-    public void treatPatient(Patient patient, Disease disease, Doctor doctor)
+    public void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor)
     {
-        modelDoctor.treatPatient(patient, disease, doctor);
+        modelDoctor.treatPatient(patient, diagnosis, doctor);
     }
 
     @Override
-    public ArrayList<Disease> getAllDiseasesOfPatient(Patient patient)
+    public ArrayList<Diagnosis> getAllDiseasesOfPatient(Patient patient)
     {
         return modelDoctor.getAllDiseasesOfPatient(patient);
     }
