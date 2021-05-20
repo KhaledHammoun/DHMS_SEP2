@@ -7,5 +7,5 @@ public interface PatientServerModelNurse
     void addPatient(Patient patient);
     void editPatient(Patient patient);
     void removePatient(Patient patient);
-    Patient getPatientBySSN(int SSN);
+    Patient getPatientBySSN(long SSN);
 }
