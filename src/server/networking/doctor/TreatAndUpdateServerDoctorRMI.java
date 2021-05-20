@@ -5,6 +5,7 @@ import server.model.doctor.TreatAndUpdateServerModelDoctorImpl;
 import shared.Diagnosis;
 import shared.Doctor;
 import shared.Patient;
+import shared.Treatment;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -36,14 +37,19 @@ public class TreatAndUpdateServerDoctorRMI implements TreatAndUpdateServerDoctor
     }
 
     @Override
-    public void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor)
+    public void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor, Treatment treatment)
     {
-        modelDoctor.treatPatient(patient, diagnosis, doctor);
+        modelDoctor.treatPatient(patient, diagnosis, doctor, treatment);
     }
 
     @Override
     public ArrayList<Diagnosis> getAllDiseasesOfPatient(Patient patient)
     {
         return modelDoctor.getAllDiseasesOfPatient(patient);
+    }
+
+    @Override public void editDiagnosis(Diagnosis diagnosis)
+    {
+        modelDoctor.editDiagnosis(diagnosis);
     }
 }

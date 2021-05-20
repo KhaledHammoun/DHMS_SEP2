@@ -3,7 +3,9 @@ package server.networking.doctor;
 import server.model.doctor.AppointmentsServerModelDoctor;
 import server.model.doctor.AppointmentsServerModelDoctorImpl;
 import shared.Appointment;
+import shared.Doctor;
 
+import javax.print.Doc;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
@@ -28,9 +30,9 @@ public class AppointmentsServerDoctorRMI implements AppointmentsServerDoctor
     }
 
     @Override
-    public ArrayList<Appointment> getAllAppointments()
+    public ArrayList<Appointment> getAllAppointments(Doctor doctor)
     {
-        return modelDoctor.getAllAppointments();
+        return modelDoctor.getAllAppointments(doctor);
     }
 
     @Override

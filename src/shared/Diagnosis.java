@@ -12,12 +12,13 @@ public class Diagnosis implements Serializable
   private Date dateFrom;
   private Date dateTo = null;
 
-  public Diagnosis(String name, int severityLevel, String description, Date dateFrom)
+  public Diagnosis(String name, int severityLevel, String description, Date dateFrom, int id)
   {
     this.name = name;
     this.severityLevel = severityLevel;
     this.description = description;
     this.dateFrom = dateFrom;
+    this.id = id;
   }
 
   public Date getDateTo()
