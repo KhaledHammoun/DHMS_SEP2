@@ -7,5 +7,5 @@ import java.util.ArrayList;
 public interface PatientModelDoctor
 {
   ArrayList<Patient> getAllPatients();
-  Patient getPatientBySSN(int ssn);
+  Patient getPatientBySSN(long ssn);
 }

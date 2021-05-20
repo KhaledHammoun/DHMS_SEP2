@@ -34,7 +34,7 @@ public class PatientServerDoctorRMI implements PatientServerDoctor
     }
 
     @Override
-    public Patient getPatientBySNN(int SSN)
+    public Patient getPatientBySNN(long SSN)
     {
         return modelDoctor.getPatientBySNN(SSN);
     }
