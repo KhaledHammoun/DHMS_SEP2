@@ -10,5 +10,5 @@ public interface PatientServerNurse extends Remote
     void addPatient(Patient patient) throws RemoteException;
     void editPatient(Patient patient) throws RemoteException;
     void removePatient(Patient patient) throws RemoteException;
-    Patient getPatientBySSN(int SSN) throws RemoteException;
+    Patient getPatientBySSN(long SSN) throws RemoteException;
 }

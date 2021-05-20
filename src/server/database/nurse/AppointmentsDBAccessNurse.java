@@ -6,5 +6,5 @@ import shared.Patient;
 public interface AppointmentsDBAccessNurse
 {
     void createAppointment(Appointment appointment);
-    void editAppointment(Appointment appointment);
+    void removeAppointment(Appointment appointment);
 }
