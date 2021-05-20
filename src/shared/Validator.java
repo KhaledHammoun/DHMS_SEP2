@@ -5,7 +5,7 @@ public class Validator
   public static final int MIN_LENGTH_PASSWORD = 8;
   public static final int MAX_LENGTH_PASSWORD = 14;
 
-  public boolean isValidPassword(int password)
+  public static boolean isValidPassword(String password)
   {
     //TODO
     return false;
