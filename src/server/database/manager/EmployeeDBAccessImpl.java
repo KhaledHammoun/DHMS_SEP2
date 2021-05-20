@@ -36,7 +36,7 @@ public class EmployeeDBAccessImpl implements EmployeeDBAccessManager
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "insert into nurse(ssn, doctor_ssn, f_name, mid_name, l_name, add_street, add_no, add_zip_code, add_city, dob, start_date, education, experience, email, password, contact_f_name, contact_mid_name, contact_l_name, contact_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+            "INSERT INTO nurse(ssn, doctor_ssn, f_name, mid_name, l_name, add_street, add_no, add_zip_code, add_city, dob, start_date, education, experience, email, password, contact_f_name, contact_mid_name, contact_l_name, contact_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
     {
       prepareNurseStatement(preparedStatement, nurse);
 

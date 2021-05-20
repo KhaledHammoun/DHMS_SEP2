@@ -25,8 +25,8 @@ public class AppointmentsServerModelNurseImpl implements AppointmentsServerModel
     }
 
     @Override
-    public void editAppointment(Appointment appointment)
+    public void removeAppointment(Appointment appointment)
     {
-        dbAccessNurse.editAppointment(appointment);
+        dbAccessNurse.removeAppointment(appointment);
     }
 }

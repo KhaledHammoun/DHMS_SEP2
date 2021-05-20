@@ -17,11 +17,10 @@ class AppointmentsDBAccessDoctorImplTest
 
     ArrayList<Appointment> result = test.getAllAppointments(
         new Doctor("", "", "", 4128742239L, null, null, "", "", "", "", null,
-            "", ""));
+            "", "", null, "", ""));
 
     System.out.println(result.get(0));
 
     assertNotEquals(null, result);
   }
-
 }
