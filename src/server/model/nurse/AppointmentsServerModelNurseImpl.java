@@ -1,37 +1,32 @@
 package server.model.nurse;
 
+import server.database.nurse.AppointmentsDBAccessNurse;
+import server.database.nurse.AppointmentsDBAccessNurseImpl;
+import shared.Appointment;
 import shared.Patient;
+
+import javax.net.ssl.SNIServerName;
+import javax.net.ssl.SSLContext;
 
 public class AppointmentsServerModelNurseImpl implements AppointmentsServerModelNurse
 {
-    // TODO: 19/05/2021 Implement methods
+    private AppointmentsDBAccessNurse dbAccessNurse;
 
     public AppointmentsServerModelNurseImpl()
     {
+        dbAccessNurse = new AppointmentsDBAccessNurseImpl();
+    }
 
+
+    @Override
+    public void createAppointment(Appointment appointment)
+    {
+        dbAccessNurse.createAppointment(appointment);
     }
 
     @Override
-    public void addPatient(Patient patient)
+    public void editAppointment(Appointment appointment)
     {
-
-    }
-
-    @Override
-    public void editPatient(Patient patient)
-    {
-
-    }
-
-    @Override
-    public void removePatient(Patient patient)
-    {
-
-    }
-
-    @Override
-    public Patient getPatientBySNN(int SNN)
-    {
-        return null;
+        dbAccessNurse.editAppointment(appointment);
     }
 }

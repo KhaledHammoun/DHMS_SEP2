@@ -29,11 +29,4 @@ public class LoginUser implements Serializable
   {
     return accessType;
   }
-
-  public static boolean checkValidPassword()
-  {
-    //TODO
-    return false;
-  }
-
 }

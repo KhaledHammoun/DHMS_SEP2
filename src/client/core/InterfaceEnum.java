@@ -1,0 +1,16 @@
+package client.core;
+
+public enum InterfaceEnum
+{
+    LOGIN,
+    MANAGER_EMPLOYEE,
+    MANAGER_WARD,
+    DOCTOR_PATIENT,
+    DOCTOR_SAMPLE,
+    DOCTOR_TREAT_UPDATE,
+    DOCTOR_NURSE,
+    DOCTOR_APPOINTMENT,
+    NURSE_PATIENT,
+    NURSE_APPOINTMENT,
+    NURSE_GET_DATA
+}

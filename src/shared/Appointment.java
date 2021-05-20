@@ -1,15 +1,16 @@
 package shared;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class Appointment implements Serializable
 {
-  private DateTime from;
-  private DateTime to;
-  private int doctorSSN;
-  private int patientSSN;
+  private Timestamp from;
+  private Timestamp to;
+  private long doctorSSN;
+  private long patientSSN;
 
-  public Appointment(DateTime from, DateTime to, int doctorSSN, int patientSSN)
+  public Appointment(Timestamp from, Timestamp to, long doctorSSN, long patientSSN)
   {
     this.from = from;
     this.to = to;
@@ -17,42 +18,42 @@ public class Appointment implements Serializable
     this.patientSSN = patientSSN;
   }
 
-  public DateTime getFrom()
+  public Timestamp getFrom()
   {
     return from;
   }
 
-  public DateTime getTo()
+  public Timestamp getTo()
   {
     return to;
   }
 
-  public int getDoctorSSN()
+  public long getDoctorSSN()
   {
     return doctorSSN;
   }
 
-  public int getPatientSSN()
+  public long getPatientSSN()
   {
     return patientSSN;
   }
 
-  public void setFrom(DateTime from)
+  public void setFrom(Timestamp from)
   {
     this.from = from;
   }
 
-  public void setTo(DateTime to)
+  public void setTo(Timestamp to)
   {
     this.to = to;
   }
 
-  public void setDoctorSSN(int doctorSSN)
+  public void setDoctorSSN(long doctorSSN)
   {
     this.doctorSSN = doctorSSN;
   }
 
-  public void setPatientSSN(int patientSSN)
+  public void setPatientSSN(long patientSSN)
   {
     this.patientSSN = patientSSN;
   }
