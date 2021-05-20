@@ -31,7 +31,7 @@ public class AppointmentsClientDoctorRMI implements AppointmentsClientDoctor
   {
     try
     {
-      return serverDoctor.getAllAppointments();
+      return serverDoctor.getAllAppointments(doctor);
     }
     catch (RemoteException e)
     {
