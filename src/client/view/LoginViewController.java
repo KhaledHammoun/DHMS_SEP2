@@ -1,10 +1,12 @@
 package client.view;
 
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class LoginViewController
+public class LoginViewController implements ViewController
 {
     @FXML
     public TextField usernameTextFieldLogin;
@@ -27,5 +29,11 @@ public class LoginViewController
     public void onLoginButton(ActionEvent actionEvent)
     {
         System.out.println("Login pressed. Login controller");
+    }
+
+    @Override
+    public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+    {
+
     }
 }
