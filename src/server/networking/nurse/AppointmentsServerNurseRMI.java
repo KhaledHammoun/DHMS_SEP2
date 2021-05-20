@@ -33,8 +33,8 @@ public class AppointmentsServerNurseRMI implements AppointmentsServerNurse
     }
 
     @Override
-    public void editAppointment(Appointment appointment)
+    public void removeAppointment(Appointment appointment)
     {
-        modelNurse.editAppointment(appointment);
+        modelNurse.removeAppointment(appointment);
     }
 }

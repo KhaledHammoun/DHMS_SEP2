@@ -8,5 +8,5 @@ import java.rmi.RemoteException;
 public interface AppointmentsClientNurse extends Remote
 {
   void createAppointment(Appointment appointment) throws RemoteException;
-  void editAppointment(Appointment appointment) throws RemoteException;
+  void removeAppointment(Appointment appointment) throws RemoteException;
 }
