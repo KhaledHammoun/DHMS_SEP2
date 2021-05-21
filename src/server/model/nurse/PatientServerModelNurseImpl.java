@@ -32,7 +32,7 @@ public class PatientServerModelNurseImpl implements PatientServerModelNurse
     }
 
     @Override
-    public Patient getPatientBySSN(int SSN)
+    public Patient getPatientBySSN(long SSN)
     {
         return dbAccessNurse.getPatientBySSN(SSN);
     }

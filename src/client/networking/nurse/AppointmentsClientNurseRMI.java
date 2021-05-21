@@ -38,11 +38,11 @@ public class AppointmentsClientNurseRMI implements AppointmentsClientNurse
     }
   }
 
-  @Override public void editAppointment(Appointment appointment)
+  @Override public void removeAppointment(Appointment appointment)
   {
     try
     {
-      serverNurse.editAppointment(appointment);
+      serverNurse.removeAppointment(appointment);
     }
     catch (RemoteException e)
     {

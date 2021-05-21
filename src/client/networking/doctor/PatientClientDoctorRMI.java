@@ -38,7 +38,7 @@ public class PatientClientDoctorRMI implements PatientClientDoctor
     }
   }
 
-  @Override public Patient getPatientBySSN(int ssn)
+  @Override public Patient getPatientBySSN(long ssn)
   {
     try
     {

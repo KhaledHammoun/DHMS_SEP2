@@ -85,6 +85,7 @@ public class Sample implements Serializable
     @Override public String toString()
     {
         return "Sample{" + "type='" + type + '\'' + ", result='" + result + '\''
-            + ", priority=" + priority + '}';
+            + ", priority=" + priority + ", deadline=" + deadline
+            + ", patient_ssn=" + patient_ssn + ", sample_id=" + sample_id + '}';
     }
 }

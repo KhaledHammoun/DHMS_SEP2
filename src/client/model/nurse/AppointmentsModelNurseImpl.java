@@ -28,11 +28,11 @@ public class AppointmentsModelNurseImpl implements AppointmentsModelNurse
     }
 
     @Override
-    public void editAppointment(Appointment appointment)
+    public void removeAppointment(Appointment appointment)
     {
         try
         {
-            clientNurse.editAppointment(appointment);
+            clientNurse.removeAppointment(appointment);
         }
         catch (RemoteException e)
         {
