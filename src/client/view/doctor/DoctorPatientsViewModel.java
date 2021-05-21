@@ -1,8 +1,7 @@
 package client.view.doctor;
 
-
 import client.model.doctor.SampleModelDoctor;
-import client.model.doctor.TreatAndUpdateModelDoctor;
+
 import client.model.shared.GetPatientDataModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +25,7 @@ public class DoctorPatientsViewModel
     this.getPatientDataModel = getPatientDataModel;
     this.treatAndUpdateModelDoctor = treatAndUpdateModelDoctor;
     this.sampleModelDoctor = sampleModelDoctor;
+
     //ToDo implement observer
     //getPatientDataModel.addListener("NewPatient", this::onNewPatient);
     patients = FXCollections.observableArrayList();

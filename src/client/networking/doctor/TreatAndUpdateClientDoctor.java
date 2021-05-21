@@ -15,5 +15,4 @@ public interface TreatAndUpdateClientDoctor extends Remote
     void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor, Treatment treatment) throws RemoteException;
     ArrayList<Diagnosis> getAllDiseasesOfPatient(Patient patient) throws RemoteException;
     void editDiagnosis(Diagnosis diagnosis) throws RemoteException;
-
 }

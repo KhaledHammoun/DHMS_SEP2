@@ -1,6 +1,6 @@
 package client.core;
 
-import client.model.doctor.AppointmentsModelDoctor;
+
 import client.model.login.Login;
 import client.view.LoginViewModel;
 import client.view.View;
