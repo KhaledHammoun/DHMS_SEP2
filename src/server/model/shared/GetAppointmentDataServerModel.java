@@ -9,5 +9,4 @@ public interface GetAppointmentDataServerModel
 {
     ArrayList<Appointment> getAllAppointments();
     ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor);
-    Appointment getAppointment(Appointment appointment);
 }

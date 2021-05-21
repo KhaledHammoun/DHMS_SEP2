@@ -41,17 +41,4 @@ public class GetAppointmentDataModelImpl implements GetAppointmentDataModel
             throw new RuntimeException("Error while fetching all appointments. Please try again.");
         }
     }
-
-    @Override
-    public Appointment getAppointment(Appointment appointment)
-    {
-        try
-        {
-            return sharedClient.getAppointment(appointment);
-        }
-        catch (RemoteException e)
-        {
-            throw new RuntimeException("Error while fetching appointment. Please try again.");
-        }
-    }
 }

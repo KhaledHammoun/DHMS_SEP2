@@ -39,10 +39,4 @@ public class GetAppointmentDataServerRMI implements GetAppointmentDataServer
     {
         return sharedServerModel.getAppointmentForDoctor(doctor);
     }
-
-    @Override
-    public Appointment getAppointment(Appointment appointment)
-    {
-        return sharedServerModel.getAppointment(appointment);
-    }
 }
