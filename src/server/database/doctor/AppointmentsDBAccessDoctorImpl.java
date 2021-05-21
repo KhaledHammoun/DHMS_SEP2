@@ -17,7 +17,7 @@ public class AppointmentsDBAccessDoctorImpl
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection
-            .prepareStatement("Select * from appointed where doctor_ssn = ?"))
+            .prepareStatement("SELECT * FROM appointed WHERE doctor_ssn = ? AND time_to > current_date;"))
     {
       preparedStatement.setLong(1, doctor.getSsn());
       ResultSet resultSet = preparedStatement.executeQuery();
