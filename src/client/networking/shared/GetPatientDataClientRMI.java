@@ -3,6 +3,7 @@ package client.networking.shared;
 import server.networking.shared.GetEmployeeDataServer;
 import server.networking.shared.GetPatientDataServer;
 import shared.Patient;
+import shared.Sample;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -50,6 +51,18 @@ public class GetPatientDataClientRMI implements GetPatientDataClient
         catch (RemoteException e)
         {
             throw new RuntimeException("Error while fetching patient. Please try again.");
+        }
+    }
+
+    @Override public ArrayList<Sample> getPatientSamples(long ssn)
+    {
+        try
+        {
+            return sharedServer.getPatientSample(ssn);
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching samples. Please try again.");
         }
     }
 }

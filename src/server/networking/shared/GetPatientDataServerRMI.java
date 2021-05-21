@@ -3,6 +3,7 @@ package server.networking.shared;
 import server.model.shared.GetPatientDataServerModel;
 import server.model.shared.GetPatientDataServerModelImpl;
 import shared.Patient;
+import shared.Sample;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -30,12 +31,17 @@ public class GetPatientDataServerRMI implements GetPatientDataServer
     @Override
     public ArrayList<Patient> getAllPatients()
     {
-        return null;
+        return sharedServerModel.getAllPatients();
     }
 
     @Override
     public Patient getPatientBySSN(long ssn)
     {
-        return null;
+        return sharedServerModel.getPatientBySSN(ssn);
+    }
+
+    @Override public ArrayList<Sample> getPatientSample(long ssn)
+    {
+        return sharedServerModel.getPatientSample(ssn);
     }
 }
