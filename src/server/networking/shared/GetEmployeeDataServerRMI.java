@@ -1,33 +1,54 @@
 package server.networking.shared;
 
+import server.model.shared.GetEmployeeDataServerModel;
+import server.model.shared.GetEmployeeDataServerModelImpl;
 import shared.Doctor;
 import shared.Nurse;
 
+import java.rmi.AlreadyBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 public class GetEmployeeDataServerRMI implements GetEmployeeDataServer
 {
+    private GetEmployeeDataServerModel sharedServerModel;
+
+    public GetEmployeeDataServerRMI(Registry registry) throws AlreadyBoundException, RemoteException
+    {
+        sharedServerModel = new GetEmployeeDataServerModelImpl();
+        UnicastRemoteObject.exportObject(this, 0);
+        startServer(registry);
+    }
+
+    private void startServer(Registry registry) throws AlreadyBoundException, RemoteException
+    {
+        registry.bind("GetEmployeeDataServer", this);
+        System.out.println("GetEmployeeDataServer is running.");
+    }
+
     @Override
     public ArrayList<Doctor> getListOfAllDoctors()
     {
-        return null;
+        return sharedServerModel.getListOfAllDoctors();
     }
 
     @Override
     public ArrayList<Nurse> getListOfAllNurses()
     {
-        return null;
+        return sharedServerModel.getListOfAllNurses();
     }
 
     @Override
     public Doctor getDoctorBySSN(long ssn)
     {
-        return null;
+        return sharedServerModel.getDoctorBySSN(ssn);
     }
 
     @Override
     public Nurse getNurseBySSN(long ssn)
     {
-        return null;
+        return sharedServerModel.getNurseBySSN(ssn);
     }
 }
