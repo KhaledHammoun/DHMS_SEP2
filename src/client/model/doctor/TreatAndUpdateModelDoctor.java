@@ -11,6 +11,6 @@ public interface TreatAndUpdateModelDoctor
 {
   void addDiagnosisToPatient(Patient patient, Diagnosis diagnosis);
   void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor, Treatment treatment);
-  ArrayList<Diagnosis> getAllDiseaseOfPatient(Patient patient);
+  ArrayList<Diagnosis> getAllDiagnosisOfPatient(Patient patient);
   void editDiagnosis(Diagnosis diagnosis);
 }
