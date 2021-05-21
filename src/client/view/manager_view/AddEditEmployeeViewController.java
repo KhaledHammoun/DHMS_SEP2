@@ -7,13 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import shared.Ward;
 
 public class AddEditEmployeeViewController implements ViewController
 {
     @FXML
-    public TextField ssnTextField;
+    public TextField employeeSSNTextField;
     @FXML
     public TextField employeeFirstNameTextField;
     @FXML
@@ -21,7 +22,7 @@ public class AddEditEmployeeViewController implements ViewController
     @FXML
     public TextField employeeLastNameTextField;
     @FXML
-    public DatePicker employeeFDOBDateField;
+    public DatePicker employeeDOBDateField;
     @FXML
     public TextField employeeStreetTextField;
     @FXML
@@ -31,34 +32,34 @@ public class AddEditEmployeeViewController implements ViewController
     @FXML
     public TextField employeeCityTextField;
     @FXML
-    public TextField contactFirstNameTextField;
+    public TextField employeeEContactFNameTextField;
     @FXML
-    public TextField contactLastNameTextField;
+    public TextField employeeEContactLNameTextField;
     @FXML
-    public TextField contactPhoneTextField;
-    @FXML
-    public TextField employeeEducationTextField;
-    @FXML
-    public TextField employeeSecExpTextField;
+    public TextField employeeEContactPhoneTextField;
+
+
     @FXML
     public ComboBox<Ward> employeeWardComboBox;
     @FXML
     public TextField usernameTextField;
     @FXML
     public TextField passwordTextField;
+    public TextArea employeeExperienceTextArea;
+    public TextArea employeeEducationTextArea;
 
     @FXML
-    public void onSaveButton()
+    public void onSaveButtonEmployee()
     {
     }
 
     @FXML
-    public void onClearButton()
+    public void onClearButtonEmployee()
     {
     }
 
     @FXML
-    public void onBackButton()
+    public void onBackButtonEmployee()
     {
     }
 

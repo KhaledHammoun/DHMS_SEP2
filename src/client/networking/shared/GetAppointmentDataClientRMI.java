@@ -41,11 +41,11 @@ public class GetAppointmentDataClientRMI implements GetAppointmentDataClient
     }
 
     @Override
-    public ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor)
+    public ArrayList<Appointment> getAppointmentsForDoctor(Doctor doctor)
     {
         try
         {
-            return sharedServer.getAppointmentForDoctor(doctor);
+            return sharedServer.getAppointmentsForDoctor(doctor);
         }
         catch (RemoteException e)
         {
