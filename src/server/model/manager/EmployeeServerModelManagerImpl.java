@@ -37,7 +37,7 @@ public class EmployeeServerModelManagerImpl implements EmployeeServerModelManage
     @Override
     public String editNurse(Nurse nurse)
     {
-        return dbAccessManager.addNurse(nurse);
+        return dbAccessManager.editNurse(nurse);
     }
 
     @Override

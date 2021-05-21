@@ -1,16 +1,12 @@
 package server.database.manager;
 
 import server.database.DatabaseAccess;
-import shared.Address;
 import shared.Doctor;
 import shared.Nurse;
-import shared.Ward;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class EmployeeDBAccessImpl implements EmployeeDBAccessManager
 {
@@ -35,12 +31,11 @@ public class EmployeeDBAccessImpl implements EmployeeDBAccessManager
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO nurse(ssn, doctor_ssn, f_name, mid_name, l_name, add_street, add_no, add_zip_code, add_city, dob, start_date, education, experience, email, password, contact_f_name, contact_mid_name, contact_l_name, contact_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+            "INSERT INTO nurse(ssn, f_name, mid_name, l_name, add_street, add_no, add_zip_code, add_city, dob, start_date, education, experience, email, password, contact_f_name, contact_mid_name, contact_l_name, contact_phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
     {
       prepareNurseStatement(preparedStatement, nurse);
 
       preparedStatement.execute();
-
     }
     catch (SQLException e)
     {
@@ -53,24 +48,23 @@ public class EmployeeDBAccessImpl implements EmployeeDBAccessManager
       Nurse nurse) throws SQLException
   {
     preparedStatement.setLong(1, nurse.getSsn());
-    preparedStatement.setLong(2, nurse.getDoctor_ssn());
-    preparedStatement.setString(3, nurse.getFirstName());
-    preparedStatement.setString(4, nurse.getMiddleName());
-    preparedStatement.setString(5, nurse.getLastName());
-    preparedStatement.setString(6, nurse.getAddress().getStreet());
-    preparedStatement.setString(7, nurse.getAddress().getNumber());
-    preparedStatement.setString(8, nurse.getAddress().getZipcode());
-    preparedStatement.setString(9, nurse.getAddress().getCity());
-    preparedStatement.setDate(10, nurse.getDob());
-    preparedStatement.setDate(11, nurse.getStartDate());
-    preparedStatement.setString(12, nurse.getEducation());
-    preparedStatement.setString(13, nurse.getExperience());
-    preparedStatement.setString(14, nurse.getEmail());
-    preparedStatement.setString(15, nurse.getPassword());
-    preparedStatement.setString(16, nurse.getContactFirstName());
-    preparedStatement.setString(17, nurse.getContactMiddleName());
-    preparedStatement.setString(18, nurse.getContactLastName());
-    preparedStatement.setString(19, nurse.getContactPhoneNumber());
+    preparedStatement.setString(2, nurse.getFirstName());
+    preparedStatement.setString(3, nurse.getMiddleName());
+    preparedStatement.setString(4, nurse.getLastName());
+    preparedStatement.setString(5, nurse.getAddress().getStreet());
+    preparedStatement.setString(6, nurse.getAddress().getNumber());
+    preparedStatement.setString(7, nurse.getAddress().getZipcode());
+    preparedStatement.setString(8, nurse.getAddress().getCity());
+    preparedStatement.setDate(9, nurse.getDob());
+    preparedStatement.setDate(10, nurse.getStartDate());
+    preparedStatement.setString(11, nurse.getEducation());
+    preparedStatement.setString(12, nurse.getExperience());
+    preparedStatement.setString(13, nurse.getEmail());
+    preparedStatement.setString(14, nurse.getPassword());
+    preparedStatement.setString(15, nurse.getContactFirstName());
+    preparedStatement.setString(16, nurse.getContactMiddleName());
+    preparedStatement.setString(17, nurse.getContactLastName());
+    preparedStatement.setString(18, nurse.getContactPhoneNumber());
   }
 
   @Override public String editDoctor(Doctor doctor)
@@ -95,11 +89,10 @@ public class EmployeeDBAccessImpl implements EmployeeDBAccessManager
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE nurse SET ssn = ?, doctor_ssn = ?, f_name = ?, mid_name = ?, l_name = ?, add_street = ?, add_no = ?, add_zip_code = ?, add_city = ?, dob = ?, start_date = ?, education = ?, experience = ?, email = ?, password = ?, contact_f_name = ?, contact_mid_name = ?, contact_l_name = ?, contact_phone = ? WHERE ssn = ?"))
+            "UPDATE nurse SET ssn = ?, f_name = ?, mid_name = ?, l_name = ?, add_street = ?, add_no = ?, add_zip_code = ?, add_city = ?, dob = ?, start_date = ?, education = ?, experience = ?, email = ?, password = ?, contact_f_name = ?, contact_mid_name = ?, contact_l_name = ?, contact_phone = ? WHERE ssn = ?"))
     {
       prepareNurseStatement(preparedStatement, nurse);
-
-      preparedStatement.setLong(20, nurse.getSsn());
+      preparedStatement.setLong(19, nurse.getSsn());
 
       preparedStatement.execute();
     }
