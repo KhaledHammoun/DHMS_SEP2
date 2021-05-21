@@ -1,8 +1,8 @@
 package client.core;
 
-import client.view.MainViewController;
 import client.view.View;
 import client.view.ViewController;
+import client.view.login.MainViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,12 +10,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ViewFactory
 {
     private static Map<View, Scene> scenes;
     private static Stage stage;
+    private static List<View> views;
 
     static
     {
@@ -25,14 +27,89 @@ public class ViewFactory
     public static void init(Stage theStage)
     {
         stage = theStage;
-        createScene(View.LOGIN);
-        createScene(View.MAIN);
-        createScene(View.EMPLOYEE);
-        createScene(View.WARD);
-        createScene(View.SIDEBAR);
+        createLoginScene();
+        createManagerScene();
+        createDoctorScene();
+        createNurseScene();
     }
 
-    private static void createScene(View sceneName)
+    private static void createNurseScene()
+    {
+        views = View.getNurseValues();
+        try
+        {
+            for (View sceneName : views)
+            {
+                Scene scene = null;
+                Parent root = loadFXML("../view/nurse/" + sceneName.name() + "View.fxml");
+                scene = new Scene(root);
+                scenes.put(sceneName, scene);
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private static void createDoctorScene()
+    {
+        views = View.getDoctorValues();
+        try
+        {
+            for (View sceneName : views)
+            {
+                Scene scene = null;
+                Parent root = loadFXML("../view/doctor/" + sceneName.name() + "View.fxml");
+                scene = new Scene(root);
+                scenes.put(sceneName, scene);
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private static void createManagerScene()
+    {
+        views = View.getManagerValues();
+        try
+        {
+            for (View sceneName : views)
+            {
+                Scene scene = null;
+                Parent root = loadFXML("../view/manager/" + sceneName.name() + "View.fxml");
+                scene = new Scene(root);
+                scenes.put(sceneName, scene);
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private static void createLoginScene()
+    {
+        views = View.getLoginValues();
+        try
+        {
+            for (View sceneName : views)
+            {
+                Scene scene = null;
+                Parent root = loadFXML("../view/login/" + sceneName.name() + "View.fxml");
+                scene = new Scene(root);
+                scenes.put(sceneName, scene);
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Deprecated private static void createScene(View sceneName)
     {
         Scene scene = null;
         switch (sceneName)
@@ -40,7 +117,7 @@ public class ViewFactory
             case LOGIN:
                 try
                 {
-                    Parent root = loadFXML("../view/LoginView.fxml");
+                    Parent root = loadFXML("../view/login/LoginView.fxml");
                     scene = new Scene(root);
                 }
                 catch (IOException e)
@@ -51,7 +128,7 @@ public class ViewFactory
             case MAIN:
                 try
                 {
-                    Parent root = loadFXML("../view/MainView.fxml");
+                    Parent root = loadFXML("../view/login/MainView.fxml");
                     scene = new Scene(root);
                 }
                 catch (IOException e)
@@ -62,7 +139,7 @@ public class ViewFactory
             case EMPLOYEE:
                 try
                 {
-                    Parent root = loadFXML("../view/manager_view/EmployeeView.fxml");
+                    Parent root = loadFXML("../view/manager/EmployeeView.fxml");
                     scene = new Scene(root);
                 }
                 catch (IOException e)
@@ -73,7 +150,7 @@ public class ViewFactory
             case WARD:
                 try
                 {
-                    Parent root = loadFXML("../view/manager_view/WardView.fxml");
+                    Parent root = loadFXML("../view/manager/WardView.fxml");
                     scene = new Scene(root);
                 }
                 catch (IOException e)
@@ -84,7 +161,7 @@ public class ViewFactory
             case SIDEBAR:
                 try
                 {
-                    Parent root = loadFXML("../view/manager_view/MangerSideBar.fxml");
+                    Parent root = loadFXML("../view/manager/MangerSideBar.fxml");
                     scene = new Scene(root);
                 }
                 catch (IOException e)

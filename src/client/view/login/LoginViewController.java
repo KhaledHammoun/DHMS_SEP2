@@ -1,29 +1,30 @@
-package client.view;
+package client.view.login;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import javafx.event.ActionEvent;
+import client.view.View;
+import client.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class LoginViewController implements ViewController
 {
     @FXML
-    public TextField usernameTextFieldLogin;
+    private TextField usernameTextFieldLogin;
     @FXML
-    public PasswordField passwordFieldLogin;
+    private PasswordField passwordFieldLogin;
     @FXML
-    public RadioButton managerRadioLogin;
+    private RadioButton managerRadioLogin;
     @FXML
-    public ToggleGroup AccessType;
+    private ToggleGroup AccessType;
     @FXML
-    public RadioButton doctorRadioLogin;
+    private RadioButton doctorRadioLogin;
     @FXML
-    public RadioButton nurseRadioLogin;
+    private RadioButton nurseRadioLogin;
     @FXML
-    public Label errorLabelLogin;
+    private Label errorLabelLogin;
     @FXML
-    public Button loginButton;
+    private Button loginButton;
 
     private ViewHandler viewHandler;
     private LoginViewModel loginViewModel;

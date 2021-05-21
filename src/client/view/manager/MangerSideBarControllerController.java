@@ -1,4 +1,4 @@
-package client.view.manager_view;
+package client.view.manager;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 public class MangerSideBarControllerController implements ViewController
 {
     @FXML
-    public Label loggedAsLabel;
+    private Label loggedAsLabel;
 
     @FXML
     public void employeeMenuButton()

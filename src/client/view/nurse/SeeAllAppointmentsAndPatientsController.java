@@ -1,4 +1,4 @@
-package client.view.nurse_view;
+package client.view.nurse;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
