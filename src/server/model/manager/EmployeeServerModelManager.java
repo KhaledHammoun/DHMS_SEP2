@@ -11,8 +11,6 @@ public interface EmployeeServerModelManager
     String addNurse(Nurse nurse);
     String editDoctor(Doctor doctor);
     String editNurse(Nurse nurse);
-    ArrayList<Doctor> getAllDoctors();
-    ArrayList<Nurse> getAllNurses();
     String removeDoctor(Doctor doctor);
     String removeNurse(Nurse nurse);
 }

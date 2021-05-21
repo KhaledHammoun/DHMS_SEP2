@@ -41,18 +41,6 @@ public class EmployeeServerModelManagerImpl implements EmployeeServerModelManage
     }
 
     @Override
-    public ArrayList<Doctor> getAllDoctors()
-    {
-        return dbAccessManager.getAllDoctors();
-    }
-
-    @Override
-    public ArrayList<Nurse> getAllNurses()
-    {
-        return dbAccessManager.getAllNurses();
-    }
-
-    @Override
     public String removeDoctor(Doctor doctor)
     {
         return dbAccessManager.removeDoctor(doctor);

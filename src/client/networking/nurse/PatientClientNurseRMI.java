@@ -63,17 +63,4 @@ public class PatientClientNurseRMI implements PatientClientNurse
         throw new RuntimeException("Error while removing patient. Please try again.");
       }
     }
-
-    @Override
-    public Patient getPatientBySSN(long ssn)
-    {
-      try
-      {
-        return serverNurse.getPatientBySSN(ssn);
-      }
-      catch (RemoteException e)
-      {
-        throw new RuntimeException("Error while fetching patient. Please try again.");
-      }
-    }
 }

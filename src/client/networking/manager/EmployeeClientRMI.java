@@ -75,30 +75,6 @@ public class EmployeeClientRMI implements EmployeeClientManager
     }
   }
 
-  @Override public ArrayList<Doctor> getListOfAllDoctors()
-  {
-    try
-    {
-      return serverManager.getAllDoctors();
-    }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while fetching all doctors from the system. Please try again.");
-    }
-  }
-
-  @Override public ArrayList<Nurse> getListOfAllNurses()
-  {
-    try
-    {
-      return serverManager.getAllNurses();
-    }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while fetching all nurses from the system. Please try again.");
-    }
-  }
-
   @Override public String removeDoctor(Doctor doctor)
   {
     try
