@@ -10,7 +10,6 @@ import client.model.shared.GetAppointmentDataModelImpl;
 import client.model.shared.GetEmployeeDataModelImpl;
 import client.model.shared.GetPatientDataModelImpl;
 
-import java.rmi.registry.LocateRegistry;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.Lock;

@@ -35,8 +35,8 @@ public class GetAppointmentDataServerRMI implements GetAppointmentDataServer
     }
 
     @Override
-    public ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor)
+    public ArrayList<Appointment> getAppointmentsForDoctor(Doctor doctor)
     {
-        return sharedServerModel.getAppointmentForDoctor(doctor);
+        return sharedServerModel.getAppointmentsForDoctor(doctor);
     }
 }

@@ -10,5 +10,5 @@ import java.util.ArrayList;
 public interface GetAppointmentDataClient extends Remote
 {
     ArrayList<Appointment> getAllAppointments() throws RemoteException;
-    ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor) throws RemoteException;
+    ArrayList<Appointment> getAppointmentsForDoctor(Doctor doctor) throws RemoteException;
 }

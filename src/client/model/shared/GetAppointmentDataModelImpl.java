@@ -30,11 +30,11 @@ public class GetAppointmentDataModelImpl implements GetAppointmentDataModel
     }
 
     @Override
-    public ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor)
+    public ArrayList<Appointment> getAppointmentsForDoctor(Doctor doctor)
     {
         try
         {
-            return sharedClient.getAppointmentForDoctor(doctor);
+            return sharedClient.getAppointmentsForDoctor(doctor);
         }
         catch (RemoteException e)
         {
