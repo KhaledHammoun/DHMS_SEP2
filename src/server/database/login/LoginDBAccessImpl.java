@@ -5,22 +5,25 @@ import shared.AccessType;
 import shared.LoginUser;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class LoginDBAccessImpl implements LoginDBAccess
 {
   @Override public AccessType login(LoginUser user)
   {
-    try (Connection connection = DatabaseAccess.getInstance().getConnection();
-        PreparedStatement preparedStatement = connection
-            .prepareStatement("SELECT password FROM ? WHERE ssn = ?"))
+    try (Connection connection = DatabaseAccess.getInstance().getConnection())
     {
-      preparedStatement.setString(1, user.getAccessType().toString());
-      preparedStatement.setString(2, user.getUsername());
+      Statement statement = connection.createStatement();
 
-      String passwordFromDB = preparedStatement.executeQuery()
-          .getString("password");
+      String query = "SELECT password FROM " + user.getAccessType().toString()
+          + " WHERE email = '" + user.getUsername() + "'";
+
+      ResultSet resultSet = statement.executeQuery(query);
+
+      resultSet.next();
+      String passwordFromDB = resultSet.getString("password");
 
       if (passwordFromDB.equals(user.getPassword()))
       {
@@ -30,7 +33,6 @@ public class LoginDBAccessImpl implements LoginDBAccess
     catch (SQLException e)
     {
       e.printStackTrace();
-    }
-    return AccessType.NO_ACCESS;
+    } return AccessType.NO_ACCESS;
   }
 }

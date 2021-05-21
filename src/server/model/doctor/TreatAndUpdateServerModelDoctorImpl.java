@@ -36,8 +36,8 @@ public class TreatAndUpdateServerModelDoctorImpl
     return dbAccessDoctor.getAllDiagnosisOfPatient(patient);
   }
 
-  @Override
-  public void editDiagnosis(Diagnosis diagnosis)
+  @Override public void editDiagnosis(Diagnosis diagnosis)
+
   {
     dbAccessDoctor.editDiagnosis(diagnosis);
   }
