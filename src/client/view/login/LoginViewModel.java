@@ -1,4 +1,4 @@
-package client.view;
+package client.view.login;
 
 import client.model.login.Login;
 import javafx.beans.property.BooleanProperty;

@@ -1,9 +1,7 @@
 package client.core;
 
-import client.view.MainViewController;
+import client.view.login.MainViewController;
 import client.view.View;
-import client.view.ViewController;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

@@ -1,4 +1,4 @@
-package client.view.manager_view;
+package client.view.manager;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
@@ -11,11 +11,11 @@ import shared.Doctor;
 public class AddEditWardViewController implements ViewController
 {
     @FXML
-    public TextField wardNameTextField;
+    private TextField wardNameTextField;
     @FXML
-    public TextField wardRoomNumber;
+    private TextField wardRoomNumber;
     @FXML
-    public ListView<Doctor> doctorsAssignedToWardListView;
+    private ListView<Doctor> doctorsAssignedToWardListView;
 
     @FXML
     public void onSaveButton()

@@ -1,4 +1,4 @@
-package client.view.nurse_view;
+package client.view.nurse;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,8 +8,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import shared.Doctor;
 import shared.Patient;
-
-import javax.print.Doc;
 
 public class MakeAppointmentController
 {
