@@ -2,6 +2,7 @@ package client.model.shared;
 
 import client.networking.shared.GetPatientDataClient;
 import shared.Patient;
+import shared.Sample;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -38,6 +39,18 @@ public class GetPatientDataModelImpl implements GetPatientDataModel
         catch (RemoteException e)
         {
             throw new RuntimeException("Error while fetching patient. Please try again.");
+        }
+    }
+
+    @Override public ArrayList<Sample> getPatientSamples(long ssn)
+    {
+        try
+        {
+            return sharedClient.getPatientSamples(ssn);
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching samples. Please try again.");
         }
     }
 }

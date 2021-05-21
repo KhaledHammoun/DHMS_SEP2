@@ -3,6 +3,7 @@ package server.database.shared;
 import server.database.DatabaseAccess;
 import shared.Address;
 import shared.Patient;
+import shared.Sample;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -64,6 +65,32 @@ public class GetPatientDataDBAccessImpl implements GetPatientDataDBAccess
           r.getString("contact_l_name"), r.getString("contact_phone"),
           r.getString("blood_type"), r.getString("medical_description"),
           r.getString("gender").charAt(0));
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override public ArrayList<Sample> getPatientSamples(long ssn)
+  {
+    try (Connection connection = DatabaseAccess.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection
+            .prepareStatement("SELECT * FROM sample WHERE patient_ssn = ?"))
+    {
+      preparedStatement.setLong(1, ssn);
+
+      ResultSet r = preparedStatement.executeQuery();
+
+      ArrayList<Sample> result = new ArrayList<>();
+      while (r.next())
+      {
+        result.add(new Sample(r.getString("type"), r.getString("result"),
+            r.getInt("priority"), r.getDate("deadline"),
+            r.getLong("patient_ssn"), r.getInt("sample_id")));
+      }
+      return result;
     }
     catch (SQLException e)
     {
