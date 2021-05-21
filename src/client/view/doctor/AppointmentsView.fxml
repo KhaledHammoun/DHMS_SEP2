@@ -6,21 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.AppointmentsViewController">
    <children>
-      <Label layoutX="236.0" layoutY="37.0" text="Appointments">
+      <Label layoutX="240.0" layoutY="39.0" text="Appointments">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="appointmentsTable" layoutX="40.0" layoutY="91.0" prefHeight="262.0" prefWidth="512.0">
+      <TableView fx:id="appointmentsTable" layoutX="40.0" layoutY="91.0" prefHeight="268.0" prefWidth="519.0">
         <columns>
-          <TableColumn fx:id="startDateTime" prefWidth="67.0" text="Start" />
-          <TableColumn fx:id="endDateTime" prefWidth="70.0" text="End" />
-            <TableColumn fx:id="patientSSN" prefWidth="107.0" text="SSN" />
-            <TableColumn fx:id="firstName" prefWidth="119.0" text="First name" />
-            <TableColumn fx:id="LastName" prefWidth="137.0" text="Last name" />
+          <TableColumn fx:id="startDateTime" prefWidth="156.0" text="Start" />
+          <TableColumn fx:id="endDateTime" prefWidth="169.0" text="End" />
+            <TableColumn fx:id="patientSSN" prefWidth="186.0" text="SSN" />
         </columns>
       </TableView>
    </children>

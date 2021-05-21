@@ -16,7 +16,7 @@ public class DoctorPatientsViewController
   @FXML
   public TableView<Patient> doctorViewPatientTable;
   @FXML
-  public TableColumn<String,Patient> doctorViewPatientSSN;
+  public TableColumn<Long,Patient> doctorViewPatientSSN;
   @FXML
   public TableColumn<String,Patient> doctorViewPatientFirstName;
   @FXML
@@ -26,7 +26,7 @@ public class DoctorPatientsViewController
   @FXML
   public Button doctorViewTreatButton;
   @FXML
-  public Button doctorViewAddSampleButton;
+  public Button doctorViewAddEditSampleButton;
   @FXML
   public Button doctorViewDiagnoseButton;
   @FXML
@@ -35,26 +35,37 @@ public class DoctorPatientsViewController
   private ViewHandler viewHandler;
   private DoctorPatientsViewModel doctorPatientsViewModel;
 
+  private long selectedPatient ;
+  private Patient patient;
+
   public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
   {
     this.viewHandler = viewHandler;
+
     //TODO doctorPatientsViewModel = viewModelFactory...
+    //TODO treatAndUpdateModelDoctor = viewModelFactory...
     doctorPatientsViewModel.loadPatients();
+
     doctorViewPatientTable.setItems(doctorPatientsViewModel.getPatients());
     doctorViewPatientSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
     doctorViewPatientFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     doctorViewPatientLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+
 
   }
 
   public void onTreatButton(ActionEvent actionEvent)
   {
     //TODO change view
+    patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
+    doctorPatientsViewModel.getAllDiseasesOfPatient(patient);
   }
 
-  public void onAddSample(ActionEvent actionEvent)
+  public void onAddEditSample(ActionEvent actionEvent)
   {
     //TODO change view
+    patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
+    doctorPatientsViewModel.getAllSamples(patient);
   }
 
   public void onDiagnoseButton(ActionEvent actionEvent)
@@ -65,5 +76,8 @@ public class DoctorPatientsViewController
   public void onEditMedicalDescription(ActionEvent actionEvent)
   {
     //TODO change view
+    selectedPatient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue()
+        .getSsn();
+    doctorPatientsViewModel.editMedicalDescription(selectedPatient);
   }
 }
