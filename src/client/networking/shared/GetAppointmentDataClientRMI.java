@@ -52,10 +52,4 @@ public class GetAppointmentDataClientRMI implements GetAppointmentDataClient
             throw new RuntimeException("Error while fetching all appointments. Please try again.");
         }
     }
-
-    @Override
-    public Appointment getAppointment(Appointment appointment)
-    {
-        return null;
-    }
 }
