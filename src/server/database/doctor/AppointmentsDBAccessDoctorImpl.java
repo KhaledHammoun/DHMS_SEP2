@@ -43,7 +43,7 @@ public class AppointmentsDBAccessDoctorImpl
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection
-            .prepareStatement("delete from appointed where patient_ssn = ? and doctor_ssn = ? and time_from = ? and time_to = ?"))
+            .prepareStatement("DELETE from appointed WHERE patient_ssn = ? and doctor_ssn = ? and time_from = ? and time_to = ?"))
     {
       preparedStatement.setLong(1, appointment.getPatientSSN());
       preparedStatement.setLong(2, appointment.getDoctorSSN());

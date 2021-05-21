@@ -27,7 +27,7 @@ public class PatientModelDoctorImpl implements PatientModelDoctor
     }
   }
 
-  @Override public Patient getPatientBySSN(int ssn)
+  @Override public Patient getPatientBySSN(long ssn)
   {
     try
     {

@@ -9,5 +9,5 @@ import java.util.ArrayList;
 public interface PatientClientDoctor extends Remote
 {
   ArrayList<Patient> getAllPatients() throws RemoteException;
-  Patient getPatientBySSN(int ssn) throws RemoteException;
+  Patient getPatientBySSN(long ssn) throws RemoteException;
 }
