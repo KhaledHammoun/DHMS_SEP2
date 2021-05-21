@@ -13,8 +13,6 @@ public interface EmployeeClientManager extends Remote
  String addNurse(Nurse nurse) throws RemoteException;
  String editDoctor(Doctor doctor) throws RemoteException;
  String editNurse(Nurse nurse) throws RemoteException;
- ArrayList<Doctor> getListOfAllDoctors() throws RemoteException;
- ArrayList<Nurse> getListOfAllNurses() throws RemoteException;
  String removeDoctor(Doctor doctor) throws RemoteException;
  String removeNurse(Nurse nurse) throws RemoteException;
   
