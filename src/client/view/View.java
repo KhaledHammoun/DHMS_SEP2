@@ -14,10 +14,28 @@ public enum View
     EMPLOYEE,
     SIDEBAR;
 
-    private static final List<View> VALUES = List.of(values());
+    private static final List<View> LOGIN_VALUES = List.of(LOGIN, MAIN);
+    private static final List<View> DOCTOR_VALUES = List.of();
+    private static final List<View> MANAGER_VALUES = List.of();
+    private static final List<View> NURSE_VALUES = List.of();
 
-    public static List<View> getViewEnums()
+    public static List<View> getLoginValues()
     {
-        return VALUES;
+        return LOGIN_VALUES;
+    }
+
+    public static List<View> getDoctorValues()
+    {
+        return DOCTOR_VALUES;
+    }
+
+    public static List<View> getManagerValues()
+    {
+        return MANAGER_VALUES;
+    }
+
+    public static List<View> getNurseValues()
+    {
+        return NURSE_VALUES;
     }
 }
