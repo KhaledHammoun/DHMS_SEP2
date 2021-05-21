@@ -1,5 +1,7 @@
 package client.core;
 
+import java.util.List;
+
 public enum InterfaceEnum
 {
     LOGIN,
@@ -12,5 +14,5 @@ public enum InterfaceEnum
     SHARED_APPOINTMENT,
     NURSE_PATIENT,
     NURSE_APPOINTMENT,
-    SHARED_EMPLOYEE
+    SHARED_EMPLOYEE;
 }

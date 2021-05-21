@@ -52,4 +52,5 @@ public class TreatAndUpdateServerDoctorRMI implements TreatAndUpdateServerDoctor
     {
         modelDoctor.editDiagnosis(diagnosis);
     }
+
 }
