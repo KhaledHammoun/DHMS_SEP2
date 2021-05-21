@@ -49,9 +49,22 @@ class SampleModelDoctorTest
 
   @Test public void createSample()
   {
-    Sample sampleToCreate = new Sample("DNA", "", 2, new Date(1234783712480L), 6739804525L, 4);
+    long ssnToCheck = 6739804525L;
+    Sample sampleToCreate = new Sample("DNA", "", 2, new Date(1234783712480L),
+        ssnToCheck, 4);
     test.createSample(sampleToCreate);
 
-    assertEquals("Working", "Working");
+    ArrayList<Sample> allSamples = test.getAllSamples();
+
+    boolean isPassed = false;
+    for (Sample sample : allSamples)
+    {
+      if (sample.getPatient_ssn() == ssnToCheck)
+      {
+        isPassed = true;
+        break;
+      }
+    }
+    assertTrue(isPassed);
   }
 }
