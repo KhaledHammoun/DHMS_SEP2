@@ -22,4 +22,14 @@ public class Ward implements Serializable
   {
     return roomNumber;
   }
+
+  public void setWardName(String wardName)
+  {
+    this.wardName = wardName;
+  }
+
+  public void setRoomNumber(int roomNumber)
+  {
+    this.roomNumber = roomNumber;
+  }
 }
