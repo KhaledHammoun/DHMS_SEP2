@@ -8,15 +8,22 @@ import client.model.nurse.AppointmentsModelNurseImpl;
 import client.model.nurse.GetRequiredDataModelNurseImpl;
 import client.model.nurse.PatientModelNurseImpl;
 
+import java.rmi.registry.LocateRegistry;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ModelFactory
 {
-    private static Map<InterfaceEnum, Object> models;
+    private Map<InterfaceEnum, Object> models;
+    private static ModelFactory modelFactory;
+    private static final Lock lock = new ReentrantLock();
+    private ClientFactory clientFactory;
 
-    static
+    private ModelFactory()
     {
+        clientFactory = ClientFactory.getClientFactory();
         models = new HashMap<>();
         createLoginModels();
         createManagerModels();
@@ -24,34 +31,49 @@ public class ModelFactory
         createNurseModels();
     }
 
-    private static void createLoginModels()
+    public static ModelFactory getModelFactory()
     {
-        models.put(InterfaceEnum.LOGIN, new LoginImpl(ClientFactory.getClient(InterfaceEnum.LOGIN)));
+        if (modelFactory == null)
+        {
+            synchronized (lock)
+            {
+                if (modelFactory == null)
+                {
+                    modelFactory = new ModelFactory();
+                }
+            }
+        }
+        return modelFactory;
     }
 
-    private static void createManagerModels()
+    private void createLoginModels()
     {
-        models.put(InterfaceEnum.MANAGER_EMPLOYEE, new EmployeeModelManagerImpl(ClientFactory.getClient(InterfaceEnum.MANAGER_EMPLOYEE)));
-        models.put(InterfaceEnum.MANAGER_WARD, new WardModelManagerImpl(ClientFactory.getClient(InterfaceEnum.MANAGER_WARD)));
+        models.put(InterfaceEnum.LOGIN, new LoginImpl(clientFactory.getClient(InterfaceEnum.LOGIN)));
     }
 
-    private static void createDoctorModels()
+    private void createManagerModels()
     {
-        models.put(InterfaceEnum.DOCTOR_APPOINTMENT, new AppointmentsModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_APPOINTMENT)));
-        models.put(InterfaceEnum.DOCTOR_NURSE, new NursesModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_NURSE)));
-        models.put(InterfaceEnum.DOCTOR_PATIENT, new PatientModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_PATIENT)));
-        models.put(InterfaceEnum.DOCTOR_SAMPLE, new SampleModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_SAMPLE)));
-        models.put(InterfaceEnum.DOCTOR_TREAT_UPDATE, new TreatAndUpdateModelDoctorImpl(ClientFactory.getClient(InterfaceEnum.DOCTOR_TREAT_UPDATE)));
+        models.put(InterfaceEnum.MANAGER_EMPLOYEE, new EmployeeModelManagerImpl(clientFactory.getClient(InterfaceEnum.MANAGER_EMPLOYEE)));
+        models.put(InterfaceEnum.MANAGER_WARD, new WardModelManagerImpl(clientFactory.getClient(InterfaceEnum.MANAGER_WARD)));
     }
 
-    private static void createNurseModels()
+    private void createDoctorModels()
     {
-        models.put(InterfaceEnum.NURSE_APPOINTMENT, new AppointmentsModelNurseImpl(ClientFactory.getClient(InterfaceEnum.NURSE_APPOINTMENT)));
-        models.put(InterfaceEnum.NURSE_GET_DATA, new GetRequiredDataModelNurseImpl(ClientFactory.getClient(InterfaceEnum.NURSE_GET_DATA)));
-        models.put(InterfaceEnum.NURSE_PATIENT, new PatientModelNurseImpl(ClientFactory.getClient(InterfaceEnum.NURSE_PATIENT)));
+        models.put(InterfaceEnum.DOCTOR_APPOINTMENT, new AppointmentsModelDoctorImpl(clientFactory.getClient(InterfaceEnum.DOCTOR_APPOINTMENT)));
+        models.put(InterfaceEnum.DOCTOR_NURSE, new NursesModelDoctorImpl(clientFactory.getClient(InterfaceEnum.DOCTOR_NURSE)));
+        models.put(InterfaceEnum.DOCTOR_PATIENT, new PatientModelDoctorImpl(clientFactory.getClient(InterfaceEnum.DOCTOR_PATIENT)));
+        models.put(InterfaceEnum.DOCTOR_SAMPLE, new SampleModelDoctorImpl(clientFactory.getClient(InterfaceEnum.DOCTOR_SAMPLE)));
+        models.put(InterfaceEnum.DOCTOR_TREAT_UPDATE, new TreatAndUpdateModelDoctorImpl(clientFactory.getClient(InterfaceEnum.DOCTOR_TREAT_UPDATE)));
     }
 
-    public static Object getModel(InterfaceEnum model)
+    private void createNurseModels()
+    {
+        models.put(InterfaceEnum.NURSE_APPOINTMENT, new AppointmentsModelNurseImpl(clientFactory.getClient(InterfaceEnum.NURSE_APPOINTMENT)));
+        models.put(InterfaceEnum.NURSE_GET_DATA, new GetRequiredDataModelNurseImpl(clientFactory.getClient(InterfaceEnum.NURSE_GET_DATA)));
+        models.put(InterfaceEnum.NURSE_PATIENT, new PatientModelNurseImpl(clientFactory.getClient(InterfaceEnum.NURSE_PATIENT)));
+    }
+
+    public Object getModel(InterfaceEnum model)
     {
         return models.get(model);
     }

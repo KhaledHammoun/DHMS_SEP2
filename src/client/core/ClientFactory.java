@@ -10,12 +10,16 @@ import client.networking.nurse.PatientClientNurseRMI;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ClientFactory
 {
-    private static Map<InterfaceEnum, Object> clients;
+    private Map<InterfaceEnum, Object> clients;
+    private static ClientFactory clientFactory;
+    private static final Lock lock = new ReentrantLock();
 
-    static
+    private ClientFactory()
     {
         clients = new HashMap<>();
         createLoginClients();
@@ -24,18 +28,32 @@ public class ClientFactory
         createNurseClients();
     }
 
-    private static void createLoginClients()
+    public static ClientFactory getClientFactory()
+    {
+        if (clientFactory == null)
+        {
+            synchronized (lock)
+            {
+                if (clientFactory == null)
+                {
+                    clientFactory = new ClientFactory();
+                }
+            }
+        }
+        return clientFactory;
+    }
+    private void createLoginClients()
     {
         clients.put(InterfaceEnum.LOGIN, new LoginClientImpl());
     }
 
-    private static void createManagerClients()
+    private void createManagerClients()
     {
         clients.put(InterfaceEnum.MANAGER_EMPLOYEE, new EmployeeClientRMI());
         clients.put(InterfaceEnum.MANAGER_WARD, new WardClientRMI());
     }
 
-    private static void createDoctorClients()
+    private void createDoctorClients()
     {
         clients.put(InterfaceEnum.DOCTOR_APPOINTMENT, new AppointmentsClientDoctorRMI());
         clients.put(InterfaceEnum.DOCTOR_NURSE, new NurseClientDoctorRMI());
@@ -44,14 +62,14 @@ public class ClientFactory
         clients.put(InterfaceEnum.DOCTOR_TREAT_UPDATE, new TreatAndUpdateClientDoctorRMI());
     }
 
-    private static void createNurseClients()
+    private void createNurseClients()
     {
         clients.put(InterfaceEnum.NURSE_APPOINTMENT, new AppointmentsClientNurseRMI());
         clients.put(InterfaceEnum.NURSE_GET_DATA, new GetRequiredDataClientNurseRMI());
         clients.put(InterfaceEnum.NURSE_PATIENT, new PatientClientNurseRMI());
     }
 
-    public static Object getClient(InterfaceEnum client)
+    public Object getClient(InterfaceEnum client)
     {
         return clients.get(client);
     }
