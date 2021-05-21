@@ -1,5 +1,7 @@
 package server.model.shared;
 
+import server.database.shared.GetAppointmentDataDBAccess;
+import server.database.shared.GetAppointmentDataDBAccessImpl;
 import shared.Appointment;
 import shared.Doctor;
 
@@ -7,21 +9,28 @@ import java.util.ArrayList;
 
 public class GetAppointmentDataServerModelImpl implements GetAppointmentDataServerModel
 {
+    private GetAppointmentDataDBAccess sharedDBAccess;
+
+    public GetAppointmentDataServerModelImpl()
+    {
+        sharedDBAccess = new GetAppointmentDataDBAccessImpl();
+    }
+
     @Override
     public ArrayList<Appointment> getAllAppointments()
     {
-        return null;
+        return sharedDBAccess.getAllAppointments();
     }
 
     @Override
     public ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor)
     {
-        return null;
+        return sharedDBAccess.getAppointmentForDoctor(doctor);
     }
 
     @Override
     public Appointment getAppointment(Appointment appointment)
     {
-        return null;
+        return sharedDBAccess.getAppointment(appointment);
     }
 }

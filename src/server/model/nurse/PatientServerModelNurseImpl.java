@@ -30,10 +30,4 @@ public class PatientServerModelNurseImpl implements PatientServerModelNurse
     {
         dbAccessNurse.removePatient(patient);
     }
-
-    @Override
-    public Patient getPatientBySSN(long SSN)
-    {
-        return dbAccessNurse.getPatientBySSN(SSN);
-    }
 }
