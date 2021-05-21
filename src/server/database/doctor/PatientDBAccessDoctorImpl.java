@@ -48,10 +48,9 @@ public class PatientDBAccessDoctorImpl implements PatientDBAccessDoctor
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection
-            .prepareStatement("select * from patient where ssn = ?"))
+            .prepareStatement("SELECT * FROM patient WHERE ssn = ?"))
     {
       preparedStatement.setLong(1, SSN);
-
       ResultSet r = preparedStatement.executeQuery();
 
       if (r != null)

@@ -10,10 +10,13 @@ public class Patient extends Person implements Serializable
   private char gender;
 
   public Patient(String firstName, String middleName, String lastName, long ssn,
-      Date dob, Address address,String contactFirstName, String contactMiddleName, String contactLastName,
-      String contactPhoneNumber, String blood_type, String medical_description, char gender)
+      Date dob, Address address, String contactFirstName,
+      String contactMiddleName, String contactLastName,
+      String contactPhoneNumber, String blood_type, String medical_description,
+      char gender)
   {
-    super(firstName, middleName, lastName, ssn, dob, address,contactFirstName, contactMiddleName, contactLastName,  contactPhoneNumber);
+    super(firstName, middleName, lastName, ssn, dob, address, contactFirstName,
+        contactMiddleName, contactLastName, contactPhoneNumber);
     this.blood_type = blood_type;
     this.medical_description = medical_description;
     this.gender = gender;
@@ -41,8 +44,8 @@ public class Patient extends Person implements Serializable
 
   @Override public String toString()
   {
-    return super.toString() + "Patient{" + "blood_type='" + blood_type + '\''
-        + ", medical_description='" + medical_description + '\'' + ", gender="
-        + gender + '}';
+    return super.toString() + "Patient{" + "blood_type='" + blood_type
+        + ", medical_description='" + medical_description + ", gender=" + gender
+        + '}';
   }
 }
