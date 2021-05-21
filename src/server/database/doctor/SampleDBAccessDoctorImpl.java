@@ -74,13 +74,14 @@ public class SampleDBAccessDoctorImpl implements SampleDBAccessDoctor
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection
-            .prepareStatement("select * from sample where sample_id = ?"))
+            .prepareStatement("SELECT * FROM sample WHERE sample_id = ?"))
     {
       preparedStatement.setInt(1, id);
 
       ResultSet r = preparedStatement.executeQuery();
 
-      if (r != null)
+
+      if (r.next())
       {
         return new Sample(r.getString("type"), r.getString("result"),
             r.getInt("priority"), r.getDate("deadline"),
