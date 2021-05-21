@@ -54,18 +54,6 @@ public class EmployeeServerManagerRMI implements EmployeeServerManager
     }
 
     @Override
-    public ArrayList<Doctor> getAllDoctors()
-    {
-        return modelManager.getAllDoctors();
-    }
-
-    @Override
-    public ArrayList<Nurse> getAllNurses()
-    {
-        return modelManager.getAllNurses();
-    }
-
-    @Override
     public String removeDoctor(Doctor doctor)
     {
         return modelManager.removeDoctor(doctor);

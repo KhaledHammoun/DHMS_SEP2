@@ -11,5 +11,4 @@ public interface GetAppointmentDataServer extends Remote
 {
     ArrayList<Appointment> getAllAppointments() throws RemoteException;
     ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor) throws RemoteException;
-    Appointment getAppointment(Appointment appointment) throws RemoteException;
 }
