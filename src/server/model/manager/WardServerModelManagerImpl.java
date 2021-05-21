@@ -22,22 +22,11 @@ public class WardServerModelManagerImpl implements WardServerModelManager
     }
 
     @Override
-    public void addRoomForWard(Ward ward)
+    public void editWard(Ward oldWard, Ward newWard)
     {
-        dbAccessManager.addRoomForWard(ward);
+        dbAccessManager.editWard(oldWard, newWard);
     }
 
-    @Override
-    public String editWard(Ward ward)
-    {
-        return dbAccessManager.editWard(ward);
-    }
-
-    @Override
-    public void editRoomNumber(Ward ward)
-    {
-        dbAccessManager.editRoomNumber(ward);
-    }
 
     @Override
     public void removeWard(Ward ward)
@@ -45,11 +34,6 @@ public class WardServerModelManagerImpl implements WardServerModelManager
         dbAccessManager.removeWard(ward);
     }
 
-    @Override
-    public void removeRoomNumber(Ward ward)
-    {
-        dbAccessManager.removeRoomNumber(ward);
-    }
 
     @Override
     public ArrayList<Ward> getAllWards()
