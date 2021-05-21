@@ -33,11 +33,6 @@ public class TreatAndUpdateServerModelDoctorImpl
 
   @Override public ArrayList<Diagnosis> getAllDiseasesOfPatient(Patient patient)
   {
-    return dbAccessDoctor.getAllDiseasesOfPatient(patient);
-  }
-
-  @Override public void editDiagnosis(Diagnosis diagnosis)
-  {
-    dbAccessDoctor.editDiagnosis(diagnosis);
+    return dbAccessDoctor.getAllDiagnosisOfPatient(patient);
   }
 }

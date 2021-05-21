@@ -69,32 +69,6 @@ public class EmployeeModelManagerImpl implements EmployeeModelManager
     }
 
     @Override
-    public ArrayList<Doctor> getListOfAllDoctors()
-    {
-        try
-        {
-            return clientManager.getListOfAllDoctors();
-        }
-        catch (RemoteException e)
-        {
-            throw new RuntimeException("Error while fetching all doctors from the system. Please try again.");
-        }
-    }
-
-    @Override
-    public ArrayList<Nurse> getListOfAllNurses()
-    {
-        try
-        {
-            return clientManager.getListOfAllNurses();
-        }
-        catch (RemoteException e)
-        {
-            throw new RuntimeException("Error while fetching all nurses from the system. Please try again.");
-        }
-    }
-
-    @Override
     public String removeDoctor(Doctor doctor)
     {
         try

@@ -43,10 +43,4 @@ public class PatientServerNurseRMI implements PatientServerNurse
     {
         modelNurse.removePatient(patient);
     }
-
-    @Override
-    public Patient getPatientBySSN(long SSN)
-    {
-        return modelNurse.getPatientBySSN(SSN);
-    }
 }

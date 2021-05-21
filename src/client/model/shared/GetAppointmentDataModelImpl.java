@@ -1,27 +1,44 @@
 package client.model.shared;
 
+import client.networking.shared.GetAppointmentDataClient;
 import shared.Appointment;
 import shared.Doctor;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class GetAppointmentDataModelImpl implements GetAppointmentDataModel
 {
+    private GetAppointmentDataClient sharedClient;
+
+    public GetAppointmentDataModelImpl(Object client)
+    {
+        sharedClient = (GetAppointmentDataClient) client;
+    }
+
     @Override
     public ArrayList<Appointment> getAllAppointments()
     {
-        return null;
+        try
+        {
+            return sharedClient.getAllAppointments();
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching all appointments. Please try again.");
+        }
     }
 
     @Override
-    public Appointment getAppointmentForDoctor(Doctor doctor)
+    public ArrayList<Appointment> getAppointmentsForDoctor(Doctor doctor)
     {
-        return null;
-    }
-
-    @Override
-    public Appointment getAppointment(Appointment appointment)
-    {
-        return null;
+        try
+        {
+            return sharedClient.getAppointmentsForDoctor(doctor);
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching all appointments. Please try again.");
+        }
     }
 }

@@ -1,33 +1,72 @@
 package client.model.shared;
 
+import client.networking.shared.GetEmployeeDataClient;
 import shared.Doctor;
 import shared.Nurse;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class GetEmployeeDataModelImpl implements GetEmployeeDataModel
 {
+    private GetEmployeeDataClient sharedClient;
+
+    public GetEmployeeDataModelImpl(Object client)
+    {
+        sharedClient = (GetEmployeeDataClient) client;
+    }
+
     @Override
     public ArrayList<Doctor> getListOfAllDoctors()
     {
-        return null;
+        try
+        {
+            return sharedClient.getListOfAllDoctors();
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching all doctors from the system. Please try again.");
+        }
     }
 
     @Override
     public ArrayList<Nurse> getListOfAllNurses()
     {
-        return null;
+        try
+        {
+            return sharedClient.getListOfAllNurses();
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching all nurses from the system. Please try again.");
+        }
     }
 
     @Override
     public Doctor getDoctorBySSN(long ssn)
     {
-        return null;
+        try
+        {
+            return sharedClient.getDoctorBySSN(ssn);
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching doctor from the system. Please try again.");
+
+        }
     }
 
     @Override
     public Nurse getNurseBySSN(long ssn)
     {
-        return null;
+        try
+        {
+            return sharedClient.getNurseBySSN(ssn);
+        }
+        catch (RemoteException e)
+        {
+            throw new RuntimeException("Error while fetching nurse from the system. Please try again.");
+
+        }
     }
 }

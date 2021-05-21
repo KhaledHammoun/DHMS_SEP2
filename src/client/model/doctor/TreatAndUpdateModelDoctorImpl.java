@@ -46,7 +46,7 @@ public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
     }
   }
 
-  @Override public ArrayList<Diagnosis> getAllDiseaseOfPatient(Patient patient)
+  @Override public ArrayList<Diagnosis> getAllDiagnosisOfPatient(Patient patient)
   {
     try
     {

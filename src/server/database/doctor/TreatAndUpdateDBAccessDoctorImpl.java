@@ -31,9 +31,8 @@ public class TreatAndUpdateDBAccessDoctorImpl
           "SELECT id FROM diagnosis WHERE severity_level = ? and name = ? and description = ?");
 
       setStatementDiagnosis(getIdOfDiagnosis, diagnosis);
-
       ResultSet resultSet = getIdOfDiagnosis.executeQuery();
-
+      resultSet.next();
       diagnosis.setId(resultSet.getInt("id"));
 
       preparedStatement2.setLong(1, patient.getSsn());
@@ -42,7 +41,6 @@ public class TreatAndUpdateDBAccessDoctorImpl
       preparedStatement2.setDate(4, diagnosis.getDateFrom());
 
       preparedStatement2.execute();
-
     }
     catch (SQLException e)
     {
@@ -80,7 +78,7 @@ public class TreatAndUpdateDBAccessDoctorImpl
     }
   }
 
-  @Override public ArrayList<Diagnosis> getAllDiseasesOfPatient(Patient patient)
+  @Override public ArrayList<Diagnosis> getAllDiagnosisOfPatient(Patient patient)
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
@@ -104,23 +102,5 @@ public class TreatAndUpdateDBAccessDoctorImpl
       e.printStackTrace();
     }
     return null;
-  }
-
-  @Override public void editDiagnosis(Diagnosis diagnosis)
-  {
-    try (Connection connection = DatabaseAccess.getInstance().getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE diagnosis set name = ?, description = ? WHERE id = ?"))
-    {
-      preparedStatement.setString(1, diagnosis.getName());
-      preparedStatement.setString(2, diagnosis.getDescription());
-      preparedStatement.setInt(3, diagnosis.getId());
-
-      preparedStatement.execute();
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
   }
 }

@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 public class EmployeeDBAccessImpl implements EmployeeDBAccessManager
 {
-  //TODO Should we return something?
   @Override public String addDoctor(Doctor doctor)
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
@@ -103,74 +102,6 @@ public class EmployeeDBAccessImpl implements EmployeeDBAccessManager
       preparedStatement.setLong(20, nurse.getSsn());
 
       preparedStatement.execute();
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
-    return null;
-  }
-
-  @Override public ArrayList<Doctor> getAllDoctors()
-  {
-    try (Connection connection = DatabaseAccess.getInstance().getConnection();
-        PreparedStatement preparedStatement = connection
-            .prepareStatement("SELECT * FROM doctor"))
-    {
-      ResultSet r = preparedStatement.executeQuery();
-
-      ArrayList<Doctor> result = new ArrayList<>();
-
-      while (r.next())
-      {
-        Address address = new Address(r.getString("add_street"),
-            r.getString("add_no"), r.getString("add_zip_code"),
-            r.getString("add_city"));
-
-        result.add(new Doctor(r.getString("f_name"), r.getString("mid_name"),
-            r.getString("l_name"), r.getLong("ssn"), r.getDate("dob"), address,
-            r.getString("contact_f_name"), r.getString("contact_mid_name"),
-            r.getString("contact_l_name"), r.getString("contact_phone"),
-            r.getDate("start_date"), r.getString("education"),
-            r.getString("specialization"),
-            new Ward(r.getString("ward_name"), r.getInt("room_number")),
-            r.getString("email"), r.getString("password")));
-      }
-      return result;
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
-    return null;
-  }
-
-  @Override public ArrayList<Nurse> getAllNurses()
-  {
-    try (Connection connection = DatabaseAccess.getInstance().getConnection();
-        PreparedStatement preparedStatement = connection
-            .prepareStatement("SELECT * FROM nurse"))
-    {
-      ResultSet r = preparedStatement.executeQuery();
-
-      ArrayList<Nurse> result = new ArrayList<>();
-
-      while (r.next())
-      {
-        Address address = new Address(r.getString("add_street"),
-            r.getString("add_no"), r.getString("add_zip_code"),
-            r.getString("add_city"));
-
-        result.add(new Nurse(r.getLong("ssn"), r.getLong("doctor_ssn"),
-            r.getString("f_name"), r.getString("mid_name"),
-            r.getString("l_name"), r.getDate("dob"), address,
-            r.getString("contact_f_name"), r.getString("contact_mid_name"),
-            r.getString("contact_l_name"), r.getString("contact_phone"),
-            r.getDate("start_date"), r.getString("education"),
-            r.getString("experience"), r.getString("email"),
-            r.getString("password")));
-      }
-      return result;
     }
     catch (SQLException e)
     {
