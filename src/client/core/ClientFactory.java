@@ -7,6 +7,9 @@ import client.networking.manager.WardClientRMI;
 import client.networking.nurse.AppointmentsClientNurseRMI;
 import client.networking.nurse.GetRequiredDataClientNurseRMI;
 import client.networking.nurse.PatientClientNurseRMI;
+import client.networking.shared.GetAppointmentDataClientRMI;
+import client.networking.shared.GetEmployeeDataClientRMI;
+import client.networking.shared.GetPatientDataClientRMI;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +29,7 @@ public class ClientFactory
         createManagerClients();
         createDoctorClients();
         createNurseClients();
+        createSharedClients();
     }
 
     public static ClientFactory getClientFactory()
@@ -55,9 +59,7 @@ public class ClientFactory
 
     private void createDoctorClients()
     {
-        clients.put(InterfaceEnum.DOCTOR_APPOINTMENT, new AppointmentsClientDoctorRMI());
         clients.put(InterfaceEnum.DOCTOR_NURSE, new NurseClientDoctorRMI());
-        clients.put(InterfaceEnum.DOCTOR_PATIENT, new PatientClientDoctorRMI());
         clients.put(InterfaceEnum.DOCTOR_SAMPLE, new SampleClientDoctorRMI());
         clients.put(InterfaceEnum.DOCTOR_TREAT_UPDATE, new TreatAndUpdateClientDoctorRMI());
     }
@@ -65,10 +67,15 @@ public class ClientFactory
     private void createNurseClients()
     {
         clients.put(InterfaceEnum.NURSE_APPOINTMENT, new AppointmentsClientNurseRMI());
-        clients.put(InterfaceEnum.NURSE_GET_DATA, new GetRequiredDataClientNurseRMI());
         clients.put(InterfaceEnum.NURSE_PATIENT, new PatientClientNurseRMI());
     }
 
+    private void createSharedClients()
+    {
+        clients.put(InterfaceEnum.SHARED_APPOINTMENT, new GetAppointmentDataClientRMI());
+        clients.put(InterfaceEnum.SHARED_EMPLOYEE, new GetEmployeeDataClientRMI());
+        clients.put(InterfaceEnum.SHARED_PATIENT, new GetPatientDataClientRMI());
+    }
     public Object getClient(InterfaceEnum client)
     {
         return clients.get(client);

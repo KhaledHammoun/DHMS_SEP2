@@ -54,16 +54,4 @@ public class PatientModelNurseImpl implements PatientModelNurse
         }
     }
 
-    @Override
-    public Patient getPatientBySSN(long ssn)
-    {
-        try
-        {
-            return clientNurse.getPatientBySSN(ssn);
-        }
-        catch (RemoteException e)
-        {
-            throw new RuntimeException("Error while fetching patient. Please try again.");
-        }
-    }
 }

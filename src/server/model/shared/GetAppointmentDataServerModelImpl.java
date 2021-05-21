@@ -14,7 +14,7 @@ public class GetAppointmentDataServerModelImpl implements GetAppointmentDataServ
     }
 
     @Override
-    public Appointment getAppointmentForDoctor(Doctor doctor)
+    public ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor)
     {
         return null;
     }
