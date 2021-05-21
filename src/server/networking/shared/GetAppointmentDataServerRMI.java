@@ -14,7 +14,7 @@ public class GetAppointmentDataServerRMI implements GetAppointmentDataServer
     }
 
     @Override
-    public Appointment getAppointmentForDoctor(Doctor doctor)
+    public ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor)
     {
         return null;
     }

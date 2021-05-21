@@ -8,6 +8,6 @@ import java.util.ArrayList;
 public interface GetAppointmentDataModel
 {
     ArrayList<Appointment> getAllAppointments();
-    Appointment getAppointmentForDoctor(Doctor doctor);
+    ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor);
     Appointment getAppointment(Appointment appointment);
 }

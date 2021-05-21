@@ -5,8 +5,10 @@ import client.model.login.LoginImpl;
 import client.model.manager.EmployeeModelManagerImpl;
 import client.model.manager.WardModelManagerImpl;
 import client.model.nurse.AppointmentsModelNurseImpl;
-import client.model.nurse.GetRequiredDataModelNurseImpl;
 import client.model.nurse.PatientModelNurseImpl;
+import client.model.shared.GetAppointmentDataModelImpl;
+import client.model.shared.GetEmployeeDataModelImpl;
+import client.model.shared.GetPatientDataModelImpl;
 
 import java.rmi.registry.LocateRegistry;
 import java.util.HashMap;
@@ -29,6 +31,7 @@ public class ModelFactory
         createManagerModels();
         createDoctorModels();
         createNurseModels();
+        createSharedModels();
     }
 
     public static ModelFactory getModelFactory()
@@ -59,9 +62,7 @@ public class ModelFactory
 
     private void createDoctorModels()
     {
-        models.put(InterfaceEnum.DOCTOR_APPOINTMENT, new AppointmentsModelDoctorImpl(clientFactory.getClient(InterfaceEnum.DOCTOR_APPOINTMENT)));
         models.put(InterfaceEnum.DOCTOR_NURSE, new NursesModelDoctorImpl(clientFactory.getClient(InterfaceEnum.DOCTOR_NURSE)));
-        models.put(InterfaceEnum.DOCTOR_PATIENT, new PatientModelDoctorImpl(clientFactory.getClient(InterfaceEnum.DOCTOR_PATIENT)));
         models.put(InterfaceEnum.DOCTOR_SAMPLE, new SampleModelDoctorImpl(clientFactory.getClient(InterfaceEnum.DOCTOR_SAMPLE)));
         models.put(InterfaceEnum.DOCTOR_TREAT_UPDATE, new TreatAndUpdateModelDoctorImpl(clientFactory.getClient(InterfaceEnum.DOCTOR_TREAT_UPDATE)));
     }
@@ -69,8 +70,14 @@ public class ModelFactory
     private void createNurseModels()
     {
         models.put(InterfaceEnum.NURSE_APPOINTMENT, new AppointmentsModelNurseImpl(clientFactory.getClient(InterfaceEnum.NURSE_APPOINTMENT)));
-        models.put(InterfaceEnum.NURSE_GET_DATA, new GetRequiredDataModelNurseImpl(clientFactory.getClient(InterfaceEnum.NURSE_GET_DATA)));
         models.put(InterfaceEnum.NURSE_PATIENT, new PatientModelNurseImpl(clientFactory.getClient(InterfaceEnum.NURSE_PATIENT)));
+    }
+
+    private void createSharedModels()
+    {
+        models.put(InterfaceEnum.SHARED_APPOINTMENT, new GetAppointmentDataModelImpl(clientFactory.getClient(InterfaceEnum.SHARED_APPOINTMENT)));
+        models.put(InterfaceEnum.SHARED_EMPLOYEE, new GetEmployeeDataModelImpl(clientFactory.getClient(InterfaceEnum.SHARED_EMPLOYEE)));
+        models.put(InterfaceEnum.SHARED_PATIENT, new GetPatientDataModelImpl(clientFactory.getClient(InterfaceEnum.SHARED_PATIENT)));
     }
 
     public Object getModel(InterfaceEnum model)
