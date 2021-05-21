@@ -5,7 +5,6 @@ import client.networking.login.LoginClientImpl;
 import client.networking.manager.EmployeeClientRMI;
 import client.networking.manager.WardClientRMI;
 import client.networking.nurse.AppointmentsClientNurseRMI;
-import client.networking.nurse.GetRequiredDataClientNurseRMI;
 import client.networking.nurse.PatientClientNurseRMI;
 import client.networking.shared.GetAppointmentDataClientRMI;
 import client.networking.shared.GetEmployeeDataClientRMI;
