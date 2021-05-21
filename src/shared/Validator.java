@@ -8,7 +8,7 @@ public class Validator
   public static boolean isValidPassword(String password)
   {
     //TODO
-    return false;
+    return true;
   }
   public boolean isValidTelNo(String telNo)
   {

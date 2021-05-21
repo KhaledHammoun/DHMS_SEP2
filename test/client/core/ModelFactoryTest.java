@@ -11,7 +11,7 @@ class ModelFactoryTest
     @Test
     public void setup()
     {
-        AppointmentsModelDoctor sut = (AppointmentsModelDoctor) ModelFactory.getModel(InterfaceEnum.DOCTOR_APPOINTMENT);
+        AppointmentsModelDoctor sut = (AppointmentsModelDoctor) ModelFactory.getModelFactory().getModel(InterfaceEnum.DOCTOR_APPOINTMENT);
         assertNotEquals(null, sut);
     }
 

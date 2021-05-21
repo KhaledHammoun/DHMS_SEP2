@@ -57,9 +57,9 @@ public class ViewHandler
         stage.sizeToScene();
     }
 
-    private void viewToPane(View view)
+    public void viewToPane(View view)
     {
-        Scene scene = ViewFactory.getScene(View.EMPLOYEE);
+        Scene scene = ViewFactory.getScene(view);
         MainViewController mainViewController = (MainViewController) ViewControllerFactory.getController(View.MAIN);
         mainViewController.mainBorderPane.setCenter(scene.getRoot());
         stage.sizeToScene();

@@ -25,15 +25,32 @@ public class LoginViewController implements ViewController
     @FXML
     public Button loginButton;
 
+    private ViewHandler viewHandler;
+    private LoginViewModel loginViewModel;
+
     @FXML
-    public void onLoginButton(ActionEvent actionEvent)
+    public void onLoginButton()
     {
-        System.out.println("Login pressed. Login controller");
+        loginViewModel.login();
+        if (!managerRadioLogin.isSelected() && !doctorRadioLogin.isSelected() && !nurseRadioLogin.isSelected())
+        {
+            return;
+        }
+        viewHandler.openView(View.MAIN);
+        viewHandler.viewToPane(View.EMPLOYEE);
+        viewHandler.setSidebar(View.SIDEBAR);
     }
 
     @Override
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
-
+        this.viewHandler = viewHandler;
+        this.loginViewModel = (LoginViewModel) viewModelFactory.getViewModel(View.LOGIN);
+        usernameTextFieldLogin.textProperty().bindBidirectional(loginViewModel.getUsernameProperty());
+        passwordFieldLogin.textProperty().bindBidirectional(loginViewModel.getPasswordProperty());
+        managerRadioLogin.selectedProperty().bindBidirectional(loginViewModel.getManagerProperty());
+        doctorRadioLogin.selectedProperty().bindBidirectional(loginViewModel.getDoctorProperty());
+        nurseRadioLogin.selectedProperty().bindBidirectional(loginViewModel.getNurseProperty());
+        errorLabelLogin.textProperty().bindBidirectional(loginViewModel.getErrorLabel());
     }
 }

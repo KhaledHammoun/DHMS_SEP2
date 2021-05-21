@@ -1,5 +1,6 @@
 package client.core;
 
+import client.view.MainViewController;
 import client.view.View;
 import client.view.ViewController;
 import javafx.fxml.FXMLLoader;
@@ -102,6 +103,10 @@ public class ViewFactory
         Parent root = loader.load();
 
         ViewController ctrl = loader.getController();
+        if (ctrl instanceof MainViewController)
+        {
+            ViewControllerFactory.addController(View.MAIN, ctrl);
+        }
         ctrl.init(ViewModelFactory.getViewModelFactory(), ViewHandler.getViewHandler());
         return root;
     }

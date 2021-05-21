@@ -8,6 +8,7 @@ import javafx.scene.layout.BorderPane;
 
 public class MainViewController implements ViewController
 {
+    @FXML
     public BorderPane mainBorderPane;
     @FXML
     public ScrollPane mainPane;
