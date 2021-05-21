@@ -25,6 +25,6 @@ public class GetAppointmentDataServerModelImpl implements GetAppointmentDataServ
     @Override
     public ArrayList<Appointment> getAppointmentForDoctor(Doctor doctor)
     {
-        return sharedDBAccess.getAppointmentForDoctor(doctor);
+        return sharedDBAccess.getAppointmentsForDoctor(doctor);
     }
 }

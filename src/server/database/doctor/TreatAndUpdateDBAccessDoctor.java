@@ -12,4 +12,5 @@ public interface TreatAndUpdateDBAccessDoctor
     void addDiagnosisToPatient(Patient patient, Diagnosis diagnosis);
     void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor, Treatment treatment);
     ArrayList<Diagnosis> getAllDiagnosisOfPatient(Patient patient);
+  void editDiagnosis(Diagnosis diagnosis);
 }

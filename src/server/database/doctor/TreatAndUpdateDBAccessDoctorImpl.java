@@ -1,4 +1,5 @@
 package server.database.doctor;
+
 import server.database.DatabaseAccess;
 import shared.Diagnosis;
 import shared.Doctor;
@@ -78,7 +79,8 @@ public class TreatAndUpdateDBAccessDoctorImpl
     }
   }
 
-  @Override public ArrayList<Diagnosis> getAllDiagnosisOfPatient(Patient patient)
+  @Override public ArrayList<Diagnosis> getAllDiagnosisOfPatient(
+      Patient patient)
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
@@ -102,5 +104,22 @@ public class TreatAndUpdateDBAccessDoctorImpl
       e.printStackTrace();
     }
     return null;
+  }
+
+  @Override public void editDiagnosis(Diagnosis diagnosis)
+  {
+    try (Connection connection = DatabaseAccess.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+            "UPDATE diagnosis SET name = ?, description = ? WHERE"))
+    {
+      preparedStatement.setString(1, diagnosis.getName());
+      preparedStatement.setString(2, diagnosis.getDescription());
+
+      preparedStatement.execute();
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
   }
 }

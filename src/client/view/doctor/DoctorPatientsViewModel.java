@@ -1,7 +1,6 @@
 package client.view.doctor;
 
-import client.model.doctor.PatientModelDoctor;
-import client.model.doctor.TreatAndUpdateModelDoctor;
+import client.model.shared.GetPatientDataModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.Patient;
@@ -13,11 +12,11 @@ public class DoctorPatientsViewModel
 {
   private ObservableList<Patient> patients;
 
-  private PatientModelDoctor patientModelDoctor;
+  private GetPatientDataModel getPatientDataModel;
 
-  public DoctorPatientsViewModel(PatientModelDoctor patientModelDoctor)
+  public DoctorPatientsViewModel(GetPatientDataModel getPatientDataModel)
   {
-    this.patientModelDoctor = patientModelDoctor;
+    this.getPatientDataModel = getPatientDataModel;
     //ToDo implement observer
     //patientModelDoctor.addListener("NewPatient", this::onNewPatient);
     patients = FXCollections.observableArrayList();
@@ -31,7 +30,7 @@ public class DoctorPatientsViewModel
 
   public void loadPatients()
   {
-    List<Patient> patientList = patientModelDoctor.getAllPatients();
+    List<Patient> patientList = getPatientDataModel.getAllPatients();
     patients.addAll(patientList);
   }
 
