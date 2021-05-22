@@ -16,7 +16,7 @@
       </Label>
       <TableView fx:id="nursesTable" layoutX="62.0" layoutY="73.0" prefHeight="241.0" prefWidth="249.0">
         <columns>
-          <TableColumn fx:id="availbleNurseFirstName" prefWidth="81.0" text="First name" />
+          <TableColumn fx:id="availableNurseFirstName" prefWidth="81.0" text="First name" />
           <TableColumn fx:id="availableNurseLastName" prefWidth="84.0" text="Last name" />
             <TableColumn fx:id="availableNurseSSN" prefWidth="75.0" text="SSN" />
         </columns>

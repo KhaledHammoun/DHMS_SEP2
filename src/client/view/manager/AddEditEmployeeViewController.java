@@ -13,28 +13,42 @@ import shared.Ward;
 public class AddEditEmployeeViewController implements ViewController
 {
 
-    @FXML private TextField employeeSSNTextField;
-    @FXML private TextField employeeFirstNameTextField;
-    @FXML private TextField employeeMidNameTextField;
-    @FXML private TextField employeeLastNameTextField;
-    @FXML private DatePicker employeeDOBDateField;
-    @FXML private TextField employeeStreetTextField;
-    @FXML private TextField employeeStreetNoTextField;
-    @FXML private TextField employeeZipCodeTextField;
-    @FXML private TextField employeeCityTextField;
-    @FXML private TextField employeeEContactFNameTextField;
-    @FXML private TextField employeeEContactLNameTextField;
-    @FXML private TextField employeeEContactPhoneTextField;
+    @FXML
+    private TextField employeeSSNTextField;
+    @FXML
+    private TextField employeeFirstNameTextField;
+    @FXML
+    private TextField employeeMidNameTextField;
+    @FXML
+    private TextField employeeLastNameTextField;
+    @FXML
+    private DatePicker employeeDOBDateField;
+    @FXML
+    private TextField employeeStreetTextField;
+    @FXML
+    private TextField employeeStreetNoTextField;
+    @FXML
+    private TextField employeeZipCodeTextField;
+    @FXML
+    private TextField employeeCityTextField;
+    @FXML
+    private TextField employeeEContactFNameTextField;
+    @FXML
+    private TextField employeeEContactLNameTextField;
+    @FXML
+    private TextField employeeEContactPhoneTextField;
 
 
     @FXML
-    public ComboBox<Ward> employeeWardComboBox;
+    private ComboBox<Ward> employeeWardComboBox;
     @FXML
-    public TextField usernameTextField;
+    private TextField usernameTextField;
     @FXML
-    public TextField passwordTextField;
-    public TextArea employeeExperienceTextArea;
-    public TextArea employeeEducationTextArea;
+    private TextField passwordTextField;
+    @FXML
+    private TextArea employeeExperienceTextArea;
+    @FXML
+    private TextArea employeeEducationTextArea;
 
     @FXML
     public void onSaveButtonEmployee()

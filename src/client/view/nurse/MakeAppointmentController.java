@@ -1,5 +1,8 @@
 package client.view.nurse;
 
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
+import client.view.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -9,7 +12,7 @@ import javafx.scene.control.TextField;
 import shared.Doctor;
 import shared.Patient;
 
-public class MakeAppointmentController
+public class MakeAppointmentController implements ViewController
 {
   @FXML private TableView<Doctor> doctorsTableViewMakeAppointment;
   @FXML private TableColumn<Doctor, String> firstNameColumnDoctors;
@@ -40,5 +43,11 @@ public class MakeAppointmentController
 
   @FXML public void onSeeAllAppointments(ActionEvent actionEvent)
   {
+  }
+
+  @Override
+  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+  {
+
   }
 }

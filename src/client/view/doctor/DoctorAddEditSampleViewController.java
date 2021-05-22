@@ -2,8 +2,8 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.ViewController;
 import client.view_models.doctor.DoctorAddEditSampleViewModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -13,28 +13,43 @@ import shared.Sample;
 
 import java.sql.Date;
 
-public class DoctorAddEditSampleViewController
+public class DoctorAddEditSampleViewController implements ViewController
 {
   @FXML
-  public TableView<Sample> sampleTable;
+  private TableView<Sample> sampleTable;
   @FXML
-  public TableColumn< String, Sample> sampleType;
+  private TableColumn< String, Sample> sampleType;
   @FXML
-  public TableColumn< Date,Sample> sampleDeadline;
+  private TableColumn< Date,Sample> sampleDeadline;
   @FXML
-  public TableColumn<Integer,Sample > samplePriority;
+  private TableColumn<Integer,Sample > samplePriority;
   @FXML
-  public TableColumn<String,Sample > result;
+  private TableColumn<String,Sample > result;
   @FXML
-  public Button addSampleButton;
+  private Button addSampleButton;
   @FXML
-  public Button editSampleButton;
+  private Button editSampleButton;
 
   private ViewHandler viewHandler;
 
   private DoctorAddEditSampleViewModel viewModel;
 
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
+  public void onAddButton()
+  {
+    //TODO change view
+  }
+
+  public void onEditSampleButton()
+  {
+    //TODO change view
+  }
+
+  public void onBackButton()
+  {
+  }
+
+  @Override
+  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
     //TODO viewModel = viewModelFactory...
@@ -43,20 +58,5 @@ public class DoctorAddEditSampleViewController
     sampleDeadline.setCellValueFactory(new PropertyValueFactory<>("deadline"));
     samplePriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
     result.setCellValueFactory(new PropertyValueFactory<>("result"));
-
-  }
-
-  public void onAddButton(ActionEvent actionEvent)
-  {
-    //TODO change view
-  }
-
-  public void onEditSampleButton(ActionEvent actionEvent)
-  {
-    //TODO change view
-  }
-
-  public void onBackButton()
-  {
   }
 }

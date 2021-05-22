@@ -25,7 +25,9 @@ public class EmployeeViewController implements ViewController
     private TableColumn<String, Employee> fNameColumn;
     @FXML
     private TableColumn<String, Employee> lNameColumn;
+    @FXML
     private ViewHandler viewHandler;
+    @FXML
     private EmployeeViewModel viewModel;
 
     @FXML
@@ -49,6 +51,11 @@ public class EmployeeViewController implements ViewController
     {
     }
 
+    @FXML
+    public void onBackButton()
+    {
+    }
+
     @Override
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
@@ -59,9 +66,5 @@ public class EmployeeViewController implements ViewController
         fNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         employeeTable.setItems(viewModel.getEmployees());
-    }
-
-    public void onBackButton()
-    {
     }
 }

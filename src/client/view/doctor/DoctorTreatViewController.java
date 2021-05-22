@@ -1,38 +1,50 @@
 package client.view.doctor;
 
-import javafx.event.ActionEvent;
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
+import client.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import shared.Diagnosis;
 
-public class DoctorTreatViewController
+public class DoctorTreatViewController implements ViewController
 {
-  @FXML
-  public TextField medicationTextField;
-  @FXML
-  public Label selectDiagnosisLabel;
-  @FXML
-  public TableView diagnosisTable;
-  @FXML
-  public TableColumn diagnosisName;
-  @FXML
-  public TableColumn diagnosisSeverity;
-  @FXML
-  public TableColumn diagnosisDescription;
-  @FXML
-  public Button addMedicationButton;
-  @FXML
-  public TextArea descriptionTextArea;
+    @FXML
+    private TextField medicationTextField;
+    @FXML
+    private Label selectDiagnosisLabel;
+    @FXML
+    private TableView<Diagnosis> diagnosisTable;
+    @FXML
+    private TableColumn<Diagnosis, String> diagnosisName;
+    @FXML
+    private TableColumn<Diagnosis, Integer> diagnosisSeverity;
+    @FXML
+    private TableColumn<Diagnosis, String> diagnosisDescription;
+    @FXML
+    private Button addMedicationButton;
+    @FXML
+    private TextArea descriptionTextArea;
 
-  public void onAddButton()
-  {
-    //TODO
-  }
+    @FXML
+    public void onAddButton()
+    {
+        //TODO
+    }
 
+    @FXML
     public void onBackButton()
     {
     }
 
-  public void onClearButton()
-  {
-  }
+    @FXML
+    public void onClearButton()
+    {
+    }
+
+    @Override
+    public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+    {
+
+    }
 }

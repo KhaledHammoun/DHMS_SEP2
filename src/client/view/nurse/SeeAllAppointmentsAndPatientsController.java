@@ -1,5 +1,8 @@
 package client.view.nurse;
 
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
+import client.view.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -8,7 +11,7 @@ import shared.Appointment;
 
 import java.sql.Timestamp;
 
-public class SeeAllAppointmentsAndPatientsController
+public class SeeAllAppointmentsAndPatientsController implements ViewController
 {
   @FXML private TableView<Appointment> appointmentsTableView;
   @FXML private TableColumn<Appointment, Timestamp> startDateAppColumn;
@@ -28,5 +31,11 @@ public class SeeAllAppointmentsAndPatientsController
 
   @FXML public void onConfirmChangesApp(ActionEvent actionEvent)
   {
+  }
+
+  @Override
+  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+  {
+
   }
 }

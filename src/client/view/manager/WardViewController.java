@@ -33,13 +33,14 @@ public class WardViewController implements ViewController
     {
     }
 
+    @FXML
+    public void onBackButton()
+    {
+    }
+
     @Override
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
 
-    }
-
-    public void onBackButton()
-    {
     }
 }

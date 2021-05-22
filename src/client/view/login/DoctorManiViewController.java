@@ -1,10 +1,13 @@
 package client.view.login;
 
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
+import client.view.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class DoctorManiViewController
+public class DoctorManiViewController implements ViewController
 {
     @FXML
     private Label loggedInAsLabel;
@@ -27,5 +30,11 @@ public class DoctorManiViewController
     @FXML
     public void onPatientsButton()
     {
+    }
+
+    @Override
+    public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+    {
+
     }
 }
