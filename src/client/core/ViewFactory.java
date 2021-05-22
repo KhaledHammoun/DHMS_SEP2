@@ -14,6 +14,7 @@ import java.util.Map;
 
 public class ViewFactory
 {
+    // TODO: 22/05/2021 Remove printouts.
     private static Map<View, Scene> scenes;
     private static List<View> views;
 

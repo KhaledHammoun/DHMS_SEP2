@@ -6,7 +6,6 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.AddEditSampleViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -16,8 +15,6 @@ public class AddEditSampleViewController implements ViewController
 
   @FXML
   private TextField result;
-  @FXML
-  private Button saveButton;
   @FXML
   private ComboBox<String> sampleType;
   @FXML

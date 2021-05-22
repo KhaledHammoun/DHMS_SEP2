@@ -16,7 +16,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="saveButton" layoutX="462.0" layoutY="337.0" mnemonicParsing="false" onAction="#onSaveButton" text="Save" />
+      <Button layoutX="462.0" layoutY="337.0" mnemonicParsing="false" onAction="#onSaveButton" text="Save" />
       <ComboBox fx:id="sampleType" layoutX="72.0" layoutY="74.0" prefWidth="150.0" promptText="Type" />
       <DatePicker fx:id="deadline" layoutX="72.0" layoutY="145.0" promptText="Deadline" />
       <ComboBox fx:id="priority" layoutX="72.0" layoutY="200.0" prefWidth="150.0" promptText="Priority" />

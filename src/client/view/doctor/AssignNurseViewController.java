@@ -6,7 +6,6 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.AssignNurseViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -31,8 +30,6 @@ public class AssignNurseViewController implements ViewController
     private TableColumn<Nurse, Long> assignedNurseSSN;
     @FXML
     private TableView<Nurse> nursesTable;
-    @FXML
-    private Button assignButton;
 
     private ViewHandler viewHandler;
     private AssignNurseViewModel assignNurseViewModel;

@@ -16,15 +16,15 @@
             <TableColumn fx:id="doctorViewPatientLastName" prefWidth="190.0" text="Last Name" />
         </columns>
       </TableView>
-      <Label fx:id="doctorViewPatientLabel" layoutX="17.0" layoutY="8.0" text="Patient">
+      <Label layoutX="17.0" layoutY="8.0" text="Patient">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="doctorViewTreatButton" layoutX="246.0" layoutY="361.0" mnemonicParsing="false" onAction="#onTreatButton" text="Treat" />
-      <Button fx:id="doctorViewAddEditSampleButton" layoutX="335.0" layoutY="361.0" mnemonicParsing="false" onAction="#onAddEditSample" text="Add/Edit sample" />
-      <Button fx:id="doctorViewDiagnoseButton" layoutX="467.0" layoutY="361.0" mnemonicParsing="false" onAction="#onDiagnoseButton" text="Diagnose" />
-      <Button fx:id="doctorViewEditMedicalDescription" layoutX="45.0" layoutY="361.0" mnemonicParsing="false" onAction="#onEditMedicalDescription" text="Edit medical description" />
+      <Button layoutX="246.0" layoutY="361.0" mnemonicParsing="false" onAction="#onTreatButton" text="Treat" />
+      <Button layoutX="335.0" layoutY="361.0" mnemonicParsing="false" onAction="#onAddEditSample" text="Add/Edit sample" />
+      <Button layoutX="467.0" layoutY="361.0" mnemonicParsing="false" onAction="#onDiagnoseButton" text="Diagnose" />
+      <Button layoutX="45.0" layoutY="361.0" mnemonicParsing="false" onAction="#onEditMedicalDescription" text="Edit medical description" />
       <Button layoutX="58.0" layoutY="409.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
    </children>
 </AnchorPane>

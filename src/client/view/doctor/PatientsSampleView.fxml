@@ -17,8 +17,8 @@
             <TableColumn fx:id="result" prefWidth="165.0" text="Result" />
         </columns>
       </TableView>
-      <Button fx:id="addSampleButton" layoutX="383.0" layoutY="346.0" mnemonicParsing="false" onAction="#onAddButton" text="Add" />
-      <Button fx:id="editSampleButton" layoutX="475.0" layoutY="346.0" mnemonicParsing="false" onAction="#onEditSampleButton" text="Edit" />
+      <Button layoutX="383.0" layoutY="346.0" mnemonicParsing="false" onAction="#onAddButton" text="Add" />
+      <Button layoutX="475.0" layoutY="346.0" mnemonicParsing="false" onAction="#onEditSampleButton" text="Edit" />
       <Button layoutX="289.0" layoutY="346.0" mnemonicParsing="false" text="Clear" />
       <Button layoutX="40.0" layoutY="359.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
    </children>

@@ -6,7 +6,6 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.PatientsSampleViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,10 +25,6 @@ public class PatientsSampleViewController implements ViewController
   private TableColumn<Integer,Sample > samplePriority;
   @FXML
   private TableColumn<String,Sample > result;
-  @FXML
-  private Button addSampleButton;
-  @FXML
-  private Button editSampleButton;
 
   private ViewHandler viewHandler;
 

@@ -6,14 +6,11 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.EditMedicalDescriptionViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 public class EditMedicalDescriptionViewController implements ViewController
 {
-  @FXML
-  private Label patientTitleLabel;
   @FXML
   private Label patientsFirstName;
   @FXML
@@ -46,8 +43,6 @@ public class EditMedicalDescriptionViewController implements ViewController
   private Label contactTelNo;
   @FXML
   private TextArea medicalDescriptionTextArea;
-  @FXML
-  private Button addButton;
 
   private ViewHandler viewHandler;
   private EditMedicalDescriptionViewModel viewModel;
