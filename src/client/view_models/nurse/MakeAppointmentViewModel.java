@@ -21,15 +21,14 @@ public class MakeAppointmentViewModel
 
   private AppointmentsModelNurse appointmentsModelNurse;
 
-  public MakeAppointmentViewModel(AppointmentsModelNurse appointmentsModelNurse)
+  public MakeAppointmentViewModel(Object appointmentsModelNurse)
   {
-    this.appointmentsModelNurse = appointmentsModelNurse;
+    this.appointmentsModelNurse = (AppointmentsModelNurse) appointmentsModelNurse;
     //ToDo implement observer when a patient/doctor is added
     allPatients = FXCollections.observableArrayList();
     availableDoctors=FXCollections.observableArrayList();
     appointmentDate = new SimpleObjectProperty<>();
     appointmentTime = new SimpleStringProperty();
-
   }
 
   public ObservableList<Patient> getAllPatients()
