@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.nurse.AddPatientViewController">
+   <effect>
+      <DropShadow color="#bfb5b5" />
+   </effect>
+   <children>
+      <TextField fx:id="firstNameTxtFieldPatient" layoutX="15.0" layoutY="84.0" prefHeight="26.0" prefWidth="211.0" promptText="First name" />
+      <TextField fx:id="mNameTxtFieldPatient" layoutX="15.0" layoutY="124.0" prefHeight="26.0" prefWidth="211.0" promptText="Middle name" />
+      <TextField fx:id="lNameTxtFieldPatient" layoutX="15.0" layoutY="163.0" prefHeight="26.0" prefWidth="211.0" promptText="Last name" />
+      <DatePicker fx:id="dobPatientDateField" layoutX="16.0" layoutY="200.0" prefHeight="26.0" prefWidth="211.0" promptText="Date of birth" />
+      <AnchorPane layoutX="322.0" layoutY="39.0" prefHeight="174.0" prefWidth="366.0" style="-fx-background-color: #f8f8ff; -fx-background-radius: 0.5em;">
+         <effect>
+            <DropShadow blurType="TWO_PASS_BOX" color="#413a3a" height="18.47" radius="9.925" width="23.23" />
+         </effect>
+         <children>
+            <TextField fx:id="eFirstNameTxtFieldPatient" layoutX="24.0" layoutY="21.0" prefHeight="26.0" prefWidth="211.0" promptText="First name" />
+            <TextField fx:id="eLNameTxtFieldPatient" layoutX="24.0" layoutY="61.0" prefHeight="26.0" prefWidth="211.0" promptText="Last name" />
+            <TextField fx:id="ePhnNumberTxtFieldPatient" layoutX="24.0" layoutY="106.0" prefHeight="26.0" prefWidth="211.0" promptText="Phone number" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="14.0" layoutY="303.0" text="Patient address:" />
+      <Label layoutX="326.0" layoutY="11.0" text="Emergency contact:" />
+      <TextField fx:id="streetTxtFieldPatient" layoutX="12.0" layoutY="332.0" prefHeight="26.0" prefWidth="160.0" promptText="Street name" />
+      <TextField fx:id="streetNoTxtFieldPatient" layoutX="189.0" layoutY="332.0" prefHeight="26.0" prefWidth="43.0" promptText="No" />
+      <TextField fx:id="cityTxtFieldPatient" layoutX="12.0" layoutY="376.0" prefHeight="26.0" prefWidth="160.0" promptText="City " />
+      <TextField fx:id="zipTxtFieldPatient" layoutX="189.0" layoutY="375.0" prefHeight="26.0" prefWidth="43.0" promptText="ZIP" />
+      <TextField fx:id="genderTxtFieldPatient" layoutX="16.0" layoutY="237.0" prefHeight="26.0" prefWidth="78.0" promptText="Gender" />
+      <TextField fx:id="bloodTypeTxtFieldPatient" layoutX="150.0" layoutY="237.0" prefHeight="26.0" prefWidth="78.0" promptText="Blood type" />
+      <Label layoutX="19.0" layoutY="12.0" text="Patient data:" />
+      <TextField fx:id="ssnTextFieldPatient" layoutX="16.0" layoutY="45.0" prefHeight="26.0" prefWidth="211.0" promptText="Patient SSN" AnchorPane.bottomAnchor="429.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="473.0" AnchorPane.topAnchor="45.0" />
+      <TextArea fx:id="medicalDescryNurseToPatientTxtArea" layoutX="322.0" layoutY="241.0" prefHeight="194.0" prefWidth="366.0" promptText="Medical description..." style="-fx-background-color: #f8f8ff; -fx-background-radius: 0.5em;">
+         <effect>
+            <DropShadow color="#413a3a" />
+         </effect>
+      </TextArea>
+      <Button layoutX="18.0" layoutY="452.0" mnemonicParsing="false" onAction="#onBackButtonAddPatient" prefHeight="26.0" prefWidth="58.0" style="-fx-border-color: #90a4ae;" text="Back" />
+      <Button layoutX="94.0" layoutY="452.0" mnemonicParsing="false" onAction="#onClearButtonAddPatient" prefHeight="26.0" prefWidth="58.0" text="Clear" />
+      <Button layoutX="556.0" layoutY="457.0" mnemonicParsing="false" onAction="#onMakeAppointmentAddPatient" text="Make appointment ➜ " />
+      <Button layoutX="175.0" layoutY="452.0" mnemonicParsing="false" onAction="#onSaveButtonAddPatient" prefHeight="26.0" prefWidth="58.0" text="Save" />
+   </children>
+</AnchorPane>

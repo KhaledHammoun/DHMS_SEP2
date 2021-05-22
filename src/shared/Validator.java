@@ -8,9 +8,7 @@ public class Validator
   public static boolean isValidPassword(String password)
   {
     String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,14}$";
-    Pattern pattern = Pattern.compile(regex);
-    Matcher matcher = pattern.matcher(password);
-    return matcher.matches();
+    return matches(password, regex);
   }
   public boolean isValidTelNo(String telNo)
   {
@@ -18,10 +16,17 @@ public class Validator
     return false;
 
   }
-  public boolean isValidEmail(String email )
+  public static boolean isValidEmail(String email)
   {
-    //TODO
-    return false;
+    String regex = "^(.+)@(.+)$";
+    return matches(email, regex);
+  }
+
+  private static boolean matches(String toValidate, String regex)
+  {
+    Pattern pattern = Pattern.compile(regex);
+    Matcher matcher = pattern.matcher(toValidate);
+    return matcher.matches();
   }
 
   public boolean isValidSSN(int SSN )
