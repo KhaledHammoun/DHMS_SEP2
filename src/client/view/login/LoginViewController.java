@@ -6,8 +6,10 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.login.LoginViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import shared.AccessType;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 
 public class LoginViewController implements ViewController
 {
@@ -31,6 +33,10 @@ public class LoginViewController implements ViewController
     public void onLoginButton()
     {
         View viewToOpen = loginViewModel.login();
+        if (!viewToOpen.equals(View.LOGIN))
+        {
+            loginViewModel.setCurrentUser();
+        }
         viewHandler.openView(viewToOpen);
     }
 
