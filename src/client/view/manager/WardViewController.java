@@ -3,10 +3,11 @@ package client.view.manager;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
-import javafx.event.ActionEvent;
+import client.view_models.manager.WardViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Ward;
 
 public class WardViewController implements ViewController
@@ -18,9 +19,13 @@ public class WardViewController implements ViewController
     @FXML
     private TableColumn<Integer, Ward> roomNumberColumn;
 
+    private ViewHandler viewHandler;
+    private WardViewModel wardViewModel;
+
     @FXML
     public void onAddWardButton()
     {
+
     }
 
     @FXML
@@ -41,6 +46,11 @@ public class WardViewController implements ViewController
     @Override
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
+        this.viewHandler=viewHandler;
+        //TODO wardViewModel = viewModelFactory...
+        wardTable.setItems(wardViewModel.getWards());
+        wardNameColumn.setCellValueFactory(new PropertyValueFactory<>("wardName"));
+        roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
 
     }
 }
