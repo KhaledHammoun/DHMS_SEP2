@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.AccessType;
+import shared.CurrentUser;
 import shared.LoginUser;
 import shared.Validator;
 
@@ -68,7 +69,14 @@ public class LoginViewModel
             errorLabel.setValue("Please select login type.");
             return View.LOGIN;
         }
-        return getAccess(loginModel.login(loginUser));
+
+        AccessType login = loginModel.login(loginUser);
+        if (login != AccessType.NO_ACCESS )
+        {
+            CurrentUser.getInstance().fetchCurrentUser(loginUser);
+
+        }
+        return getAccess(login);
     }
 
     private View getAccess(AccessType login)
