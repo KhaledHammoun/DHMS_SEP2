@@ -5,6 +5,7 @@ import client.core.ViewModelFactory;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.manager.EmployeeViewModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -24,7 +25,9 @@ public class EmployeeViewController implements ViewController
     private TableColumn<String, Employee> fNameColumn;
     @FXML
     private TableColumn<String, Employee> lNameColumn;
+    @FXML
     private ViewHandler viewHandler;
+    @FXML
     private EmployeeViewModel viewModel;
 
     @FXML
@@ -45,6 +48,11 @@ public class EmployeeViewController implements ViewController
 
     @FXML
     public void onRemoveEmployeeButton()
+    {
+    }
+
+    @FXML
+    public void onBackButton()
     {
     }
 

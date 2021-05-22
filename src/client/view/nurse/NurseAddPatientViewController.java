@@ -1,11 +1,14 @@
 package client.view.nurse;
 
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
+import client.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class NurseAddPatientViewController
+public class NurseAddPatientViewController implements ViewController
 {
   @FXML private TextField patientFName;
   @FXML private TextField patientMName;
@@ -37,5 +40,11 @@ public class NurseAddPatientViewController
 
   @FXML public void onSaveButton()
   {
+  }
+
+  @Override
+  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+  {
+
   }
 }

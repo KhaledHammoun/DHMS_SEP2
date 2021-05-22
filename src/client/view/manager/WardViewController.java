@@ -3,6 +3,7 @@ package client.view.manager;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,6 +30,11 @@ public class WardViewController implements ViewController
 
     @FXML
     public void onRemoveWardButton()
+    {
+    }
+
+    @FXML
+    public void onBackButton()
     {
     }
 

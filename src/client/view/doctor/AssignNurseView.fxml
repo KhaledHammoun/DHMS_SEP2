@@ -7,23 +7,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.AssignNurseViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.AssignNurseViewController">
    <children>
       <Label layoutX="77.0" layoutY="40.0" text="Available nurses">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="nursesTable" layoutX="62.0" layoutY="73.0" prefHeight="214.0" prefWidth="475.0">
+      <TableView fx:id="nursesTable" layoutX="62.0" layoutY="73.0" prefHeight="241.0" prefWidth="249.0">
         <columns>
-          <TableColumn fx:id="nurseFirstName" prefWidth="81.0" text="First name" />
-          <TableColumn fx:id="nurseLastName" prefWidth="84.0" text="Last name" />
-            <TableColumn fx:id="nurseDob" prefWidth="112.0" text="Date of birth" />
-            <TableColumn fx:id="nurseEducation" prefWidth="87.0" text="Education" />
-            <TableColumn fx:id="nurseExperience" prefWidth="110.0" text="Experience" />
+          <TableColumn fx:id="availableNurseFirstName" prefWidth="81.0" text="First name" />
+          <TableColumn fx:id="availableNurseLastName" prefWidth="84.0" text="Last name" />
+            <TableColumn fx:id="availableNurseSSN" prefWidth="75.0" text="SSN" />
         </columns>
       </TableView>
       <Button fx:id="assignButton" layoutX="391.0" layoutY="338.0" mnemonicParsing="false" onAction="#onAssignButton" text="Assign nurse in your ward" />
+      <Button layoutX="312.0" layoutY="338.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
+      <TableView fx:id="assignedNurseTable" layoutX="403.0" layoutY="73.0" prefHeight="241.0" prefWidth="279.0">
+        <columns>
+          <TableColumn fx:id="assignedNurseFirstName" prefWidth="75.0" text="First name" />
+          <TableColumn fx:id="assignedNurseLastName" prefWidth="75.0" text="Last name" />
+            <TableColumn fx:id="assignedNurseSSN" prefWidth="75.0" text="SSN" />
+        </columns>
+      </TableView>
+      <Label layoutX="403.0" layoutY="30.0" text="Assigned nurses">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

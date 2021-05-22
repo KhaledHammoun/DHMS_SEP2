@@ -2,48 +2,59 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.ViewController;
 import client.view_models.doctor.AddEditSampleViewModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-public class AddEditSampleViewController
+public class AddEditSampleViewController implements ViewController
 {
 
   @FXML
-  public TextField result;
+  private TextField result;
   @FXML
-  public Button saveButton;
+  private Button saveButton;
   @FXML
-  public ComboBox<String> sampleType;
+  private ComboBox<String> sampleType;
   @FXML
-  public DatePicker deadline;
+  private DatePicker deadline;
   @FXML
-  public ComboBox<String> priority;
+  private ComboBox<String> priority;
 
   private ViewHandler viewHandler;
   private AddEditSampleViewModel addEditSampleViewModel;
 
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
+  @FXML
+  public void onSaveButton()
+  {
+    //TODO
+  }
+
+  @FXML
+  public void onBackButton()
+  {
+  }
+
+  @FXML
+  public void onClearButton()
+  {
+  }
+
+  @Override
+  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
     //TODO addEditSampleViewModel = viewModelFactory...
     result.textProperty().bindBidirectional(
-        addEditSampleViewModel.resultProperty());
+            addEditSampleViewModel.resultProperty());
     sampleType.valueProperty().bindBidirectional(
-        addEditSampleViewModel.typeProperty());
+            addEditSampleViewModel.typeProperty());
     deadline.valueProperty().bindBidirectional(
-        addEditSampleViewModel.deadlineProperty());
+            addEditSampleViewModel.deadlineProperty());
     priority.valueProperty().bindBidirectional(
-        addEditSampleViewModel.priorityProperty());
-
-  }
-
-  public void onSaveButton(ActionEvent actionEvent)
-  {
-    //TODO
+            addEditSampleViewModel.priorityProperty());
   }
 }

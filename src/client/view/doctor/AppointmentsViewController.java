@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.ViewController;
 import client.view_models.doctor.AppointmentsViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -11,22 +12,28 @@ import shared.Appointment;
 
 import java.sql.Timestamp;
 
-public class AppointmentsViewController
+public class AppointmentsViewController implements ViewController
 {
   @FXML
-  public TableView<Appointment> appointmentsTable;
+  private TableView<Appointment> appointmentsTable;
   @FXML
-  public TableColumn<Timestamp, Appointment> startDateTime;
+  private TableColumn<Timestamp, Appointment> startDateTime;
   @FXML
-  public TableColumn<Timestamp, Appointment> endDateTime;
+  private TableColumn<Timestamp, Appointment> endDateTime;
   @FXML
-  public TableColumn<Long, Appointment> patientSSN;
+  private TableColumn<Long, Appointment> patientSSN;
 
 
   private ViewHandler viewHandler;
   private AppointmentsViewModel appointmentsViewModel;
 
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
+  @FXML
+  public void onBackButton()
+  {
+  }
+
+  @Override
+  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
     //TODO appointmentsViewModel = viewModelFactory...
@@ -36,5 +43,4 @@ public class AppointmentsViewController
     endDateTime.setCellValueFactory(new PropertyValueFactory<>("to"));
     patientSSN.setCellValueFactory(new PropertyValueFactory<>("patientSSN"));
   }
-
 }

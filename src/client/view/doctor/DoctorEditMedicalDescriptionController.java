@@ -2,56 +2,73 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.ViewController;
 import client.view_models.doctor.DoctorEditMedicalDescriptionViewModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-public class DoctorEditMedicalDescriptionController
+public class DoctorEditMedicalDescriptionController implements ViewController
 {
   @FXML
-  public Label patientTitleLabel;
+  private Label patientTitleLabel;
   @FXML
-  public Label patientsFirstName;
+  private Label patientsFirstName;
   @FXML
-  public Label patientsMiddleName;
+  private Label patientsMiddleName;
   @FXML
-  public Label patientsLastName;
+  private Label patientsLastName;
   @FXML
-  public Label ssn;
+  private Label ssn;
   @FXML
-  public Label dateOfBirth;
+  private Label dateOfBirth;
   @FXML
-  public Label gender;
+  private Label gender;
   @FXML
-  public Label bloodType;
+  private Label bloodType;
   @FXML
-  public Label streetLabel;
+  private Label streetLabel;
   @FXML
-  public Label noLabel;
+  private Label noLabel;
   @FXML
-  public Label cityLabel;
+  private Label cityLabel;
   @FXML
-  public Label zipCodeLabel;
+  private Label zipCodeLabel;
   @FXML
-  public Label contactFirstName;
+  private Label contactFirstName;
   @FXML
-  public Label contactMiddleName;
+  private Label contactMiddleName;
   @FXML
-  public Label contactLastName;
+  private Label contactLastName;
   @FXML
-  public Label contactTelNo;
+  private Label contactTelNo;
   @FXML
-  public TextArea medicalDescriptionTextArea;
+  private TextArea medicalDescriptionTextArea;
   @FXML
-  public Button addButton;
+  private Button addButton;
 
   private ViewHandler viewHandler;
   private DoctorEditMedicalDescriptionViewModel viewModel;
 
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
+  @FXML
+  public void onAddButton()
+  {
+    //TODO
+  }
+
+  @FXML
+  public void onBackButton()
+  {
+  }
+
+  @FXML
+  public void onClearButton()
+  {
+  }
+
+  @Override
+  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
     //TODO viewModel = viewModelFactory...
@@ -72,12 +89,5 @@ public class DoctorEditMedicalDescriptionController
     contactLastName.textProperty().bind(viewModel.cLastNameProperty());
     contactTelNo.textProperty().bind(viewModel.cTelNoProperty());
     medicalDescriptionTextArea.textProperty().bind(viewModel.medicalDescriptionProperty());
-  }
-
-
-
-  public void onAddButton(ActionEvent actionEvent)
-  {
-    //TODO
   }
 }
