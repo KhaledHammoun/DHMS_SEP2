@@ -68,6 +68,7 @@ public class AddEditEmployeeViewController implements ViewController
     @FXML
     public void onBackButtonEmployee()
     {
+        viewHandler.openView(View.EMPLOYEE);
     }
 
     @Override

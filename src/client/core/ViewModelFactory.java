@@ -70,7 +70,8 @@ public class ViewModelFactory
     {
         viewModels.put(View.EMPLOYEE, new EmployeeViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_EMPLOYEE)));
         viewModels.put(View.WARD, new WardViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_WARD)));
-        viewModels.put(View.ADD_EDIT_EMPLOYEE, new AddEditEmployeeViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_EMPLOYEE)));
+        viewModels.put(View.ADD_EDIT_EMPLOYEE,
+                       new AddEditEmployeeViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_EMPLOYEE)));
         viewModels.put(View.ADD_EDIT_WARD, new AddEditWardViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_WARD)));
     }
 
@@ -90,7 +91,9 @@ public class ViewModelFactory
         viewModels.put(View.PATIENTS, new PatientsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT),
                                                             modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE),
                                                             modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE)));
-        viewModels.put(View.TREAT_PATIENT, new TreatPatientViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE), modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
+        viewModels.put(View.TREAT_PATIENT,
+                       new TreatPatientViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE),
+                                                 modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
     }
 
     private void createNurseViewModels()

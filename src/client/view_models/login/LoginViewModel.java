@@ -20,6 +20,7 @@ public class LoginViewModel
     private BooleanProperty managerProperty;
     private BooleanProperty doctorProperty;
     private BooleanProperty nurseProperty;
+    private LoginUser loginUser;
 
 
     public LoginViewModel(Object loginModel)
@@ -35,7 +36,6 @@ public class LoginViewModel
 
     public View login()
     {
-        LoginUser loginUser = null;
         if (!Validator.isValidEmail(username.getValue()))
         {
             errorLabel.setValue("Invalid username");
@@ -88,6 +88,7 @@ public class LoginViewModel
                 view = View.MANAGER_MAIN;
                 break;
             case NO_ACCESS:
+                errorLabel.setValue("Invalid username or password");
                 view = View.LOGIN;
                 break;
             case DOCTOR:
@@ -100,6 +101,10 @@ public class LoginViewModel
         return view;
     }
 
+    public void setCurrentUser()
+    {
+        CurrentUser.getInstance().setUser(loginUser);
+    }
 
     public StringProperty getUsernameProperty()
     {

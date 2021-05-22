@@ -34,6 +34,7 @@ public class AddEditSampleViewController implements ViewController
   @FXML
   public void onBackButton()
   {
+    viewHandler.openView(View.PATIENTS);
   }
 
   @FXML
