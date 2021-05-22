@@ -55,6 +55,8 @@ public class GetPatientDataDBAccessImpl implements GetPatientDataDBAccess
 
       ResultSet r = preparedStatement.executeQuery();
 
+      r.next();
+
       Address address = new Address(r.getString("add_street"),
           r.getString("add_no"), r.getString("add_zip_code"),
           r.getString("add_city"));
