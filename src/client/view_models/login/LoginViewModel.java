@@ -1,6 +1,7 @@
 package client.view_models.login;
 
 import client.model.login.Login;
+import client.view.View;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -31,64 +32,58 @@ public class LoginViewModel
         nurseProperty = new SimpleBooleanProperty();
     }
 
-    public void login()
+    public View login()
     {
-//        LoginUser loginUser = null;
-//        if (!Validator.isValidPassword(password.getValue()))
-//        {
-//            errorLabel.setValue("Invalid password");
-//            username.setValue(" ");
-//            password.setValue(" ");
-//            return;
-//        }
-//
-//        if (managerProperty.getValue())
-//        {
-//            loginUser = new LoginUser(username.getValue(), password.getValue(), AccessType.MANAGER);
-//
-//        }
-//        else if (doctorProperty.getValue())
-//        {
-//            loginUser = new LoginUser(username.getValue(), password.getValue(), AccessType.DOCTOR);
-//
-//        }
-//        else if (nurseProperty.getValue())
-//        {
-//            loginUser = new LoginUser(username.getValue(), password.getValue(), AccessType.NURSE);
-//
-//        }
-//
-//        successLogin(loginModel.login(loginUser));
-    }
-
-    public void successLogin(AccessType type)
-    {
-        if (type.equals(AccessType.NO_ACCESS))
+        LoginUser loginUser = null;
+        if (!Validator.isValidPassword(password.getValue()))
         {
-            errorLabel.setValue("Wrong username or password.");
-            setNoAccess();
-            username.setValue("");
+            errorLabel.setValue("Invalid password");
             password.setValue("");
+            return View.LOGIN;
         }
-        else if (type.equals(AccessType.MANAGER))
+
+        if (managerProperty.getValue())
         {
-            //TODO
+            loginUser = new LoginUser(username.getValue(), password.getValue(), AccessType.MANAGER);
+
         }
-        else if (type.equals(AccessType.DOCTOR))
+        else if (doctorProperty.getValue())
         {
-            //TODO
+            loginUser = new LoginUser(username.getValue(), password.getValue(), AccessType.DOCTOR);
+
         }
-        else if (type.equals(AccessType.NURSE))
+        else if (nurseProperty.getValue())
         {
-            //TODO
+            loginUser = new LoginUser(username.getValue(), password.getValue(), AccessType.NURSE);
+
         }
+        else
+        {
+            errorLabel.setValue("Please select login type.");
+            return View.LOGIN;
+        }
+        return getAccess(loginModel.login(loginUser));
     }
 
-    private void setNoAccess()
+    private View getAccess(AccessType login)
     {
-        managerProperty.setValue(false);
-        doctorProperty.setValue(false);
-        nurseProperty.setValue(false);
+        View view = null;
+        switch (login)
+        {
+            case MANAGER:
+                view = View.MANAGER_MAIN;
+                break;
+            case NO_ACCESS:
+                view = View.LOGIN;
+                break;
+            case DOCTOR:
+                view = View.DOCTOR_MAIN;
+                break;
+            case NURSE:
+                view = View.NURSE_MAIN;
+                break;
+        }
+        return view;
     }
 
 

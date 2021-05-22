@@ -29,6 +29,6 @@
       </Label>
       <Label layoutX="151.0" layoutY="116.0" text="Select user type and enter your username and password." />
       <Label fx:id="errorLabelLogin" layoutX="171.0" layoutY="264.0" prefHeight="17.0" prefWidth="273.0" />
-      <Button fx:id="loginButton" layoutX="412.0" layoutY="229.0" mnemonicParsing="false" onAction="#onLoginButton" text="Login" />
+      <Button layoutX="412.0" layoutY="229.0" mnemonicParsing="false" onAction="#onLoginButton" text="Login" />
    </children>
 </AnchorPane>

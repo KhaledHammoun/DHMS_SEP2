@@ -7,6 +7,7 @@ import client.view.ViewController;
 import client.view_models.login.LoginViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import shared.AccessType;
 
 public class LoginViewController implements ViewController
 {
@@ -17,15 +18,11 @@ public class LoginViewController implements ViewController
     @FXML
     private RadioButton managerRadioLogin;
     @FXML
-    private ToggleGroup AccessType;
-    @FXML
     private RadioButton doctorRadioLogin;
     @FXML
     private RadioButton nurseRadioLogin;
     @FXML
     private Label errorLabelLogin;
-    @FXML
-    private Button loginButton;
 
     private ViewHandler viewHandler;
     private LoginViewModel loginViewModel;
@@ -33,13 +30,8 @@ public class LoginViewController implements ViewController
     @FXML
     public void onLoginButton()
     {
-        loginViewModel.login();
-        if (!managerRadioLogin.isSelected() && !doctorRadioLogin.isSelected() && !nurseRadioLogin.isSelected())
-        {
-            return;
-        }
-        // TODO: 22/05/2021 open the appropriate view
-        viewHandler.openView(View.ADD_EDIT_WARD);
+        View viewToOpen = loginViewModel.login();
+        viewHandler.openView(viewToOpen);
     }
 
     @Override
