@@ -33,9 +33,10 @@ public class PatientDBAccessNurseImpl implements PatientDBAccessNurse
 
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE patient SET ssn = ?, f_name = ?, mid_name = ?, l_name = ?, add_street = ?, add_no = ?, add_zip_code = ?, add_city = ?, dob = ?, gender = ?, blood_type = ?, medical_description = ?, contact_f_name = ?, contact_mid_name = ? ,contact_l_name = ?, contact_phone = ?"))
+            "UPDATE patient SET ssn = ?, f_name = ?, mid_name = ?, l_name = ?, add_street = ?, add_no = ?, add_zip_code = ?, add_city = ?, dob = ?, gender = ?, blood_type = ?, medical_description = ?, contact_f_name = ?, contact_mid_name = ? ,contact_l_name = ?, contact_phone = ? WHERE ssn = ?"))
     {
       preparePatientStatement(preparedStatement, patient);
+      preparedStatement.setLong(17, patient.getSsn());
 
       preparedStatement.execute();
     }
