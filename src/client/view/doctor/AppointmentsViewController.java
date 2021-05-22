@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.AppointmentsViewModel;
 import javafx.fxml.FXML;
@@ -36,7 +37,7 @@ public class AppointmentsViewController implements ViewController
   public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
-    //TODO appointmentsViewModel = viewModelFactory...
+    appointmentsViewModel = (AppointmentsViewModel) viewModelFactory.getViewModel(View.APPOINTMENTS);
     appointmentsViewModel.loadAppointments();
     appointmentsTable.setItems(appointmentsViewModel.getAppointments());
     startDateTime.setCellValueFactory(new PropertyValueFactory<>("from"));

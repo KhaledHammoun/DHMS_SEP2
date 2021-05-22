@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.AssignNurseViewModel;
 import javafx.fxml.FXML;
@@ -51,7 +52,7 @@ public class AssignNurseViewController implements ViewController
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
         this.viewHandler = viewHandler;
-       //TODO assignNurseViewModel = viewModelFactory...
+        assignNurseViewModel = (AssignNurseViewModel) viewModelFactory.getViewModel(View.ASSIGN_NURSE);
         nursesTable.setItems(assignNurseViewModel.getAvailableNurses());
         availableNurseFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         availableNurseLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));

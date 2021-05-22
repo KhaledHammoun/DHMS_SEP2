@@ -35,7 +35,7 @@ public class ViewHandler
 
     public void start()
     {
-        ViewFactory.init(stage);
+        ViewFactory.init();
         openView(View.LOGIN);
     }
 

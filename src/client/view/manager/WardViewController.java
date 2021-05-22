@@ -2,6 +2,7 @@ package client.view.manager;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.View;
 import client.view.ViewController;
 import client.view_models.manager.WardViewModel;
 import javafx.fxml.FXML;
@@ -47,10 +48,9 @@ public class WardViewController implements ViewController
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
         this.viewHandler=viewHandler;
-        //TODO wardViewModel = viewModelFactory...
+        this.wardViewModel = (WardViewModel) viewModelFactory.getViewModel(View.WARD);
         wardTable.setItems(wardViewModel.getWards());
         wardNameColumn.setCellValueFactory(new PropertyValueFactory<>("wardName"));
         roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-
     }
 }

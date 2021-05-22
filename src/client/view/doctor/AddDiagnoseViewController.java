@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.AddDiagnoseViewModel;
 import javafx.fxml.FXML;
@@ -10,7 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-public class AddDiagnoseController implements ViewController
+public class AddDiagnoseViewController implements ViewController
 {
     @FXML
     private TextField diagnoseName;
@@ -47,7 +48,7 @@ public class AddDiagnoseController implements ViewController
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
         this.viewHandler = viewHandler;
-        //TODO doctorAddDiagnoseViewModel = viewModelFactory...
+        addDiagnoseViewModel = (AddDiagnoseViewModel) viewModelFactory.getViewModel(View.ADD_DIAGNOSE);
         diagnoseName.textProperty().bindBidirectional(addDiagnoseViewModel.nameProperty());
         diagnoseDescription.textProperty().bindBidirectional(addDiagnoseViewModel.descriptionProperty());
         diagnoseSeverityLevel.valueProperty().bindBidirectional(addDiagnoseViewModel.severityLevelProperty());

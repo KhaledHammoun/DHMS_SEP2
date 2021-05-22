@@ -2,6 +2,7 @@ package client.view.manager;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.View;
 import client.view.ViewController;
 import client.view_models.manager.AddEditEmployeeViewModel;
 import javafx.fxml.FXML;
@@ -73,7 +74,7 @@ public class AddEditEmployeeViewController implements ViewController
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
         this.viewHandler = viewHandler;
-        //TODO viewModel = viewModelFactory...
+        this.viewModel = (AddEditEmployeeViewModel) viewModelFactory.getViewModel(View.ADD_EDIT_EMPLOYEE);
         employeeSSNTextField.textProperty().bindBidirectional(viewModel.employeeSnnProperty());
         employeeFirstNameTextField.textProperty().bindBidirectional(viewModel.employeeFirstNameProperty());
         employeeMidNameTextField.textProperty().bindBidirectional(viewModel.employeeMiddleNameProperty());

@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.TreatPatientViewModel;
 import javafx.fxml.FXML;
@@ -51,7 +52,7 @@ public class TreatPatientViewController implements ViewController
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
         this.viewHandler = viewHandler;
-        //TODO doctorTreatViewModel = viewModelFactory...
+        treatPatientViewModel = (TreatPatientViewModel) viewModelFactory.getViewModel(View.TREAT_PATIENT);
 
         diagnosisTable.setItems(treatPatientViewModel.getDiagnoses());
         diagnosisName.setCellValueFactory(new PropertyValueFactory<>("name"));
