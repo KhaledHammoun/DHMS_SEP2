@@ -6,7 +6,6 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.AddDiagnoseViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -23,8 +22,6 @@ public class AddDiagnoseViewController implements ViewController
     private DatePicker diagnoseStartDate;
     @FXML
     private DatePicker endDate;
-    @FXML
-    private Button saveButton;
 
     private ViewHandler viewHandler;
     private AddDiagnoseViewModel addDiagnoseViewModel;

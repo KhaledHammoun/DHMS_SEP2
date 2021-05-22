@@ -6,8 +6,6 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.PatientsViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,17 +21,6 @@ public class PatientsViewController implements ViewController
   private TableColumn<String,Patient> doctorViewPatientFirstName;
   @FXML
   private TableColumn<String,Patient> doctorViewPatientLastName;
-  @FXML
-  private Label doctorViewPatientLabel;
-  @FXML
-  private Button doctorViewTreatButton;
-  @FXML
-  private Button doctorViewAddEditSampleButton;
-  @FXML
-  private Button doctorViewDiagnoseButton;
-  @FXML
-  private Button doctorViewEditMedicalDescription;
-
   private ViewHandler viewHandler;
   private PatientsViewModel patientsViewModel;
 

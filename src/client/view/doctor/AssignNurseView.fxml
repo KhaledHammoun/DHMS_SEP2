@@ -21,7 +21,7 @@
             <TableColumn fx:id="availableNurseSSN" prefWidth="75.0" text="SSN" />
         </columns>
       </TableView>
-      <Button fx:id="assignButton" layoutX="391.0" layoutY="338.0" mnemonicParsing="false" onAction="#onAssignButton" text="Assign nurse in your ward" />
+      <Button layoutX="391.0" layoutY="338.0" mnemonicParsing="false" onAction="#onAssignButton" text="Assign nurse in your ward" />
       <Button layoutX="312.0" layoutY="338.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
       <TableView fx:id="assignedNurseTable" layoutX="403.0" layoutY="73.0" prefHeight="241.0" prefWidth="279.0">
         <columns>

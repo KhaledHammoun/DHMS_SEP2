@@ -15,8 +15,6 @@ public class TreatPatientViewController implements ViewController
     @FXML
     private TextField medicationTextField;
     @FXML
-    private Label selectDiagnosisLabel;
-    @FXML
     private TableView<Diagnosis> diagnosisTable;
     @FXML
     private TableColumn<Diagnosis, String> diagnosisName;
@@ -24,8 +22,6 @@ public class TreatPatientViewController implements ViewController
     private TableColumn<Diagnosis, Integer> diagnosisSeverity;
     @FXML
     private TableColumn<Diagnosis, String> diagnosisDescription;
-    @FXML
-    private Button addMedicationButton;
     @FXML
     private TextArea descriptionTextArea;
 
