@@ -31,12 +31,7 @@ public class CurrentUser implements Serializable
     return user;
   }
 
-  public void setUser(Employee user)
-  {
-    this.user = user;
-  }
-
-  public void fetchCurrentUser(LoginUser loginUser)
+  public void setUser(LoginUser loginUser)
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection())
     {

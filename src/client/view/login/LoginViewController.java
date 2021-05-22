@@ -33,10 +33,6 @@ public class LoginViewController implements ViewController
     public void onLoginButton()
     {
         View viewToOpen = loginViewModel.login();
-        if (!viewToOpen.equals(View.LOGIN))
-        {
-            loginViewModel.setCurrentUser();
-        }
         viewHandler.openView(viewToOpen);
     }
 
