@@ -2,53 +2,49 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import javafx.event.ActionEvent;
+import client.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Diagnosis;
 
-public class DoctorTreatViewController
+public class DoctorTreatViewController implements ViewController
 {
+    @FXML
+    private TextField medicationTextField;
+    @FXML
+    private Label selectDiagnosisLabel;
+    @FXML
+    private TableView<Diagnosis> diagnosisTable;
+    @FXML
+    private TableColumn<Diagnosis, String> diagnosisName;
+    @FXML
+    private TableColumn<Diagnosis, Integer> diagnosisSeverity;
+    @FXML
+    private TableColumn<Diagnosis, String> diagnosisDescription;
+    @FXML
+    private Button addMedicationButton;
+    @FXML
+    private TextArea descriptionTextArea;
 
-  @FXML
-  public Label selectDiagnosisLabel;
-  @FXML
-  public TableView<Diagnosis> diagnosisTable;
-  @FXML
-  public TableColumn<String, Diagnosis> diagnosisName;
-  @FXML
-  public TableColumn<Integer, Diagnosis> diagnosisSeverity;
-  @FXML
-  public TableColumn<String, Diagnosis> diagnosisDescription;
-  @FXML
-  public Button addMedicationButton;
-  @FXML
-  public TextField medicationTextField;
-  @FXML
-  public TextArea descriptionTextArea;
+    @FXML
+    public void onAddButton()
+    {
+        //TODO
+    }
 
-  private ViewHandler viewHandler;
+    @FXML
+    public void onBackButton()
+    {
+    }
 
-  private DoctorTreatViewModel doctorTreatViewModel;
+    @FXML
+    public void onClearButton()
+    {
+    }
 
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
-  {
-    this.viewHandler = viewHandler;
-    //TODO doctorTreatViewModel = viewModelFactory...
+    @Override
+    public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+    {
 
-    diagnosisTable.setItems(doctorTreatViewModel.getDiagnoses());
-    diagnosisName.setCellValueFactory(new PropertyValueFactory<>("name"));
-    diagnosisSeverity.setCellValueFactory(new PropertyValueFactory<>("severityLevel"));
-    diagnosisDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-    medicationTextField.textProperty().bind(doctorTreatViewModel.medicationProperty());
-    descriptionTextArea.textProperty().bind(doctorTreatViewModel.descriptionProperty());
-
-  }
-
-  public void onAddButton(ActionEvent actionEvent)
-  {
-    //TODO get the patient selected, the disease selected and add medication and description in treat table
-
-  }
+    }
 }

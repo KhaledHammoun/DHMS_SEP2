@@ -34,33 +34,15 @@ public class WardServerManagerRMI implements WardServerManager
     }
 
     @Override
-    public void addRoomForWard(Ward ward)
+    public void editWard(Ward oldWard, Ward newWard)
     {
-        modelManager.addRoomForWard(ward);
-    }
-
-    @Override
-    public String editWard(Ward ward)
-    {
-        return modelManager.editWard(ward);
-    }
-
-    @Override
-    public void editRoomNumber(Ward ward)
-    {
-        modelManager.editRoomNumber(ward);
+        modelManager.editWard(oldWard, newWard);
     }
 
     @Override
     public void removeWard(Ward ward)
     {
         modelManager.removeWard(ward);
-    }
-
-    @Override
-    public void removeRoomNumber(Ward ward)
-    {
-        modelManager.removeRoomNumber(ward);
     }
 
     @Override

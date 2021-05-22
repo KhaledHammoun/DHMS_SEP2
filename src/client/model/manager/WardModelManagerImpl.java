@@ -28,39 +28,15 @@ public class WardModelManagerImpl implements WardModelManager
     }
   }
 
-  @Override public void addRoomForAWard(Ward ward)
+  @Override public void editWard(Ward oldWard, Ward newWard)
   {
     try
     {
-      clientManager.addRoomForAWard(ward);
-    }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while adding ward room. Please try again.");
-    }
-  }
-
-  @Override public String editWard(Ward ward)
-  {
-    try
-    {
-      return clientManager.editWard(ward);
+      clientManager.editWard(oldWard, newWard);
     }
     catch (RemoteException e)
     {
       throw new RuntimeException("Error while editing ward. Please try again.");
-    }
-  }
-
-  @Override public void editRoomNumber(Ward ward)
-  {
-    try
-    {
-      clientManager.editRoomNumber(ward);
-    }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while editing ward room number. Please try again.");
     }
   }
 
@@ -73,18 +49,6 @@ public class WardModelManagerImpl implements WardModelManager
     catch (RemoteException e)
     {
       throw new RuntimeException("Error while removing ward. Please try again.");
-    }
-  }
-
-  @Override public void removeRoom(Ward ward)
-  {
-    try
-    {
-      clientManager.removeRoom(ward);
-    }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while removing ward room. Please try again.");
     }
   }
 

@@ -1,39 +1,50 @@
 package client.view.doctor;
 
 import client.core.ViewHandler;
-import javafx.event.ActionEvent;
+import client.core.ViewModelFactory;
+import client.view.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import shared.Nurse;
 
-import java.sql.Date;
-
-public class AssignNurseViewController
+public class AssignNurseViewController implements ViewController
 {
-  @FXML
-  public TableView<Nurse> nursesTable;
-  @FXML
-  public TableColumn<String, Nurse> nurseFirstName;
-  @FXML
-  public TableColumn<String, Nurse> nurseLastName;
-  @FXML
-  public TableColumn<Date, Nurse> nurseDob;
-  @FXML
-  public TableColumn<String, Nurse> nurseEducation;
-  @FXML
-  public TableColumn<String, Nurse> nurseExperience;
-  @FXML
-  public Button assignButton;
-  @FXML
-  public ComboBox<Nurse> availableNursesComboBox;
 
-  private ViewHandler viewHandler;
+    @FXML
+    private TableColumn<Nurse, String> availableNurseFirstName;
+    @FXML
+    private TableColumn<Nurse, String> availableNurseLastName;
+    @FXML
+    private TableColumn<Nurse, Long> availableNurseSSN;
+    @FXML
+    private TableView<Nurse> assignedNurseTable;
+    @FXML
+    private TableColumn<Nurse, String> assignedNurseFirstName;
+    @FXML
+    private TableColumn<Nurse, String> assignedNurseLastName;
+    @FXML
+    private TableColumn<Nurse, Long> assignedNurseSSN;
+    @FXML
+    private TableView<Nurse> nursesTable;
+    @FXML
+    private Button assignButton;
 
-  public void onAssignButton(ActionEvent actionEvent)
-  {
-    //ToDo
-  }
+    @FXML
+    public void onAssignButton()
+    {
+        //ToDo
+    }
+
+    @FXML
+    public void onBackButton()
+    {
+    }
+
+    @Override
+    public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+    {
+
+    }
 }

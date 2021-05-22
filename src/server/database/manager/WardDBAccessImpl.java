@@ -29,31 +29,23 @@ public class WardDBAccessImpl implements WardDBAccessManager
     }
   }
 
-  @Override public void addRoomForWard(Ward ward)
+  @Override public void editWard(Ward oldWard, Ward newWard)
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO ward(ward_name, room_number) VALUES (?, ?)"))
+            "UPDATE ward SET ward_name = ?, room_number = ? WHERE ward_name = ? AND room_number = ?"))
     {
-      preparedStatement.setString(1, ward.getWardName());
-      preparedStatement.setInt(2, ward.getRoomNumber());
+      preparedStatement.setString(1, newWard.getWardName());
+      preparedStatement.setInt(2, newWard.getRoomNumber());
 
+      preparedStatement.setString(3, oldWard.getWardName());
+      preparedStatement.setInt(4, oldWard.getRoomNumber());
       preparedStatement.execute();
     }
     catch (SQLException e)
     {
       e.printStackTrace();
     }
-  }
-
-  @Override public String editWard(Ward ward)
-  {
-    return null;
-  }
-
-  @Override public void editRoomNumber(Ward ward)
-  {
-
   }
 
   @Override public void removeWard(Ward ward)
@@ -71,11 +63,6 @@ public class WardDBAccessImpl implements WardDBAccessManager
     {
       e.printStackTrace();
     }
-  }
-
-  @Override public void removeRoomNumber(Ward ward)
-  {
-
   }
 
   @Override public ArrayList<Ward> getAllWards()

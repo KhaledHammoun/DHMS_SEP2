@@ -2,7 +2,8 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import javafx.event.ActionEvent;
+import client.view.ViewController;
+import client.view_models.doctor.DoctorPatientsViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,26 +12,26 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Patient;
 
-public class DoctorPatientsViewController
+public class DoctorPatientsViewController implements ViewController
 {
   @FXML
-  public TableView<Patient> doctorViewPatientTable;
+  private TableView<Patient> doctorViewPatientTable;
   @FXML
-  public TableColumn<Long,Patient> doctorViewPatientSSN;
+  private TableColumn<Long,Patient> doctorViewPatientSSN;
   @FXML
-  public TableColumn<String,Patient> doctorViewPatientFirstName;
+  private TableColumn<String,Patient> doctorViewPatientFirstName;
   @FXML
-  public TableColumn<String,Patient> doctorViewPatientLastName;
+  private TableColumn<String,Patient> doctorViewPatientLastName;
   @FXML
-  public Label doctorViewPatientLabel;
+  private Label doctorViewPatientLabel;
   @FXML
-  public Button doctorViewTreatButton;
+  private Button doctorViewTreatButton;
   @FXML
-  public Button doctorViewAddEditSampleButton;
+  private Button doctorViewAddEditSampleButton;
   @FXML
-  public Button doctorViewDiagnoseButton;
+  private Button doctorViewDiagnoseButton;
   @FXML
-  public Button doctorViewEditMedicalDescription;
+  private Button doctorViewEditMedicalDescription;
 
   private ViewHandler viewHandler;
   private DoctorPatientsViewModel doctorPatientsViewModel;
@@ -38,7 +39,45 @@ public class DoctorPatientsViewController
   private long selectedPatient ;
   private Patient patient;
 
-  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
+
+  @FXML
+  public void onTreatButton()
+  {
+    //TODO change view
+    patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
+    doctorPatientsViewModel.getAllDiseasesOfPatient(patient);
+  }
+
+  @FXML
+  public void onAddEditSample()
+  {
+    //TODO change view
+    patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
+    doctorPatientsViewModel.getAllSamples(patient);
+  }
+
+  @FXML
+  public void onDiagnoseButton()
+  {
+    //TODO change view
+  }
+
+  @FXML
+  public void onEditMedicalDescription()
+  {
+    //TODO change view
+    selectedPatient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue()
+        .getSsn();
+    doctorPatientsViewModel.editMedicalDescription(selectedPatient);
+  }
+
+  @FXML
+  public void onBackButton()
+  {
+  }
+
+  @Override
+  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
 
@@ -50,34 +89,5 @@ public class DoctorPatientsViewController
     doctorViewPatientSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
     doctorViewPatientFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     doctorViewPatientLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-
-
-  }
-
-  public void onTreatButton(ActionEvent actionEvent)
-  {
-    //TODO change view
-    patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
-    doctorPatientsViewModel.getAllDiseasesOfPatient(patient);
-  }
-
-  public void onAddEditSample(ActionEvent actionEvent)
-  {
-    //TODO change view
-    patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
-    doctorPatientsViewModel.getAllSamples(patient);
-  }
-
-  public void onDiagnoseButton(ActionEvent actionEvent)
-  {
-    //TODO change view
-  }
-
-  public void onEditMedicalDescription(ActionEvent actionEvent)
-  {
-    //TODO change view
-    selectedPatient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue()
-        .getSsn();
-    doctorPatientsViewModel.editMedicalDescription(selectedPatient);
   }
 }
