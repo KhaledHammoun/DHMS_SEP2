@@ -2,6 +2,7 @@ package client.core;
 
 import client.view.View;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.concurrent.locks.Lock;
@@ -16,6 +17,9 @@ public class ViewHandler
     private ViewHandler()
     {
         this.stage = new Stage();
+        Image image = new Image(getClass().getResourceAsStream("../images/image.png"));
+        stage.getIcons().add(image);
+        stage.setResizable(false);
     }
 
     public static ViewHandler getViewHandler()
@@ -42,9 +46,7 @@ public class ViewHandler
     public void openView(View view)
     {
         Scene scene = ViewFactory.getScene(view);
-        stage.setTitle(view.name());
         stage.setScene(scene);
-        stage.setResizable(false);
         stage.show();
     }
 }
