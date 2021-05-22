@@ -3,6 +3,7 @@ package client.view.manager;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
+import client.view_models.manager.AddEditEmployeeViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -50,6 +51,9 @@ public class AddEditEmployeeViewController implements ViewController
     @FXML
     private TextArea employeeEducationTextArea;
 
+    private ViewHandler viewHandler;
+    private AddEditEmployeeViewModel viewModel;
+
     @FXML
     public void onSaveButtonEmployee()
     {
@@ -68,6 +72,25 @@ public class AddEditEmployeeViewController implements ViewController
     @Override
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
+        this.viewHandler = viewHandler;
+        //TODO viewModel = viewModelFactory...
+        employeeSSNTextField.textProperty().bindBidirectional(viewModel.employeeSnnProperty());
+        employeeFirstNameTextField.textProperty().bindBidirectional(viewModel.employeeFirstNameProperty());
+        employeeMidNameTextField.textProperty().bindBidirectional(viewModel.employeeMiddleNameProperty());
+        employeeLastNameTextField.textProperty().bindBidirectional(viewModel.employeeLastNameProperty());
+        employeeDOBDateField.valueProperty().bindBidirectional(viewModel.employeeDobProperty());
+        employeeStreetTextField.textProperty().bindBidirectional(viewModel.employeeStreetProperty());
+        employeeStreetNoTextField.textProperty().bindBidirectional(viewModel.employeeStreetNoProperty());
+        employeeCityTextField.textProperty().bindBidirectional(viewModel.employeeCityProperty());
+        employeeZipCodeTextField.textProperty().bindBidirectional(viewModel.employeeZipCodeProperty());
+        employeeEContactFNameTextField.textProperty().bindBidirectional(viewModel.contactFirstNameProperty());
+        employeeEContactLNameTextField.textProperty().bindBidirectional(viewModel.contactLastNameProperty());
+        employeeEContactPhoneTextField.textProperty().bindBidirectional(viewModel.contactPhoneNoProperty());
+        employeeWardComboBox.valueProperty().bindBidirectional(viewModel.employeeWardProperty());
+        usernameTextField.textProperty().bindBidirectional(viewModel.usernameProperty());
+        passwordTextField.textProperty().bindBidirectional(viewModel.passwordProperty());
+        employeeExperienceTextArea.textProperty().bindBidirectional(viewModel.experienceProperty());
+        employeeEducationTextArea.textProperty().bindBidirectional(viewModel.educationProperty());
 
     }
 }
