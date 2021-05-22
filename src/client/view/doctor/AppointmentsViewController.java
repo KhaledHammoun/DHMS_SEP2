@@ -31,6 +31,7 @@ public class AppointmentsViewController implements ViewController
   @FXML
   public void onBackButton()
   {
+    viewHandler.openView(View.DOCTOR_MAIN);
   }
 
   @Override

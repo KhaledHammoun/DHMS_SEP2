@@ -52,6 +52,7 @@ public class EmployeeViewController implements ViewController
     @FXML
     public void onBackButton()
     {
+        viewHandler.openView(View.MANAGER_MAIN);
     }
 
     @Override

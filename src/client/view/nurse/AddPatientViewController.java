@@ -2,8 +2,9 @@ package client.view.nurse;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.View;
 import client.view.ViewController;
-import javafx.event.ActionEvent;
+import client.view_models.nurse.AddPatientViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -25,25 +26,30 @@ public class AddPatientViewController implements ViewController
   @FXML private TextField bloodTypeTxtFieldPatient;
   @FXML private TextField ssnTextFieldPatient;
 
-  @FXML public void onBackButtonAddPatient(ActionEvent actionEvent)
+  private ViewHandler viewHandler;
+  private AddPatientViewModel viewModel;
+
+  @FXML public void onBackButtonAddPatient()
+  {
+    viewHandler.openView(View.NURSE_MAIN);
+  }
+
+  @FXML public void onClearButtonAddPatient()
   {
   }
 
-  @FXML public void onClearButtonAddPatient(ActionEvent actionEvent)
+  @FXML public void onMakeAppointmentAddPatient()
   {
   }
 
-  @FXML public void onMakeAppointmentAddPatient(ActionEvent actionEvent)
-  {
-  }
-
-  @FXML public void onSaveButtonAddPatient(ActionEvent actionEvent)
+  @FXML public void onSaveButtonAddPatient()
   {
   }
 
   @Override
   public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
-
+    this.viewHandler = viewHandler;
+    this.viewModel = (AddPatientViewModel) viewModelFactory.getViewModel(View.ADD_PATIENT);
   }
 }

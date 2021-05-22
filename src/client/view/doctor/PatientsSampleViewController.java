@@ -37,11 +37,12 @@ public class PatientsSampleViewController implements ViewController
 
   public void onEditSampleButton()
   {
-    //TODO change view
+    viewHandler.openView(View.ADD_EDIT_SAMPLE);
   }
 
   public void onBackButton()
   {
+    viewHandler.openView(View.DOCTOR_MAIN);
   }
 
   @Override
