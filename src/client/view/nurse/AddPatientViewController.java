@@ -31,7 +31,7 @@ public class AddPatientViewController implements ViewController
 
   @FXML public void onBackButtonAddPatient()
   {
-    viewHandler.openView(View.NURSE_MAIN);
+    viewHandler.openView(View.MAKE_APPOINTMENT);
   }
 
   @FXML public void onClearButtonAddPatient()

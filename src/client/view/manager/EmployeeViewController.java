@@ -37,11 +37,14 @@ public class EmployeeViewController implements ViewController
     @FXML
     public void onAddEmployeeButton()
     {
+        viewHandler.openView(View.ADD_EDIT_EMPLOYEE);
     }
 
     @FXML
     public void onEditEmployeeButton()
     {
+        // TODO: 22/05/2021 call the method for getting the employee to edit data. viewModel
+        viewHandler.openView(View.ADD_EDIT_EMPLOYEE);
     }
 
     @FXML

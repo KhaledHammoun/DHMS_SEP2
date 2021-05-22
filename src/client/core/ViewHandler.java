@@ -44,6 +44,7 @@ public class ViewHandler
         Scene scene = ViewFactory.getScene(view);
         stage.setTitle(view.name());
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 }

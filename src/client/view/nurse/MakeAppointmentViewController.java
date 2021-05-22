@@ -29,7 +29,7 @@ public class MakeAppointmentViewController implements ViewController
   private ViewHandler viewHandler;
   private MakeAppointmentViewModel viewModel;
 
-  @FXML public void onEditPatientInfoButton()
+  @FXML public void onEditPatientButton()
   {
     viewHandler.openView(View.ADD_PATIENT);
   }
