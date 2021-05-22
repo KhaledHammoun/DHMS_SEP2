@@ -26,12 +26,14 @@ public class WardViewController implements ViewController
     @FXML
     public void onAddWardButton()
     {
-
+        viewHandler.openView(View.ADD_EDIT_WARD);
     }
 
     @FXML
     public void onEditWardButton()
     {
+        // TODO: 22/05/2021 call the method for getting the ward to edit data. viewModel
+        viewHandler.openView(View.ADD_EDIT_WARD);
     }
 
     @FXML

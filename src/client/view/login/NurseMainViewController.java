@@ -18,20 +18,19 @@ public class NurseMainViewController implements ViewController
     @FXML
     public void onPatientsButton()
     {
-        viewHandler.openView(View.ALL_APPOINTMENTS);
+        viewHandler.openView(View.MAKE_APPOINTMENT);
     }
 
     @FXML
     public void onAddPatientButton()
     {
         viewHandler.openView(View.ADD_PATIENT);
-
     }
 
     @FXML
     public void onAppointmentsButton()
     {
-        viewHandler.openView(View.MAKE_APPOINTMENT);
+        viewHandler.openView(View.ALL_APPOINTMENTS);
     }
 
     @FXML
