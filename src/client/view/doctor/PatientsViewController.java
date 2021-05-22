@@ -12,7 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Patient;
 
-public class DoctorPatientsViewController implements ViewController
+public class PatientsViewController implements ViewController
 {
   @FXML
   private TableView<Patient> doctorViewPatientTable;

@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import shared.Diagnosis;
 
-public class DoctorTreatViewController implements ViewController
+public class TreatPatientViewController implements ViewController
 {
     @FXML
     private TextField medicationTextField;

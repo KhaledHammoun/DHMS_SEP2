@@ -13,7 +13,7 @@ import shared.Sample;
 
 import java.sql.Date;
 
-public class DoctorAddEditSampleViewController implements ViewController
+public class PatientsSampleViewController implements ViewController
 {
   @FXML
   private TableView<Sample> sampleTable;
