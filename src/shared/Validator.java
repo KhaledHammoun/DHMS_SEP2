@@ -1,14 +1,16 @@
 package shared;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Validator
 {
-  public static final int MIN_LENGTH_PASSWORD = 8;
-  public static final int MAX_LENGTH_PASSWORD = 14;
-
   public static boolean isValidPassword(String password)
   {
-    //TODO
-    return true;
+    String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,14}$";
+    Pattern pattern = Pattern.compile(regex);
+    Matcher matcher = pattern.matcher(password);
+    return matcher.matches();
   }
   public boolean isValidTelNo(String telNo)
   {
@@ -28,24 +30,24 @@ public class Validator
     return false;
   }
 
-  public boolean isLetter(char ch)
+  private boolean isLetter(char ch)
   {
     //TODO
     return false;
   }
 
-  public boolean isDigit(char ch)
+  private boolean isDigit(char ch)
   {
     //TODO
     return false;
   }
 
-  public boolean isWhiteSpace(char ch)
+  private boolean isWhiteSpace(char ch)
   {
     //TODO
     return false;
   }
-  public boolean isUnderscore(char ch)
+  private boolean isUnderscore(char ch)
   {
     //TODO
     return false;
