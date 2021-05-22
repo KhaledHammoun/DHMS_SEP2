@@ -17,6 +17,9 @@ public class ViewHandler
     private ViewHandler()
     {
         this.stage = new Stage();
+        Image image = new Image(getClass().getResourceAsStream("../images/image.png"));
+        stage.getIcons().add(image);
+        stage.setResizable(false);
     }
 
     public static ViewHandler getViewHandler()
@@ -44,9 +47,6 @@ public class ViewHandler
     {
         Scene scene = ViewFactory.getScene(view);
         stage.setScene(scene);
-        Image image = new Image(getClass().getResourceAsStream("../images/image.png"));
-        stage.getIcons().add(image);
-        stage.setResizable(false);
         stage.show();
     }
 }
