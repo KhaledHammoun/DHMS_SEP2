@@ -10,6 +10,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Doctor;
 import shared.Patient;
 
@@ -36,6 +37,7 @@ public class MakeAppointmentViewController implements ViewController
 
   @FXML public void onSaveButton()
   {
+
   }
 
   @FXML public void onBackButton()
@@ -45,6 +47,7 @@ public class MakeAppointmentViewController implements ViewController
 
   @FXML public void onClearButton()
   {
+
   }
 
   @FXML public void onSeeAllAppointmentsButton()
@@ -57,5 +60,17 @@ public class MakeAppointmentViewController implements ViewController
   {
     this.viewHandler = viewHandler;
     this.viewModel = (MakeAppointmentViewModel) viewModelFactory.getViewModel(View.MAKE_APPOINTMENT);
+    doctorsTableViewMakeAppointment.setItems(viewModel.getAvailableDoctors());
+    firstNameColumnDoctors.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+    lNameColumnDoctors.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+    ssnColumnDoctors.setCellValueFactory(new PropertyValueFactory<>("ssn"));
+    patientsTableViewMakeAppointment.setItems(viewModel.getAllPatients());
+    fNameColumnPatients.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+    lNameColumnPatients.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+    ssnColumnPatients.setCellValueFactory(new PropertyValueFactory<>("ssn"));
+    makeAppointmentDateField.valueProperty().bindBidirectional(
+        viewModel.appointmentDateProperty());
+    timeMakeAppointmentTxtField.textProperty().bindBidirectional(viewModel.appointmentTimeProperty());
+
   }
 }
