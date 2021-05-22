@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.DoctorPatientsViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.DoctorPatientsViewController">
    <children>
       <TableView fx:id="doctorViewPatientTable" layoutX="17.0" layoutY="42.0" prefHeight="306.0" prefWidth="544.0">
         <columns>
@@ -25,5 +25,6 @@
       <Button fx:id="doctorViewAddEditSampleButton" layoutX="335.0" layoutY="361.0" mnemonicParsing="false" onAction="#onAddEditSample" text="Add/Edit sample" />
       <Button fx:id="doctorViewDiagnoseButton" layoutX="467.0" layoutY="361.0" mnemonicParsing="false" onAction="#onDiagnoseButton" text="Diagnose" />
       <Button fx:id="doctorViewEditMedicalDescription" layoutX="45.0" layoutY="361.0" mnemonicParsing="false" onAction="#onEditMedicalDescription" text="Edit medical description" />
+      <Button layoutX="58.0" layoutY="409.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
    </children>
 </AnchorPane>

@@ -76,8 +76,16 @@ public class DoctorEditMedicalDescriptionController
 
 
 
-  public void onAddButton(ActionEvent actionEvent)
+  public void onAddButton()
   {
     //TODO
+  }
+
+  public void onBackButton()
+  {
+  }
+
+  public void onClearButton()
+  {
   }
 }

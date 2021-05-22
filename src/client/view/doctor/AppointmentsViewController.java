@@ -3,6 +3,7 @@ package client.view.doctor;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view_models.doctor.AppointmentsViewModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -37,4 +38,7 @@ public class AppointmentsViewController
     patientSSN.setCellValueFactory(new PropertyValueFactory<>("patientSSN"));
   }
 
+  public void onBackButton()
+  {
+  }
 }

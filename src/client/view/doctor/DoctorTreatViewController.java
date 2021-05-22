@@ -23,8 +23,16 @@ public class DoctorTreatViewController
   @FXML
   public TextArea descriptionTextArea;
 
-  public void onAddButton(ActionEvent actionEvent)
+  public void onAddButton()
   {
     //TODO
+  }
+
+    public void onBackButton()
+    {
+    }
+
+  public void onClearButton()
+  {
   }
 }

@@ -42,8 +42,16 @@ public class AddEditSampleViewController
 
   }
 
-  public void onSaveButton(ActionEvent actionEvent)
+  public void onSaveButton()
   {
     //TODO
+  }
+
+  public void onBackButton()
+  {
+  }
+
+  public void onClearButton()
+  {
   }
 }

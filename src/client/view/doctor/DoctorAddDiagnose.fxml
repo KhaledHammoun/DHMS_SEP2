@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.DoctorAddDiagnoseController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.DoctorAddDiagnoseController">
    <children>
       <Label layoutX="263.0" layoutY="45.0" text="New diagnose">
          <font>
@@ -16,10 +16,12 @@
          </font>
       </Label>
       <TextField fx:id="diagnoseName" layoutX="67.0" layoutY="97.0" promptText="Name" />
-      <TextField fx:id="diagnoseDescription" layoutX="67.0" layoutY="152.0" promptText="Description" />
-      <ComboBox fx:id="diagnoseSeverityLevel" layoutX="67.0" layoutY="200.0" prefWidth="150.0" promptText="Severity Level" />
-      <DatePicker fx:id="diagnoseStartDate" layoutX="67.0" layoutY="252.0" promptText="Start  Date" />
-      <Button fx:id="saveButton" layoutX="473.0" layoutY="326.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
-      <DatePicker fx:id="endDate" layoutX="67.0" layoutY="305.0" promptText="End Date" />
+      <TextField fx:id="diagnoseDescription" layoutX="67.0" layoutY="142.0" promptText="Description" />
+      <ComboBox fx:id="diagnoseSeverityLevel" layoutX="67.0" layoutY="189.0" prefWidth="150.0" promptText="Severity Level" />
+      <DatePicker fx:id="diagnoseStartDate" layoutX="67.0" layoutY="238.0" promptText="Start  Date" />
+      <Button fx:id="saveButton" layoutX="473.0" layoutY="326.0" mnemonicParsing="false" onAction="#onSaveButton" text="Save" />
+      <DatePicker fx:id="endDate" layoutX="67.0" layoutY="287.0" promptText="End Date" />
+      <Button layoutX="67.0" layoutY="360.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
+      <Button layoutX="128.0" layoutY="360.0" mnemonicParsing="false" onAction="#onClearButton" text="Clear" />
    </children>
 </AnchorPane>

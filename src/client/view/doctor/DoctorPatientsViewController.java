@@ -81,4 +81,8 @@ public class DoctorPatientsViewController
         .getSsn();
     doctorPatientsViewModel.editMedicalDescription(selectedPatient);
   }
+
+  public void onBackButton()
+  {
+  }
 }

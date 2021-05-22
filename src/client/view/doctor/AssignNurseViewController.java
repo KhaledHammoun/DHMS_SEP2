@@ -24,8 +24,12 @@ public class AssignNurseViewController
   public Button assignButton;
 
 
-  public void onAssignButton(ActionEvent actionEvent)
+  public void onAssignButton()
   {
     //ToDo
   }
+
+    public void onBackButton()
+    {
+    }
 }

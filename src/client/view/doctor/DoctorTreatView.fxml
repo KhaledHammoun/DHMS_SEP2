@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.DoctorTreatViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.DoctorTreatViewController">
    <children>
       <TextField fx:id="medicationTextField" layoutX="34.0" layoutY="245.0" prefHeight="25.0" prefWidth="172.0" promptText="Medication" />
       <Label fx:id="selectDiagnosisLabel" layoutX="67.0" layoutY="39.0" text="Select diagnosis">
@@ -24,7 +24,9 @@
             <TableColumn fx:id="diagnosisDescription" prefWidth="184.0" text="Description" />
         </columns>
       </TableView>
-      <Button fx:id="addMedicationButton" layoutX="491.0" layoutY="327.0" mnemonicParsing="false" onAction="#onAddButton" text="Add" />
+      <Button fx:id="addMedicationButton" layoutX="525.0" layoutY="327.0" mnemonicParsing="false" onAction="#onAddButton" text="Add" />
       <TextArea fx:id="descriptionTextArea" layoutX="33.0" layoutY="280.0" prefHeight="85.0" prefWidth="354.0" promptText="Description" wrapText="true" />
+      <Button layoutX="426.0" layoutY="327.0" mnemonicParsing="false" onAction="#onBackButton" text="Back" />
+      <Button layoutX="471.0" layoutY="327.0" mnemonicParsing="false" onAction="#onClearButton" text="Clear" />
    </children>
 </AnchorPane>

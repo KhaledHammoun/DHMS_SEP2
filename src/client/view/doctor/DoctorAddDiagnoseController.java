@@ -44,10 +44,15 @@ public class DoctorAddDiagnoseController
 
   }
 
-  public void onSave(ActionEvent actionEvent)
+    public void onSaveButton()
+    {
+    }
+
+  public void onBackButton()
   {
+  }
 
-//TODO
-
+  public void onClearButton()
+  {
   }
 }

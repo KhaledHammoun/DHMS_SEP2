@@ -5,6 +5,7 @@ import client.core.ViewModelFactory;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.manager.EmployeeViewModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -58,5 +59,9 @@ public class EmployeeViewController implements ViewController
         fNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         employeeTable.setItems(viewModel.getEmployees());
+    }
+
+    public void onBackButton()
+    {
     }
 }
