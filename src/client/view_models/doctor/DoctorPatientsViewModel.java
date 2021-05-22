@@ -1,7 +1,8 @@
-package client.view.doctor;
+package client.view_models.doctor;
 
 import client.model.doctor.SampleModelDoctor;
 
+import client.model.doctor.TreatAndUpdateModelDoctor;
 import client.model.shared.GetPatientDataModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -4,6 +4,7 @@ import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.View;
 import client.view.ViewController;
+import client.view_models.login.LoginViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -37,7 +38,8 @@ public class LoginViewController implements ViewController
         {
             return;
         }
-        viewHandler.openView(View.MAIN);
+        // TODO: 22/05/2021 open the appropriate view
+        viewHandler.openView(View.ADD_EDIT_WARD);
         viewHandler.viewToPane(View.EMPLOYEE);
         viewHandler.setSidebar(View.SIDEBAR);
     }

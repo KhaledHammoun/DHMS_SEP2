@@ -1,4 +1,4 @@
-package client.view.manager;
+package client.view_models.manager;
 
 import client.model.manager.EmployeeModelManager;
 import javafx.collections.FXCollections;

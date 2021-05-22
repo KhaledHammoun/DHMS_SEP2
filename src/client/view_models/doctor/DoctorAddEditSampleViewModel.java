@@ -1,4 +1,4 @@
-package client.view.doctor;
+package client.view_models.doctor;
 
 import client.model.doctor.SampleModelDoctor;
 import javafx.collections.FXCollections;
