@@ -3,13 +3,13 @@ package client.view.doctor;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
-import client.view_models.doctor.DoctorTreatViewModel;
+import client.view_models.doctor.TreatPatientViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Diagnosis;
 
-public class DoctorTreatViewController implements ViewController
+public class TreatPatientViewController implements ViewController
 {
     @FXML
     private TextField medicationTextField;
@@ -29,7 +29,7 @@ public class DoctorTreatViewController implements ViewController
     private TextArea descriptionTextArea;
 
     private ViewHandler viewHandler;
-    private DoctorTreatViewModel doctorTreatViewModel;
+    private TreatPatientViewModel treatPatientViewModel;
 
     @FXML
     public void onAddButton()
@@ -53,13 +53,13 @@ public class DoctorTreatViewController implements ViewController
         this.viewHandler = viewHandler;
         //TODO doctorTreatViewModel = viewModelFactory...
 
-        diagnosisTable.setItems(doctorTreatViewModel.getDiagnoses());
+        diagnosisTable.setItems(treatPatientViewModel.getDiagnoses());
         diagnosisName.setCellValueFactory(new PropertyValueFactory<>("name"));
         diagnosisSeverity.setCellValueFactory(new PropertyValueFactory<>("severityLevel"));
         diagnosisDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         medicationTextField.textProperty().bindBidirectional(
-            doctorTreatViewModel.medicationProperty());
-        descriptionTextArea.textProperty().bindBidirectional(doctorTreatViewModel.descriptionProperty());
+                treatPatientViewModel.medicationProperty());
+        descriptionTextArea.textProperty().bindBidirectional(treatPatientViewModel.descriptionProperty());
 
     }
 }

@@ -1,6 +1,5 @@
 package client.core;
 
-import client.view.login.MainViewController;
 import client.view.View;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -46,20 +45,5 @@ public class ViewHandler
         stage.setTitle(view.name());
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void setSidebar(View sidebar) {
-        Scene scene = ViewFactory.getScene(sidebar);
-        MainViewController mainViewController = (MainViewController) ViewControllerFactory.getController(View.MAIN);
-        mainViewController.mainBorderPane.setLeft(scene.getRoot());
-        stage.sizeToScene();
-    }
-
-    public void viewToPane(View view)
-    {
-        Scene scene = ViewFactory.getScene(view);
-        MainViewController mainViewController = (MainViewController) ViewControllerFactory.getController(View.MAIN);
-        mainViewController.mainBorderPane.setCenter(scene.getRoot());
-        stage.sizeToScene();
     }
 }

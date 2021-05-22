@@ -17,9 +17,9 @@ public class AddEditSampleViewModel
 
   private SampleModelDoctor sampleModelDoctor;
 
-  public AddEditSampleViewModel(SampleModelDoctor sampleModelDoctor)
+  public AddEditSampleViewModel(Object sampleModelDoctor)
   {
-    this.sampleModelDoctor = sampleModelDoctor;
+    this.sampleModelDoctor = (SampleModelDoctor) sampleModelDoctor;
     type = new SimpleStringProperty();
     deadline =  new SimpleObjectProperty<>();
     priority = new SimpleStringProperty();

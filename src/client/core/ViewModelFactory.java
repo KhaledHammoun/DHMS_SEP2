@@ -1,9 +1,19 @@
 package client.core;
 
 
-import client.view_models.login.LoginViewModel;
 import client.view.View;
+import client.view_models.doctor.*;
+import client.view_models.login.DoctorMainViewModel;
+import client.view_models.login.LoginViewModel;
+import client.view_models.login.ManagerMainViewModel;
+import client.view_models.login.NurseMainViewModel;
+import client.view_models.manager.AddEditEmployeeViewModel;
+import client.view_models.manager.AddEditWardViewModel;
 import client.view_models.manager.EmployeeViewModel;
+import client.view_models.manager.WardViewModel;
+import client.view_models.nurse.AddPatientViewModel;
+import client.view_models.nurse.AllAppointmentsViewModel;
+import client.view_models.nurse.MakeAppointmentViewModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,21 +57,46 @@ public class ViewModelFactory
         return viewModels.get(view);
     }
 
+    // TODO: 22/05/2021 Add the required models to the view models
     private void createLoginViewModels()
     {
         viewModels.put(View.LOGIN, new LoginViewModel(modelFactory.getModel(InterfaceEnum.LOGIN)));
+        viewModels.put(View.DOCTOR_MAIN, new DoctorMainViewModel());
+        viewModels.put(View.MANAGER_MAIN, new ManagerMainViewModel());
+        viewModels.put(View.NURSE_MAIN, new NurseMainViewModel());
     }
 
     private void createManagerViewModels()
     {
         viewModels.put(View.EMPLOYEE, new EmployeeViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_EMPLOYEE)));
+        viewModels.put(View.WARD, new WardViewModel());
+        viewModels.put(View.ADD_EDIT_EMPLOYEE, new AddEditEmployeeViewModel());
+        viewModels.put(View.ADD_EDIT_WARD, new AddEditWardViewModel());
     }
 
     private void createDoctorViewModels()
     {
+        viewModels.put(View.ADD_DIAGNOSIS,
+                       new AddDiagnoseViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE)));
+        viewModels.put(View.ADD_EDIT_SAMPLE,
+                       new AddEditSampleViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE)));
+        viewModels.put(View.APPOINTMENTS,
+                       new AppointmentsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_APPOINTMENT)));
+        viewModels.put(View.ASSIGN_NURSE, new AssignNurseViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_NURSE)));
+        viewModels.put(View.EDIT_MEDICAL_DESCRIPTION,
+                       new EditMedicalDescriptionViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
+        viewModels.put(View.PATIENTS_SAMPLES,
+                       new PatientsSampleViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE)));
+        viewModels.put(View.PATIENTS, new PatientsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT),
+                                                            modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE),
+                                                            modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE)));
+        viewModels.put(View.TREAT_PATIENT, new TreatPatientViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE), modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
     }
 
     private void createNurseViewModels()
     {
+        viewModels.put(View.ADD_PATIENT, new AddPatientViewModel());
+        viewModels.put(View.ALL_APPOINTMENTS, new AllAppointmentsViewModel());
+        viewModels.put(View.MAKE_APPOINTMENT, new MakeAppointmentViewModel());
     }
 }

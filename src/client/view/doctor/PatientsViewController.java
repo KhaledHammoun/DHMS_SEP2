@@ -3,7 +3,7 @@ package client.view.doctor;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
-import client.view_models.doctor.DoctorPatientsViewModel;
+import client.view_models.doctor.PatientsViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,7 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Patient;
 
-public class DoctorPatientsViewController implements ViewController
+public class PatientsViewController implements ViewController
 {
   @FXML
   private TableView<Patient> doctorViewPatientTable;
@@ -34,7 +34,7 @@ public class DoctorPatientsViewController implements ViewController
   private Button doctorViewEditMedicalDescription;
 
   private ViewHandler viewHandler;
-  private DoctorPatientsViewModel doctorPatientsViewModel;
+  private PatientsViewModel patientsViewModel;
 
   private long selectedPatient ;
   private Patient patient;
@@ -45,7 +45,7 @@ public class DoctorPatientsViewController implements ViewController
   {
     //TODO change view
     patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
-    doctorPatientsViewModel.getAllDiseasesOfPatient(patient);
+    patientsViewModel.getAllDiseasesOfPatient(patient);
   }
 
   @FXML
@@ -53,7 +53,7 @@ public class DoctorPatientsViewController implements ViewController
   {
     //TODO change view
     patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
-    doctorPatientsViewModel.getAllSamples(patient);
+    patientsViewModel.getAllSamples(patient);
   }
 
   @FXML
@@ -68,7 +68,7 @@ public class DoctorPatientsViewController implements ViewController
     //TODO change view
     selectedPatient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue()
         .getSsn();
-    doctorPatientsViewModel.editMedicalDescription(selectedPatient);
+    patientsViewModel.editMedicalDescription(selectedPatient);
   }
 
   @FXML
@@ -83,9 +83,9 @@ public class DoctorPatientsViewController implements ViewController
 
     //TODO doctorPatientsViewModel = viewModelFactory...
     //TODO treatAndUpdateModelDoctor = viewModelFactory...
-    doctorPatientsViewModel.loadPatients();
+    patientsViewModel.loadPatients();
 
-    doctorViewPatientTable.setItems(doctorPatientsViewModel.getPatients());
+    doctorViewPatientTable.setItems(patientsViewModel.getPatients());
     doctorViewPatientSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
     doctorViewPatientFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     doctorViewPatientLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));

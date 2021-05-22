@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-public class NursePatientViewController implements ViewController
+public class AddPatientViewController implements ViewController
 {
   @FXML private TextField firstNameTxtFieldPatient;
   @FXML private TextField mNameTxtFieldPatient;

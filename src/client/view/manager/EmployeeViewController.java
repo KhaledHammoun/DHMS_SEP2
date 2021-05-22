@@ -5,7 +5,6 @@ import client.core.ViewModelFactory;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.manager.EmployeeViewModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -33,7 +32,6 @@ public class EmployeeViewController implements ViewController
     @FXML
     public void onGetButton()
     {
-        viewHandler.viewToPane(View.WARD);
     }
 
     @FXML

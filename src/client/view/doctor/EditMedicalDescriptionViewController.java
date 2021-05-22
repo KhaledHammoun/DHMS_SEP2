@@ -3,13 +3,13 @@ package client.view.doctor;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
-import client.view_models.doctor.DoctorEditMedicalDescriptionViewModel;
+import client.view_models.doctor.EditMedicalDescriptionViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-public class DoctorEditMedicalDescriptionController implements ViewController
+public class EditMedicalDescriptionViewController implements ViewController
 {
   @FXML
   private Label patientTitleLabel;
@@ -49,7 +49,7 @@ public class DoctorEditMedicalDescriptionController implements ViewController
   private Button addButton;
 
   private ViewHandler viewHandler;
-  private DoctorEditMedicalDescriptionViewModel viewModel;
+  private EditMedicalDescriptionViewModel viewModel;
 
   @FXML
   public void onAddButton()

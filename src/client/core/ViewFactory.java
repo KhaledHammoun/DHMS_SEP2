@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import shared.CamelCaseConverter;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -30,6 +31,7 @@ public class ViewFactory
         createManagerScene();
         createDoctorScene();
         createNurseScene();
+        System.out.println(size());
     }
 
     private static void createLoginScene()
@@ -40,7 +42,7 @@ public class ViewFactory
             for (View sceneName : views)
             {
                 Scene scene = null;
-                Parent root = loadFXML("../view/login/" + sceneName.name() + "View.fxml");
+                Parent root = loadFXML("../view/login/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
                 scene = new Scene(root);
                 scenes.put(sceneName, scene);
             }
@@ -59,7 +61,7 @@ public class ViewFactory
             for (View sceneName : views)
             {
                 Scene scene = null;
-                Parent root = loadFXML("../view/manager/" + sceneName.name() + "View.fxml");
+                Parent root = loadFXML("../view/manager/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
                 scene = new Scene(root);
                 scenes.put(sceneName, scene);
             }
@@ -78,7 +80,7 @@ public class ViewFactory
             for (View sceneName : views)
             {
                 Scene scene = null;
-                Parent root = loadFXML("../view/doctor/" + sceneName.name() + "View.fxml");
+                Parent root = loadFXML("../view/doctor/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
                 scene = new Scene(root);
                 scenes.put(sceneName, scene);
             }
@@ -97,7 +99,7 @@ public class ViewFactory
             for (View sceneName : views)
             {
                 Scene scene = null;
-                Parent root = loadFXML("../view/nurse/" + sceneName.name() + "View.fxml");
+                Parent root = loadFXML("../view/nurse/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
                 scene = new Scene(root);
                 scenes.put(sceneName, scene);
             }
@@ -122,5 +124,10 @@ public class ViewFactory
     public static Scene getScene(View sceneName)
     {
         return scenes.get(sceneName);
+    }
+
+    public static int size()
+    {
+        return views.size();
     }
 }
