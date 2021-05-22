@@ -15,9 +15,9 @@ public class AddEditWardViewModel
 
   private WardModelManager wardModelManager;
 
-  public AddEditWardViewModel(WardModelManager wardModelManager)
+  public AddEditWardViewModel(Object wardModelManager)
   {
-    this.wardModelManager = wardModelManager;
+    this.wardModelManager = (WardModelManager) wardModelManager;
     doctorsInWard = FXCollections.observableArrayList();
     wardNameProperty = new SimpleStringProperty();
     roomNumberProperty = new SimpleStringProperty();

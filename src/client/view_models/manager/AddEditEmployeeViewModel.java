@@ -29,9 +29,9 @@ public class AddEditEmployeeViewModel
 
   private EmployeeModelManager employeeModelManager;
 
-  public AddEditEmployeeViewModel(EmployeeModelManager employeeModelManager)
+  public AddEditEmployeeViewModel(Object employeeModelManager)
   {
-    this.employeeModelManager = employeeModelManager;
+    this.employeeModelManager = (EmployeeModelManager) employeeModelManager;
     employeeSnn = new SimpleStringProperty();
     employeeFirstName = new SimpleStringProperty();
     employeeMiddleName = new SimpleStringProperty();
