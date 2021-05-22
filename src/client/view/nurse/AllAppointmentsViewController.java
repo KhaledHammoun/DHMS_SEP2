@@ -11,7 +11,7 @@ import shared.Appointment;
 
 import java.sql.Timestamp;
 
-public class SeeAllAppointmentsAndPatientsController implements ViewController
+public class AllAppointmentsViewController implements ViewController
 {
   @FXML private TableView<Appointment> appointmentsTableView;
   @FXML private TableColumn<Appointment, Timestamp> startDateAppColumn;

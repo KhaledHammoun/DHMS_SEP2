@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import shared.Doctor;
 import shared.Patient;
 
-public class MakeAppointmentController implements ViewController
+public class MakeAppointmentViewController implements ViewController
 {
   @FXML private TableView<Doctor> doctorsTableViewMakeAppointment;
   @FXML private TableColumn<Doctor, String> firstNameColumnDoctors;
