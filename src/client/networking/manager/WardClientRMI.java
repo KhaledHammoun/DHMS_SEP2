@@ -39,23 +39,11 @@ public class WardClientRMI implements WardClientManager
     }
   }
 
-  @Override public void addRoomForAWard(Ward ward)
+  @Override public void editWard(Ward oldWard, Ward newWard)
   {
     try
     {
-      serverManager.addRoomForWard(ward);
-    }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while adding ward room. Please try again.");
-    }
-  }
-
-  @Override public String editWard(Ward ward)
-  {
-    try
-    {
-      return serverManager.editWard(ward);
+      serverManager.editWard(oldWard, newWard);
     }
     catch (RemoteException e)
     {
@@ -63,17 +51,6 @@ public class WardClientRMI implements WardClientManager
     }
   }
 
-  @Override public void editRoomNumber(Ward ward)
-  {
-    try
-    {
-      serverManager.editRoomNumber(ward);
-    }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while editing ward room number. Please try again.");
-    }
-  }
 
   @Override public void removeWard(Ward ward)
   {
@@ -84,18 +61,6 @@ public class WardClientRMI implements WardClientManager
     catch (RemoteException e)
     {
       throw new RuntimeException("Error while removing ward. Please try again.");
-    }
-  }
-
-  @Override public void removeRoom(Ward ward)
-  {
-    try
-    {
-      serverManager.removeRoomNumber(ward);
-    }
-    catch (RemoteException e)
-    {
-      throw new RuntimeException("Error while removing ward room. Please try again.");
     }
   }
 
