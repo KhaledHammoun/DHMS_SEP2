@@ -3,10 +3,12 @@ package client.view.doctor;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
+import client.view_models.doctor.AssignNurseViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Nurse;
 
 public class AssignNurseViewController implements ViewController
@@ -31,6 +33,9 @@ public class AssignNurseViewController implements ViewController
     @FXML
     private Button assignButton;
 
+    private ViewHandler viewHandler;
+    private AssignNurseViewModel assignNurseViewModel;
+
     @FXML
     public void onAssignButton()
     {
@@ -45,6 +50,17 @@ public class AssignNurseViewController implements ViewController
     @Override
     public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
     {
+        this.viewHandler = viewHandler;
+       //TODO assignNurseViewModel = viewModelFactory...
+        nursesTable.setItems(assignNurseViewModel.getAvailableNurses());
+        availableNurseFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        availableNurseLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        availableNurseSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
+
+        assignedNurseTable.setItems(assignNurseViewModel.getAssignedNurses());
+        assignedNurseFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        assignedNurseLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        assignedNurseSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
 
     }
 }
