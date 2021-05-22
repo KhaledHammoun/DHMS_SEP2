@@ -34,29 +34,4 @@ public class Validator
     //TODO
     return false;
   }
-
-  private boolean isLetter(char ch)
-  {
-    //TODO
-    return false;
-  }
-
-  private boolean isDigit(char ch)
-  {
-    //TODO
-    return false;
-  }
-
-  private boolean isWhiteSpace(char ch)
-  {
-    //TODO
-    return false;
-  }
-  private boolean isUnderscore(char ch)
-  {
-    //TODO
-    return false;
-  }
-
-
 }
