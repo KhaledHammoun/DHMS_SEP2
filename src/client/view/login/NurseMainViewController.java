@@ -4,18 +4,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class ManagerMainViewController
+public class NurseMainViewController
 {
     @FXML
     private Label loggedInAsLabel;
 
     @FXML
-    public void onEmployeeButton(ActionEvent actionEvent)
+    public void onPatientsButton(ActionEvent actionEvent)
     {
     }
 
     @FXML
-    public void onWardsButton(ActionEvent actionEvent)
+    public void onAddPatientButton(ActionEvent actionEvent)
+    {
+    }
+
+    @FXML
+    public void onAppointmentsButton(ActionEvent actionEvent)
     {
     }
 
