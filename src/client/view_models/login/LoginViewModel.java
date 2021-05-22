@@ -73,7 +73,7 @@ public class LoginViewModel
         AccessType login = loginModel.login(loginUser);
         if (login != AccessType.NO_ACCESS )
         {
-            CurrentUser.getInstance().fetchCurrentUser(loginUser);
+            setCurrentUser();
 
         }
         return getAccess(login);
