@@ -7,10 +7,12 @@ import client.view.ViewController;
 import client.view_models.nurse.AddPatientViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class AddPatientViewController implements ViewController
 {
+  @FXML private TextArea medicalDescryNurseToPatientTxtArea;
   @FXML private TextField firstNameTxtFieldPatient;
   @FXML private TextField mNameTxtFieldPatient;
   @FXML private TextField lNameTxtFieldPatient;
@@ -51,5 +53,23 @@ public class AddPatientViewController implements ViewController
   {
     this.viewHandler = viewHandler;
     this.viewModel = (AddPatientViewModel) viewModelFactory.getViewModel(View.ADD_PATIENT);
+
+    firstNameTxtFieldPatient.textProperty().bindBidirectional(viewModel.firstNamePatientProperty());
+    mNameTxtFieldPatient.textProperty().bindBidirectional(viewModel.middleNamePatientProperty());
+    lNameTxtFieldPatient.textProperty().bindBidirectional(viewModel.lastNamePatientProperty());
+    dobPatientDateField.valueProperty().bindBidirectional(
+        viewModel.dobPatientProperty());
+    medicalDescryNurseToPatientTxtArea.textProperty().bindBidirectional(viewModel.medicalDescriptionPatientProperty());
+    eFirstNameTxtFieldPatient.textProperty().bindBidirectional(viewModel.contactFirstNameProperty());
+    eLNameTxtFieldPatient.textProperty().bindBidirectional(viewModel.contactLastNameProperty());
+    ePhnNumberTxtFieldPatient.textProperty().bindBidirectional(viewModel.contactPhoneNoProperty());
+    streetTxtFieldPatient.textProperty().bindBidirectional(viewModel.streetPatientProperty());
+    streetNoTxtFieldPatient.textProperty().bindBidirectional(viewModel.streetNoPatientProperty());
+    cityTxtFieldPatient.textProperty().bindBidirectional(viewModel.cityPatientProperty());
+    zipTxtFieldPatient.textProperty().bindBidirectional(viewModel.zipCodePatientProperty());
+    genderTxtFieldPatient.textProperty().bindBidirectional(viewModel.genderPatientProperty());
+    bloodTypeTxtFieldPatient.textProperty().bindBidirectional(viewModel.bloodTypePatientProperty());
+    ssnTextFieldPatient.textProperty().bindBidirectional(viewModel.ssnPatientProperty());
+
   }
 }
