@@ -15,10 +15,10 @@ public class AllAppointmentsViewModel
   private GetAppointmentDataModel getAppointmentDataModel;
   private AppointmentsModelNurse appointmentsModelNurse;
 
-  public AllAppointmentsViewModel(GetAppointmentDataModel getAppointmentDataModel,AppointmentsModelNurse appointmentsModelNurse )
+  public AllAppointmentsViewModel(Object getAppointmentDataModel, Object appointmentsModelNurse )
   {
-    this.getAppointmentDataModel = getAppointmentDataModel;
-    this.appointmentsModelNurse = appointmentsModelNurse;
+    this.getAppointmentDataModel = (GetAppointmentDataModel) getAppointmentDataModel;
+    this.appointmentsModelNurse = (AppointmentsModelNurse) appointmentsModelNurse;
     //ToDo implement observer
     //getAppointmentDataModel.addListener("NewAppointment",this::onNewAppointment);
     allAppointments = FXCollections.observableArrayList();

@@ -98,8 +98,11 @@ public class ViewModelFactory
 
     private void createNurseViewModels()
     {
-        viewModels.put(View.ADD_PATIENT, new AddPatientViewModel());
-        viewModels.put(View.ALL_APPOINTMENTS, new AllAppointmentsViewModel());
-        viewModels.put(View.MAKE_APPOINTMENT, new MakeAppointmentViewModel());
+        viewModels.put(View.ADD_PATIENT, new AddPatientViewModel(modelFactory.getModel(InterfaceEnum.NURSE_PATIENT)));
+        viewModels.put(View.ALL_APPOINTMENTS,
+                       new AllAppointmentsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_APPOINTMENT),
+                                                    modelFactory.getModel(InterfaceEnum.NURSE_APPOINTMENT)));
+        viewModels.put(View.MAKE_APPOINTMENT,
+                       new MakeAppointmentViewModel(modelFactory.getModel(InterfaceEnum.NURSE_APPOINTMENT)));
     }
 }
