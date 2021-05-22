@@ -35,6 +35,12 @@ public class LoginViewModel
     public View login()
     {
         LoginUser loginUser = null;
+        if (!Validator.isValidEmail(username.getValue()))
+        {
+            errorLabel.setValue("Invalid username");
+            username.setValue("");
+            return View.LOGIN;
+        }
         if (!Validator.isValidPassword(password.getValue()))
         {
             errorLabel.setValue("Invalid password");
