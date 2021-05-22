@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.AddEditSampleViewModel;
 import javafx.fxml.FXML;
@@ -47,7 +48,7 @@ public class AddEditSampleViewController implements ViewController
   public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
-    //TODO addEditSampleViewModel = viewModelFactory...
+    addEditSampleViewModel = (AddEditSampleViewModel) viewModelFactory.getViewModel(View.ADD_EDIT_SAMPLE);
     result.textProperty().bindBidirectional(
             addEditSampleViewModel.resultProperty());
     sampleType.valueProperty().bindBidirectional(

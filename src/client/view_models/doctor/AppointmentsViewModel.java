@@ -12,34 +12,37 @@ import java.util.List;
 
 public class AppointmentsViewModel
 {
-  private ObservableList<Appointment> appointments;
+    private ObservableList<Appointment> appointments;
 
-  private GetAppointmentDataModel getAppointmentDataModel;
+    private GetAppointmentDataModel getAppointmentDataModel;
 
-  public AppointmentsViewModel(Object getAppointmentDataModel)
-  {
-    this.getAppointmentDataModel= (GetAppointmentDataModel) getAppointmentDataModel;
-    //ToDo implement observer
-    //getAppointmentDataModel.addListener("NewAppointment", this::onNewAppointment);
-    appointments = FXCollections.observableArrayList();
-  }
+    public AppointmentsViewModel(Object getAppointmentDataModel)
+    {
+        this.getAppointmentDataModel = (GetAppointmentDataModel) getAppointmentDataModel;
+        //ToDo implement observer
+        //getAppointmentDataModel.addListener("NewAppointment", this::onNewAppointment);
+        appointments = FXCollections.observableArrayList();
+    }
 
-  private void onNewAppointment(PropertyChangeEvent evt)
-  {
-    appointments.add((Appointment) evt.getNewValue());
-  }
-  public void loadAppointments()
-  {
-    List<Appointment> appointmentsList = getAppointmentDataModel.getAppointmentsForDoctor((Doctor)
-        CurrentUser.getInstance().getCurrentUser());
-    appointments.addAll(appointmentsList);
-  }
+    private void onNewAppointment(PropertyChangeEvent evt)
+    {
+        appointments.add((Appointment) evt.getNewValue());
+    }
 
-  public ObservableList<Appointment> getAppointments()
-  {
-    return appointments;
-  }
+    public void loadAppointments()
+    {
+        Doctor doctor = (Doctor) CurrentUser.getInstance().getCurrentUser();
+        if (doctor != null)
+        {
+            List<Appointment> appointmentsList = getAppointmentDataModel.getAppointmentsForDoctor(doctor);
+            appointments.addAll(appointmentsList);
+        }
+    }
 
+    public ObservableList<Appointment> getAppointments()
+    {
+        return appointments;
+    }
 
 
 }

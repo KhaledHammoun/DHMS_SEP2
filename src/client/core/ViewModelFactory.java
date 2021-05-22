@@ -76,7 +76,7 @@ public class ViewModelFactory
 
     private void createDoctorViewModels()
     {
-        viewModels.put(View.ADD_DIAGNOSIS,
+        viewModels.put(View.ADD_DIAGNOSE,
                        new AddDiagnoseViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE)));
         viewModels.put(View.ADD_EDIT_SAMPLE,
                        new AddEditSampleViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE)));
@@ -85,7 +85,7 @@ public class ViewModelFactory
         viewModels.put(View.ASSIGN_NURSE, new AssignNurseViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_NURSE)));
         viewModels.put(View.EDIT_MEDICAL_DESCRIPTION,
                        new EditMedicalDescriptionViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
-        viewModels.put(View.PATIENTS_SAMPLES,
+        viewModels.put(View.PATIENTS_SAMPLE,
                        new PatientsSampleViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE)));
         viewModels.put(View.PATIENTS, new PatientsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT),
                                                             modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE),

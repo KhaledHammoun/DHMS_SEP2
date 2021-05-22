@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.EditMedicalDescriptionViewModel;
 import javafx.fxml.FXML;
@@ -71,7 +72,7 @@ public class EditMedicalDescriptionViewController implements ViewController
   public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
-    //TODO viewModel = viewModelFactory...
+    viewModel = (EditMedicalDescriptionViewModel) viewModelFactory.getViewModel(View.EDIT_MEDICAL_DESCRIPTION);
 
     patientsFirstName.textProperty().bind(viewModel.firstNameProperty());
     patientsMiddleName.textProperty().bind(viewModel.middleNameProperty());
