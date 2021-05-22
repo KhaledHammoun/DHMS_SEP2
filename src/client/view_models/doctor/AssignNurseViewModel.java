@@ -1,4 +1,4 @@
-package client.view.doctor;
+package client.view_models.doctor;
 
 public class AssignNurseViewModel
 {

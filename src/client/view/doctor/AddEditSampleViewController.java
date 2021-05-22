@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view_models.doctor.AddEditSampleViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,7 +25,7 @@ public class AddEditSampleViewController
   public ComboBox<String> priority;
 
   private ViewHandler viewHandler;
-  private  AddEditSampleViewModel addEditSampleViewModel;
+  private AddEditSampleViewModel addEditSampleViewModel;
 
   public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory)
   {

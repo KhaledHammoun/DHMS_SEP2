@@ -1,9 +1,9 @@
 package client.core;
 
 
-import client.view.login.LoginViewModel;
+import client.view_models.login.LoginViewModel;
 import client.view.View;
-import client.view.manager.EmployeeViewModel;
+import client.view_models.manager.EmployeeViewModel;
 
 import java.util.HashMap;
 import java.util.Map;

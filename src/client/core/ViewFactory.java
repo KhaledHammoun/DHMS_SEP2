@@ -2,7 +2,6 @@ package client.core;
 
 import client.view.View;
 import client.view.ViewController;
-import client.view.login.MainViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,34 +32,15 @@ public class ViewFactory
         createNurseScene();
     }
 
-    private static void createNurseScene()
+    private static void createLoginScene()
     {
-        views = View.getNurseValues();
+        views = View.getLoginValues();
         try
         {
             for (View sceneName : views)
             {
                 Scene scene = null;
-                Parent root = loadFXML("../view/nurse/" + sceneName.name() + "View.fxml");
-                scene = new Scene(root);
-                scenes.put(sceneName, scene);
-            }
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    private static void createDoctorScene()
-    {
-        views = View.getDoctorValues();
-        try
-        {
-            for (View sceneName : views)
-            {
-                Scene scene = null;
-                Parent root = loadFXML("../view/doctor/" + sceneName.name() + "View.fxml");
+                Parent root = loadFXML("../view/login/" + sceneName.name() + "View.fxml");
                 scene = new Scene(root);
                 scenes.put(sceneName, scene);
             }
@@ -90,15 +70,15 @@ public class ViewFactory
         }
     }
 
-    private static void createLoginScene()
+    private static void createDoctorScene()
     {
-        views = View.getLoginValues();
+        views = View.getDoctorValues();
         try
         {
             for (View sceneName : views)
             {
                 Scene scene = null;
-                Parent root = loadFXML("../view/login/" + sceneName.name() + "View.fxml");
+                Parent root = loadFXML("../view/doctor/" + sceneName.name() + "View.fxml");
                 scene = new Scene(root);
                 scenes.put(sceneName, scene);
             }
@@ -109,68 +89,23 @@ public class ViewFactory
         }
     }
 
-    @Deprecated private static void createScene(View sceneName)
+    private static void createNurseScene()
     {
-        Scene scene = null;
-        switch (sceneName)
+        views = View.getNurseValues();
+        try
         {
-            case LOGIN:
-                try
-                {
-                    Parent root = loadFXML("../view/login/LoginView.fxml");
-                    scene = new Scene(root);
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-                break;
-            case MAIN:
-                try
-                {
-                    Parent root = loadFXML("../view/login/MainView.fxml");
-                    scene = new Scene(root);
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-                break;
-            case EMPLOYEE:
-                try
-                {
-                    Parent root = loadFXML("../view/manager/EmployeeView.fxml");
-                    scene = new Scene(root);
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-                break;
-            case WARD:
-                try
-                {
-                    Parent root = loadFXML("../view/manager/WardView.fxml");
-                    scene = new Scene(root);
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-                break;
-            case SIDEBAR:
-                try
-                {
-                    Parent root = loadFXML("../view/manager/MangerSideBar.fxml");
-                    scene = new Scene(root);
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-                break;
+            for (View sceneName : views)
+            {
+                Scene scene = null;
+                Parent root = loadFXML("../view/nurse/" + sceneName.name() + "View.fxml");
+                scene = new Scene(root);
+                scenes.put(sceneName, scene);
+            }
         }
-        scenes.put(sceneName, scene);
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private static Parent loadFXML(String path) throws IOException
@@ -180,10 +115,6 @@ public class ViewFactory
         Parent root = loader.load();
 
         ViewController ctrl = loader.getController();
-        if (ctrl instanceof MainViewController)
-        {
-            ViewControllerFactory.addController(View.MAIN, ctrl);
-        }
         ctrl.init(ViewModelFactory.getViewModelFactory(), ViewHandler.getViewHandler());
         return root;
     }
