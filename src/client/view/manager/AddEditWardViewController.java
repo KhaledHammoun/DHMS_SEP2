@@ -6,7 +6,6 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.manager.AddEditWardViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -27,8 +26,6 @@ public class AddEditWardViewController implements ViewController
     private TextField wardNameTextField;
     @FXML
     private TextField wardRoomNumber;
-    @FXML
-    private ListView<Doctor> doctorsAssignedToWardListView;
 
     private ViewHandler viewHandler;
     private AddEditWardViewModel viewModel;
@@ -59,6 +56,5 @@ public class AddEditWardViewController implements ViewController
         doctorsAssignedToWardLSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
         wardNameTextField.textProperty().bindBidirectional(viewModel.wardNameProperty());
         wardRoomNumber.textProperty().bindBidirectional(viewModel.roomNumberProperty());
-
     }
 }

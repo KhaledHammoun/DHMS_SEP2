@@ -16,7 +16,7 @@
    <TableView fx:id="doctorsAssignedToWardTable" layoutX="199.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #f8f8ff;">
      <columns>
        <TableColumn fx:id="doctorsAssignedToWardFirstName" prefWidth="150.0" text="First name" />
-       <TableColumn fx:id="doctorsAssignedToWardLiastName" minWidth="7.0" prefWidth="150.0" text="Last name" />
+       <TableColumn fx:id="doctorsAssignedToWardLastName" minWidth="7.0" prefWidth="150.0" text="Last name" />
          <TableColumn fx:id="doctorsAssignedToWardLSSN" prefWidth="213.0" text="SSN" />
      </columns>
       <effect>
