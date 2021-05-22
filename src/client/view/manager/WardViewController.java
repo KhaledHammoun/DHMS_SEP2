@@ -42,6 +42,7 @@ public class WardViewController implements ViewController
     @FXML
     public void onBackButton()
     {
+        viewHandler.openView(View.MANAGER_MAIN);
     }
 
     @Override

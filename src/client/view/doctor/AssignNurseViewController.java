@@ -43,6 +43,7 @@ public class AssignNurseViewController implements ViewController
     @FXML
     public void onBackButton()
     {
+        viewHandler.openView(View.DOCTOR_MAIN);
     }
 
     @Override
@@ -59,6 +60,5 @@ public class AssignNurseViewController implements ViewController
         assignedNurseFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         assignedNurseLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         assignedNurseSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
-
     }
 }

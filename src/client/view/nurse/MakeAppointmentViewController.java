@@ -2,8 +2,9 @@ package client.view.nurse;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.View;
 import client.view.ViewController;
-import javafx.event.ActionEvent;
+import client.view_models.nurse.MakeAppointmentViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -25,29 +26,36 @@ public class MakeAppointmentViewController implements ViewController
   @FXML private TableColumn<Patient, String> lNameColumnPatients;
   @FXML private TableColumn<Patient, Long> ssnColumnPatients;
 
-  @FXML public void onEditPatientInfo(ActionEvent actionEvent)
+  private ViewHandler viewHandler;
+  private MakeAppointmentViewModel viewModel;
+
+  @FXML public void onEditPatientInfoButton()
+  {
+    viewHandler.openView(View.ADD_PATIENT);
+  }
+
+  @FXML public void onSaveButton()
   {
   }
 
-  @FXML public void onConfirmMakeAppointment(ActionEvent actionEvent)
+  @FXML public void onBackButton()
+  {
+    viewHandler.openView(View.NURSE_MAIN);
+  }
+
+  @FXML public void onClearButton()
   {
   }
 
-  @FXML public void onBackMakeAppointment(ActionEvent actionEvent)
+  @FXML public void onSeeAllAppointmentsButton()
   {
-  }
-
-  @FXML public void onClearMakeAppointment(ActionEvent actionEvent)
-  {
-  }
-
-  @FXML public void onSeeAllAppointments(ActionEvent actionEvent)
-  {
+    viewHandler.openView(View.ALL_APPOINTMENTS);
   }
 
   @Override
   public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
-
+    this.viewHandler = viewHandler;
+    this.viewModel = (MakeAppointmentViewModel) viewModelFactory.getViewModel(View.MAKE_APPOINTMENT);
   }
 }

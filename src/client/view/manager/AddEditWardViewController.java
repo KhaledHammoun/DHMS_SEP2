@@ -43,6 +43,7 @@ public class AddEditWardViewController implements ViewController
     @FXML
     public void onBackButton()
     {
+        viewHandler.openView(View.WARD);
     }
 
     @Override

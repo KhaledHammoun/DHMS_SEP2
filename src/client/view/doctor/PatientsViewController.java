@@ -31,7 +31,7 @@ public class PatientsViewController implements ViewController
   @FXML
   public void onTreatButton()
   {
-    //TODO change view
+    viewHandler.openView(View.TREAT_PATIENT);
     patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
     patientsViewModel.getAllDiseasesOfPatient(patient);
   }
@@ -39,7 +39,7 @@ public class PatientsViewController implements ViewController
   @FXML
   public void onAddEditSample()
   {
-    //TODO change view
+    viewHandler.openView(View.ADD_EDIT_SAMPLE);
     patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
     patientsViewModel.getAllSamples(patient);
   }
@@ -47,13 +47,13 @@ public class PatientsViewController implements ViewController
   @FXML
   public void onDiagnoseButton()
   {
-    //TODO change view
+    viewHandler.openView(View.ADD_DIAGNOSE);
   }
 
   @FXML
   public void onEditMedicalDescription()
   {
-    //TODO change view
+    viewHandler.openView(View.EDIT_MEDICAL_DESCRIPTION);
     selectedPatient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue()
         .getSsn();
     patientsViewModel.editMedicalDescription(selectedPatient);
@@ -62,6 +62,7 @@ public class PatientsViewController implements ViewController
   @FXML
   public void onBackButton()
   {
+    viewHandler.openView(View.DOCTOR_MAIN);
   }
 
   @Override
