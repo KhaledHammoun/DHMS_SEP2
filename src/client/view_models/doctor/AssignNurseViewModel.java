@@ -12,9 +12,9 @@ public class AssignNurseViewModel
 
   private NursesModelDoctor nursesModelDoctor;
 
-  public AssignNurseViewModel(NursesModelDoctor nursesModelDoctor)
+  public AssignNurseViewModel(Object nursesModelDoctor)
   {
-    this.nursesModelDoctor= nursesModelDoctor;
+    this.nursesModelDoctor= (NursesModelDoctor) nursesModelDoctor;
     //ToDo implement observer
     availableNurses = FXCollections.observableArrayList();
     assignedNurses = FXCollections.observableArrayList();

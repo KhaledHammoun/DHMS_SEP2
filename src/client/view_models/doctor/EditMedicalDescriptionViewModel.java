@@ -4,7 +4,7 @@ import client.model.shared.GetPatientDataModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class DoctorEditMedicalDescriptionViewModel
+public class EditMedicalDescriptionViewModel
 {
   private StringProperty firstName, middleName, lastName;
   private StringProperty ssn;
@@ -17,9 +17,9 @@ public class DoctorEditMedicalDescriptionViewModel
 
   private GetPatientDataModel getPatientDataModel;
 
-  public DoctorEditMedicalDescriptionViewModel(GetPatientDataModel getPatientDataModel)
+  public EditMedicalDescriptionViewModel(Object getPatientDataModel)
   {
-    this.getPatientDataModel = getPatientDataModel;
+    this.getPatientDataModel = (GetPatientDataModel) getPatientDataModel;
 
     firstName = new SimpleStringProperty();
 

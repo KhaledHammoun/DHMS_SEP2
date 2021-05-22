@@ -3,7 +3,7 @@ package client.view.doctor;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.view.ViewController;
-import client.view_models.doctor.DoctorAddEditSampleViewModel;
+import client.view_models.doctor.PatientsSampleViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -32,7 +32,7 @@ public class PatientsSampleViewController implements ViewController
 
   private ViewHandler viewHandler;
 
-  private DoctorAddEditSampleViewModel viewModel;
+  private PatientsSampleViewModel viewModel;
 
   public void onAddButton()
   {

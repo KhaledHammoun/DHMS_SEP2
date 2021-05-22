@@ -40,8 +40,6 @@ public class LoginViewController implements ViewController
         }
         // TODO: 22/05/2021 open the appropriate view
         viewHandler.openView(View.ADD_EDIT_WARD);
-        viewHandler.viewToPane(View.EMPLOYEE);
-        viewHandler.setSidebar(View.SIDEBAR);
     }
 
     @Override

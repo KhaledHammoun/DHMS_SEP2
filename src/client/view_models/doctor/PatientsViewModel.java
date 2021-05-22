@@ -11,7 +11,7 @@ import shared.Patient;
 import java.beans.PropertyChangeEvent;
 import java.util.List;
 
-public class DoctorPatientsViewModel
+public class PatientsViewModel
 {
   private ObservableList<Patient> patients;
 
@@ -20,12 +20,12 @@ public class DoctorPatientsViewModel
   private SampleModelDoctor sampleModelDoctor;
 
 
-  public DoctorPatientsViewModel(GetPatientDataModel getPatientDataModel,TreatAndUpdateModelDoctor treatAndUpdateModelDoctor,
-      SampleModelDoctor sampleModelDoctor)
+  public PatientsViewModel(Object getPatientDataModel, Object treatAndUpdateModelDoctor,
+                           Object sampleModelDoctor)
   {
-    this.getPatientDataModel = getPatientDataModel;
-    this.treatAndUpdateModelDoctor = treatAndUpdateModelDoctor;
-    this.sampleModelDoctor = sampleModelDoctor;
+    this.getPatientDataModel = (GetPatientDataModel) getPatientDataModel;
+    this.treatAndUpdateModelDoctor = (TreatAndUpdateModelDoctor) treatAndUpdateModelDoctor;
+    this.sampleModelDoctor = (SampleModelDoctor) sampleModelDoctor;
 
     //ToDo implement observer
     //getPatientDataModel.addListener("NewPatient", this::onNewPatient);

@@ -11,7 +11,7 @@ import shared.Diagnosis;
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
-public class DoctorTreatViewModel
+public class TreatPatientViewModel
 {
   private ObservableList<Diagnosis> diagnoses;
   private StringProperty medication;
@@ -20,10 +20,10 @@ public class DoctorTreatViewModel
   private GetPatientDataModel getPatientDataModel;
   private TreatAndUpdateModelDoctor treatAndUpdateModelDoctor;
 
-  public DoctorTreatViewModel(TreatAndUpdateModelDoctor treatAndUpdateModelDoctor, GetPatientDataModel getPatientDataModel)
+  public TreatPatientViewModel(Object treatAndUpdateModelDoctor, Object getPatientDataModel)
   {
-    this.getPatientDataModel = getPatientDataModel;
-    this.treatAndUpdateModelDoctor = treatAndUpdateModelDoctor;
+    this.getPatientDataModel = (GetPatientDataModel) getPatientDataModel;
+    this.treatAndUpdateModelDoctor = (TreatAndUpdateModelDoctor) treatAndUpdateModelDoctor;
     medication = new SimpleStringProperty();
     description = new SimpleStringProperty();
     //ToDo implement observer

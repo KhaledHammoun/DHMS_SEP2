@@ -16,9 +16,9 @@ public class AppointmentsViewModel
 
   private GetAppointmentDataModel getAppointmentDataModel;
 
-  public AppointmentsViewModel(GetAppointmentDataModel getAppointmentDataModel)
+  public AppointmentsViewModel(Object getAppointmentDataModel)
   {
-    this.getAppointmentDataModel=getAppointmentDataModel;
+    this.getAppointmentDataModel= (GetAppointmentDataModel) getAppointmentDataModel;
     //ToDo implement observer
     //getAppointmentDataModel.addListener("NewAppointment", this::onNewAppointment);
     appointments = FXCollections.observableArrayList();

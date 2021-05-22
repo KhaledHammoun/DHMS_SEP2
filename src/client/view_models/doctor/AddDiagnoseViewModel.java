@@ -5,7 +5,7 @@ import javafx.beans.property.*;
 
 import java.time.LocalDate;
 
-public class DoctorAddDiagnoseViewModel
+public class AddDiagnoseViewModel
 {
   private StringProperty name;
   private StringProperty description;
@@ -15,9 +15,9 @@ public class DoctorAddDiagnoseViewModel
 
   private TreatAndUpdateModelDoctor treatAndUpdateModelDoctor;
 
-  public DoctorAddDiagnoseViewModel(TreatAndUpdateModelDoctor treatAndUpdateModelDoctor)
+  public AddDiagnoseViewModel(Object treatAndUpdateModelDoctor)
   {
-    this.treatAndUpdateModelDoctor = treatAndUpdateModelDoctor;
+    this.treatAndUpdateModelDoctor = (TreatAndUpdateModelDoctor) treatAndUpdateModelDoctor;
     name = new SimpleStringProperty();
     description = new SimpleStringProperty();
     severityLevel = new SimpleStringProperty();
