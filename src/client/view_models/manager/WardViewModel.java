@@ -13,9 +13,9 @@ public class WardViewModel
   private ObservableList<Ward> wards;
   private WardModelManager wardModelManager;
 
-  public WardViewModel(WardModelManager wardModelManager)
+  public WardViewModel(Object wardModelManager)
   {
-    this.wardModelManager = wardModelManager;
+    this.wardModelManager = (WardModelManager) wardModelManager;
     //ToDo implement observer
     //wardModelManager.addListener("NewWard", this::onNewWard);
     wards = FXCollections.observableArrayList();
