@@ -69,4 +69,9 @@ public class PatientsViewModel
   {
     SelectionModel.getInstance().set(selectedItem);
   }
+
+  public boolean isPatientSelected()
+  {
+    return !SelectionModel.getInstance().isEmpty();
+  }
 }
