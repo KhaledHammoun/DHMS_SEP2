@@ -32,7 +32,7 @@ public class WardViewController implements ViewController
     @FXML
     public void onEditWardButton()
     {
-        // TODO: 22/05/2021 call the method for getting the ward to edit data. viewModel
+        wardViewModel.editWard(wardTable.getSelectionModel().getSelectedItem());
         viewHandler.openView(View.ADD_EDIT_WARD);
     }
 
@@ -55,5 +55,7 @@ public class WardViewController implements ViewController
         wardTable.setItems(wardViewModel.getWards());
         wardNameColumn.setCellValueFactory(new PropertyValueFactory<>("wardName"));
         roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+
+        wardViewModel.loadWards();
     }
 }
