@@ -19,7 +19,7 @@
       <TextField fx:id="diagnoseName" layoutX="67.0" layoutY="97.0" prefHeight="55.0" prefWidth="211.0" promptText="Name" />
       <TextField fx:id="diagnoseDescription" layoutX="67.0" layoutY="169.0" prefHeight="55.0" prefWidth="211.0" promptText="Description" />
       <ComboBox fx:id="diagnoseSeverityLevel" layoutX="67.0" layoutY="254.0" prefHeight="26.0" prefWidth="211.0" promptText="Severity Level" />
-      <DatePicker fx:id="diagnoseStartDate" layoutX="389.0" layoutY="197.0" prefHeight="26.0" prefWidth="211.0" promptText="Start  Date" />
+      <DatePicker fx:id="diagnoseStartDate" layoutX="388.0" layoutY="203.0" prefHeight="26.0" prefWidth="211.0" promptText="Start  Date" />
       <Button layoutX="564.0" layoutY="436.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="100.0" text="Save" />
       <DatePicker fx:id="endDate" layoutX="389.0" layoutY="254.0" prefHeight="26.0" prefWidth="211.0" promptText="End Date" />
       <Button layoutX="66.0" layoutY="436.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="30.0" prefWidth="70.0" text="Back" />
