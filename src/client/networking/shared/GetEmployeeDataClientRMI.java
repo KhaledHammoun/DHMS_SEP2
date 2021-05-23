@@ -4,6 +4,8 @@ import server.networking.shared.GetEmployeeDataServer;
 import shared.Doctor;
 import shared.Nurse;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 public class GetEmployeeDataClientRMI implements GetEmployeeDataClient
 {
     private GetEmployeeDataServer sharedServer;
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public GetEmployeeDataClientRMI()
     {
@@ -78,4 +81,20 @@ public class GetEmployeeDataClientRMI implements GetEmployeeDataClient
             throw new RuntimeException("Error while fetching nurse from the system. Please try again.");
         }
     }
+
+
+
+    @Override
+    public void addPropertyChangeListener(String name, PropertyChangeListener listener)
+    {
+        support.addPropertyChangeListener(name, listener);
+    }
+
+    @Override
+    public void removePropertyChangeListener(String name, PropertyChangeListener listener)
+    {
+        support.removePropertyChangeListener(name, listener);
+    }
+
+
 }

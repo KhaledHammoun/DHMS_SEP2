@@ -2,9 +2,16 @@ package client.view_models.manager;
 
 import client.model.manager.EmployeeModelManager;
 import client.model.shared.GetEmployeeDataModel;
-import javafx.beans.property.*;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import shared.Doctor;
+import shared.Employee;
+import shared.Nurse;
 import shared.Ward;
 
+import java.beans.PropertyChangeEvent;
 import java.time.LocalDate;
 
 public class AddEditEmployeeViewModel
@@ -35,7 +42,6 @@ public class AddEditEmployeeViewModel
   {
     this.employeeModelManager = (EmployeeModelManager) employeeModelManager;
     this.getEmployeeDataModel = (GetEmployeeDataModel) getEmployeeDataModel;
-
     employeeSnn = new SimpleStringProperty();
     employeeFirstName = new SimpleStringProperty();
     employeeMiddleName = new SimpleStringProperty();
@@ -54,6 +60,48 @@ public class AddEditEmployeeViewModel
     password = new SimpleStringProperty();
     experience = new SimpleStringProperty();
     education =  new SimpleStringProperty();
+  }
+
+  private void fill(PropertyChangeEvent event)
+  {
+    Employee employee = (Employee) event.getNewValue();
+    fillCommon(employee);
+
+  }
+
+  private void fillCommon(Employee employee)
+  {
+    employeeSnn.setValue(String.valueOf(employee.getSsn()));
+    employeeFirstName.setValue(employee.getFirstName());
+    employeeMiddleName.setValue(employee.getMiddleName());
+    employeeLastName.setValue(employee.getLastName());
+    employeeDob.setValue(employee.getDob().toLocalDate());
+    employeeStreet.setValue(employee.getAddress().getStreet());
+    employeeStreetNo.setValue(employee.getAddress().getNumber());
+    employeeCity.setValue(employee.getAddress().getCity());
+    employeeZipCode.setValue(employee.getAddress().getZipcode());
+    education.setValue(employee.getEducation());
+    contactFirstName.setValue(employee.getContactFirstName());
+    contactLastName.setValue(employee.getContactLastName());
+    contactPhoneNo.setValue(employee.getContactPhoneNumber());
+    username.setValue(employee.getEmail());
+    password.setValue(employee.getPassword());
+    fillSpecific(employee);
+  }
+
+  private void fillSpecific(Employee employee)
+  {
+    if (employee instanceof Doctor)
+    {
+      Doctor doctor = (Doctor) employee;
+      experience.setValue(doctor.getSpecialization());
+      employeeWard.setValue(doctor.getWard());
+    }
+    else
+    {
+      Nurse nurse = (Nurse) employee;
+      experience.setValue(nurse.getExperience());
+    }
   }
 
 
