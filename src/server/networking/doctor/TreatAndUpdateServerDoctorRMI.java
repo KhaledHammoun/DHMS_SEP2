@@ -53,4 +53,10 @@ public class TreatAndUpdateServerDoctorRMI implements TreatAndUpdateServerDoctor
         modelDoctor.editDiagnosis(diagnosis);
     }
 
+    @Override public ArrayList<Treatment> getAllTreatmentsOfPatient(
+        Patient patient, Doctor doctor)
+    {
+       return modelDoctor.getAllTreatmentsOfPatient(patient, doctor);
+    }
+
 }

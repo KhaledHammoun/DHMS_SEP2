@@ -46,7 +46,8 @@ public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
     }
   }
 
-  @Override public ArrayList<Diagnosis> getAllDiagnosisOfPatient(Patient patient)
+  @Override public ArrayList<Diagnosis> getAllDiagnosisOfPatient(
+      Patient patient)
   {
     try
     {
@@ -69,6 +70,20 @@ public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
     {
       throw new RuntimeException(
           "Error while fetching patient data. Please try again.");
+    }
+  }
+
+  @Override public ArrayList<Treatment> getAllTreatmentsOfPatient(
+      Patient patient, Doctor doctor)
+  {
+    try
+    {
+      return clientDoctor.getAllTreatmentsOfPatient(patient, doctor);
+    }
+    catch (RemoteException e)
+    {
+      throw new RuntimeException(
+          "Error while fetching patient treatments. Please try again.");
     }
   }
 }
