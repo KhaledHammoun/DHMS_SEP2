@@ -4,7 +4,6 @@ import server.networking.shared.GetAppointmentDataServer;
 import shared.Appointment;
 import shared.Doctor;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.NotBoundException;
@@ -55,12 +54,6 @@ public class GetAppointmentDataClientRMI implements GetAppointmentDataClient
         {
             throw new RuntimeException("Error while fetching all appointments. Please try again.");
         }
-    }
-
-    @Override
-    public void update(PropertyChangeEvent event)
-    {
-        support.firePropertyChange(event);
     }
 
     @Override

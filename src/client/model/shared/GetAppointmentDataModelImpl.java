@@ -4,7 +4,6 @@ import client.networking.shared.GetAppointmentDataClient;
 import shared.Appointment;
 import shared.Doctor;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.rmi.RemoteException;
@@ -44,12 +43,6 @@ public class GetAppointmentDataModelImpl implements GetAppointmentDataModel
         {
             throw new RuntimeException("Error while fetching all appointments. Please try again.");
         }
-    }
-
-    @Override
-    public void update(PropertyChangeEvent event)
-    {
-        support.firePropertyChange(event);
     }
 
     @Override
