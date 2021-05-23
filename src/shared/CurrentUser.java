@@ -85,11 +85,10 @@ public class CurrentUser implements Serializable
 
         user = new Manager(r.getLong("ssn"), r.getString("f_name"),
             r.getString("mid_name"), r.getString("l_name"), r.getDate("dob"),
-            address, r.getDate("start_date"), r.getString("education"),
+            address, r.getString("contact_f_name"),r.getString("contact_mid_name"), r.getString("contact_l_name"),
+            r.getString("contact_phone"), r.getDate("start_date"), r.getString("education"),
             r.getString("position"), r.getString("email"),
-            r.getString("password"), r.getString("contact_f_name"),
-            r.getString("contact_mid_name"), r.getString("contact_l_name"),
-            r.getString("contact_phone"));
+            r.getString("password"));
       }
     }
     catch (SQLException e)
