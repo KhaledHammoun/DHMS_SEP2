@@ -138,7 +138,7 @@ public abstract class Person implements Serializable
         + ", contactPhoneNumber='" + contactPhoneNumber + '\'' + '}';
   }
 
-  protected String getFullName()
+  public String getFullName()
   {
     return middleName == null ?
         firstName + " " + lastName :

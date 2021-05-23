@@ -16,25 +16,20 @@ import java.sql.Date;
 
 public class PatientsSampleViewController implements ViewController
 {
-  @FXML
-  private TableView<Sample> sampleTable;
-  @FXML
-  private TableColumn< String, Sample> sampleType;
-  @FXML
-  private TableColumn< Date,Sample> sampleDeadline;
-  @FXML
-  private TableColumn<Integer,Sample > samplePriority;
-  @FXML
-  private TableColumn<String,Sample > result;
+  @FXML private TableView<Sample> sampleTable;
+  @FXML private TableColumn<String, Sample> sampleType;
+  @FXML private TableColumn<Date, Sample> sampleDeadline;
+  @FXML private TableColumn<Integer, Sample> samplePriority;
+  @FXML private TableColumn<String, Sample> result;
 
   private ViewHandler viewHandler;
 
   private PatientsSampleViewModel viewModel;
 
-
   public void addEditButton()
   {
-    SelectionModel.getInstance().set(sampleTable.getSelectionModel().getSelectedItem());
+    SelectionModel.getInstance()
+        .set(sampleTable.getSelectionModel().getSelectedItem());
     viewHandler.openView(View.ADD_EDIT_SAMPLE);
   }
 
@@ -43,11 +38,12 @@ public class PatientsSampleViewController implements ViewController
     viewHandler.openView(View.PATIENTS);
   }
 
-  @Override
-  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+  @Override public void init(ViewModelFactory viewModelFactory,
+      ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
-    viewModel = (PatientsSampleViewModel) viewModelFactory.getViewModel(View.PATIENTS_SAMPLE);
+    viewModel = (PatientsSampleViewModel) viewModelFactory
+        .getViewModel(View.PATIENTS_SAMPLE);
     sampleTable.setItems(viewModel.getSamples());
     sampleType.setCellValueFactory(new PropertyValueFactory<>("type"));
     sampleDeadline.setCellValueFactory(new PropertyValueFactory<>("deadline"));
