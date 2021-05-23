@@ -42,6 +42,7 @@ public class ViewFactory
                 Scene scene = null;
                 Parent root = loadFXML("../view/login/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
                 scene = new Scene(root);
+                scene.setUserData(root.getUserData());
                 scenes.put(sceneName, scene);
             }
         }
@@ -62,6 +63,7 @@ public class ViewFactory
                 Scene scene = null;
                 Parent root = loadFXML("../view/manager/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
                 scene = new Scene(root);
+                scene.setUserData(root.getUserData());
                 scenes.put(sceneName, scene);
             }
         }
@@ -82,6 +84,7 @@ public class ViewFactory
                 Scene scene = null;
                 Parent root = loadFXML("../view/doctor/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
                 scene = new Scene(root);
+                scene.setUserData(root.getUserData());
                 scenes.put(sceneName, scene);
             }
         }
@@ -102,6 +105,7 @@ public class ViewFactory
                 Scene scene = null;
                 Parent root = loadFXML("../view/nurse/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
                 scene = new Scene(root);
+                scene.setUserData(root.getUserData());
                 scenes.put(sceneName, scene);
             }
         }
@@ -116,6 +120,7 @@ public class ViewFactory
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ViewFactory.class.getResource(path));
         Parent root = loader.load();
+        root.setUserData(loader);
 
         ViewController ctrl = loader.getController();
         ctrl.init(ViewModelFactory.getViewModelFactory(), ViewHandler.getViewHandler());

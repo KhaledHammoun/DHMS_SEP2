@@ -1,6 +1,8 @@
 package client.core;
 
 import client.view.View;
+import client.view.ViewController;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -10,43 +12,46 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ViewHandler
 {
-    private Stage stage;
-    private static ViewHandler viewHandler;
-    private static Lock lock = new ReentrantLock();
+  private Stage stage;
+  private static ViewHandler viewHandler;
+  private static Lock lock = new ReentrantLock();
 
-    private ViewHandler()
-    {
-        this.stage = new Stage();
-        Image image = new Image(getClass().getResourceAsStream("../images/image.png"));
-        stage.getIcons().add(image);
-        stage.setResizable(false);
-    }
+  private ViewHandler()
+  {
+    this.stage = new Stage();
+    Image image = new Image(
+        getClass().getResourceAsStream("../images/image.png"));
+    stage.getIcons().add(image);
+    stage.setResizable(false);
+  }
 
-    public static ViewHandler getViewHandler()
+  public static ViewHandler getViewHandler()
+  {
+    if (viewHandler == null)
     {
+      synchronized (lock)
+      {
         if (viewHandler == null)
         {
-            synchronized (lock)
-            {
-                if (viewHandler == null)
-                {
-                    viewHandler = new ViewHandler();
-                }
-            }
+          viewHandler = new ViewHandler();
         }
-        return viewHandler;
+      }
     }
+    return viewHandler;
+  }
 
-    public void start()
-    {
-        ViewFactory.init();
-        openView(View.LOGIN);
-    }
+  public void start()
+  {
+    ViewFactory.init();
+    openView(View.LOGIN);
+  }
 
-    public void openView(View view)
-    {
-        Scene scene = ViewFactory.getScene(view);
-        stage.setScene(scene);
-        stage.show();
-    }
+  public void openView(View view)
+  {
+    Scene scene = ViewFactory.getScene(view);
+    FXMLLoader userData = (FXMLLoader) scene.getUserData();
+    ((ViewController) userData.getController()).init(ViewModelFactory.getViewModelFactory(), ViewHandler.getViewHandler());
+    stage.setScene(scene);
+    stage.show();
+  }
 }
