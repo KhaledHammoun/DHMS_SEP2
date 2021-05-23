@@ -31,7 +31,7 @@ public class AddDiagnoseViewController implements ViewController
     @FXML
     public void onSaveButton()
     {
-        //TODO addDiagnoseViewModel.addNewDiagnosisToPatient();
+        addDiagnoseViewModel.save();
     }
 
     @FXML
@@ -43,6 +43,7 @@ public class AddDiagnoseViewController implements ViewController
     @FXML
     public void onClearButton()
     {
+        addDiagnoseViewModel.clear();
     }
 
     @Override
@@ -56,6 +57,7 @@ public class AddDiagnoseViewController implements ViewController
         diagnoseStartDate.valueProperty().bindBidirectional(addDiagnoseViewModel.startDateProperty());
         endDate.valueProperty().bindBidirectional(addDiagnoseViewModel.endDateProperty());
 
+        addDiagnoseViewModel.loadSelectedPatient();
         diagnoseSeverityLevel.getItems().addAll(addDiagnoseViewModel.getSeverityLevels());
     }
 }

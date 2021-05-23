@@ -21,6 +21,14 @@ public class Diagnosis implements Serializable
     this.id = id;
   }
 
+  public Diagnosis(String name, int severityLevel, String description, Date dateFrom)
+  {
+    this.name = name;
+    this.severityLevel = severityLevel;
+    this.description = description;
+    this.dateFrom = dateFrom;
+  }
+
   public Date getDateTo()
   {
     return dateTo;
