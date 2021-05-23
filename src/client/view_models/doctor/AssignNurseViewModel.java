@@ -42,6 +42,8 @@ public class AssignNurseViewModel
 
   public void loadTables()
   {
+    availableNurses.clear();
+    assignedNurses.clear();
     availableNurses.setAll(nursesModelDoctor.getAllAvailableNurses());
     assignedNurses.setAll(nursesModelDoctor.getAllNursesAssignedToMe(
         (Doctor) CurrentUser.getInstance().getCurrentUser()));

@@ -5,7 +5,6 @@ import client.core.ViewModelFactory;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.PatientsViewModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -83,11 +82,11 @@ public class PatientsViewController implements ViewController
         .setCellValueFactory(new PropertyValueFactory<>("firstName"));
     doctorViewPatientLastName
         .setCellValueFactory(new PropertyValueFactory<>("lastName"));
-  }
-
+        
   public void onSamplesToInspect(ActionEvent actionEvent)
   {
     patientsViewModel.setSelectedPatient(null);
     viewHandler.openView(View.PATIENTS_SAMPLE);
+
   }
 }

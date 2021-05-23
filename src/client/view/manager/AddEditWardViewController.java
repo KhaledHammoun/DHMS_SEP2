@@ -10,18 +10,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import shared.Doctor;
+import shared.Ward;
 
 public class AddEditWardViewController implements ViewController
 {
     @FXML
-    private TableView<Doctor> doctorsAssignedToWardTable;
+    private TableView<Ward> allWardsTable;
     @FXML
-    private TableColumn<String, Doctor> doctorsAssignedToWardFirstName;
+    private TableColumn<Ward, String> wardNameColumn;
     @FXML
-    private TableColumn<String, Doctor> doctorsAssignedToWardLastName;
-    @FXML
-    private TableColumn<Long, Doctor> doctorsAssignedToWardLSSN;
+    private TableColumn<Ward, Integer> wardRoomNumberColumn;
     @FXML
     private TextField wardNameTextField;
     @FXML
@@ -33,16 +31,19 @@ public class AddEditWardViewController implements ViewController
     @FXML
     public void onSaveButton()
     {
+        viewModel.saveChanges();
     }
 
     @FXML
     public void onClearButton()
     {
+        viewModel.clear();
     }
 
     @FXML
     public void onBackButton()
     {
+        viewModel.clear();
         viewHandler.openView(View.WARD);
     }
 
@@ -51,11 +52,12 @@ public class AddEditWardViewController implements ViewController
     {
         this.viewHandler = viewHandler;
         this.viewModel = (AddEditWardViewModel) viewModelFactory.getViewModel(View.ADD_EDIT_WARD);
-        doctorsAssignedToWardTable.setItems(viewModel.getDoctorsInWard());
-        doctorsAssignedToWardFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        doctorsAssignedToWardLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        doctorsAssignedToWardLSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
+        allWardsTable.setItems(viewModel.getAllWards());
+        wardNameColumn.setCellValueFactory(new PropertyValueFactory<>("wardName"));
+        wardRoomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         wardNameTextField.textProperty().bindBidirectional(viewModel.wardNameProperty());
         wardRoomNumber.textProperty().bindBidirectional(viewModel.roomNumberProperty());
+
+        viewModel.fillWards();
     }
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #33557f;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.login.DoctorMainViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #33557f;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.login.DoctorMainViewController">
    <children>
       <Button layoutX="516.0" layoutY="412.0" mnemonicParsing="false" onAction="#onLogoutButton" prefHeight="30.0" prefWidth="100.0" text="Logout" AnchorPane.bottomAnchor="57.6" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="85.0" />
       <Button layoutX="515.0" layoutY="202.0" mnemonicParsing="false" onAction="#onAppointmentButton" prefHeight="30.0" prefWidth="100.0" text="Appointments" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="202.0" />
@@ -21,9 +21,10 @@
             <Image url="@../../images/doctor_background.jpg" />
          </image>
          <effect>
-            <DropShadow color="#ededf5" />
+            <DropShadow color="#2a2a2e" />
          </effect>
       </ImageView>
+      <Button layoutX="515.0" layoutY="303.0" mnemonicParsing="false" onAction="#onSamplesButton" prefHeight="30.0" prefWidth="100.0" text="Samples" />
    </children>
    <effect>
       <ColorAdjust brightness="-0.08" contrast="-0.08" />

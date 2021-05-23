@@ -4,26 +4,26 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.manager.AddEditWardViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.manager.AddEditWardViewController">
     <Button layoutX="26.0" layoutY="217.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="25.0" prefWidth="60.0" text="Save" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="218.0" />
     <Button layoutX="26.0" layoutY="210.0" mnemonicParsing="false" onAction="#onClearButton" prefHeight="25.0" prefWidth="60.0" text="Clear" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="180.0" />
     <Button layoutX="35.0" layoutY="459.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="60.0" text="Back" AnchorPane.bottomAnchor="14.7" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="459.0" />
     <TextField fx:id="wardNameTextField" layoutX="27.0" layoutY="24.0" prefHeight="26.0" prefWidth="166.0" promptText="Ward Name" style="-fx-background-color: #f8f8ff;" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="24.0" />
     <TextField fx:id="wardRoomNumber" layoutX="16.0" layoutY="62.0" prefHeight="26.0" prefWidth="166.0" promptText="Room number" style="-fx-background-color: #f8f8ff;" AnchorPane.leftAnchor="26.0" />
-   <TableView fx:id="doctorsAssignedToWardTable" layoutX="199.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #f8f8ff;">
+   <TableView fx:id="allWardsTable" layoutX="303.0" prefHeight="500.0" prefWidth="396.0" style="-fx-background-color: #f8f8ff;">
      <columns>
-       <TableColumn fx:id="doctorsAssignedToWardFirstName" prefWidth="150.0" text="First name" />
-       <TableColumn fx:id="doctorsAssignedToWardLastName" minWidth="7.0" prefWidth="150.0" text="Last name" />
-         <TableColumn fx:id="doctorsAssignedToWardLSSN" prefWidth="213.0" text="SSN" />
+       <TableColumn fx:id="wardNameColumn" prefWidth="193.0" text="Ward name" />
+       <TableColumn fx:id="wardRoomNumberColumn" minWidth="7.0" prefWidth="202.0" text="Room number" />
      </columns>
       <effect>
-         <DropShadow color="#635050" />
+         <DropShadow color="#33557f" />
       </effect>
    </TableView>
    <effect>
-      <DropShadow color="#635050" />
+      <ColorAdjust brightness="-0.06" contrast="0.08" />
    </effect>
 </AnchorPane>

@@ -46,5 +46,13 @@ public class DoctorMainViewController implements ViewController
     {
         this.viewHandler = viewHandler;
         this.doctorMainViewModel = (DoctorMainViewModel) viewModelFactory.getViewModel(View.DOCTOR_MAIN);
+        loggedInAsLabel.textProperty().bind(doctorMainViewModel.currentUserProperty());
+        doctorMainViewModel.setCurrentUser();
+    }
+
+    @FXML
+    public void onSamplesButton()
+    {
+        viewHandler.openView(View.PATIENTS_SAMPLE);
     }
 }
