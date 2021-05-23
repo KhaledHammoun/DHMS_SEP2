@@ -10,8 +10,9 @@ import java.sql.Statement;
 
 public class CurrentUser implements Serializable
 {
-  private Employee user;
   private static CurrentUser currentUser;
+  private String currentUserName;
+  private long ssn;
 
   private CurrentUser()
   {
@@ -26,17 +27,11 @@ public class CurrentUser implements Serializable
     return currentUser;
   }
 
-  public Employee getCurrentUser()
-  {
-    return user;
-  }
-
   public void setUser(LoginUser loginUser)
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection())
     {
       Statement statement = connection.createStatement();
-
       String query =
           "SELECT * FROM " + loginUser.getAccessType() + " WHERE email = '"
               + loginUser.getUsername() + "' AND password = '" + loginUser
@@ -45,41 +40,28 @@ public class CurrentUser implements Serializable
       ResultSet r = statement.executeQuery(query);
       r.next();
 
-      if (loginUser.getAccessType() == AccessType.DOCTOR)
-      {
-        Address address = new Address(r.getString("add_street"),
-            r.getString("add_no"), r.getString("add_zip_code"),
-            r.getString("add_city"));
+      String firstName = r.getString("f_name");
+      String middleName = r.getString("mid_name");
+      String lastName = r.getString("l_name");
 
-        user = new Doctor(r.getString("f_name"), r.getString("mid_name"),
-            r.getString("l_name"), r.getLong("ssn"), r.getDate("dob"), address,
-            r.getString("contact_f_name"), r.getString("contact_mid_name"),
-            r.getString("contact_l_name"), r.getString("contact_phone"),
-            r.getDate("start_date"), r.getString("education"),
-            r.getString("specialization"),
-            new Ward(r.getString("ward_name"), r.getInt("room_number")),
-            r.getString("email"), r.getString("password"));
-      }
-
-      else if (loginUser.getAccessType() == AccessType.NURSE)
-      {
-        Address address = new Address(r.getString("add_street"),
-            r.getString("add_no"), r.getString("add_zip_code"),
-            r.getString("add_city"));
-
-        user = new Nurse(r.getLong("ssn"), r.getLong("doctor_ssn"),
-            r.getString("f_name"), r.getString("mid_name"),
-            r.getString("l_name"), r.getDate("dob"), address,
-            r.getString("contact_f_name"), r.getString("contact_mid_name"),
-            r.getString("contact_l_name"), r.getString("contact_phone"),
-            r.getDate("start_date"), r.getString("education"),
-            r.getString("experience"), r.getString("email"),
-            r.getString("password"));
-      }
+      currentUserName = middleName == null ?
+          firstName + " " + lastName :
+          firstName + " " + middleName + " " + lastName;
+      ssn = r.getLong("ssn");
     }
     catch (SQLException e)
     {
       e.printStackTrace();
     }
+  }
+
+  public String getCurrentUserName()
+  {
+    return currentUserName;
+  }
+
+  public long getSsn()
+  {
+    return ssn;
   }
 }
