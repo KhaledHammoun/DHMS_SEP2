@@ -99,6 +99,6 @@ public class CurrentUser implements Serializable
 
   public String getFullName()
   {
-    return currentUser.getFullName();
+    return user.getFullName();
   }
 }

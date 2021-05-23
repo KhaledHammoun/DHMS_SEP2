@@ -69,9 +69,4 @@ public abstract class Employee extends Person implements Serializable
     return super.toString() + "startDate=" + startDate + ", education='"
         + education + '\'';
   }
-
-  public String getFullName()
-  {
-    return super.getFullName();
-  }
 }
