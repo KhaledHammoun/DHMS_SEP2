@@ -28,7 +28,9 @@ public class AddEditSampleViewController implements ViewController
   @FXML
   public void onSaveButton()
   {
-    //TODO
+    addEditSampleViewModel.saveChanges();
+    addEditSampleViewModel.savePatient();
+    viewHandler.openView(View.PATIENTS_SAMPLE);
   }
 
   @FXML
@@ -55,5 +57,7 @@ public class AddEditSampleViewController implements ViewController
             addEditSampleViewModel.deadlineProperty());
     priority.valueProperty().bindBidirectional(
             addEditSampleViewModel.priorityProperty());
+
+    addEditSampleViewModel.loadSelectedSample();
   }
 }

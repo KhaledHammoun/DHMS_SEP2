@@ -82,7 +82,7 @@ public class ViewModelFactory
         viewModels.put(View.ADD_DIAGNOSE,
                        new AddDiagnoseViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE)));
         viewModels.put(View.ADD_EDIT_SAMPLE,
-                       new AddEditSampleViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE)));
+                       new AddEditSampleViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE), modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
         viewModels.put(View.APPOINTMENTS,
                        new AppointmentsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_APPOINTMENT)));
         viewModels.put(View.ASSIGN_NURSE, new AssignNurseViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_NURSE)));

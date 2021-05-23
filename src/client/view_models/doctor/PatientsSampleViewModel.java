@@ -1,33 +1,42 @@
 package client.view_models.doctor;
 
 import client.model.doctor.SampleModelDoctor;
+import client.shared.SelectionModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.Patient;
 import shared.Sample;
-
-import java.beans.PropertyChangeEvent;
-import java.util.ArrayList;
 
 public class PatientsSampleViewModel
 {
-    private ObservableList<Sample> samples;
+  private ObservableList<Sample> samples;
 
-    private SampleModelDoctor sampleModelDoctor;
+  private SampleModelDoctor sampleModelDoctor;
+  private Patient patient;
 
-    public PatientsSampleViewModel(Object sampleModelDoctor)
+  public PatientsSampleViewModel(Object sampleModelDoctor)
+  {
+    this.sampleModelDoctor = (SampleModelDoctor) sampleModelDoctor;
+    samples = FXCollections.observableArrayList();
+  }
+
+  public ObservableList<Sample> getSamples()
+  {
+    return samples;
+  }
+
+  public void loadSelectedPatientData()
+  {
+    patient = (Patient) SelectionModel.getInstance().get();
+
+    if (patient == null)
     {
-        this.sampleModelDoctor = (SampleModelDoctor) sampleModelDoctor;
-        //ToDo implement observer
-        //sampleModelDoctor.addListener("AllSamples", this::loadSamples);
-        samples = FXCollections.observableArrayList();
+      samples.setAll(sampleModelDoctor.getAllSamples());
     }
-    public void loadSamples(PropertyChangeEvent evt)
+    else
     {
-        samples.addAll((ArrayList<Sample>) evt.getNewValue());
+      samples.setAll(sampleModelDoctor.getAllPatientSamples(patient));
     }
-    public ObservableList<Sample> getSamples()
-    {
-        return samples;
-    }
+  }
 }
 

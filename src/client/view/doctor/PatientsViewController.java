@@ -6,6 +6,7 @@ import client.shared.SelectionModel;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.PatientsViewModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -36,10 +37,10 @@ public class PatientsViewController implements ViewController
   }
 
   @FXML
-  public void onAddEditSample()
+  public void onAddEdit()
   {
     patientsViewModel.setSelectedPatient(doctorViewPatientTable.getSelectionModel().getSelectedItem());
-    viewHandler.openView(View.ADD_EDIT_SAMPLE);
+    viewHandler.openView(View.PATIENTS_SAMPLE);
   }
 
   @FXML
@@ -75,5 +76,11 @@ public class PatientsViewController implements ViewController
     doctorViewPatientSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
     doctorViewPatientFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     doctorViewPatientLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+  }
+
+  public void onSamplesToInspect(ActionEvent actionEvent)
+  {
+    patientsViewModel.setSelectedPatient(null);
+    viewHandler.openView(View.PATIENTS_SAMPLE);
   }
 }
