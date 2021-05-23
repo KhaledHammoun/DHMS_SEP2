@@ -56,12 +56,13 @@ public class AddEditSampleViewModel
 
   public void loadSelectedSample()
   {
-    sample = (Sample) SelectionModel.getInstance().get();
-
-    type.set(sample.getType());
-    deadline.set(sample.getDeadline().toLocalDate());
-    priority.set(String.valueOf(sample.getPriority()));
-    result.setValue(sample.getResult());
+    if(SelectionModel.getInstance().isEmpty()){
+      sample = (Sample) SelectionModel.getInstance().get();
+      type.set(sample.getType());
+      deadline.set(sample.getDeadline().toLocalDate());
+      priority.set(String.valueOf(sample.getPriority()));
+      result.setValue(sample.getResult());
+    }
   }
 
   public void saveChanges()

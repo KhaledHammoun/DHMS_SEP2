@@ -30,7 +30,7 @@ public class AddEditSampleViewController implements ViewController
   {
     addEditSampleViewModel.saveChanges();
     addEditSampleViewModel.savePatient();
-    viewHandler.openView(View.PATIENTS_SAMPLE);
+    viewHandler.openView(View.PATIENTS);
   }
 
   @FXML

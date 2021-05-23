@@ -37,14 +37,13 @@ public class AssignNurseViewModel
         .getCurrentUser();
 
     nursesModelDoctor.assignNurse(selectedNurse, currentDoctorUser);
-    assignedNurses
-        .setAll(nursesModelDoctor.getAllNursesAssignedToMe(currentDoctorUser));
+    loadTables();
   }
 
   public void loadTables()
   {
     availableNurses.setAll(nursesModelDoctor.getAllAvailableNurses());
-    assignedNurses.addAll(nursesModelDoctor.getAllNursesAssignedToMe(
+    assignedNurses.setAll(nursesModelDoctor.getAllNursesAssignedToMe(
         (Doctor) CurrentUser.getInstance().getCurrentUser()));
   }
 }

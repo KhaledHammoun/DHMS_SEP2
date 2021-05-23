@@ -77,5 +77,7 @@ public class MakeAppointmentViewController implements ViewController
         viewModel.appointmentDateProperty());
     timeMakeAppointmentTxtField.textProperty().bindBidirectional(viewModel.appointmentTimeProperty());
 
+    viewModel.loadData();
+
   }
 }
