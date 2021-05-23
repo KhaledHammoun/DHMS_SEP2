@@ -24,7 +24,7 @@ class GetEmployeeDataModelTest
 
   @Test public void getListOfAllDoctors()
   {
-    ArrayList<Doctor> listOfAllDoctors = test.getListOfAllDoctors();
+    ArrayList<Doctor> listOfAllDoctors = test.getListOfAllDoctors();;
     assertNotNull(listOfAllDoctors);
   }
 

@@ -68,10 +68,12 @@ public class ViewModelFactory
 
     private void createManagerViewModels()
     {
-        viewModels.put(View.EMPLOYEE, new EmployeeViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_EMPLOYEE)));
+        viewModels.put(View.EMPLOYEE, new EmployeeViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_EMPLOYEE),
+                                                            modelFactory.getModel(InterfaceEnum.SHARED_EMPLOYEE)));
         viewModels.put(View.WARD, new WardViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_WARD)));
         viewModels.put(View.ADD_EDIT_EMPLOYEE,
-                       new AddEditEmployeeViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_EMPLOYEE)));
+                       new AddEditEmployeeViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_EMPLOYEE),
+                                                    modelFactory.getModel(InterfaceEnum.SHARED_EMPLOYEE)));
         viewModels.put(View.ADD_EDIT_WARD, new AddEditWardViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_WARD)));
     }
 

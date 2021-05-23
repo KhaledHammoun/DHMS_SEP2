@@ -32,6 +32,14 @@ public class EmployeeViewController implements ViewController
     @FXML
     public void onGetButton()
     {
+        if (employeeTypeComboBox.getSelectionModel().getSelectedItem().equals("Doctor"))
+        {
+            viewModel.getListOfDoctors();
+        }
+        else
+        {
+            viewModel.getListOfNurses();
+        }
     }
 
     @FXML
@@ -43,7 +51,15 @@ public class EmployeeViewController implements ViewController
     @FXML
     public void onEditEmployeeButton()
     {
-        // TODO: 22/05/2021 call the method for getting the employee to edit data. viewModel
+        Employee employee = employeeTable.getSelectionModel().getSelectedItem();
+        if (employeeTypeComboBox.getSelectionModel().getSelectedItem().equals("Doctor"))
+        {
+            viewModel.editDoctor(employee.getSsn());
+        }
+        else
+        {
+            viewModel.editNurse(employee.getSsn());
+        }
         viewHandler.openView(View.ADD_EDIT_EMPLOYEE);
     }
 
@@ -64,9 +80,10 @@ public class EmployeeViewController implements ViewController
         this.viewHandler = viewHandler;
         this.viewModel = (EmployeeViewModel) viewModelFactory.getViewModel(View.EMPLOYEE);
         employeeTypeComboBox.setItems(viewModel.getEmployeeType());
+        employeeTypeComboBox.getSelectionModel().selectFirst();
         ssnColumn.setCellValueFactory(new PropertyValueFactory<>("ssn"));
         fNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        employeeTable.setItems(viewModel.getEmployees());
+        employeeTable.setItems(viewModel.employeesProperty());
     }
 }

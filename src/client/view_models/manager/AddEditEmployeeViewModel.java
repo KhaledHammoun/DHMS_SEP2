@@ -1,6 +1,7 @@
 package client.view_models.manager;
 
 import client.model.manager.EmployeeModelManager;
+import client.model.shared.GetEmployeeDataModel;
 import javafx.beans.property.*;
 import shared.Ward;
 
@@ -28,10 +29,13 @@ public class AddEditEmployeeViewModel
   private StringProperty education;
 
   private EmployeeModelManager employeeModelManager;
+  private GetEmployeeDataModel getEmployeeDataModel;
 
-  public AddEditEmployeeViewModel(Object employeeModelManager)
+  public AddEditEmployeeViewModel(Object employeeModelManager, Object getEmployeeDataModel)
   {
     this.employeeModelManager = (EmployeeModelManager) employeeModelManager;
+    this.getEmployeeDataModel = (GetEmployeeDataModel) getEmployeeDataModel;
+
     employeeSnn = new SimpleStringProperty();
     employeeFirstName = new SimpleStringProperty();
     employeeMiddleName = new SimpleStringProperty();
