@@ -1,5 +1,6 @@
 package client.networking.doctor;
 
+import shared.Patient;
 import shared.Sample;
 
 import java.rmi.Remote;
@@ -12,4 +13,5 @@ public interface SampleClientDoctor extends Remote
   void createSample(Sample sample) throws RemoteException;
   void editSample(Sample sample) throws RemoteException;
   Sample getSampleByID(int id) throws RemoteException;
+  ArrayList<Sample> getAllPatientSamples(Patient patient) throws RemoteException;
 }

@@ -1,6 +1,7 @@
 package client.model.doctor;
 
 import client.networking.doctor.SampleClientDoctor;
+import shared.Patient;
 import shared.Sample;
 
 import java.rmi.RemoteException;
@@ -60,6 +61,18 @@ public class SampleModelDoctorImpl implements SampleModelDoctor
     catch (RemoteException e)
     {
       throw new RuntimeException("Error while fetching sample. Please try again.");
+    }
+  }
+
+  @Override public ArrayList<Sample> getAllPatientSamples(Patient patient)
+  {
+    try
+    {
+      return clientDoctor.getAllPatientSamples(patient);
+    }
+    catch (RemoteException e)
+    {
+      throw new RuntimeException("Error while fetching samples. Please try again.");
     }
   }
 }
