@@ -45,5 +45,8 @@ public class NurseMainViewController implements ViewController
     {
         this.viewHandler = viewHandler;
         this.nurseMainViewModel = (NurseMainViewModel) viewModelFactory.getViewModel(View.NURSE_MAIN);
+        loggedInAsLabel.textProperty().bind(nurseMainViewModel.currentUserProperty());
+
+        nurseMainViewModel.setCurrentUser();
     }
 }
