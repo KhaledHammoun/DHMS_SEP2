@@ -44,5 +44,12 @@ public class AppointmentsViewController implements ViewController
     startDateTime.setCellValueFactory(new PropertyValueFactory<>("from"));
     endDateTime.setCellValueFactory(new PropertyValueFactory<>("to"));
     patientSSN.setCellValueFactory(new PropertyValueFactory<>("patientSSN"));
+
+    loadDoctorAppointments();
+  }
+
+  private void loadDoctorAppointments()
+  {
+    appointmentsViewModel.loadAppointments();
   }
 }
