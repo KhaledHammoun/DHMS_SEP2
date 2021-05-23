@@ -6,7 +6,7 @@ public class SelectedModel
 {
   private long ssn;
   private AccessType type;
-  private SelectedModel instance = new SelectedModel();
+  private static SelectedModel instance = new SelectedModel();
 
   private SelectedModel()
   {
@@ -18,7 +18,7 @@ public class SelectedModel
     this.ssn = ssn;
   }
 
-  public SelectedModel getInstance()
+  public static SelectedModel getInstance()
   {
     return instance;
   }
