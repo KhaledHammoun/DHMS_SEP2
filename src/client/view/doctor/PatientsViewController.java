@@ -20,6 +20,8 @@ public class PatientsViewController implements ViewController
   private ViewHandler viewHandler;
   private PatientsViewModel patientsViewModel;
 
+  private long selectedPatient;
+
   @FXML public void onTreatButton()
   {
     patientsViewModel.setSelectedPatient(
@@ -80,5 +82,11 @@ public class PatientsViewController implements ViewController
         .setCellValueFactory(new PropertyValueFactory<>("firstName"));
     doctorViewPatientLastName
         .setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        
+  public void onSamplesToInspect(ActionEvent actionEvent)
+  {
+    patientsViewModel.setSelectedPatient(null);
+    viewHandler.openView(View.PATIENTS_SAMPLE);
+
   }
 }
