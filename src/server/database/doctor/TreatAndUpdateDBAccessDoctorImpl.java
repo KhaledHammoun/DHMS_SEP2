@@ -122,4 +122,34 @@ public class TreatAndUpdateDBAccessDoctorImpl
       e.printStackTrace();
     }
   }
+
+  @Override public ArrayList<Treatment> getAllTreatmentsOfPatient(
+      Patient patient, Doctor doctor)
+  {
+    try (Connection connection = DatabaseAccess.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+            "SELECT treats.description, medication, name, treats.severity_level from treats join diagnosis d on d.id = treats.diagnosis_id and d.severity_level = treats.severity_level WHERE treats.patient_ssn = ? AND doctor_ssn = ?;"))
+    {
+      preparedStatement.setLong(1, patient.getSsn());
+      preparedStatement.setLong(2, doctor.getSsn());
+
+      ResultSet r = preparedStatement.executeQuery();
+      ArrayList<Treatment> result = new ArrayList<>();
+      while (r.next())
+      {
+        Treatment toAdd = new Treatment(r.getString("medication"),
+            r.getString("description"));
+        toAdd.setDiagnosisName(r.getString("name"));
+        toAdd.setSeverityLevel(r.getInt("severity_level"));
+
+        result.add(toAdd);
+      }
+      return result;
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
 }

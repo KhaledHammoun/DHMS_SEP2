@@ -41,4 +41,10 @@ public class TreatAndUpdateServerModelDoctorImpl
   {
     dbAccessDoctor.editDiagnosis(diagnosis);
   }
+
+  @Override public ArrayList<Treatment> getAllTreatmentsOfPatient(
+      Patient patient, Doctor doctor)
+  {
+    return dbAccessDoctor.getAllTreatmentsOfPatient(patient, doctor);
+  }
 }

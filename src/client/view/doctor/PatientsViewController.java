@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.shared.SelectionModel;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.PatientsViewModel;
@@ -25,28 +26,26 @@ public class PatientsViewController implements ViewController
   private PatientsViewModel patientsViewModel;
 
   private long selectedPatient ;
-  private Patient patient;
 
 
   @FXML
   public void onTreatButton()
   {
+    patientsViewModel.setSelectedPatient(doctorViewPatientTable.getSelectionModel().getSelectedItem());
     viewHandler.openView(View.TREAT_PATIENT);
-    patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
-    patientsViewModel.getAllDiseasesOfPatient(patient);
   }
 
   @FXML
   public void onAddEditSample()
   {
+    patientsViewModel.setSelectedPatient(doctorViewPatientTable.getSelectionModel().getSelectedItem());
     viewHandler.openView(View.ADD_EDIT_SAMPLE);
-    patient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue();
-    patientsViewModel.getAllSamples(patient);
   }
 
   @FXML
   public void onDiagnoseButton()
   {
+    patientsViewModel.setSelectedPatient(doctorViewPatientTable.getSelectionModel().getSelectedItem());
     viewHandler.openView(View.ADD_DIAGNOSE);
 
   }
@@ -54,10 +53,8 @@ public class PatientsViewController implements ViewController
   @FXML
   public void onEditMedicalDescription()
   {
+    patientsViewModel.setSelectedPatient(doctorViewPatientTable.getSelectionModel().getSelectedItem());
     viewHandler.openView(View.EDIT_MEDICAL_DESCRIPTION);
-    selectedPatient = doctorViewPatientTable.getSelectionModel().selectedItemProperty().getValue()
-        .getSsn();
-    patientsViewModel.editMedicalDescription(selectedPatient);
   }
 
   @FXML

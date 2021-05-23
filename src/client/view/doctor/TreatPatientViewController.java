@@ -6,58 +6,84 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.TreatPatientViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Diagnosis;
+import shared.Treatment;
 
 public class TreatPatientViewController implements ViewController
 {
-    @FXML
-    private TextField medicationTextField;
-    @FXML
-    private TableView<Diagnosis> diagnosisTable;
-    @FXML
-    private TableColumn<Diagnosis, String> diagnosisName;
-    @FXML
-    private TableColumn<Diagnosis, Integer> diagnosisSeverity;
-    @FXML
-    private TableColumn<Diagnosis, String> diagnosisDescription;
-    @FXML
-    private TextArea descriptionTextArea;
+  public TableView<Treatment> allTreatmentsTable;
+  public TableColumn<Treatment, String> treatmentMedication;
+  public TableColumn<Treatment, String> treatmentDescription;
+  public TableColumn<Treatment, String> treatmentDiagnosisName;
+  public TableColumn<Treatment, String> treatmentDiagnosisSL;
+  public ComboBox<String> medicationTypeCB;
 
-    private ViewHandler viewHandler;
-    private TreatPatientViewModel treatPatientViewModel;
+  @FXML private TableView<Diagnosis> diagnosisTable;
+  @FXML private TableColumn<Diagnosis, String> diagnosisName;
+  @FXML private TableColumn<Diagnosis, Integer> diagnosisSeverity;
+  @FXML private TableColumn<Diagnosis, String> diagnosisDescription;
+  @FXML private TextArea descriptionTextArea;
 
-    @FXML
-    public void onAddButton()
-    {
-        //TODO
-    }
+  private ViewHandler viewHandler;
 
-    @FXML
-    public void onBackButton()
-    {
-        viewHandler.openView(View.PATIENTS);
-    }
+  private TreatPatientViewModel treatPatientViewModel;
 
-    @FXML
-    public void onClearButton()
-    {
-    }
+  @FXML public void onAddButton()
+  {
+    treatPatientViewModel
+        .addTreatment(medicationTypeCB.getSelectionModel().getSelectedItem(),
+            diagnosisTable.getSelectionModel().getSelectedItem());
+    treatPatientViewModel.loadDiagnoses();
+    treatPatientViewModel.loadTreatments();
+  }
 
-    @Override
-    public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
-    {
-        this.viewHandler = viewHandler;
-        treatPatientViewModel = (TreatPatientViewModel) viewModelFactory.getViewModel(View.TREAT_PATIENT);
+  @FXML public void onBackButton()
+  {
+    viewHandler.openView(View.PATIENTS);
+  }
 
-        diagnosisTable.setItems(treatPatientViewModel.getDiagnoses());
-        diagnosisName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        diagnosisSeverity.setCellValueFactory(new PropertyValueFactory<>("severityLevel"));
-        diagnosisDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-        medicationTextField.textProperty().bindBidirectional(
-                treatPatientViewModel.medicationProperty());
-        descriptionTextArea.textProperty().bindBidirectional(treatPatientViewModel.descriptionProperty());
+  @FXML public void onClearButton()
+  {
+    descriptionTextArea.clear();
+  }
 
-    }
+  @Override public void init(ViewModelFactory viewModelFactory,
+      ViewHandler viewHandler)
+  {
+    this.viewHandler = viewHandler;
+    treatPatientViewModel = (TreatPatientViewModel) viewModelFactory
+        .getViewModel(View.TREAT_PATIENT);
+    treatPatientViewModel.loadSelectedPatient();
+    treatPatientViewModel.loadTreatments();
+    treatPatientViewModel.loadDiagnoses();
+
+    diagnosisTable.setItems(treatPatientViewModel.getDiagnoses());
+    diagnosisName.setCellValueFactory(new PropertyValueFactory<>("name"));
+    diagnosisSeverity
+        .setCellValueFactory(new PropertyValueFactory<>("severityLevel"));
+    diagnosisDescription
+        .setCellValueFactory(new PropertyValueFactory<>("description"));
+    descriptionTextArea.textProperty()
+        .bindBidirectional(treatPatientViewModel.descriptionProperty());
+
+    allTreatmentsTable.setItems(treatPatientViewModel.getTreatments());
+    treatmentDescription
+        .setCellValueFactory(new PropertyValueFactory<>("description"));
+    treatmentDiagnosisName
+        .setCellValueFactory(new PropertyValueFactory<>("diagnosisName"));
+    treatmentDiagnosisSL
+        .setCellValueFactory(new PropertyValueFactory<>("severityLevel"));
+    treatmentMedication
+        .setCellValueFactory(new PropertyValueFactory<>("medication"));
+
+    medicationTypeCB.getItems()
+        .setAll("Drops", "Cough syrup", "Capsule", "Aspirin", "Inhaler", "Tea",
+            "Antibiotics");
+  }
+
 }
