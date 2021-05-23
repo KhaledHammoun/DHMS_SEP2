@@ -14,121 +14,126 @@ import java.util.Map;
 
 public class ViewFactory
 {
-    // TODO: 22/05/2021 Remove printouts.
-    private static Map<View, Scene> scenes;
-    private static List<View> views;
+  // TODO: 22/05/2021 Remove printouts.
+  private static Map<View, Scene> scenes;
+  private static List<View> views;
 
-    static
+  static
+  {
+    scenes = new HashMap<>();
+  }
+
+  public static void init()
+  {
+    createLoginScene();
+    createManagerScene();
+    createDoctorScene();
+    createNurseScene();
+  }
+
+  private static void createLoginScene()
+  {
+    views = View.getLoginValues();
+    try
     {
-        scenes = new HashMap<>();
+      for (View sceneName : views)
+      {
+        System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
+        Scene scene = null;
+        Parent root = loadFXML(
+            "../view/login/" + CamelCaseConverter.toCamelCase(sceneName.name())
+                + "View.fxml");
+        scene = new Scene(root);
+        scene.setUserData(root.getUserData());
+        scenes.put(sceneName, scene);
+      }
     }
-
-    public static void init()
+    catch (IOException e)
     {
-        createLoginScene();
-        createManagerScene();
-        createDoctorScene();
-        createNurseScene();
+      e.printStackTrace();
     }
+  }
 
-    private static void createLoginScene()
+  private static void createManagerScene()
+  {
+    views = View.getManagerValues();
+    try
     {
-        views = View.getLoginValues();
-        try
-        {
-            for (View sceneName : views)
-            {
-                System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
-                Scene scene = null;
-                Parent root = loadFXML("../view/login/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
-                scene = new Scene(root);
-                scene.setUserData(root.getUserData());
-                scenes.put(sceneName, scene);
-            }
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+      for (View sceneName : views)
+      {
+        System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
+        Scene scene = null;
+        Parent root = loadFXML("../view/manager/" + CamelCaseConverter
+            .toCamelCase(sceneName.name()) + "View.fxml");
+        scene = new Scene(root);
+        scene.setUserData(root.getUserData());
+        scenes.put(sceneName, scene);
+      }
     }
-
-    private static void createManagerScene()
+    catch (IOException e)
     {
-        views = View.getManagerValues();
-        try
-        {
-            for (View sceneName : views)
-            {
-                System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
-                Scene scene = null;
-                Parent root = loadFXML("../view/manager/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
-                scene = new Scene(root);
-                scene.setUserData(root.getUserData());
-                scenes.put(sceneName, scene);
-            }
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+      e.printStackTrace();
     }
+  }
 
-    private static void createDoctorScene()
+  private static void createDoctorScene()
+  {
+    views = View.getDoctorValues();
+    try
     {
-        views = View.getDoctorValues();
-        try
-        {
-            for (View sceneName : views)
-            {
-                System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
-                Scene scene = null;
-                Parent root = loadFXML("../view/doctor/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
-                scene = new Scene(root);
-                scene.setUserData(root.getUserData());
-                scenes.put(sceneName, scene);
-            }
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+      for (View sceneName : views)
+      {
+        System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
+        Scene scene = null;
+        Parent root = loadFXML(
+            "../view/doctor/" + CamelCaseConverter.toCamelCase(sceneName.name())
+                + "View.fxml");
+        scene = new Scene(root);
+        scene.setUserData(root.getUserData());
+        scenes.put(sceneName, scene);
+      }
     }
-
-    private static void createNurseScene()
+    catch (IOException e)
     {
-        views = View.getNurseValues();
-        try
-        {
-            for (View sceneName : views)
-            {
-                System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
-                Scene scene = null;
-                Parent root = loadFXML("../view/nurse/" + CamelCaseConverter.toCamelCase(sceneName.name()) + "View.fxml");
-                scene = new Scene(root);
-                scene.setUserData(root.getUserData());
-                scenes.put(sceneName, scene);
-            }
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+      e.printStackTrace();
     }
+  }
 
-    private static Parent loadFXML(String path) throws IOException
+  private static void createNurseScene()
+  {
+    views = View.getNurseValues();
+    try
     {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ViewFactory.class.getResource(path));
-        Parent root = loader.load();
-        root.setUserData(loader);
-
-        ViewController ctrl = loader.getController();
-        ctrl.init(ViewModelFactory.getViewModelFactory(), ViewHandler.getViewHandler());
-        return root;
+      for (View sceneName : views)
+      {
+        System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
+        Scene scene = null;
+        Parent root = loadFXML(
+            "../view/nurse/" + CamelCaseConverter.toCamelCase(sceneName.name())
+                + "View.fxml");
+        scene = new Scene(root);
+        scene.setUserData(root.getUserData());
+        scenes.put(sceneName, scene);
+      }
     }
-
-    public static Scene getScene(View sceneName)
+    catch (IOException e)
     {
-        return scenes.get(sceneName);
+      e.printStackTrace();
     }
+  }
+
+  private static Parent loadFXML(String path) throws IOException
+  {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(ViewFactory.class.getResource(path));
+    Parent root = loader.load();
+    root.setUserData(loader);
+
+    return root;
+  }
+
+  public static Scene getScene(View sceneName)
+  {
+    return scenes.get(sceneName);
+  }
 }
