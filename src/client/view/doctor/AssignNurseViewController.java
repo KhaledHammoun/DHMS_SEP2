@@ -37,7 +37,7 @@ public class AssignNurseViewController implements ViewController
     @FXML
     public void onAssignButton()
     {
-        //ToDo
+        assignNurseViewModel.assignNurse(nursesTable.getSelectionModel().getSelectedItem());
     }
 
     @FXML
@@ -60,5 +60,11 @@ public class AssignNurseViewController implements ViewController
         assignedNurseFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         assignedNurseLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         assignedNurseSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
+        loadTables();
+    }
+
+    public void loadTables()
+    {
+        assignNurseViewModel.loadTables();
     }
 }

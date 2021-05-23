@@ -3,6 +3,8 @@ package client.view_models.doctor;
 import client.model.doctor.NursesModelDoctor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.CurrentUser;
+import shared.Doctor;
 import shared.Nurse;
 
 public class AssignNurseViewModel
@@ -14,11 +16,9 @@ public class AssignNurseViewModel
 
   public AssignNurseViewModel(Object nursesModelDoctor)
   {
-    this.nursesModelDoctor= (NursesModelDoctor) nursesModelDoctor;
-    //ToDo implement observer
+    this.nursesModelDoctor = (NursesModelDoctor) nursesModelDoctor;
     availableNurses = FXCollections.observableArrayList();
     assignedNurses = FXCollections.observableArrayList();
-
   }
 
   public ObservableList<Nurse> getAvailableNurses()
@@ -31,4 +31,20 @@ public class AssignNurseViewModel
     return assignedNurses;
   }
 
+  public void assignNurse(Nurse selectedNurse)
+  {
+    Doctor currentDoctorUser = (Doctor) CurrentUser.getInstance()
+        .getCurrentUser();
+
+    nursesModelDoctor.assignNurse(selectedNurse, currentDoctorUser);
+    assignedNurses
+        .setAll(nursesModelDoctor.getAllNursesAssignedToMe(currentDoctorUser));
+  }
+
+  public void loadTables()
+  {
+    availableNurses.setAll(nursesModelDoctor.getAllAvailableNurses());
+    assignedNurses.addAll(nursesModelDoctor.getAllNursesAssignedToMe(
+        (Doctor) CurrentUser.getInstance().getCurrentUser()));
+  }
 }
