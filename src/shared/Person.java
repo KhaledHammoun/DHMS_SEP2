@@ -17,7 +17,9 @@ public abstract class Person implements Serializable
   private String contactPhoneNumber;
 
   public Person(String firstName, String middleName, String lastName, long ssn,
-      Date dob, Address address, String contactFirstName, String contactMiddleName, String contactLastName, String contactPhoneNumber)
+      Date dob, Address address, String contactFirstName,
+      String contactMiddleName, String contactLastName,
+      String contactPhoneNumber)
   {
     this.firstName = firstName;
     this.middleName = middleName;
@@ -27,8 +29,8 @@ public abstract class Person implements Serializable
     this.address = address;
     this.contactFirstName = contactFirstName;
     this.contactMiddleName = contactMiddleName;
-    this.contactLastName =  contactLastName;
-    this.contactPhoneNumber =  contactPhoneNumber;
+    this.contactLastName = contactLastName;
+    this.contactPhoneNumber = contactPhoneNumber;
   }
 
   public String getFirstName()
@@ -111,6 +113,21 @@ public abstract class Person implements Serializable
     this.contactPhoneNumber = contactPhoneNumber;
   }
 
+  public void setFirstName(String firstName)
+  {
+    this.firstName = firstName;
+  }
+
+  public void setMiddleName(String middleName)
+  {
+    this.middleName = middleName;
+  }
+
+  public void setDob(Date dob)
+  {
+    this.dob = dob;
+  }
+
   @Override public String toString()
   {
     return "Person{" + "firstName='" + firstName + '\'' + ", middleName='"
@@ -119,5 +136,12 @@ public abstract class Person implements Serializable
         + contactFirstName + '\'' + ", contactMiddleName='" + contactMiddleName
         + '\'' + ", contactLastName='" + contactLastName + '\''
         + ", contactPhoneNumber='" + contactPhoneNumber + '\'' + '}';
+  }
+
+  protected String getFullName()
+  {
+    return middleName == null ?
+        firstName + " " + lastName :
+        firstName + " " + middleName + " " + lastName;
   }
 }

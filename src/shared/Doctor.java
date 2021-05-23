@@ -42,6 +42,11 @@ public class Doctor extends Employee implements Serializable
     this.specialization = specialization;
   }
 
+  public String getFullName()
+  {
+    return super.getFullName();
+  }
+
   @Override public String toString()
   {
     return super.toString() + "specialization='" + specialization + '\'';
