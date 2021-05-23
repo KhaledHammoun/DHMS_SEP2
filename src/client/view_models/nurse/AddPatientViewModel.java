@@ -5,8 +5,6 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import shared.Address;
-import shared.Patient;
 
 import java.time.LocalDate;
 
@@ -128,6 +126,7 @@ public class AddPatientViewModel
 
   public void savePatient()
   {
+
     //TODO dob needs to be changed in LocalDate in all classes from shared
     /*
     Address address =  new Address(streetPatient.getValue(),

@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.nurse.AllAppointmentsViewController">
    <children>
-      <TableView fx:id="appointmentsTableView" layoutY="42.0" prefHeight="328.0" prefWidth="700.0" style="-fx-background-radius: 0.5em; -fx-background-color: #f8f8ff;">
+      <TableView fx:id="appointmentsTableView" layoutY="42.0" prefHeight="328.0" prefWidth="700.0" style="-fx-background-radius: 0.5em;">
         <columns>
           <TableColumn fx:id="startDateAppColumn" prefWidth="95.99999696016312" text="Start" />
           <TableColumn fx:id="endDateAppColumn" prefWidth="96.00006103515625" text="End" />
@@ -33,6 +33,6 @@
       <Button layoutX="14.0" layoutY="432.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="26.0" prefWidth="46.0" text="Back" />
    </children>
    <effect>
-      <ColorAdjust contrast="0.09" />
+      <ColorAdjust brightness="-0.06" contrast="0.07" />
    </effect>
 </AnchorPane>

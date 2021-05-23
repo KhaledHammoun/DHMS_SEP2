@@ -58,16 +58,19 @@ public class AddEditEmployeeViewController implements ViewController
     @FXML
     public void onSaveButtonEmployee()
     {
+        viewModel.saveChanges();
     }
 
     @FXML
     public void onClearButtonEmployee()
     {
+        viewModel.clear();
     }
 
     @FXML
     public void onBackButtonEmployee()
     {
+        viewModel.clear();
         viewHandler.openView(View.EMPLOYEE);
     }
 
@@ -93,6 +96,6 @@ public class AddEditEmployeeViewController implements ViewController
         passwordTextField.textProperty().bindBidirectional(viewModel.passwordProperty());
         employeeExperienceTextArea.textProperty().bindBidirectional(viewModel.experienceProperty());
         employeeEducationTextArea.textProperty().bindBidirectional(viewModel.educationProperty());
-
+        viewModel.setChangeType();
     }
 }
