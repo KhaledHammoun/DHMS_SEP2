@@ -8,6 +8,12 @@ public class Nurse extends Employee implements Serializable
   private String experience;
   private long doctor_ssn;
 
+  public Nurse()
+  {
+    super(null, null, null, 0L, null, null, null,
+          null, null, null, null, null, null, null);
+  }
+
   public Nurse(long ssn, long doctor_ssn, String firstName, String middleName,
       String lastName, Date dob, Address address, String contactFirstName,
       String contactMiddleName, String contactLastName,
@@ -49,6 +55,7 @@ public class Nurse extends Employee implements Serializable
 
   public String getFullName()
   {
-    return super.getFullName();
+    //return super.getFullName();
+    return null;
   }
 }

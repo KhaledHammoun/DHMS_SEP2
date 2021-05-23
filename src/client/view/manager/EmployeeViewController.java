@@ -32,19 +32,13 @@ public class EmployeeViewController implements ViewController
     @FXML
     public void onGetButton()
     {
-        if (employeeTypeComboBox.getSelectionModel().getSelectedItem().equals("Doctor"))
-        {
-            viewModel.getListOfDoctors();
-        }
-        else
-        {
-            viewModel.getListOfNurses();
-        }
+       viewModel.getEmployees();
     }
 
     @FXML
     public void onAddEmployeeButton()
     {
+        viewModel.addEmployee();
         viewHandler.openView(View.ADD_EDIT_EMPLOYEE);
     }
 
@@ -52,14 +46,7 @@ public class EmployeeViewController implements ViewController
     public void onEditEmployeeButton()
     {
         Employee employee = employeeTable.getSelectionModel().getSelectedItem();
-        if (employeeTypeComboBox.getSelectionModel().getSelectedItem().equals("Doctor"))
-        {
-            viewModel.editDoctor(employee.getSsn());
-        }
-        else
-        {
-            viewModel.editNurse(employee.getSsn());
-        }
+        viewModel.editEmployee(employee);
         viewHandler.openView(View.ADD_EDIT_EMPLOYEE);
     }
 
@@ -85,5 +72,6 @@ public class EmployeeViewController implements ViewController
         fNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         employeeTable.setItems(viewModel.employeesProperty());
+        employeeTypeComboBox.valueProperty().bindBidirectional(viewModel.selectedEmployeeTypeProperty());
     }
 }
