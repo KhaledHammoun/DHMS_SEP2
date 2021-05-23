@@ -4,6 +4,9 @@ import server.networking.shared.GetAppointmentDataServer;
 import shared.Appointment;
 import shared.Doctor;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -13,6 +16,7 @@ import java.util.ArrayList;
 public class GetAppointmentDataClientRMI implements GetAppointmentDataClient
 {
     private GetAppointmentDataServer sharedServer;
+    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public GetAppointmentDataClientRMI()
     {
@@ -51,5 +55,23 @@ public class GetAppointmentDataClientRMI implements GetAppointmentDataClient
         {
             throw new RuntimeException("Error while fetching all appointments. Please try again.");
         }
+    }
+
+    @Override
+    public void update(PropertyChangeEvent event)
+    {
+        support.firePropertyChange(event);
+    }
+
+    @Override
+    public void addPropertyChangeListener(String name, PropertyChangeListener listener)
+    {
+        support.addPropertyChangeListener(name, listener);
+    }
+
+    @Override
+    public void removePropertyChangeListener(String name, PropertyChangeListener listener)
+    {
+        support.removePropertyChangeListener(name, listener);
     }
 }
