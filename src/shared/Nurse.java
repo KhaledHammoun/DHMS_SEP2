@@ -46,4 +46,9 @@ public class Nurse extends Employee implements Serializable
     return super.toString() + "experience='" + experience + "doctor_snn= "
         + doctor_ssn + '\'';
   }
+
+  public String getFullName()
+  {
+    return super.getFullName();
+  }
 }
