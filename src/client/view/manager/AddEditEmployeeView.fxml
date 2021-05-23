@@ -34,7 +34,7 @@
       <Label layoutX="484.0" layoutY="261.0" text="Login info:" />
       <AnchorPane layoutX="485.0" layoutY="31.0" prefHeight="187.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff; -fx-background-radius: 0.5em;">
          <effect>
-            <DropShadow color="#413a3a" />
+            <DropShadow color="#33557f" radius="14.75" width="40.0" />
          </effect>
          <children>
             <TextField fx:id="employeeEContactFNameTextField" layoutX="14.0" layoutY="23.0" prefHeight="26.0" prefWidth="174.0" promptText="FIrst name" />
@@ -42,8 +42,14 @@
             <TextField fx:id="employeeEContactPhoneTextField" layoutX="13.0" layoutY="116.0" prefHeight="26.0" prefWidth="174.0" promptText="Phone number" />
          </children>
       </AnchorPane>
-      <TextArea fx:id="employeeExperienceTextArea" layoutX="235.0" layoutY="33.0" prefHeight="76.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;" />
-      <TextArea fx:id="employeeEducationTextArea" layoutX="235.0" layoutY="144.0" prefHeight="76.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;" />
+      <TextArea fx:id="employeeExperienceTextArea" layoutX="235.0" layoutY="33.0" prefHeight="76.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;">
+         <effect>
+            <DropShadow color="#33557f" height="30.5" radius="12.125" width="20.0" />
+         </effect></TextArea>
+      <TextArea fx:id="employeeEducationTextArea" layoutX="235.0" layoutY="144.0" prefHeight="76.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;">
+         <effect>
+            <DropShadow color="#33557f" height="30.5" radius="12.125" width="20.0" />
+         </effect></TextArea>
       <Label layoutX="235.0" layoutY="119.0" text="Employee education:" />
    </children>
    <effect>
