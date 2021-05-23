@@ -1,15 +1,16 @@
 package client.view_models.manager;
 
 import client.model.manager.WardModelManager;
+import client.shared.SelectionModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import shared.Doctor;
+import shared.Ward;
 
 public class AddEditWardViewModel
 {
-  private ObservableList<Doctor> doctorsInWard;
+  private ObservableList<Ward> wards;
   private StringProperty wardNameProperty;
   private StringProperty roomNumberProperty;
 
@@ -18,14 +19,44 @@ public class AddEditWardViewModel
   public AddEditWardViewModel(Object wardModelManager)
   {
     this.wardModelManager = (WardModelManager) wardModelManager;
-    doctorsInWard = FXCollections.observableArrayList();
+    wards = FXCollections.observableArrayList();
     wardNameProperty = new SimpleStringProperty();
     roomNumberProperty = new SimpleStringProperty();
   }
 
-  public ObservableList<Doctor> getDoctorsInWard()
+  // TODO: 23/05/2021 Have to delete the old ward when editing
+  public void saveChanges()
   {
-    return doctorsInWard;
+    String wardName = wardNameProperty.get();
+    int roomNumber = Integer.parseInt(roomNumberProperty.get());
+    Ward toAdd = new Ward(wardName, roomNumber);
+    wardModelManager.addWard(toAdd);
+  }
+
+  private void fillFields(Ward ward)
+  {
+    wardNameProperty.set(ward.getWardName());
+    roomNumberProperty.set(String.valueOf(ward.getRoomNumber()));
+  }
+
+  public void fillWards()
+  {
+    wards.addAll(wardModelManager.getAllWards());
+    if (!SelectionModel.getInstance().isEmpty())
+    {
+      fillFields((Ward) SelectionModel.getInstance().get());
+    }
+  }
+
+  public void clear()
+  {
+    wardNameProperty.set("");
+    roomNumberProperty.set("");
+  }
+
+  public ObservableList<Ward> getAllWards()
+  {
+    return wards;
   }
 
   public StringProperty wardNameProperty()
