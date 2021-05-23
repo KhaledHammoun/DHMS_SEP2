@@ -9,58 +9,39 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class EditMedicalDescriptionViewController implements ViewController
 {
-  @FXML
-  private Label patientsFirstName;
-  @FXML
-  private Label patientsMiddleName;
-  @FXML
-  private Label patientsLastName;
-  @FXML
-  private Label ssn;
-  @FXML
-  private Label dateOfBirth;
-  @FXML
-  private Label gender;
-  @FXML
-  private Label bloodType;
-  @FXML
-  private Label streetLabel;
-  @FXML
-  private Label noLabel;
-  @FXML
-  private Label cityLabel;
-  @FXML
-  private Label zipCodeLabel;
-  @FXML
-  private Label contactFirstName;
-  @FXML
-  private Label contactMiddleName;
-  @FXML
-  private Label contactLastName;
-  @FXML
-  private Label contactTelNo;
-  @FXML
-  private TextArea medicalDescriptionTextArea;
+  @FXML private TextField patientsFirstName;
+  @FXML private TextField patientsMiddleName;
+  @FXML private TextField patientsLastName;
+  @FXML private TextField contactFirstName;
+  @FXML private TextField contactLastName;
+  @FXML private TextField contactTelNo;
+  @FXML private TextField street;
+  @FXML private TextField no;
+  @FXML private TextField city;
+  @FXML private TextField zipCode;
+  @FXML private TextField gender;
+  @FXML private TextField bloodType;
+  @FXML private TextField ssn;
+  @FXML private TextArea medicalDescriptionTextArea;
+  @FXML private TextField dateOfBirth;
 
   private ViewHandler viewHandler;
   private EditMedicalDescriptionViewModel viewModel;
 
-
-  @FXML
-  public void onBackButton()
+  @FXML public void onBackButton()
   {
     viewHandler.openView(View.PATIENTS);
   }
 
-
-  @Override
-  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+  @Override public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
-    viewModel = (EditMedicalDescriptionViewModel) viewModelFactory.getViewModel(View.EDIT_MEDICAL_DESCRIPTION);
+    viewModel = (EditMedicalDescriptionViewModel) viewModelFactory
+        .getViewModel(View.EDIT_MEDICAL_DESCRIPTION);
 
     viewModel.refreshPatient();
 
@@ -71,12 +52,11 @@ public class EditMedicalDescriptionViewController implements ViewController
     dateOfBirth.textProperty().bind(viewModel.dateOfBirthProperty());
     gender.textProperty().bind(viewModel.genderProperty());
     bloodType.textProperty().bind(viewModel.bloodTypeProperty());
-    streetLabel.textProperty().bind(viewModel.streetProperty());
-    noLabel.textProperty().bind(viewModel.noProperty());
-    cityLabel.textProperty().bind(viewModel.cityProperty());
-    zipCodeLabel.textProperty().bind(viewModel.zipCodeProperty());
+    street.textProperty().bind(viewModel.streetProperty());
+    no.textProperty().bind(viewModel.noProperty());
+    city.textProperty().bind(viewModel.cityProperty());
+    zipCode.textProperty().bind(viewModel.zipCodeProperty());
     contactFirstName.textProperty().bind(viewModel.cFirstNameProperty());
-    contactMiddleName.textProperty().bind(viewModel.cMiddleNameProperty());
     contactLastName.textProperty().bind(viewModel.cLastNameProperty());
     contactTelNo.textProperty().bind(viewModel.cTelNoProperty());
     medicalDescriptionTextArea.textProperty().bind(viewModel.medicalDescriptionProperty());
