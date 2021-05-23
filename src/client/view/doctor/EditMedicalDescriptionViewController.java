@@ -5,6 +5,7 @@ import client.core.ViewModelFactory;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.EditMedicalDescriptionViewModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -47,11 +48,6 @@ public class EditMedicalDescriptionViewController implements ViewController
   private ViewHandler viewHandler;
   private EditMedicalDescriptionViewModel viewModel;
 
-  @FXML
-  public void onAddButton()
-  {
-    //TODO
-  }
 
   @FXML
   public void onBackButton()
@@ -59,16 +55,14 @@ public class EditMedicalDescriptionViewController implements ViewController
     viewHandler.openView(View.PATIENTS);
   }
 
-  @FXML
-  public void onClearButton()
-  {
-  }
 
   @Override
   public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
     viewModel = (EditMedicalDescriptionViewModel) viewModelFactory.getViewModel(View.EDIT_MEDICAL_DESCRIPTION);
+
+    viewModel.refreshPatient();
 
     patientsFirstName.textProperty().bind(viewModel.firstNameProperty());
     patientsMiddleName.textProperty().bind(viewModel.middleNameProperty());
@@ -87,4 +81,5 @@ public class EditMedicalDescriptionViewController implements ViewController
     contactTelNo.textProperty().bind(viewModel.cTelNoProperty());
     medicalDescriptionTextArea.textProperty().bind(viewModel.medicalDescriptionProperty());
   }
+
 }

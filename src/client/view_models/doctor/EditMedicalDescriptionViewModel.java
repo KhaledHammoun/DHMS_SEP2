@@ -1,8 +1,10 @@
 package client.view_models.doctor;
 
 import client.model.shared.GetPatientDataModel;
+import client.shared.SelectionModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import shared.Patient;
 
 public class EditMedicalDescriptionViewModel
 {
@@ -22,9 +24,6 @@ public class EditMedicalDescriptionViewModel
     this.getPatientDataModel = (GetPatientDataModel) getPatientDataModel;
 
     firstName = new SimpleStringProperty();
-
-    //TODO firstName.setValue( );
-
     middleName =  new SimpleStringProperty();
     lastName =  new SimpleStringProperty();
     ssn = new SimpleStringProperty();
@@ -121,4 +120,27 @@ public class EditMedicalDescriptionViewModel
   {
     return medicalDescription;
   }
+
+  public void refreshPatient()
+  {
+    Patient p = (Patient) SelectionModel.getInstance().get();
+
+    firstName.set(p.getFirstName());
+    middleName.set(p.getMiddleName());
+    lastName.set(p.getLastName());
+    ssn.set(String.valueOf(p.getSsn()));
+    dateOfBirth.set(String.valueOf(p.getDob()));
+    gender.set(String.valueOf(p.getGender()));
+    bloodType.set(p.getBlood_type());
+    street.set(p.getAddress().getStreet());
+    no.set(p.getAddress().getNumber());
+    city.set(p.getAddress().getCity());
+    zipCode.set(p.getAddress().getZipcode());
+    cFirstName.set(p.getContactFirstName());
+    cMiddleName.set(p.getContactMiddleName());
+    cLastName.set(p.getContactLastName());
+    cTelNo.set(p.getContactPhoneNumber());
+    medicalDescription.set(p.getMedical_description());
+  }
+
 }

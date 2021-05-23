@@ -4,6 +4,7 @@ import client.model.doctor.SampleModelDoctor;
 
 import client.model.doctor.TreatAndUpdateModelDoctor;
 import client.model.shared.GetPatientDataModel;
+import client.shared.SelectionModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.Patient;
@@ -41,7 +42,7 @@ public class PatientsViewModel
   public void loadPatients()
   {
     List<Patient> patientList = getPatientDataModel.getAllPatients();
-    patients.addAll(patientList);
+    patients.setAll(patientList);
   }
 
   public ObservableList<Patient> getPatients()
@@ -51,7 +52,7 @@ public class PatientsViewModel
 
   public void editMedicalDescription(long ssn)
   {
-    getPatientDataModel.getPatientBySSN(ssn);
+
   }
 
   public void getAllDiseasesOfPatient(Patient patient)
@@ -62,5 +63,10 @@ public class PatientsViewModel
   public void getAllSamples(Patient patient)
   {
     sampleModelDoctor.getAllSamples();
+  }
+
+  public void setSelectedPatient(Patient selectedItem)
+  {
+    SelectionModel.getInstance().set(selectedItem);
   }
 }
