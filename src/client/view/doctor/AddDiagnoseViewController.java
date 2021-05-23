@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import shared.Diagnosis;
 
 public class AddDiagnoseViewController implements ViewController
 {
@@ -24,11 +25,13 @@ public class AddDiagnoseViewController implements ViewController
     private DatePicker endDate;
 
     private ViewHandler viewHandler;
+
     private AddDiagnoseViewModel addDiagnoseViewModel;
 
     @FXML
     public void onSaveButton()
     {
+        //TODO addDiagnoseViewModel.addNewDiagnosisToPatient();
     }
 
     @FXML
@@ -52,5 +55,7 @@ public class AddDiagnoseViewController implements ViewController
         diagnoseSeverityLevel.valueProperty().bindBidirectional(addDiagnoseViewModel.severityLevelProperty());
         diagnoseStartDate.valueProperty().bindBidirectional(addDiagnoseViewModel.startDateProperty());
         endDate.valueProperty().bindBidirectional(addDiagnoseViewModel.endDateProperty());
+
+        diagnoseSeverityLevel.getItems().addAll(addDiagnoseViewModel.getSeverityLevels());
     }
 }

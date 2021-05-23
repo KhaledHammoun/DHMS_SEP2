@@ -5,6 +5,8 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import shared.Address;
+import shared.Patient;
 
 import java.time.LocalDate;
 
@@ -122,5 +124,19 @@ public class AddPatientViewModel
   public StringProperty medicalDescriptionPatientProperty()
   {
     return medicalDescriptionPatient;
+  }
+
+  public void savePatient()
+  {
+    //TODO dob needs to be changed in LocalDate in all classes from shared
+    /*
+    Address address =  new Address(streetPatient.getValue(),
+        streetNoPatient.getValue(),zipCodePatient.getValue(), cityPatient.getValue());
+    Patient patient =  new Patient(firstNamePatient.getValue(),
+        middleNamePatient.getValue(), lastNamePatient.getValue(),Long.parseLong(ssnPatient.getValue()),dobPatient.getValue(),address,contactFirstName.getValue(),null,
+        contactLastName.getValue(), contactPhoneNo.getValue(),bloodTypePatient.getValue(),medicalDescriptionPatient.getValue(), genderPatient.getValue().charAt(0));
+    patientModelNurse.addPatient(patient);
+
+     */
   }
 }

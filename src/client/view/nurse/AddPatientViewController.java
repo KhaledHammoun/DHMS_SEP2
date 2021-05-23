@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import shared.Patient;
 
 public class AddPatientViewController implements ViewController
 {
@@ -46,6 +47,7 @@ public class AddPatientViewController implements ViewController
 
   @FXML public void onSaveButtonAddPatient()
   {
+    viewModel.savePatient();
   }
 
   @Override
