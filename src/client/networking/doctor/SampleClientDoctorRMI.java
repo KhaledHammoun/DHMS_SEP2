@@ -1,6 +1,7 @@
 package client.networking.doctor;
 
 import server.networking.doctor.SampleServerDoctor;
+import shared.Patient;
 import shared.Sample;
 
 import java.rmi.NotBoundException;
@@ -71,6 +72,18 @@ public class SampleClientDoctorRMI implements SampleClientDoctor
     catch (RemoteException e)
     {
       throw new RuntimeException("Error while fetching sample. Please try again.");
+    }
+  }
+
+  @Override public ArrayList<Sample> getAllPatientSamples(Patient patient)
+  {
+    try
+    {
+      return serverDoctor.getAllPatientSamples(patient);
+    }
+    catch (RemoteException e)
+    {
+      throw new RuntimeException("Error while fetching samples. Please try again.");
     }
   }
 }

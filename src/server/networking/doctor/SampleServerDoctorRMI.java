@@ -2,6 +2,7 @@ package server.networking.doctor;
 
 import server.model.doctor.SampleServerModelDoctor;
 import server.model.doctor.SampleServerModelDoctorImpl;
+import shared.Patient;
 import shared.Sample;
 
 import java.rmi.AlreadyBoundException;
@@ -49,5 +50,10 @@ public class SampleServerDoctorRMI implements SampleServerDoctor
     public Sample getSampleById(int id)
     {
         return modelDoctor.getSampleById(id);
+    }
+
+    @Override public ArrayList<Sample> getAllPatientSamples(Patient patient)
+    {
+        return modelDoctor.getAllPatientSamples(patient);
     }
 }

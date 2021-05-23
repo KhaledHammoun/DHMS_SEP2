@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.shared.SelectionModel;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.PatientsSampleViewModel;
@@ -30,19 +31,16 @@ public class PatientsSampleViewController implements ViewController
 
   private PatientsSampleViewModel viewModel;
 
-  public void onAddButton()
-  {
-    //TODO change view
-  }
 
-  public void onEditSampleButton()
+  public void addEditButton()
   {
+    SelectionModel.getInstance().set(sampleTable.getSelectionModel().getSelectedItem());
     viewHandler.openView(View.ADD_EDIT_SAMPLE);
   }
 
   public void onBackButton()
   {
-    viewHandler.openView(View.DOCTOR_MAIN);
+    viewHandler.openView(View.PATIENTS);
   }
 
   @Override
@@ -55,5 +53,7 @@ public class PatientsSampleViewController implements ViewController
     sampleDeadline.setCellValueFactory(new PropertyValueFactory<>("deadline"));
     samplePriority.setCellValueFactory(new PropertyValueFactory<>("priority"));
     result.setCellValueFactory(new PropertyValueFactory<>("result"));
+
+    viewModel.loadSelectedPatientData();
   }
 }
