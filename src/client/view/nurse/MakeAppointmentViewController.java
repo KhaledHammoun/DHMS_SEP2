@@ -29,6 +29,8 @@ public class MakeAppointmentViewController implements ViewController
 
   private ViewHandler viewHandler;
   private MakeAppointmentViewModel viewModel;
+  private Patient selectedPatientForAp;
+  private Doctor selectedDoctorForAp;
 
   @FXML public void onEditPatientButton()
   {
@@ -37,7 +39,10 @@ public class MakeAppointmentViewController implements ViewController
 
   @FXML public void onSaveButton()
   {
-
+    //TODO
+    //selectedPatientForAp = patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem();
+    //selectedDoctorForAp = doctorsTableViewMakeAppointment.getSelectionModel().getSelectedItem();
+    //viewModel.createAppointment();
   }
 
   @FXML public void onBackButton()

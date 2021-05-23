@@ -2,7 +2,12 @@ package client.view_models.doctor;
 
 import client.model.doctor.TreatAndUpdateModelDoctor;
 import javafx.beans.property.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import shared.Diagnosis;
+import shared.Patient;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class AddDiagnoseViewModel
@@ -10,6 +15,7 @@ public class AddDiagnoseViewModel
   private StringProperty name;
   private StringProperty description;
   private StringProperty severityLevel;
+  private ObservableList<String> severityLevels;
   private ObjectProperty<LocalDate> startDate;
   private ObjectProperty<LocalDate> endDate;
 
@@ -23,6 +29,7 @@ public class AddDiagnoseViewModel
     severityLevel = new SimpleStringProperty();
     startDate = new SimpleObjectProperty<>();
     endDate =  new SimpleObjectProperty<>();
+    severityLevels = FXCollections.observableArrayList("1", "2", "3", "4","5");
   }
 
   public StringProperty nameProperty()
@@ -49,4 +56,17 @@ public class AddDiagnoseViewModel
   {
     return endDate;
   }
+
+  public ObservableList<String> getSeverityLevels()
+  {
+    return severityLevels;
+  }
+
+
+  public void addNewDiagnosisToPatient()
+  {
+    //TODO  Diagnosis diagnosis = new Diagnosis(name.getValue(), severityLevel.getValue(),description.getValue(),new Date(startDate.getValue()),null);
+
+  }
+
 }

@@ -48,6 +48,7 @@ public class PatientsViewController implements ViewController
   public void onDiagnoseButton()
   {
     viewHandler.openView(View.ADD_DIAGNOSE);
+
   }
 
   @FXML
