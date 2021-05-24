@@ -31,7 +31,6 @@ public class ManagerMainViewController implements ViewController
     @FXML
     public void onLogoutButton()
     {
-        managerMainViewModel.logout();
         viewHandler.openView(View.LOGIN);
     }
 

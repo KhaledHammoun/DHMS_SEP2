@@ -2,6 +2,7 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.shared.SelectionModel;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.PatientsViewModel;
@@ -34,6 +35,7 @@ public class PatientsViewController implements ViewController
   {
     patientsViewModel.setSelectedPatient(
         doctorViewPatientTable.getSelectionModel().getSelectedItem());
+    SelectionModel.getInstance().setLastOpenedView(View.PATIENTS);
     if (patientsViewModel.isPatientSelected())
     {
       viewHandler.openView(View.PATIENTS_SAMPLE);
@@ -62,6 +64,7 @@ public class PatientsViewController implements ViewController
 
   @FXML public void onBackButton()
   {
+    SelectionModel.getInstance().set(null);
     viewHandler.openView(View.DOCTOR_MAIN);
   }
 
@@ -70,12 +73,15 @@ public class PatientsViewController implements ViewController
   {
     this.viewHandler = viewHandler;
 
-    patientsViewModel = (PatientsViewModel) viewModelFactory.getViewModel(View.PATIENTS);
+    patientsViewModel = (PatientsViewModel) viewModelFactory
+        .getViewModel(View.PATIENTS);
     patientsViewModel.loadPatients();
 
     doctorViewPatientTable.setItems(patientsViewModel.getPatients());
     doctorViewPatientSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
-    doctorViewPatientFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-    doctorViewPatientLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+    doctorViewPatientFirstName
+        .setCellValueFactory(new PropertyValueFactory<>("firstName"));
+    doctorViewPatientLastName
+        .setCellValueFactory(new PropertyValueFactory<>("lastName"));
   }
 }
