@@ -6,10 +6,7 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.manager.AddEditEmployeeViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import shared.Ward;
 
 public class AddEditEmployeeViewController implements ViewController
@@ -58,7 +55,28 @@ public class AddEditEmployeeViewController implements ViewController
     @FXML
     public void onSaveButtonEmployee()
     {
-        viewModel.saveChanges();
+        if(!viewModel.validateInput())
+        {
+            throwAlert(Alert.AlertType.ERROR, "Please fill in all fields");
+            return;
+        }
+        if (!viewModel.validateLoginData())
+        {
+            throwAlert(Alert.AlertType.ERROR, "Invalid email or password");
+            return;
+        }
+        if (throwAlert(Alert.AlertType.CONFIRMATION, "Are you sure you want to save the changes?"))
+        {
+            viewModel.saveChanges();
+        }
+    }
+
+    private boolean throwAlert(Alert.AlertType type, String message)
+    {
+        Alert alert = new Alert(type);
+        alert.setContentText(message);
+        alert.show();
+        return alert.getResult() == ButtonType.YES;
     }
 
     @FXML
@@ -91,11 +109,13 @@ public class AddEditEmployeeViewController implements ViewController
         employeeEContactFNameTextField.textProperty().bindBidirectional(viewModel.contactFirstNameProperty());
         employeeEContactLNameTextField.textProperty().bindBidirectional(viewModel.contactLastNameProperty());
         employeeEContactPhoneTextField.textProperty().bindBidirectional(viewModel.contactPhoneNoProperty());
-        employeeWardComboBox.valueProperty().bindBidirectional(viewModel.employeeWardProperty());
+        employeeWardComboBox.valueProperty().bindBidirectional(viewModel.selectedEmployeeWardProperty());
+        employeeWardComboBox.setItems(viewModel.wardsProperty());
         usernameTextField.textProperty().bindBidirectional(viewModel.usernameProperty());
         passwordTextField.textProperty().bindBidirectional(viewModel.passwordProperty());
         employeeExperienceTextArea.textProperty().bindBidirectional(viewModel.experienceProperty());
         employeeEducationTextArea.textProperty().bindBidirectional(viewModel.educationProperty());
         viewModel.setChangeType();
+        viewModel.getWards();
     }
 }
