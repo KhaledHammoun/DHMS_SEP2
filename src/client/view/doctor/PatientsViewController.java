@@ -56,7 +56,7 @@ public class PatientsViewController implements ViewController
         doctorViewPatientTable.getSelectionModel().getSelectedItem());
     if (patientsViewModel.isPatientSelected())
     {
-      viewHandler.openView(View.EDIT_MEDICAL_DESCRIPTION);
+      viewHandler.openView(View.PATIENT_INFO);
     }
   }
 

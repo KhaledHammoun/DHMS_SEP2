@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.nurse.AllAppointmentsViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.nurse.AllAppointmentsViewController">
    <children>
       <TableView fx:id="appointmentsTableView" layoutY="42.0" prefHeight="328.0" prefWidth="700.0" style="-fx-background-radius: 0.5em;">
         <columns>
@@ -24,7 +24,7 @@
             <DropShadow color="#33557f" height="28.0" radius="16.5" width="40.0" />
          </effect>
       </TableView>
-      <Button layoutX="396.0" layoutY="433.0" mnemonicParsing="false" onAction="#onRemoveButton" text="Remove appointment" />
+      <Button layoutX="548.0" layoutY="433.0" mnemonicParsing="false" onAction="#onRemoveButton" text="Remove appointment" />
       <Label graphicTextGap="6.0" layoutX="295.0" layoutY="8.0" text="Appointments:" wrapText="true">
          <font>
             <Font size="17.0" />
