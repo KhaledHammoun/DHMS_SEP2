@@ -21,7 +21,7 @@
             <Image url="@../../images/doctor_background.jpg" />
          </image>
          <effect>
-            <DropShadow color="#ededf5" />
+            <DropShadow color="#2a2a2e" />
          </effect>
       </ImageView>
       <Button layoutX="515.0" layoutY="303.0" mnemonicParsing="false" onAction="#onSamplesButton" prefHeight="30.0" prefWidth="100.0" text="Samples" />

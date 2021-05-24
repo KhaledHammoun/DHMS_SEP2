@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import shared.Patient;
 
 public class AddPatientViewController implements ViewController
 {
@@ -34,15 +33,13 @@ public class AddPatientViewController implements ViewController
 
   @FXML public void onBackButtonAddPatient()
   {
+    viewModel.clear();
     viewHandler.openView(View.MAKE_APPOINTMENT);
   }
 
   @FXML public void onClearButtonAddPatient()
   {
-  }
-
-  @FXML public void onMakeAppointmentAddPatient()
-  {
+    viewModel.clear();
   }
 
   @FXML public void onSaveButtonAddPatient()
@@ -73,5 +70,6 @@ public class AddPatientViewController implements ViewController
     bloodTypeTxtFieldPatient.textProperty().bindBidirectional(viewModel.bloodTypePatientProperty());
     ssnTextFieldPatient.textProperty().bindBidirectional(viewModel.ssnPatientProperty());
 
+    viewModel.fillPatientData();
   }
 }
