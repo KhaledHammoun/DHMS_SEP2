@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.manager.AddEditWardViewController">
-    <Button layoutX="26.0" layoutY="217.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="25.0" prefWidth="60.0" text="Save" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="218.0" />
-    <Button layoutX="26.0" layoutY="210.0" mnemonicParsing="false" onAction="#onClearButton" prefHeight="25.0" prefWidth="60.0" text="Clear" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="180.0" />
-    <Button layoutX="35.0" layoutY="459.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="25.0" prefWidth="60.0" text="Back" AnchorPane.bottomAnchor="14.7" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="459.0" />
+    <Button layoutX="26.0" layoutY="220.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="70.0" text="Save" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="220.0" />
+    <Button layoutX="26.0" layoutY="210.0" mnemonicParsing="false" onAction="#onClearButton" prefHeight="30.0" prefWidth="70.0" text="Clear" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="180.0" />
+    <Button layoutX="35.0" layoutY="459.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="30.0" prefWidth="70.0" text="Back" AnchorPane.bottomAnchor="14.7" AnchorPane.leftAnchor="26.0" />
     <TextField fx:id="wardNameTextField" layoutX="27.0" layoutY="24.0" prefHeight="26.0" prefWidth="166.0" promptText="Ward Name" style="-fx-background-color: #f8f8ff;" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="24.0" />
     <TextField fx:id="wardRoomNumber" layoutX="16.0" layoutY="62.0" prefHeight="26.0" prefWidth="166.0" promptText="Room number" style="-fx-background-color: #f8f8ff;" AnchorPane.leftAnchor="26.0" />
    <TableView fx:id="allWardsTable" layoutX="303.0" prefHeight="500.0" prefWidth="396.0" style="-fx-background-color: #f8f8ff;">

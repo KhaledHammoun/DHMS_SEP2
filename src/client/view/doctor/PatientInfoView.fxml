@@ -8,7 +8,7 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.EditMedicalDescriptionViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.PatientInfoViewController">
    <children>
       <TextField fx:id="patientsFirstName" editable="false" layoutX="15.0" layoutY="84.0" prefHeight="26.0" prefWidth="211.0" promptText="First name" />
       <TextField fx:id="patientsMiddleName" editable="false" layoutX="15.0" layoutY="124.0" prefHeight="26.0" prefWidth="211.0" promptText="Middle name" />
@@ -33,7 +33,7 @@
       <TextField fx:id="bloodType" editable="false" layoutX="150.0" layoutY="237.0" prefHeight="26.0" prefWidth="78.0" promptText="Blood type" />
       <Label layoutX="19.0" layoutY="12.0" text="Patient data:" />
       <TextField fx:id="ssn" editable="false" layoutX="16.0" layoutY="45.0" prefHeight="26.0" prefWidth="211.0" promptText="Patient SSN" AnchorPane.bottomAnchor="429.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="473.0" AnchorPane.topAnchor="45.0" />
-      <TextArea fx:id="medicalDescriptionTextArea" editable="false" layoutX="322.0" layoutY="241.0" prefHeight="194.0" prefWidth="366.0" promptText="Medical description..." style="-fx-background-color: #f8f8ff; -fx-background-radius: 0.5em;">
+      <TextArea fx:id="medicalDescriptionTextArea" editable="false" layoutX="322.0" layoutY="241.0" prefHeight="194.0" prefWidth="366.0" promptText="Medical description..." style="-fx-background-color: #f8f8ff; -fx-background-radius: 0.5em;" wrapText="true">
          <effect>
             <DropShadow color="#33557f" radius="14.75" width="40.0" />
          </effect>

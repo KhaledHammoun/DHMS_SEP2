@@ -6,6 +6,7 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.manager.EmployeeViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -45,6 +46,14 @@ public class EmployeeViewController implements ViewController
     @FXML
     public void onEditEmployeeButton()
     {
+        if (employeeTable.getSelectionModel().getSelectedItem() == null)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("No employee selected");
+            alert.show();
+            return;
+        }
         Employee employee = employeeTable.getSelectionModel().getSelectedItem();
         viewModel.editEmployee(employee);
         viewHandler.openView(View.ADD_EDIT_EMPLOYEE);
@@ -73,5 +82,6 @@ public class EmployeeViewController implements ViewController
         lNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         employeeTable.setItems(viewModel.employeesProperty());
         employeeTypeComboBox.valueProperty().bindBidirectional(viewModel.selectedEmployeeTypeProperty());
+        employeeTypeComboBox.getSelectionModel().selectFirst();
     }
 }
