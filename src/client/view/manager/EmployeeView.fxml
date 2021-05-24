@@ -20,7 +20,7 @@
           <TableColumn fx:id="ssnColumn" prefWidth="213.0" text="SSN" />
         </columns>
          <effect>
-            <DropShadow color="#635050" />
+            <DropShadow color="#33557f" />
          </effect>
       </TableView>
       <Button layoutX="158.0" layoutY="24.0" mnemonicParsing="false" onAction="#onGetButton" text="Get" />

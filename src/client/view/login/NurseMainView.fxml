@@ -21,7 +21,7 @@
             <Image url="@../../images/nurse_background.jpg" />
          </image>
          <effect>
-            <DropShadow color="#464646" />
+            <DropShadow color="#3c3838" />
          </effect>
       </ImageView>
    </children>
