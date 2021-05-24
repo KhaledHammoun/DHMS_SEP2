@@ -43,5 +43,6 @@ public class AllAppointmentsViewModel
   public void removeAnAppointment(Appointment appointment)
   {
     appointmentsModelNurse.removeAppointment(appointment);
+    loadAppointments();
   }
 }
