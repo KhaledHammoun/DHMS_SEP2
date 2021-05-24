@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -30,6 +31,9 @@
          <image>
             <Image url="@../../images/dagnosis_omage_1.jpg" />
          </image>
+         <effect>
+            <DropShadow color="#1b2767" />
+         </effect>
       </ImageView>
       <TextArea fx:id="diagnoseDescription" layoutX="14.0" layoutY="377.0" prefHeight="46.0" prefWidth="230.0" promptText="Description" wrapText="true" />
    </children>
