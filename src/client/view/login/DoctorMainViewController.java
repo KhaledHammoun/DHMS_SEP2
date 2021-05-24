@@ -2,6 +2,7 @@ package client.view.login;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.shared.SelectionModel;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.login.DoctorMainViewModel;
@@ -19,7 +20,6 @@ public class DoctorMainViewController implements ViewController
     @FXML
     public void onLogoutButton()
     {
-        doctorMainViewModel.logout();
         viewHandler.openView(View.LOGIN);
     }
 
@@ -53,6 +53,7 @@ public class DoctorMainViewController implements ViewController
     @FXML
     public void onSamplesButton()
     {
+        SelectionModel.getInstance().setLastOpenedView(View.DOCTOR_MAIN);
         viewHandler.openView(View.PATIENTS_SAMPLE);
     }
 }

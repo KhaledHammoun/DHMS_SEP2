@@ -36,7 +36,6 @@ public class NurseMainViewController implements ViewController
     @FXML
     public void onLogoutButton()
     {
-        nurseMainViewModel.logout();
         viewHandler.openView(View.LOGIN);
     }
 

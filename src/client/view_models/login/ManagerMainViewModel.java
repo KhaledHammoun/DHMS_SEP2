@@ -13,11 +13,6 @@ public class ManagerMainViewModel
         currentUser = new SimpleStringProperty();
     }
 
-    public void logout()
-    {
-        CurrentUser.getInstance().setUser(null);
-    }
-
     public StringProperty currentUserProperty()
     {
         return currentUser;
