@@ -10,6 +10,7 @@ import javafx.beans.property.StringProperty;
 import shared.Patient;
 import shared.Sample;
 
+import java.security.InvalidParameterException;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -67,15 +68,24 @@ public class AddEditSampleViewModel
     }
     else
     {
-      sample = null;
-      type.set("");
-      result.setValue("");
-      deadline.set(LocalDate.now());
+      clear();
     }
   }
 
-  public void saveChanges()
+  public void clear()
   {
+    sample = null;
+    type.set("");
+    result.setValue("");
+    deadline.set(LocalDate.now());
+  }
+
+  public void saveChanges() throws InvalidParameterException
+  {
+    if (validateInputs())
+    {
+      throw new InvalidParameterException("Please fill the fields.");
+    }
     //Selected Sample before - Editing the sample / Not selected - Adding the sample
     if (sample == null)
     {
@@ -93,5 +103,10 @@ public class AddEditSampleViewModel
           sample.getPatient_ssn(), sample.getSample_id());
       sampleModelDoctor.editSample(editedSample);
     }
+  }
+
+  private boolean validateInputs()
+  {
+    return type.get() == null || priority.get() == null || deadline.get() == null;
   }
 }

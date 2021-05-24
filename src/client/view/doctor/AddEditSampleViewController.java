@@ -3,13 +3,17 @@ package client.view.doctor;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.shared.SelectionModel;
+import client.view.sharted.Alerts;
 import client.view.sharted.View;
 import client.view.sharted.ViewController;
 import client.view_models.doctor.AddEditSampleViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
+
+import java.security.InvalidParameterException;
 
 public class AddEditSampleViewController implements ViewController
 {
@@ -23,8 +27,15 @@ public class AddEditSampleViewController implements ViewController
 
   @FXML public void onSaveButton()
   {
-    addEditSampleViewModel.saveChanges();
-    onBackButton();
+    try
+    {
+      addEditSampleViewModel.saveChanges();
+      Alerts.throwAlert(Alert.AlertType.INFORMATION, "Sample was successfully added/edited");
+    }
+    catch (InvalidParameterException e)
+    {
+      Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+    }
   }
 
   @FXML public void onBackButton()
@@ -41,6 +52,7 @@ public class AddEditSampleViewController implements ViewController
 
   @FXML public void onClearButton()
   {
+    addEditSampleViewModel.clear();
   }
 
   @Override public void init(ViewModelFactory viewModelFactory,

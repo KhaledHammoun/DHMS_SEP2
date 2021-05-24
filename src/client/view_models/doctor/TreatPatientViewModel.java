@@ -7,12 +7,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.SingleSelectionModel;
 import shared.*;
 
-import java.beans.PropertyChangeEvent;
-import java.util.ArrayList;
+import java.security.InvalidParameterException;
 
 public class TreatPatientViewModel
 {
@@ -69,10 +66,19 @@ public class TreatPatientViewModel
     patient = (Patient) SelectionModel.getInstance().get();
   }
 
-  public void addTreatment(String medication, Diagnosis selectedDiagnosis)
+  public void addTreatment(String medication, Diagnosis selectedDiagnosis) throws InvalidParameterException
   {
+    if (validateInput(medication, selectedDiagnosis))
+    {
+      throw new InvalidParameterException("Please fill in all the data.");
+    }
     Treatment treatment = new Treatment(medication, description.get());
     treatAndUpdateModelDoctor.treatPatient(patient, selectedDiagnosis,
         (Doctor) CurrentUser.getInstance().getCurrentUser(), treatment);
+  }
+
+  private boolean validateInput(String medication, Diagnosis selectedDiagnosis)
+  {
+    return medication == null || selectedDiagnosis == null || description.get() == null || patient == null;
   }
 }

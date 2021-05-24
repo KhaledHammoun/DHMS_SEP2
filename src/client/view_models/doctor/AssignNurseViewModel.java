@@ -1,11 +1,14 @@
 package client.view_models.doctor;
 
 import client.model.doctor.NursesModelDoctor;
+import client.shared.SelectionModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.CurrentUser;
 import shared.Doctor;
 import shared.Nurse;
+
+import java.security.InvalidParameterException;
 
 public class AssignNurseViewModel
 {
@@ -31,12 +34,17 @@ public class AssignNurseViewModel
     return assignedNurses;
   }
 
-  public void assignNurse(Nurse selectedNurse)
+  public void assignNurse() throws InvalidParameterException
   {
+    Nurse nurse = (Nurse) SelectionModel.getInstance().get();
+    if (nurse == null)
+    {
+      throw new InvalidParameterException("Please select nurse to assign.");
+    }
     Doctor currentDoctorUser = (Doctor) CurrentUser.getInstance()
         .getCurrentUser();
 
-    nursesModelDoctor.assignNurse(selectedNurse, currentDoctorUser);
+    nursesModelDoctor.assignNurse(nurse, currentDoctorUser);
     loadTables();
   }
 

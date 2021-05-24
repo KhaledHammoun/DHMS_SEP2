@@ -50,16 +50,16 @@ public class EmployeeViewController implements ViewController
     @FXML
     public void onEditEmployeeButton()
     {
-        SelectionModel.getInstance().set(employeeTable.getSelectionModel());
+        SelectionModel.getInstance().set(employeeTable.getSelectionModel().getSelectedItem());
         try
         {
             viewModel.editEmployee();
+            viewHandler.openView(View.ADD_EDIT_EMPLOYEE);
         }
         catch (InvalidParameterException e)
         {
             Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
         }
-        viewHandler.openView(View.ADD_EDIT_EMPLOYEE);
     }
 
     @FXML

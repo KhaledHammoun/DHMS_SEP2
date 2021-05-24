@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import shared.Patient;
 
 import java.beans.PropertyChangeEvent;
+import java.security.InvalidParameterException;
 import java.util.List;
 
 public class PatientsViewModel
@@ -70,8 +71,11 @@ public class PatientsViewModel
     SelectionModel.getInstance().set(selectedItem);
   }
 
-  public boolean isPatientSelected()
+  public void isPatientSelected() throws InvalidParameterException
   {
-    return !SelectionModel.getInstance().isEmpty();
+    if(SelectionModel.getInstance().isEmpty())
+    {
+      throw new InvalidParameterException("Please select patient");
+    }
   }
 }

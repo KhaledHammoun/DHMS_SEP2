@@ -13,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Doctor;
 import shared.Patient;
 
+import java.security.InvalidParameterException;
+
 public class MakeAppointmentViewController implements ViewController
 {
   @FXML private TableView<Doctor> doctorsTableViewMakeAppointment;
@@ -34,13 +36,16 @@ public class MakeAppointmentViewController implements ViewController
 
   @FXML public void onEditPatientButton()
   {
-    if (patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem() == null)
-    {
-      Alerts.throwAlert(Alert.AlertType.ERROR, "Please select patient to add.");
-      return;
-    }
     SelectionModel.getInstance().set(patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem());
-    viewHandler.openView(View.ADD_PATIENT);
+    try
+    {
+      viewModel.editPatient();
+      viewHandler.openView(View.ADD_PATIENT);
+    }
+    catch (InvalidParameterException e)
+    {
+      Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+    }
   }
 
   @FXML public void onSaveButton()

@@ -2,17 +2,17 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.sharted.Alerts;
 import client.view.sharted.View;
 import client.view.sharted.ViewController;
 import client.view_models.doctor.TreatPatientViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Diagnosis;
 import shared.Treatment;
+
+import java.security.InvalidParameterException;
 
 public class TreatPatientViewController implements ViewController
 {
@@ -35,11 +35,19 @@ public class TreatPatientViewController implements ViewController
 
   @FXML public void onAddButton()
   {
-    treatPatientViewModel
-        .addTreatment(medicationTypeCB.getSelectionModel().getSelectedItem(),
-            diagnosisTable.getSelectionModel().getSelectedItem());
-    treatPatientViewModel.loadDiagnoses();
-    treatPatientViewModel.loadTreatments();
+    try
+    {
+      treatPatientViewModel
+          .addTreatment(medicationTypeCB.getSelectionModel().getSelectedItem(),
+              diagnosisTable.getSelectionModel().getSelectedItem());
+      treatPatientViewModel.loadDiagnoses();
+      treatPatientViewModel.loadTreatments();
+      Alerts.throwAlert(Alert.AlertType.INFORMATION, "Treatment was successfully added.");
+    }
+    catch (InvalidParameterException e)
+    {
+      Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+    }
   }
 
   @FXML public void onBackButton()

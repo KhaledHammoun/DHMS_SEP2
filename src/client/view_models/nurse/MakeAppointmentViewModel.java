@@ -3,6 +3,7 @@ package client.view_models.nurse;
 import client.model.nurse.AppointmentsModelNurse;
 import client.model.shared.GetEmployeeDataModel;
 import client.model.shared.GetPatientDataModel;
+import client.shared.SelectionModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -96,5 +97,13 @@ public class MakeAppointmentViewModel
     appointmentDate.set(null);
     appointmentTime.set("");
 
+  }
+
+  public void editPatient() throws InvalidParameterException
+  {
+    if (SelectionModel.getInstance().isEmpty())
+    {
+      throw new InvalidParameterException("Please select patient to edit.");
+    }
   }
 }

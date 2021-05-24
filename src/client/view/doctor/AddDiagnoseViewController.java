@@ -2,14 +2,14 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.view.sharted.Alerts;
 import client.view.sharted.View;
 import client.view.sharted.ViewController;
 import client.view_models.doctor.AddDiagnoseViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.security.InvalidParameterException;
 
 public class AddDiagnoseViewController implements ViewController
 {
@@ -31,7 +31,15 @@ public class AddDiagnoseViewController implements ViewController
     @FXML
     public void onSaveButton()
     {
-        addDiagnoseViewModel.save();
+        try
+        {
+            addDiagnoseViewModel.save();
+            Alerts.throwAlert(Alert.AlertType.INFORMATION, "Diagnosis successfully added.");
+        }
+        catch (InvalidParameterException e)
+        {
+            Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+        }
     }
 
     @FXML
