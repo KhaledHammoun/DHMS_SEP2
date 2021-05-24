@@ -15,7 +15,7 @@ public enum View
     ASSIGN_NURSE,
     ADD_DIAGNOSE,
     PATIENTS_SAMPLE,
-    EDIT_MEDICAL_DESCRIPTION,
+    PATIENT_INFO,
     PATIENTS,
     TREAT_PATIENT,
     //Manager
@@ -31,7 +31,8 @@ public enum View
 
 
     private static final List<View> LOGIN_VALUES = List.of(LOGIN, MANAGER_MAIN, DOCTOR_MAIN, NURSE_MAIN);
-    private static final List<View> DOCTOR_VALUES = List.of(ADD_EDIT_SAMPLE, APPOINTMENTS, ASSIGN_NURSE, ADD_DIAGNOSE, PATIENTS_SAMPLE, EDIT_MEDICAL_DESCRIPTION,
+    private static final List<View> DOCTOR_VALUES = List.of(ADD_EDIT_SAMPLE, APPOINTMENTS, ASSIGN_NURSE, ADD_DIAGNOSE, PATIENTS_SAMPLE,
+                                                            PATIENT_INFO,
                                                             PATIENTS, TREAT_PATIENT);
     private static final List<View> MANAGER_VALUES = List.of(ADD_EDIT_EMPLOYEE, ADD_EDIT_WARD, WARD, EMPLOYEE);
     private static final List<View> NURSE_VALUES = List.of(ALL_APPOINTMENTS, MAKE_APPOINTMENT, ADD_PATIENT);

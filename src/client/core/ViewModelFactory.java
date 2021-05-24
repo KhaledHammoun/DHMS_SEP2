@@ -91,7 +91,7 @@ public class ViewModelFactory
         modelFactory.getModel(InterfaceEnum.SHARED_APPOINTMENT)));
     viewModels.put(View.ASSIGN_NURSE, new AssignNurseViewModel(
         modelFactory.getModel(InterfaceEnum.DOCTOR_NURSE)));
-    viewModels.put(View.EDIT_MEDICAL_DESCRIPTION,
+    viewModels.put(View.PATIENT_INFO,
         new EditMedicalDescriptionViewModel(
             modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
     viewModels.put(View.PATIENTS_SAMPLE, new PatientsSampleViewModel(
