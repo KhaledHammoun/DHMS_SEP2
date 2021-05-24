@@ -4,16 +4,15 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="690.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.AddEditSampleViewController">
+<AnchorPane prefHeight="500.0" prefWidth="690.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.AddEditSampleViewController">
    <children>
-      <TextField fx:id="result" layoutX="51.0" layoutY="280.0" prefHeight="49.0" prefWidth="211.0" promptText="Write result..." />
       <Label layoutX="95.0" layoutY="22.0" text="Sample">
          <font>
             <Font size="18.0" />
@@ -33,5 +32,6 @@
             <DropShadow color="#161616" />
          </effect>
       </ImageView>
+      <TextArea fx:id="result" layoutX="49.0" layoutY="265.0" prefHeight="49.0" prefWidth="211.0" promptText="Write result..." wrapText="true" />
    </children>
 </AnchorPane>
