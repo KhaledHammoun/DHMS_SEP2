@@ -11,27 +11,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="690.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.AddEditSampleViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.AddEditSampleViewController">
    <children>
       <Label layoutX="95.0" layoutY="22.0" text="Sample">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="206.0" layoutY="424.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="70.0" text="Save" />
-      <ComboBox fx:id="sampleType" layoutX="51.0" layoutY="92.0" prefHeight="26.0" prefWidth="211.0" promptText="Type" />
-      <DatePicker fx:id="deadline" layoutX="51.0" layoutY="163.0" prefHeight="26.0" prefWidth="211.0" promptText="Deadline" />
-      <ComboBox fx:id="priority" layoutX="51.0" layoutY="206.0" prefHeight="26.0" prefWidth="211.0" promptText="Priority" />
-      <Button layoutX="125.0" layoutY="424.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="30.0" prefWidth="70.0" text="Back" />
-      <Button layoutX="43.0" layoutY="424.0" mnemonicParsing="false" onAction="#onClearButton" prefHeight="30.0" prefWidth="70.0" text="Clear" />
-      <ImageView fitHeight="501.0" fitWidth="386.0" layoutX="304.0">
+
+      <Button layoutX="184.0" layoutY="424.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="70.0" text="Save" />
+      <DatePicker fx:id="deadline" layoutX="23.0" layoutY="163.0" prefHeight="26.0" prefWidth="211.0" promptText="Deadline" />
+      <ComboBox fx:id="priority" layoutX="23.0" layoutY="206.0" prefHeight="26.0" prefWidth="211.0" promptText="Priority" />
+      <Button layoutX="103.0" layoutY="424.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="30.0" prefWidth="70.0" text="Back" />
+      <Button layoutX="21.0" layoutY="424.0" mnemonicParsing="false" onAction="#onClearButton" prefHeight="30.0" prefWidth="70.0" text="Clear" />
+
+      <ImageView fitHeight="501.0" fitWidth="420.0" layoutX="279.0">
          <image>
-            <Image url="@../../images/sample_image2.jpg" />
+            <Image url="@../../images/sample_image6.jpg" />
          </image>
          <effect>
             <DropShadow color="#161616" />
          </effect>
       </ImageView>
-      <TextArea fx:id="result" layoutX="49.0" layoutY="265.0" prefHeight="49.0" prefWidth="211.0" promptText="Write result..." wrapText="true" />
+      <TextArea fx:id="result" layoutX="21.0" layoutY="265.0" prefHeight="49.0" prefWidth="211.0" promptText="Write result..." wrapText="true" />
+      <ComboBox fx:id="sampleType" layoutX="22.0" layoutY="120.0" prefHeight="25.0" prefWidth="211.0" promptText="Type" />
+
    </children>
 </AnchorPane>

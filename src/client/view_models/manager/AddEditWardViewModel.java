@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.Ward;
 
+import java.security.InvalidParameterException;
+
 public class AddEditWardViewModel
 {
   private ObservableList<Ward> wards;
@@ -24,13 +26,21 @@ public class AddEditWardViewModel
     roomNumberProperty = new SimpleStringProperty();
   }
 
-  // TODO: 23/05/2021 Have to delete the old ward when editing
-  public void saveChanges()
+  public void saveChanges() throws InvalidParameterException
   {
+    if(validateInput())
+    {
+      throw new InvalidParameterException("Please add ward name and room number.");
+    }
     String wardName = wardNameProperty.get();
     int roomNumber = Integer.parseInt(roomNumberProperty.get());
     Ward toAdd = new Ward(wardName, roomNumber);
     wardModelManager.addWard(toAdd);
+  }
+
+  private boolean validateInput()
+  {
+    return wardNameProperty.get() == null || roomNumberProperty.get() == null;
   }
 
   private void fillFields(Ward ward)

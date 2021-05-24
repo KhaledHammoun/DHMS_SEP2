@@ -1,4 +1,4 @@
-package client.view;
+package client.view.sharted;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;

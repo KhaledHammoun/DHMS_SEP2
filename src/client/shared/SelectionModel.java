@@ -1,6 +1,6 @@
 package client.shared;
 
-import client.view.View;
+import client.view.sharted.View;
 import shared.Sample;
 
 public class SelectionModel

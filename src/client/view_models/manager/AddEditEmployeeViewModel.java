@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.*;
 
+import java.security.InvalidParameterException;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -43,7 +44,6 @@ public class AddEditEmployeeViewModel
     private GetEmployeeDataModel getEmployeeDataModel;
     private WardModelManager getWardsData;
 
-    // TODO: 23/05/2021 Fetch all the wards from the database and add them to the ward property
     public AddEditEmployeeViewModel(Object employeeModelManager, Object getEmployeeDataModel, Object getWardsData)
     {
         this.employeeModelManager = (EmployeeModelManager) employeeModelManager;
@@ -145,8 +145,16 @@ public class AddEditEmployeeViewModel
     {
         return Validator.isValidEmail(username.get()) && Validator.isValidPassword(password.get());
     }
-    public void saveChanges()
+    public void saveChanges() throws InvalidParameterException
     {
+        if(!validateInput())
+        {
+            throw new InvalidParameterException("Please fill in all fields");
+        }
+        else if (!validateLoginData())
+        {
+           throw new InvalidParameterException("Invalid email or password");
+        }
         getDataObject();
         if (toAdd && isDoctor)
         {

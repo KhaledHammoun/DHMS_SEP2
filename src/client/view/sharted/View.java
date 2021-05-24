@@ -1,4 +1,4 @@
-package client.view;
+package client.view.sharted;
 
 import java.util.List;
 

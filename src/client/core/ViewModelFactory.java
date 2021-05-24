@@ -1,6 +1,6 @@
 package client.core;
 
-import client.view.View;
+import client.view.sharted.View;
 import client.view_models.doctor.*;
 import client.view_models.login.DoctorMainViewModel;
 import client.view_models.login.LoginViewModel;

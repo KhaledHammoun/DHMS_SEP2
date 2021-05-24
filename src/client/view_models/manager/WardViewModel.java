@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import shared.Ward;
 
 import java.beans.PropertyChangeEvent;
+import java.security.InvalidParameterException;
 import java.util.List;
 
 public class WardViewModel
@@ -27,8 +28,12 @@ public class WardViewModel
     wards.add((Ward) evt.getNewValue());
   }
 
-  public void removeWard()
+  public void removeWard() throws InvalidParameterException
   {
+    if (SelectionModel.getInstance().isEmpty())
+    {
+      throw new InvalidParameterException("Please select ward to remove.");
+    }
     wardModelManager.removeWard((Ward) SelectionModel.getInstance().get());
   }
 

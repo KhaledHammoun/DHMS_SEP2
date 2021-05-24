@@ -2,15 +2,18 @@ package client.view.nurse;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import client.view.View;
-import client.view.ViewController;
+import client.view.sharted.Alerts;
+import client.view.sharted.View;
+import client.view.sharted.ViewController;
 import client.view_models.nurse.AllAppointmentsViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Appointment;
 
+import java.security.InvalidParameterException;
 import java.sql.Timestamp;
 
 public class AllAppointmentsViewController implements ViewController
@@ -29,7 +32,15 @@ public class AllAppointmentsViewController implements ViewController
   @FXML public void onRemoveButton()
   {
     selectedAppointment = appointmentsTableView.getSelectionModel().selectedItemProperty().getValue();
-    viewModel.removeAnAppointment(selectedAppointment);
+    try
+    {
+      viewModel.removeAnAppointment(selectedAppointment);
+      Alerts.throwAlert(Alert.AlertType.INFORMATION, "Appointment was successfully removed.");
+    }
+    catch (InvalidParameterException e)
+    {
+      Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+    }
   }
 
   @FXML public void onBackButton()

@@ -1,7 +1,6 @@
 package client.core;
 
-import client.view.View;
-import client.view.ViewController;
+import client.view.sharted.View;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

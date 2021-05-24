@@ -1,7 +1,7 @@
 package client.core;
 
-import client.view.View;
-import client.view.ViewController;
+import client.view.sharted.View;
+import client.view.sharted.ViewController;
 
 import java.util.HashMap;
 import java.util.Map;

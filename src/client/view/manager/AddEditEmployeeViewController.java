@@ -2,12 +2,15 @@ package client.view.manager;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import client.view.View;
-import client.view.ViewController;
+import client.view.sharted.Alerts;
+import client.view.sharted.View;
+import client.view.sharted.ViewController;
 import client.view_models.manager.AddEditEmployeeViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import shared.Ward;
+
+import java.security.InvalidParameterException;
 
 public class AddEditEmployeeViewController implements ViewController
 {
@@ -55,28 +58,15 @@ public class AddEditEmployeeViewController implements ViewController
     @FXML
     public void onSaveButtonEmployee()
     {
-        if(!viewModel.validateInput())
-        {
-            throwAlert(Alert.AlertType.ERROR, "Please fill in all fields");
-            return;
-        }
-        if (!viewModel.validateLoginData())
-        {
-            throwAlert(Alert.AlertType.ERROR, "Invalid email or password");
-            return;
-        }
-        if (throwAlert(Alert.AlertType.CONFIRMATION, "Are you sure you want to save the changes?"))
+        try
         {
             viewModel.saveChanges();
+            Alerts.throwAlert(Alert.AlertType.INFORMATION, "Employee successfully added.");
         }
-    }
-
-    private boolean throwAlert(Alert.AlertType type, String message)
-    {
-        Alert alert = new Alert(type);
-        alert.setContentText(message);
-        alert.show();
-        return alert.getResult() == ButtonType.YES;
+        catch (InvalidParameterException e)
+        {
+           Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+        }
     }
 
     @FXML
