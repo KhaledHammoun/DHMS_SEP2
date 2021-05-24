@@ -6,9 +6,7 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.manager.AddEditWardViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Ward;
 
@@ -31,7 +29,29 @@ public class AddEditWardViewController implements ViewController
     @FXML
     public void onSaveButton()
     {
-        viewModel.saveChanges();
+        if (isInvalidInput())
+        {
+            throwAlert(Alert.AlertType.ERROR, "No ward selected");
+            return;
+        }
+
+        if (throwAlert(Alert.AlertType.CONFIRMATION, "Are you sure you want to save the changes?"))
+        {
+            viewModel.saveChanges();
+        }
+    }
+
+    private boolean throwAlert(Alert.AlertType type, String text)
+    {
+        Alert alert = new Alert(type);
+        alert.setContentText(text);
+        alert.show();
+        return alert.getResult() == ButtonType.YES;
+    }
+
+    private boolean isInvalidInput()
+    {
+        return wardNameTextField.getText() == null || wardRoomNumber.getText() == null || wardNameTextField.getText().isEmpty() || wardRoomNumber.getText().isEmpty();
     }
 
     @FXML
