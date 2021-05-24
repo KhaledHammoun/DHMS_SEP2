@@ -1,8 +1,12 @@
 package client.shared;
 
+import client.view.View;
+import shared.Sample;
+
 public class SelectionModel
 {
   private Object selectedObject;
+  private View lastOpenedView;
   private static SelectionModel instance = new SelectionModel();
 
   private SelectionModel()
@@ -29,5 +33,20 @@ public class SelectionModel
   public boolean isEmpty()
   {
     return selectedObject == null;
+  }
+
+  public View getLastOpenedView()
+  {
+    return lastOpenedView;
+  }
+
+  public void setLastOpenedView(View lastOpenedView)
+  {
+    this.lastOpenedView = lastOpenedView;
+  }
+
+  public boolean isSample()
+  {
+    return selectedObject instanceof Sample;
   }
 }

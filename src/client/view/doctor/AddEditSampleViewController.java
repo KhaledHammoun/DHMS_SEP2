@@ -2,61 +2,65 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.shared.SelectionModel;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.AddEditSampleViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 
 public class AddEditSampleViewController implements ViewController
 {
-
-  @FXML
-  private TextArea result;
-  @FXML
-  private ComboBox<String> sampleType;
-  @FXML
-  private DatePicker deadline;
-  @FXML
-  private ComboBox<String> priority;
+  @FXML private ComboBox<String> sampleType;
+  @FXML private TextArea result;
+  @FXML private DatePicker deadline;
+  @FXML private ComboBox<String> priority;
 
   private ViewHandler viewHandler;
   private AddEditSampleViewModel addEditSampleViewModel;
 
-  @FXML
-  public void onSaveButton()
+  @FXML public void onSaveButton()
   {
     addEditSampleViewModel.saveChanges();
-    addEditSampleViewModel.savePatient();
-    viewHandler.openView(View.PATIENTS);
+    onBackButton();
   }
 
-  @FXML
-  public void onBackButton()
+  @FXML public void onBackButton()
   {
-    viewHandler.openView(View.PATIENTS);
+    if (SelectionModel.getInstance().getLastOpenedView() == View.PATIENTS)
+    {
+      viewHandler.openView(View.PATIENTS);
+    }
+    else
+    {
+      viewHandler.openView(View.DOCTOR_MAIN);
+    }
   }
 
-  @FXML
-  public void onClearButton()
+  @FXML public void onClearButton()
   {
   }
 
-  @Override
-  public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
+  @Override public void init(ViewModelFactory viewModelFactory,
+      ViewHandler viewHandler)
   {
     this.viewHandler = viewHandler;
-    addEditSampleViewModel = (AddEditSampleViewModel) viewModelFactory.getViewModel(View.ADD_EDIT_SAMPLE);
-    result.textProperty().bindBidirectional(
-            addEditSampleViewModel.resultProperty());
-    sampleType.valueProperty().bindBidirectional(
-            addEditSampleViewModel.typeProperty());
-    deadline.valueProperty().bindBidirectional(
-            addEditSampleViewModel.deadlineProperty());
-    priority.valueProperty().bindBidirectional(
-            addEditSampleViewModel.priorityProperty());
+    addEditSampleViewModel = (AddEditSampleViewModel) viewModelFactory
+        .getViewModel(View.ADD_EDIT_SAMPLE);
+    result.textProperty()
+        .bindBidirectional(addEditSampleViewModel.resultProperty());
+    sampleType.valueProperty()
+        .bindBidirectional(addEditSampleViewModel.typeProperty());
+    deadline.valueProperty()
+        .bindBidirectional(addEditSampleViewModel.deadlineProperty());
+    priority.valueProperty()
+        .bindBidirectional(addEditSampleViewModel.priorityProperty());
+
+    priority.getItems().setAll("1", "2", "3", "4", "5");
+    sampleType.getItems().setAll("blood", "stool", "urine", "DNA");
 
     addEditSampleViewModel.loadSelectedSample();
   }

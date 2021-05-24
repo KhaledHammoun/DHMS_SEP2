@@ -7,6 +7,7 @@ import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.PatientsSampleViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,6 +17,7 @@ import java.sql.Date;
 
 public class PatientsSampleViewController implements ViewController
 {
+  public Button addButton;
   @FXML private TableView<Sample> sampleTable;
   @FXML private TableColumn<String, Sample> sampleType;
   @FXML private TableColumn<Date, Sample> sampleDeadline;
@@ -26,23 +28,29 @@ public class PatientsSampleViewController implements ViewController
 
   private PatientsSampleViewModel viewModel;
 
-  @FXML
-  public void onEditSampleButton()
+  @FXML public void onEditSampleButton()
   {
     SelectionModel.getInstance()
         .set(sampleTable.getSelectionModel().getSelectedItem());
     viewHandler.openView(View.ADD_EDIT_SAMPLE);
   }
 
-  @FXML
-  public void onAddButton()
+  @FXML public void onAddButton()
   {
+    viewModel.setPatientToAdd();
+    viewHandler.openView(View.ADD_EDIT_SAMPLE);
   }
 
-  @FXML
-  public void onBackButton()
+  @FXML public void onBackButton()
   {
-    viewHandler.openView(View.PATIENTS);
+    if (SelectionModel.getInstance().getLastOpenedView() == View.DOCTOR_MAIN)
+    {
+      viewHandler.openView(View.DOCTOR_MAIN);
+    }
+    else
+    {
+      viewHandler.openView(View.PATIENTS);
+    }
   }
 
   @Override public void init(ViewModelFactory viewModelFactory,
@@ -58,5 +66,8 @@ public class PatientsSampleViewController implements ViewController
     result.setCellValueFactory(new PropertyValueFactory<>("result"));
 
     viewModel.loadSelectedPatientData();
+
+    addButton.setVisible(
+        SelectionModel.getInstance().getLastOpenedView() != View.DOCTOR_MAIN);
   }
 }
