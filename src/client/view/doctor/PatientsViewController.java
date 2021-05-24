@@ -20,8 +20,6 @@ public class PatientsViewController implements ViewController
   private ViewHandler viewHandler;
   private PatientsViewModel patientsViewModel;
 
-  private long selectedPatient;
-
   @FXML public void onTreatButton()
   {
     patientsViewModel.setSelectedPatient(
@@ -32,7 +30,7 @@ public class PatientsViewController implements ViewController
     }
   }
 
-  @FXML public void onAddEdit()
+  @FXML public void onAddEditSample()
   {
     patientsViewModel.setSelectedPatient(
         doctorViewPatientTable.getSelectionModel().getSelectedItem());
@@ -72,21 +70,12 @@ public class PatientsViewController implements ViewController
   {
     this.viewHandler = viewHandler;
 
-    patientsViewModel = (PatientsViewModel) viewModelFactory
-        .getViewModel(View.PATIENTS);
+    patientsViewModel = (PatientsViewModel) viewModelFactory.getViewModel(View.PATIENTS);
     patientsViewModel.loadPatients();
 
     doctorViewPatientTable.setItems(patientsViewModel.getPatients());
     doctorViewPatientSSN.setCellValueFactory(new PropertyValueFactory<>("ssn"));
-    doctorViewPatientFirstName
-        .setCellValueFactory(new PropertyValueFactory<>("firstName"));
-    doctorViewPatientLastName
-        .setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        
-  public void onSamplesToInspect(ActionEvent actionEvent)
-  {
-    patientsViewModel.setSelectedPatient(null);
-    viewHandler.openView(View.PATIENTS_SAMPLE);
-
+    doctorViewPatientFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+    doctorViewPatientLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
   }
 }

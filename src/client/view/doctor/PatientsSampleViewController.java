@@ -26,7 +26,7 @@ public class PatientsSampleViewController implements ViewController
 
   private PatientsSampleViewModel viewModel;
 
-  public void addEditButton()
+  public void onEditSampleButton()
   {
     SelectionModel.getInstance()
         .set(sampleTable.getSelectionModel().getSelectedItem());
