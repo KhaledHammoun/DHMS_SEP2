@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.AddEditSampleViewController">
@@ -22,15 +23,18 @@
       <Button layoutX="184.0" layoutY="424.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="70.0" text="Save" />
       <DatePicker fx:id="deadline" layoutX="23.0" layoutY="163.0" prefHeight="26.0" prefWidth="211.0" promptText="Deadline" />
       <ComboBox fx:id="priority" layoutX="23.0" layoutY="206.0" prefHeight="26.0" prefWidth="211.0" promptText="Priority" />
-      <Button layoutX="103.0" layoutY="424.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="30.0" prefWidth="70.0" text="Back" />
-      <Button layoutX="21.0" layoutY="424.0" mnemonicParsing="false" onAction="#onClearButton" prefHeight="30.0" prefWidth="70.0" text="Clear" />
+      <Button layoutX="23.0" layoutY="424.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="30.0" prefWidth="70.0" text="Back" />
+      <Button layoutX="103.0" layoutY="424.0" mnemonicParsing="false" onAction="#onClearButton" prefHeight="30.0" prefWidth="70.0" text="Clear" />
 
       <ImageView fitHeight="501.0" fitWidth="420.0" layoutX="279.0">
          <image>
             <Image url="@../../images/sample_image6.jpg" />
          </image>
          <effect>
-            <DropShadow color="#161616" />
+            <DropShadow>
+               <color>
+                  <Color red="0.20000000298023224" green="0.3333333432674408" blue="0.49803921580314636" />
+               </color></DropShadow>
          </effect>
       </ImageView>
       <TextArea fx:id="result" layoutX="21.0" layoutY="265.0" prefHeight="49.0" prefWidth="211.0" promptText="Write result..." wrapText="true" />

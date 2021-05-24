@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import shared.Diagnosis;
 import shared.Patient;
 
+import java.security.InvalidParameterException;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -88,13 +89,22 @@ public class AddDiagnoseViewModel
     severityLevel.set("");
   }
 
-  public void save()
+  public void save() throws InvalidParameterException
   {
+    if (verifyInputs())
+    {
+      throw new InvalidParameterException("Please fill in all the fields to create diagnosis.");
+    }
     Diagnosis diagnosis = new Diagnosis(name.get(),
         Integer.parseInt(severityLevel.get()), description.get(),
         Date.valueOf(startDate.get()));
 
     treatAndUpdateModelDoctor.addDiagnosisToPatient(patient, diagnosis);
     clear();
+  }
+
+  private boolean verifyInputs()
+  {
+    return name.get() == null || severityLevel.get() == null || description.get() == null || startDate.get() == null;
   }
 }

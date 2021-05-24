@@ -2,14 +2,19 @@ package client.view.doctor;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.shared.SelectionModel;
+import client.view.sharted.Alerts;
 import client.view.sharted.View;
 import client.view.sharted.ViewController;
 import client.view_models.doctor.AssignNurseViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Nurse;
+
+import java.security.InvalidParameterException;
 
 public class AssignNurseViewController implements ViewController
 {
@@ -37,7 +42,16 @@ public class AssignNurseViewController implements ViewController
     @FXML
     public void onAssignButton()
     {
-        assignNurseViewModel.assignNurse(nursesTable.getSelectionModel().getSelectedItem());
+        SelectionModel.getInstance().set(nursesTable.getSelectionModel().getSelectedItem());
+        try
+        {
+            assignNurseViewModel.assignNurse();
+            Alerts.throwAlert(Alert.AlertType.INFORMATION, "Nurse was successfully assigned.");
+        }
+        catch (InvalidParameterException e)
+        {
+            Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+        }
     }
 
     @FXML

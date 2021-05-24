@@ -7,6 +7,8 @@ import javafx.collections.ObservableList;
 import shared.Patient;
 import shared.Sample;
 
+import java.security.InvalidParameterException;
+
 public class PatientsSampleViewModel
 {
   private ObservableList<Sample> samples;
@@ -42,6 +44,14 @@ public class PatientsSampleViewModel
   public void setPatientToAdd()
   {
     SelectionModel.getInstance().set(patient);
+  }
+
+  public void editSample() throws InvalidParameterException
+  {
+    if (SelectionModel.getInstance().isEmpty())
+    {
+      throw new InvalidParameterException("Please select sample.");
+    }
   }
 }
 

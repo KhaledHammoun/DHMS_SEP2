@@ -3,16 +3,19 @@ package client.view.doctor;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.shared.SelectionModel;
+import client.view.sharted.Alerts;
 import client.view.sharted.View;
 import client.view.sharted.ViewController;
 import client.view_models.doctor.PatientsSampleViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Sample;
 
+import java.security.InvalidParameterException;
 import java.sql.Date;
 
 public class PatientsSampleViewController implements ViewController
@@ -32,7 +35,15 @@ public class PatientsSampleViewController implements ViewController
   {
     SelectionModel.getInstance()
         .set(sampleTable.getSelectionModel().getSelectedItem());
-    viewHandler.openView(View.ADD_EDIT_SAMPLE);
+    try
+    {
+      viewModel.editSample();
+      viewHandler.openView(View.ADD_EDIT_SAMPLE);
+    }
+    catch (InvalidParameterException e)
+    {
+      Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+    }
   }
 
   @FXML public void onAddButton()
