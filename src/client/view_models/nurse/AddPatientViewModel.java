@@ -9,6 +9,7 @@ import javafx.beans.property.StringProperty;
 import shared.Address;
 import shared.Patient;
 
+import java.security.InvalidParameterException;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -89,6 +90,22 @@ public class AddPatientViewModel
         }
     }
 
+    private boolean validateInput()
+    {
+        for (StringProperty field : fields)
+        {
+            if (field.get() == null || field.get().isBlank())
+            {
+                return false;
+            }
+        }
+        if (dobPatient.get() == null)
+        {
+            return false;
+        }
+        return true;
+    }
+
     public StringProperty firstNamePatientProperty()
     {
         return firstNamePatient;
@@ -164,8 +181,12 @@ public class AddPatientViewModel
         return medicalDescriptionPatient;
     }
 
-    public void savePatient()
+    public void savePatient() throws InvalidParameterException
     {
+        if(!validateInput())
+        {
+            throw new InvalidParameterException("Please fill in all the fields to create a patient.");
+        }
         Address address = new Address(streetPatient.getValue(), streetNoPatient.getValue(), zipCodePatient.getValue(),
                                       cityPatient.getValue());
         Patient patient =

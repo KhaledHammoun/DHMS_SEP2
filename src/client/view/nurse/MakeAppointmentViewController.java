@@ -3,14 +3,12 @@ package client.view.nurse;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.shared.SelectionModel;
-import client.view.View;
-import client.view.ViewController;
+import client.view.sharted.Alerts;
+import client.view.sharted.View;
+import client.view.sharted.ViewController;
 import client.view_models.nurse.MakeAppointmentViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Doctor;
 import shared.Patient;
@@ -36,6 +34,11 @@ public class MakeAppointmentViewController implements ViewController
 
   @FXML public void onEditPatientButton()
   {
+    if (patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem() == null)
+    {
+      Alerts.throwAlert(Alert.AlertType.ERROR, "Please select patient to add.");
+      return;
+    }
     SelectionModel.getInstance().set(patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem());
     viewHandler.openView(View.ADD_PATIENT);
   }
@@ -44,7 +47,15 @@ public class MakeAppointmentViewController implements ViewController
   {
     patient = patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem();
     doctor = doctorsTableViewMakeAppointment.getSelectionModel().getSelectedItem();
-    viewModel.createAppointment(patient, doctor);
+    try
+    {
+      viewModel.createAppointment(patient, doctor);
+      Alerts.throwAlert(Alert.AlertType.INFORMATION, "Appointment successfully created");
+    }
+    catch (Exception e)
+    {
+      Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+    }
   }
 
   @FXML public void onBackButton()
@@ -55,7 +66,6 @@ public class MakeAppointmentViewController implements ViewController
   @FXML public void onClearButton()
   {
     viewModel.clearAppointment();
-
   }
 
   @FXML public void onSeeAllAppointmentsButton()
@@ -82,6 +92,5 @@ public class MakeAppointmentViewController implements ViewController
     timeMakeAppointmentTxtField.textProperty().bindBidirectional(viewModel.appointmentTimeProperty());
 
     viewModel.loadData();
-
   }
 }

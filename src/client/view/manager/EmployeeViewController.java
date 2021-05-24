@@ -2,8 +2,10 @@ package client.view.manager;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import client.view.View;
-import client.view.ViewController;
+import client.shared.SelectionModel;
+import client.view.sharted.Alerts;
+import client.view.sharted.View;
+import client.view.sharted.ViewController;
 import client.view_models.manager.EmployeeViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -12,6 +14,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Employee;
+
+import java.security.InvalidParameterException;
 
 public class EmployeeViewController implements ViewController
 {
@@ -46,22 +50,31 @@ public class EmployeeViewController implements ViewController
     @FXML
     public void onEditEmployeeButton()
     {
-        if (employeeTable.getSelectionModel().getSelectedItem() == null)
+        SelectionModel.getInstance().set(employeeTable.getSelectionModel());
+        try
         {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText("No employee selected");
-            alert.show();
-            return;
+            viewModel.editEmployee();
         }
-        Employee employee = employeeTable.getSelectionModel().getSelectedItem();
-        viewModel.editEmployee(employee);
+        catch (InvalidParameterException e)
+        {
+            Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+        }
         viewHandler.openView(View.ADD_EDIT_EMPLOYEE);
     }
 
     @FXML
     public void onRemoveEmployeeButton()
     {
+        SelectionModel.getInstance().set(employeeTable.getSelectionModel().getSelectedItem());
+        try
+        {
+            viewModel.removeEmployee();
+            Alerts.throwAlert(Alert.AlertType.INFORMATION, "Employee was successfully removed.");
+        }
+        catch (InvalidParameterException e)
+        {
+            Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+        }
     }
 
     @FXML

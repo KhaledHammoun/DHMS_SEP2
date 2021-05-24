@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import shared.Appointment;
 
 import java.beans.PropertyChangeEvent;
+import java.security.InvalidParameterException;
 import java.util.List;
 
 public class AllAppointmentsViewModel
@@ -41,8 +42,12 @@ public class AllAppointmentsViewModel
     return allAppointments;
   }
 
-  public void removeAnAppointment(Appointment appointment)
+  public void removeAnAppointment(Appointment appointment) throws InvalidParameterException
   {
+    if (appointment == null)
+    {
+      throw new InvalidParameterException("Please select appointment to remove.");
+    }
     appointmentsModelNurse.removeAppointment(appointment);
     loadAppointments();
   }

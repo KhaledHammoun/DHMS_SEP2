@@ -26,9 +26,9 @@
             <DropShadow color="#33557f" />
          </effect>
     </TableView>
-    <Button layoutX="571.0" layoutY="413.0" mnemonicParsing="false" onAction="#onEditSampleButton" prefHeight="30.0" prefWidth="70.0" text="Edit" AnchorPane.bottomAnchor="56.6" AnchorPane.rightAnchor="65.0" />
+    <Button  layoutX="571.0" layoutY="413.0" mnemonicParsing="false" onAction="#onEditSampleButton" prefHeight="30.0" prefWidth="70.0" text="Edit" AnchorPane.bottomAnchor="56.6" AnchorPane.rightAnchor="65.0" />
     <Button layoutX="25.0" layoutY="413.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="30.0" prefWidth="70.0" text="Back" AnchorPane.bottomAnchor="56.6" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="565.6" />
-      <Button layoutX="477.0" layoutY="413.0" mnemonicParsing="false" onAction="#onAddButton" prefHeight="30.0" prefWidth="70.0" text="Add" />
+      <Button fx:id="addButton"  layoutX="477.0" layoutY="413.0" mnemonicParsing="false" onAction="#onAddButton" prefHeight="30.0" prefWidth="70.0" text="Add" />
 </children>
    <effect>
       <ColorAdjust brightness="-0.06" contrast="0.08" />

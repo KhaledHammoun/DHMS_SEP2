@@ -1,5 +1,7 @@
 package shared;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,10 +12,18 @@ public class Validator
     String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,14}$";
     return matches(password, regex);
   }
-  public boolean isValidTelNo(String telNo)
+  public static boolean isValidTelTimeFormat(String time)
   {
-    //TODO
-    return false;
+    SimpleDateFormat sdf = new SimpleDateFormat("h:mm:ss");
+    try
+    {
+      sdf.parse(time);
+      return true;
+    }
+    catch (ParseException | NullPointerException e)
+    {
+      return false;
+    }
 
   }
   public static boolean isValidEmail(String email)

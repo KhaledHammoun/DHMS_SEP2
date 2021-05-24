@@ -11,6 +11,7 @@ import shared.Doctor;
 import shared.Employee;
 import shared.Nurse;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 public class EmployeeViewModel
@@ -53,9 +54,29 @@ public class EmployeeViewModel
         }
     }
 
-    public <T extends Employee> void editEmployee(T employee)
+    public void removeEmployee() throws InvalidParameterException
     {
-        SelectionModel.getInstance().set(employee);
+        if (SelectionModel.getInstance().isEmpty())
+        {
+            throw new InvalidParameterException("Please select employee to remove.");
+        }
+        Employee employee = (Employee) SelectionModel.getInstance().get();
+        if (employee instanceof Doctor)
+        {
+            employeeModelManager.removeDoctor((Doctor) employee);
+        }
+        else
+        {
+            employeeModelManager.removeNurse((Nurse) employee);
+        }
+    }
+
+    public void editEmployee() throws InvalidParameterException
+    {
+        if(SelectionModel.getInstance().isEmpty())
+        {
+            throw new InvalidParameterException("Please select employee to edit.");
+        }
     }
 
     public void addEmployee()
