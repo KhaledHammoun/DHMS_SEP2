@@ -32,6 +32,7 @@ public class AllAppointmentsViewModel
   public void loadAppointments()
   {
     List<Appointment> appointmentList = getAppointmentDataModel.getAllAppointments();
+    allAppointments.clear();
     allAppointments.addAll(appointmentList);
   }
 

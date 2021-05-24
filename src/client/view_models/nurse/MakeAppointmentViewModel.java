@@ -65,10 +65,10 @@ public class MakeAppointmentViewModel
   {
 
     Timestamp timestamp =  Timestamp.valueOf(appointmentDate.get().toString() +" "+ appointmentTime.get());
-    Timestamp from = timestamp;
-    timestamp.setTime(timestamp.getTime()+1);
+    Timestamp from = new Timestamp(timestamp.getTime());
+    timestamp.setTime(timestamp.getTime()+3600000);
 
-    Appointment appointment = new Appointment(from,timestamp,patient.getSsn(), doctor.getSsn());
+    Appointment appointment = new Appointment(from,timestamp,doctor.getSsn(),patient.getSsn());
     appointmentsModelNurse.createAppointment(appointment);
   }
 
