@@ -32,4 +32,10 @@ public class Ward implements Serializable
   {
     this.roomNumber = roomNumber;
   }
+
+  @Override
+  public String toString()
+  {
+    return wardName + ' ' + roomNumber;
+  }
 }
