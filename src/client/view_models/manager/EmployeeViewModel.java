@@ -55,7 +55,6 @@ public class EmployeeViewModel
 
     public <T extends Employee> void editEmployee(T employee)
     {
-        System.out.println(employee.getClass());
         SelectionModel.getInstance().set(employee);
     }
 

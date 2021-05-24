@@ -1,6 +1,7 @@
 package client.view_models.manager;
 
 import client.model.manager.WardModelManager;
+import client.shared.SelectionModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.Ward;
@@ -25,6 +26,12 @@ public class WardViewModel
   {
     wards.add((Ward) evt.getNewValue());
   }
+
+  public void editWard(Ward ward)
+  {
+    SelectionModel.getInstance().set(ward);
+  }
+
   public void loadWards()
   {
     List<Ward> wardsList = wardModelManager.getAllWards();

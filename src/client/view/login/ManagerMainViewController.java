@@ -40,5 +40,8 @@ public class ManagerMainViewController implements ViewController
     {
         this.viewHandler = viewHandler;
         this.managerMainViewModel = (ManagerMainViewModel) viewModelFactory.getViewModel(View.MANAGER_MAIN);
+        loggedInAsLabel.textProperty().bind(managerMainViewModel.currentUserProperty());
+
+        managerMainViewModel.setCurrentUser();
     }
 }

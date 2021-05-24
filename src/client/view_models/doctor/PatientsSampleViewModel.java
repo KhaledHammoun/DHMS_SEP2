@@ -28,7 +28,7 @@ public class PatientsSampleViewModel
   public void loadSelectedPatientData()
   {
     patient = (Patient) SelectionModel.getInstance().get();
-
+    samples.clear();
     if (patient == null)
     {
       samples.setAll(sampleModelDoctor.getAllSamples());
