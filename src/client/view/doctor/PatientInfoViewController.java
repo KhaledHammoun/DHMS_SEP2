@@ -5,13 +5,11 @@ import client.core.ViewModelFactory;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.doctor.EditMedicalDescriptionViewModel;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class EditMedicalDescriptionViewController implements ViewController
+public class PatientInfoViewController implements ViewController
 {
   @FXML private TextField patientsFirstName;
   @FXML private TextField patientsMiddleName;
@@ -41,7 +39,7 @@ public class EditMedicalDescriptionViewController implements ViewController
   {
     this.viewHandler = viewHandler;
     viewModel = (EditMedicalDescriptionViewModel) viewModelFactory
-        .getViewModel(View.EDIT_MEDICAL_DESCRIPTION);
+        .getViewModel(View.PATIENT_INFO);
 
     viewModel.refreshPatient();
 

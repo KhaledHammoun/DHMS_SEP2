@@ -38,5 +38,10 @@ public class PatientsSampleViewModel
       samples.setAll(sampleModelDoctor.getAllPatientSamples(patient));
     }
   }
+
+  public void setPatientToAdd()
+  {
+    SelectionModel.getInstance().set(patient);
+  }
 }
 

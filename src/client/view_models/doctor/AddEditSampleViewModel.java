@@ -7,6 +7,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import shared.Patient;
 import shared.Sample;
 
 import java.sql.Date;
@@ -56,26 +57,41 @@ public class AddEditSampleViewModel
 
   public void loadSelectedSample()
   {
-    if(SelectionModel.getInstance().isEmpty()){
+    if (SelectionModel.getInstance().isSample())
+    {
       sample = (Sample) SelectionModel.getInstance().get();
       type.set(sample.getType());
       deadline.set(sample.getDeadline().toLocalDate());
       priority.set(String.valueOf(sample.getPriority()));
       result.setValue(sample.getResult());
     }
+    else
+    {
+      sample = null;
+      type.set("");
+      result.setValue("");
+      deadline.set(LocalDate.now());
+    }
   }
 
   public void saveChanges()
   {
-    Sample editedSample = new Sample(type.get(), result.get(),
-        Integer.parseInt((priority.get())), Date.valueOf(deadline.get()),
-        sample.getPatient_ssn(), sample.getSample_id());
-    sampleModelDoctor.editSample(editedSample);
-  }
+    //Selected Sample before - Editing the sample / Not selected - Adding the sample
+    if (sample == null)
+    {
+      Patient patient = (Patient) SelectionModel.getInstance().get();
 
-  public void savePatient()
-  {
-    SelectionModel.getInstance()
-        .set(getPatientDataModel.getPatientBySSN(sample.getPatient_ssn()));
+      Sample addingSample = new Sample(type.get(), result.get(),
+          Integer.parseInt(priority.get()), Date.valueOf(deadline.get()),
+          patient.getSsn(), 0);
+      sampleModelDoctor.createSample(addingSample);
+    }
+    else
+    {
+      Sample editedSample = new Sample(type.get(), result.get(),
+          Integer.parseInt(priority.get()), Date.valueOf(deadline.get()),
+          sample.getPatient_ssn(), sample.getSample_id());
+      sampleModelDoctor.editSample(editedSample);
+    }
   }
 }

@@ -27,9 +27,9 @@ public class WardViewModel
     wards.add((Ward) evt.getNewValue());
   }
 
-  public void editWard(Ward ward)
+  public void removeWard()
   {
-    SelectionModel.getInstance().set(ward);
+    wardModelManager.removeWard((Ward) SelectionModel.getInstance().get());
   }
 
   public void loadWards()

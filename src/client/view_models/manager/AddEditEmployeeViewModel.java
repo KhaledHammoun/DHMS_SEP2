@@ -1,12 +1,15 @@
 package client.view_models.manager;
 
 import client.model.manager.EmployeeModelManager;
+import client.model.manager.WardModelManager;
 import client.model.shared.GetEmployeeDataModel;
 import client.shared.SelectionModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import shared.*;
 
 import java.sql.Date;
@@ -26,8 +29,8 @@ public class AddEditEmployeeViewModel
     private StringProperty contactFirstName;
     private StringProperty contactLastName;
     private StringProperty contactPhoneNo;
-    private ObjectProperty<Ward> employeeWard;
-    //TODO check if ObjectProperty<Ward> causes no problems!!!
+    private ObjectProperty<Ward> selectedEmployeeWard;
+    private ObservableList<Ward> wards;
     private StringProperty username;
     private StringProperty password;
     private StringProperty experience;
@@ -38,12 +41,14 @@ public class AddEditEmployeeViewModel
 
     private EmployeeModelManager employeeModelManager;
     private GetEmployeeDataModel getEmployeeDataModel;
+    private WardModelManager getWardsData;
 
     // TODO: 23/05/2021 Fetch all the wards from the database and add them to the ward property
-    public AddEditEmployeeViewModel(Object employeeModelManager, Object getEmployeeDataModel)
+    public AddEditEmployeeViewModel(Object employeeModelManager, Object getEmployeeDataModel, Object getWardsData)
     {
         this.employeeModelManager = (EmployeeModelManager) employeeModelManager;
         this.getEmployeeDataModel = (GetEmployeeDataModel) getEmployeeDataModel;
+        this.getWardsData = (WardModelManager) getWardsData;
         employeeSnn = new SimpleStringProperty();
         employeeFirstName = new SimpleStringProperty();
         employeeMiddleName = new SimpleStringProperty();
@@ -56,8 +61,8 @@ public class AddEditEmployeeViewModel
         contactFirstName = new SimpleStringProperty();
         contactLastName = new SimpleStringProperty();
         contactPhoneNo = new SimpleStringProperty();
-
-        employeeWard = new SimpleObjectProperty<>();
+        wards = FXCollections.observableArrayList();
+        selectedEmployeeWard = new SimpleObjectProperty<>();
         username = new SimpleStringProperty();
         password = new SimpleStringProperty();
         experience = new SimpleStringProperty();
@@ -83,7 +88,6 @@ public class AddEditEmployeeViewModel
         {
             fillCommon(employee);
         }
-        System.out.println("Is doctor: " + isDoctor + " To add: " + toAdd);
     }
 
     private <T extends Employee> void fillCommon(T employee)
@@ -112,7 +116,7 @@ public class AddEditEmployeeViewModel
         {
             Doctor doctor = (Doctor) employee;
             experience.setValue(doctor.getSpecialization());
-            employeeWard.setValue(doctor.getWard());
+            selectedEmployeeWard.setValue(doctor.getWard());
         }
         else
         {
@@ -121,6 +125,26 @@ public class AddEditEmployeeViewModel
         }
     }
 
+    public boolean validateInput()
+    {
+        for (StringProperty field : textFields)
+        {
+            if (field.get() == null || field.get().isBlank())
+            {
+                return false;
+            }
+        }
+        if (employeeDob == null || selectedEmployeeWard == null || employeeDob.get() == null || selectedEmployeeWard.get() == null)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateLoginData()
+    {
+        return Validator.isValidEmail(username.get()) && Validator.isValidPassword(password.get());
+    }
     public void saveChanges()
     {
         getDataObject();
@@ -148,7 +172,7 @@ public class AddEditEmployeeViewModel
         toAdd = false;
         isDoctor = false;
         employeeDob.set(null);
-        employeeWard.set(null);
+        selectedEmployeeWard.set(null);
         clearTextFields();
     }
 
@@ -158,6 +182,11 @@ public class AddEditEmployeeViewModel
         {
             filed.setValue("");
         }
+    }
+
+    public void getWards()
+    {
+        wards.addAll(getWardsData.getAllWards());
     }
 
     public <T extends Employee> T getDataObject()
@@ -171,7 +200,7 @@ public class AddEditEmployeeViewModel
         {
            return (T) new Doctor(employeeFirstName.get(), employeeMiddleName.get(), employeeLastName.get(), ssn, dob,
                                  address, contactFirstName.get(), null, contactLastName.get(), contactPhoneNo.get(), null,
-                                 education.get(), experience.get(), employeeWard.get(), username.get(), password.get());
+                                 education.get(), experience.get(), selectedEmployeeWard.get(), username.get(), password.get());
         }
         else
         {
@@ -241,9 +270,9 @@ public class AddEditEmployeeViewModel
         return contactPhoneNo;
     }
 
-    public ObjectProperty<Ward> employeeWardProperty()
+    public ObjectProperty<Ward> selectedEmployeeWardProperty()
     {
-        return employeeWard;
+        return selectedEmployeeWard;
     }
 
     public StringProperty usernameProperty()
@@ -264,5 +293,10 @@ public class AddEditEmployeeViewModel
     public StringProperty educationProperty()
     {
         return education;
+    }
+
+    public ObservableList<Ward> wardsProperty()
+    {
+        return wards;
     }
 }
