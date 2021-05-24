@@ -19,9 +19,8 @@ public class AllAppointmentsViewController implements ViewController
   @FXML private TableColumn<Appointment, Timestamp> startDateAppColumn;
   @FXML private TableColumn<Appointment, Timestamp> endDateAppColumn;
   @FXML private TableColumn<Appointment, Long> patientSSNAppColumn;
-  @FXML private TableColumn<Appointment, String> fNamePatientAppColumn;
   @FXML private TableColumn<Appointment, Long> doctorSSNAppColumn;
-  @FXML private TableColumn<Appointment, String> lNamePatientAppColumn;
+
 
   private ViewHandler viewHandler;
   private AllAppointmentsViewModel viewModel;
@@ -49,9 +48,6 @@ public class AllAppointmentsViewController implements ViewController
     endDateAppColumn.setCellValueFactory(new PropertyValueFactory<>("to"));
     patientSSNAppColumn.setCellValueFactory(new PropertyValueFactory<>("patientSSN"));
     doctorSSNAppColumn.setCellValueFactory(new PropertyValueFactory<>("doctorSSN"));
-    //TODO check for first and last name ..Class Appointment does not have name
-    //fNamePatientAppColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-    //lNamePatientAppColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
   }
 }

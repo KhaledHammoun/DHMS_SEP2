@@ -28,10 +28,11 @@ public class MakeAppointmentViewController implements ViewController
   @FXML private TableColumn<Patient, String> lNameColumnPatients;
   @FXML private TableColumn<Patient, Long> ssnColumnPatients;
 
+
   private ViewHandler viewHandler;
   private MakeAppointmentViewModel viewModel;
-  private Patient selectedPatientForAp;
-  private Doctor selectedDoctorForAp;
+  private Patient patient;
+  private Doctor doctor;
 
   @FXML public void onEditPatientButton()
   {
@@ -41,10 +42,9 @@ public class MakeAppointmentViewController implements ViewController
 
   @FXML public void onSaveButton()
   {
-    //TODO
-    //selectedPatientForAp = patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem();
-    //selectedDoctorForAp = doctorsTableViewMakeAppointment.getSelectionModel().getSelectedItem();
-    //viewModel.createAppointment();
+    patient = patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem();
+    doctor = doctorsTableViewMakeAppointment.getSelectionModel().getSelectedItem();
+    viewModel.createAppointment(patient, doctor);
   }
 
   @FXML public void onBackButton()
@@ -54,6 +54,7 @@ public class MakeAppointmentViewController implements ViewController
 
   @FXML public void onClearButton()
   {
+    viewModel.clearAppointment();
 
   }
 
@@ -75,6 +76,7 @@ public class MakeAppointmentViewController implements ViewController
     fNameColumnPatients.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     lNameColumnPatients.setCellValueFactory(new PropertyValueFactory<>("lastName"));
     ssnColumnPatients.setCellValueFactory(new PropertyValueFactory<>("ssn"));
+
     makeAppointmentDateField.valueProperty().bindBidirectional(
         viewModel.appointmentDateProperty());
     timeMakeAppointmentTxtField.textProperty().bindBidirectional(viewModel.appointmentTimeProperty());

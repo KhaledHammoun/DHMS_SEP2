@@ -9,9 +9,11 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.Appointment;
 import shared.Doctor;
 import shared.Patient;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 
 public class MakeAppointmentViewModel
@@ -25,6 +27,7 @@ public class MakeAppointmentViewModel
   private GetEmployeeDataModel getEmployeeDataModel;
   private AppointmentsModelNurse appointmentsModelNurse;
   private GetPatientDataModel getPatientDataModel;
+
 
   public MakeAppointmentViewModel(Object appointmentsModelNurse,
       Object getEmployeeDataModel, Object getPatientDataModel)
@@ -58,14 +61,27 @@ public class MakeAppointmentViewModel
     return appointmentTime;
   }
 
-  public void createAppointment()
+  public void createAppointment(Patient patient, Doctor doctor)
   {
-    //TODO need to add fields for end date of appointment
+
+    Timestamp timestamp =  Timestamp.valueOf(appointmentDate.get().toString() +" "+ appointmentTime.get());
+    Timestamp from = timestamp;
+    timestamp.setTime(timestamp.getTime()+1);
+
+    Appointment appointment = new Appointment(from,timestamp,patient.getSsn(), doctor.getSsn());
+    appointmentsModelNurse.createAppointment(appointment);
   }
 
   public void loadData()
   {
     allPatients.setAll(getPatientDataModel.getAllPatients());
     availableDoctors.setAll(getEmployeeDataModel.getListOfAllDoctors());
+  }
+
+  public void clearAppointment()
+  {
+    appointmentDate.set(null);
+    appointmentTime.set("");
+
   }
 }
