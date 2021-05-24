@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -19,10 +20,10 @@
        <TableColumn fx:id="wardRoomNumberColumn" minWidth="7.0" prefWidth="202.0" text="Room number" />
      </columns>
       <effect>
-         <DropShadow color="#635050" />
+         <DropShadow color="#33557f" />
       </effect>
    </TableView>
    <effect>
-      <DropShadow color="#635050" />
+      <ColorAdjust brightness="-0.06" contrast="0.08" />
    </effect>
 </AnchorPane>

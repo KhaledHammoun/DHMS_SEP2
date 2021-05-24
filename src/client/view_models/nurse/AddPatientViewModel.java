@@ -1,6 +1,7 @@
 package client.view_models.nurse;
 
 import client.model.nurse.PatientModelNurse;
+import client.shared.SelectionModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,135 +14,166 @@ import java.time.LocalDate;
 
 public class AddPatientViewModel
 {
-  private StringProperty firstNamePatient;
-  private StringProperty middleNamePatient;
-  private StringProperty lastNamePatient;
-  private ObjectProperty<LocalDate> dobPatient;
-  private StringProperty genderPatient;
-  private StringProperty bloodTypePatient;
-  private StringProperty ssnPatient;
-  private StringProperty streetPatient;
-  private StringProperty streetNoPatient;
-  private StringProperty cityPatient;
-  private StringProperty zipCodePatient;
-  private StringProperty contactFirstName;
-  private StringProperty contactLastName;
-  private StringProperty contactPhoneNo;
-  private StringProperty medicalDescriptionPatient;
+    private StringProperty firstNamePatient;
+    private StringProperty middleNamePatient;
+    private StringProperty lastNamePatient;
+    private ObjectProperty<LocalDate> dobPatient;
+    private StringProperty genderPatient;
+    private StringProperty bloodTypePatient;
+    private StringProperty ssnPatient;
+    private StringProperty streetPatient;
+    private StringProperty streetNoPatient;
+    private StringProperty cityPatient;
+    private StringProperty zipCodePatient;
+    private StringProperty contactFirstName;
+    private StringProperty contactLastName;
+    private StringProperty contactPhoneNo;
+    private StringProperty medicalDescriptionPatient;
+    private StringProperty[] fields;
 
-  private PatientModelNurse patientModelNurse;
+    private PatientModelNurse patientModelNurse;
 
-  public AddPatientViewModel(Object patientModelNurse)
-  {
-    this.patientModelNurse = (PatientModelNurse) patientModelNurse;
-    firstNamePatient = new SimpleStringProperty();
-    middleNamePatient = new SimpleStringProperty();
-    lastNamePatient = new SimpleStringProperty();
-    dobPatient = new SimpleObjectProperty<>();
-    genderPatient = new SimpleStringProperty();
-    bloodTypePatient = new SimpleStringProperty();
-    ssnPatient = new SimpleStringProperty();
-    streetPatient = new SimpleStringProperty();
-    streetNoPatient = new SimpleStringProperty();
-    cityPatient = new SimpleStringProperty();
-    zipCodePatient = new SimpleStringProperty();
-    contactFirstName = new SimpleStringProperty();
-    contactLastName = new SimpleStringProperty();
-    contactPhoneNo = new SimpleStringProperty();
-    medicalDescriptionPatient = new SimpleStringProperty();
+    public AddPatientViewModel(Object patientModelNurse)
+    {
+        this.patientModelNurse = (PatientModelNurse) patientModelNurse;
+        firstNamePatient = new SimpleStringProperty();
+        middleNamePatient = new SimpleStringProperty();
+        lastNamePatient = new SimpleStringProperty();
+        dobPatient = new SimpleObjectProperty<>();
+        genderPatient = new SimpleStringProperty();
+        bloodTypePatient = new SimpleStringProperty();
+        ssnPatient = new SimpleStringProperty();
+        streetPatient = new SimpleStringProperty();
+        streetNoPatient = new SimpleStringProperty();
+        cityPatient = new SimpleStringProperty();
+        zipCodePatient = new SimpleStringProperty();
+        contactFirstName = new SimpleStringProperty();
+        contactLastName = new SimpleStringProperty();
+        contactPhoneNo = new SimpleStringProperty();
+        medicalDescriptionPatient = new SimpleStringProperty();
+        fields = new StringProperty[] {firstNamePatient, middleNamePatient, lastNamePatient, genderPatient,
+                                       bloodTypePatient, ssnPatient, streetPatient, streetNoPatient, cityPatient,
+                                       zipCodePatient, contactFirstName, contactLastName, contactPhoneNo,
+                                       medicalDescriptionPatient};
+    }
 
-  }
+    public void fillPatientData()
+    {
+        if (!SelectionModel.getInstance().isEmpty())
+        {
+            Patient patient = (Patient) SelectionModel.getInstance().get();
+            firstNamePatient.set(patient.getFirstName());
+            middleNamePatient.set(patient.getMiddleName());
+            lastNamePatient.set(patient.getLastName());
+            dobPatient.set(patient.getDob().toLocalDate());
+            genderPatient.set(String.valueOf(patient.getGender()));
+            bloodTypePatient.set(patient.getBlood_type());
+            ssnPatient.set(String.valueOf(patient.getSsn()));
+            streetPatient.set(patient.getAddress().getStreet());
+            streetNoPatient.set(patient.getAddress().getNumber());
+            cityPatient.set(patient.getAddress().getCity());
+            zipCodePatient.set(patient.getAddress().getZipcode());
+            contactFirstName.set(patient.getContactFirstName());
+            contactLastName.set(patient.getContactLastName());
+            contactPhoneNo.set(patient.getContactPhoneNumber());
+            medicalDescriptionPatient.set(patient.getMedical_description());
+        }
+    }
 
-  public StringProperty firstNamePatientProperty()
-  {
-    return firstNamePatient;
-  }
+    public void clear()
+    {
+        dobPatient.set(null);
+        for (StringProperty field : fields)
+        {
+            field.set("");
+        }
+    }
 
-  public StringProperty middleNamePatientProperty()
-  {
-    return middleNamePatient;
-  }
+    public StringProperty firstNamePatientProperty()
+    {
+        return firstNamePatient;
+    }
 
-  public StringProperty lastNamePatientProperty()
-  {
-    return lastNamePatient;
-  }
+    public StringProperty middleNamePatientProperty()
+    {
+        return middleNamePatient;
+    }
 
-  public ObjectProperty<LocalDate> dobPatientProperty()
-  {
-    return dobPatient;
-  }
+    public StringProperty lastNamePatientProperty()
+    {
+        return lastNamePatient;
+    }
 
-  public StringProperty genderPatientProperty()
-  {
-    return genderPatient;
-  }
+    public ObjectProperty<LocalDate> dobPatientProperty()
+    {
+        return dobPatient;
+    }
 
-  public StringProperty bloodTypePatientProperty()
-  {
-    return bloodTypePatient;
-  }
+    public StringProperty genderPatientProperty()
+    {
+        return genderPatient;
+    }
 
-  public StringProperty ssnPatientProperty()
-  {
-    return ssnPatient;
-  }
+    public StringProperty bloodTypePatientProperty()
+    {
+        return bloodTypePatient;
+    }
 
-  public StringProperty streetPatientProperty()
-  {
-    return streetPatient;
-  }
+    public StringProperty ssnPatientProperty()
+    {
+        return ssnPatient;
+    }
 
-  public StringProperty streetNoPatientProperty()
-  {
-    return streetNoPatient;
-  }
+    public StringProperty streetPatientProperty()
+    {
+        return streetPatient;
+    }
 
-  public StringProperty cityPatientProperty()
-  {
-    return cityPatient;
-  }
+    public StringProperty streetNoPatientProperty()
+    {
+        return streetNoPatient;
+    }
 
-  public StringProperty zipCodePatientProperty()
-  {
-    return zipCodePatient;
-  }
+    public StringProperty cityPatientProperty()
+    {
+        return cityPatient;
+    }
 
-  public StringProperty contactFirstNameProperty()
-  {
-    return contactFirstName;
-  }
+    public StringProperty zipCodePatientProperty()
+    {
+        return zipCodePatient;
+    }
 
-  public StringProperty contactLastNameProperty()
-  {
-    return contactLastName;
-  }
+    public StringProperty contactFirstNameProperty()
+    {
+        return contactFirstName;
+    }
 
-  public StringProperty contactPhoneNoProperty()
-  {
-    return contactPhoneNo;
-  }
+    public StringProperty contactLastNameProperty()
+    {
+        return contactLastName;
+    }
 
-  public StringProperty medicalDescriptionPatientProperty()
-  {
-    return medicalDescriptionPatient;
-  }
+    public StringProperty contactPhoneNoProperty()
+    {
+        return contactPhoneNo;
+    }
 
-  public void savePatient()
-  {
+    public StringProperty medicalDescriptionPatientProperty()
+    {
+        return medicalDescriptionPatient;
+    }
 
-    Address address = new Address(streetPatient.getValue(),
-        streetNoPatient.getValue(), zipCodePatient.getValue(),
-        cityPatient.getValue());
-    Patient patient = new Patient(firstNamePatient.getValue(),
-        middleNamePatient.getValue(), lastNamePatient.getValue(),
-        Long.parseLong(ssnPatient.getValue()),
-        Date.valueOf(dobPatient.getValue()), address,
-        contactFirstName.getValue(), null, contactLastName.getValue(),
-        contactPhoneNo.getValue(), bloodTypePatient.getValue(),
-        medicalDescriptionPatient.getValue(),
-        genderPatient.getValue().charAt(0));
-    patientModelNurse.addPatient(patient);
-
-  }
+    public void savePatient()
+    {
+        Address address = new Address(streetPatient.getValue(), streetNoPatient.getValue(), zipCodePatient.getValue(),
+                                      cityPatient.getValue());
+        Patient patient =
+                new Patient(firstNamePatient.getValue(), middleNamePatient.getValue(), lastNamePatient.getValue(),
+                            Long.parseLong(ssnPatient.getValue()), Date.valueOf(dobPatient.getValue()), address,
+                            contactFirstName.getValue(), null, contactLastName.getValue(), contactPhoneNo.getValue(),
+                            bloodTypePatient.getValue(), medicalDescriptionPatient.getValue(),
+                            genderPatient.getValue().charAt(0));
+        patientModelNurse.addPatient(patient);
+    }
 }

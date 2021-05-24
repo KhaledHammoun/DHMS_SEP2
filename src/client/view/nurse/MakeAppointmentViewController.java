@@ -2,6 +2,7 @@ package client.view.nurse;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.shared.SelectionModel;
 import client.view.View;
 import client.view.ViewController;
 import client.view_models.nurse.MakeAppointmentViewModel;
@@ -34,6 +35,7 @@ public class MakeAppointmentViewController implements ViewController
 
   @FXML public void onEditPatientButton()
   {
+    SelectionModel.getInstance().set(patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem());
     viewHandler.openView(View.ADD_PATIENT);
   }
 

@@ -26,6 +26,7 @@ public class PatientsSampleViewController implements ViewController
 
   private PatientsSampleViewModel viewModel;
 
+  @FXML
   public void onEditSampleButton()
   {
     SelectionModel.getInstance()
@@ -33,6 +34,12 @@ public class PatientsSampleViewController implements ViewController
     viewHandler.openView(View.ADD_EDIT_SAMPLE);
   }
 
+  @FXML
+  public void onAddButton()
+  {
+  }
+
+  @FXML
   public void onBackButton()
   {
     viewHandler.openView(View.PATIENTS);

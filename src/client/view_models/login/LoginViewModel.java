@@ -26,8 +26,8 @@ public class LoginViewModel
     public LoginViewModel(Object loginModel)
     {
         this.loginModel = (Login) loginModel;
-        this.username = new SimpleStringProperty("ceo@ceo.com");
-        this.password = new SimpleStringProperty("Ceo12345");
+        this.username = new SimpleStringProperty("auctor.velit.eget@vitaemauris.com");
+        this.password = new SimpleStringProperty("Q93rFxMnT2c6");
         this.errorLabel = new SimpleStringProperty();
         managerProperty = new SimpleBooleanProperty();
         doctorProperty = new SimpleBooleanProperty();
