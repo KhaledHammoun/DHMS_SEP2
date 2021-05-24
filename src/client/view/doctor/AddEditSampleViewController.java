@@ -8,13 +8,13 @@ import client.view_models.doctor.AddEditSampleViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 
 public class AddEditSampleViewController implements ViewController
 {
 
   @FXML
-  private TextField result;
+  private TextArea result;
   @FXML
   private ComboBox<String> sampleType;
   @FXML
