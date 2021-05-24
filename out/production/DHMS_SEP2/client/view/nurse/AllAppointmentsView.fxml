@@ -21,7 +21,7 @@
             <TableColumn fx:id="doctorSSNAppColumn" prefWidth="178.4000244140625" text="Doctor SSN" />
         </columns>
          <effect>
-            <DropShadow color="#413a3a" />
+            <DropShadow color="#33557f" height="28.0" radius="16.5" width="40.0" />
          </effect>
       </TableView>
       <Button layoutX="396.0" layoutY="433.0" mnemonicParsing="false" onAction="#onRemoveButton" text="Remove appointment" />

@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.AddDiagnoseViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #90a4ae;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.doctor.AddDiagnoseViewController">
    <children>
       <Label layoutX="14.0" layoutY="275.0" prefHeight="30.0" prefWidth="120.0" text="New diagnose:">
          <font>
@@ -19,7 +20,6 @@
          </font>
       </Label>
       <TextField fx:id="diagnoseName" alignment="TOP_LEFT" layoutX="14.0" layoutY="316.0" prefHeight="39.0" prefWidth="230.0" promptText="Name" />
-      <TextField fx:id="diagnoseDescription" alignment="TOP_LEFT" layoutX="14.0" layoutY="375.0" prefHeight="46.0" prefWidth="230.0" promptText="Description" />
       <ComboBox fx:id="diagnoseSeverityLevel" layoutX="417.0" layoutY="319.0" prefHeight="26.0" prefWidth="211.0" promptText="Severity Level" />
       <DatePicker fx:id="diagnoseStartDate" layoutX="417.0" layoutY="359.0" prefHeight="26.0" prefWidth="211.0" promptText="Start  Date" />
       <Button layoutX="178.0" layoutY="440.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="65.0" text="Save" />
@@ -31,6 +31,7 @@
             <Image url="@../../images/dagnosis_omage_1.jpg" />
          </image>
       </ImageView>
+      <TextArea fx:id="diagnoseDescription" layoutX="14.0" layoutY="377.0" prefHeight="46.0" prefWidth="230.0" promptText="Description" wrapText="true" />
    </children>
    <effect>
       <ColorAdjust brightness="-0.06" contrast="0.08" />
