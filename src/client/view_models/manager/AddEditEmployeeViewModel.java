@@ -151,6 +151,10 @@ public class AddEditEmployeeViewModel
         {
             throw new InvalidParameterException("Please fill in all fields");
         }
+        else if (!isValidSSN())
+        {
+            throw new InvalidParameterException("Invalid SSN. Please insert number between 1000000000 and 9999999999");
+        }
         else if (!validateLoginData())
         {
            throw new InvalidParameterException("Invalid email or password");
@@ -173,6 +177,11 @@ public class AddEditEmployeeViewModel
             employeeModelManager.editNurse(getDataObject());
         }
        clear();
+    }
+
+    private boolean isValidSSN()
+    {
+        return Validator.isValidSSN(Long.parseLong(employeeSnn.get()));
     }
 
     public void clear()

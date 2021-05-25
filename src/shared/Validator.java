@@ -39,9 +39,8 @@ public class Validator
     return matcher.matches();
   }
 
-  public boolean isValidSSN(int SSN )
+  public static boolean isValidSSN(long ssn)
   {
-    //TODO
-    return false;
+    return ssn >= 1000000000L && ssn <= 9999999999L;
   }
 }
