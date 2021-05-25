@@ -8,6 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import shared.Address;
 import shared.Patient;
+import shared.Validator;
 
 import java.security.InvalidParameterException;
 import java.sql.Date;
@@ -187,6 +188,10 @@ public class AddPatientViewModel
         {
             throw new InvalidParameterException("Please fill in all the fields to create a patient.");
         }
+        else if (!isValidSSN())
+        {
+            throw new InvalidParameterException("Invalid SSN. Please insert number between 1000000000 and 9999999999");
+        }
         Address address = new Address(streetPatient.getValue(), streetNoPatient.getValue(), zipCodePatient.getValue(),
                                       cityPatient.getValue());
         Patient patient =
@@ -196,5 +201,10 @@ public class AddPatientViewModel
                             bloodTypePatient.getValue(), medicalDescriptionPatient.getValue(),
                             genderPatient.getValue().charAt(0));
         patientModelNurse.addPatient(patient);
+    }
+
+    private boolean isValidSSN()
+    {
+        return Validator.isValidSSN(Long.parseLong(ssnPatient.get()));
     }
 }
