@@ -79,6 +79,6 @@ public class TreatPatientViewModel
 
   private boolean validateInput(String medication, Diagnosis selectedDiagnosis)
   {
-    return medication == null || selectedDiagnosis == null || description.get() == null || patient == null;
+    return medication == null || selectedDiagnosis == null || description.get() == null || description.get().isBlank() || patient == null;
   }
 }
