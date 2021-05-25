@@ -31,32 +31,33 @@ public class TreatAndUpdateServerDoctorRMI implements TreatAndUpdateServerDoctor
     }
 
     @Override
-    public void addDiagnosisToPatient(Patient patient, Diagnosis diagnosis)
+    public synchronized void addDiagnosisToPatient(Patient patient, Diagnosis diagnosis)
     {
         modelDoctor.addDiagnosisToPatient(patient, diagnosis);
     }
 
     @Override
-    public void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor, Treatment treatment)
+    public synchronized void treatPatient(Patient patient, Diagnosis diagnosis, Doctor doctor, Treatment treatment)
     {
         modelDoctor.treatPatient(patient, diagnosis, doctor, treatment);
     }
 
     @Override
-    public ArrayList<Diagnosis> getAllDiseasesOfPatient(Patient patient)
+    public synchronized ArrayList<Diagnosis> getAllDiseasesOfPatient(Patient patient)
     {
         return modelDoctor.getAllDiseasesOfPatient(patient);
     }
 
-    @Override public void editDiagnosis(Diagnosis diagnosis)
+    @Override
+    public synchronized void editDiagnosis(Diagnosis diagnosis)
     {
         modelDoctor.editDiagnosis(diagnosis);
     }
 
-    @Override public ArrayList<Treatment> getAllTreatmentsOfPatient(
-        Patient patient, Doctor doctor)
+    @Override
+    public synchronized ArrayList<Treatment> getAllTreatmentsOfPatient(Patient patient, Doctor doctor)
     {
-       return modelDoctor.getAllTreatmentsOfPatient(patient, doctor);
+        return modelDoctor.getAllTreatmentsOfPatient(patient, doctor);
     }
 
 }

@@ -29,19 +29,19 @@ public class NursesServerDoctorRMI implements NursesServerDoctor
     }
 
     @Override
-    public ArrayList<Nurse> getAllAvailableNurses()
+    public synchronized ArrayList<Nurse> getAllAvailableNurses()
     {
         return modelDoctor.getAllAvailableNurses();
     }
 
     @Override
-    public void assignNurse(Nurse nurse, Doctor doctor)
+    public synchronized void assignNurse(Nurse nurse, Doctor doctor)
     {
         modelDoctor.assignNurse(nurse, doctor);
     }
 
     @Override
-    public ArrayList<Nurse> getAllNursesAssignedToMe(Doctor doctor)
+    public synchronized ArrayList<Nurse> getAllNursesAssignedToMe(Doctor doctor)
     {
         return modelDoctor.getAllNursesAssignedToMe(doctor);
     }

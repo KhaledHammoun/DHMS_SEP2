@@ -28,7 +28,7 @@ public class LoginServerRMI implements LoginServer
     }
 
     @Override
-    public AccessType login(LoginUser user)
+    public synchronized AccessType login(LoginUser user)
     {
         return loginServerModel.login(user);
     }

@@ -29,18 +29,19 @@ public class GetPatientDataServerRMI implements GetPatientDataServer
     }
 
     @Override
-    public ArrayList<Patient> getAllPatients()
+    public synchronized ArrayList<Patient> getAllPatients()
     {
         return sharedServerModel.getAllPatients();
     }
 
     @Override
-    public Patient getPatientBySSN(long ssn)
+    public synchronized Patient getPatientBySSN(long ssn)
     {
         return sharedServerModel.getPatientBySSN(ssn);
     }
 
-    @Override public ArrayList<Sample> getPatientSample(long ssn)
+    @Override
+    public synchronized ArrayList<Sample> getPatientSample(long ssn)
     {
         return sharedServerModel.getPatientSample(ssn);
     }

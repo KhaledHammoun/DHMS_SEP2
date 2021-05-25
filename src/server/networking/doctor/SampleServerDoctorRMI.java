@@ -29,30 +29,31 @@ public class SampleServerDoctorRMI implements SampleServerDoctor
     }
 
     @Override
-    public ArrayList<Sample> getAllSamples()
+    public synchronized ArrayList<Sample> getAllSamples()
     {
         return modelDoctor.getAllSamples();
     }
 
     @Override
-    public void createSample(Sample sample)
+    public synchronized void createSample(Sample sample)
     {
         modelDoctor.createSample(sample);
     }
 
     @Override
-    public void editSample(Sample sample)
+    public synchronized void editSample(Sample sample)
     {
         modelDoctor.editSample(sample);
     }
 
     @Override
-    public Sample getSampleById(int id)
+    public synchronized Sample getSampleById(int id)
     {
         return modelDoctor.getSampleById(id);
     }
 
-    @Override public ArrayList<Sample> getAllPatientSamples(Patient patient)
+    @Override
+    public synchronized ArrayList<Sample> getAllPatientSamples(Patient patient)
     {
         return modelDoctor.getAllPatientSamples(patient);
     }
