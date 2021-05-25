@@ -6,6 +6,7 @@ import client.networking.manager.EmployeeClientManager;
 import client.networking.manager.EmployeeClientRMI;
 import client.networking.shared.GetEmployeeDataClient;
 import client.networking.shared.GetEmployeeDataClientRMI;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.Address;
@@ -21,73 +22,143 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 class EmployeeModelManagerTest
 {
   private EmployeeModelManager test;
-  private Doctor testDoctor;
+  private Doctor dummyDoctor;
   private GetEmployeeDataModel resultCheck;
-  private Nurse testNurse;
+  private Nurse dummyNurse;
 
   @BeforeEach public void setup()
   {
     EmployeeClientManager client = new EmployeeClientRMI();
     test = new EmployeeModelManagerImpl(client);
 
-    testDoctor = new Doctor("Test", "", "", 1010101010L, null,
-        new Address("", "", "", ""), "", "", "", "", new Date(1239781), "", "",
-        new Ward("Examination", 100), "123@123.123", "123ABcd123");
-    testNurse = new Nurse(1010101010L, 0, "Test", "", "", new Date(12312),
-        new Address("", "", "", ""), "", "", "", "", new Date(1234), "", "",
-        "123@123.com", "123Abcd123");
-
     GetEmployeeDataClient resultClient = new GetEmployeeDataClientRMI();
     resultCheck = new GetEmployeeDataModelImpl(resultClient);
+
+    createDummyData();
+  }
+
+  @AfterEach public void undo()
+  {
+    test.removeDoctor(dummyDoctor);
+    test.removeNurse(dummyNurse);
   }
 
   @Test public void addDoctor()
   {
-    test.addDoctor(testDoctor);
+    test.addDoctor(dummyDoctor);
 
-    Doctor result = resultCheck.getDoctorBySSN(testDoctor.getSsn());
-    assertEquals(testDoctor.getSsn(), result.getSsn());
+    Doctor result = resultCheck.getDoctorBySSN(dummyDoctor.getSsn());
+    assertEquals(dummyDoctor.getSsn(), result.getSsn());
   }
 
   @Test public void addNurse()
   {
-    test.addNurse(testNurse);
+    test.addNurse(dummyNurse);
 
-    Nurse result = resultCheck.getNurseBySSN(testNurse.getSsn());
-    assertEquals(testNurse.getSsn(), result.getSsn());
+    Nurse result = resultCheck.getNurseBySSN(dummyNurse.getSsn());
+    assertEquals(dummyNurse.getSsn(), result.getSsn());
   }
 
   @Test public void editDoctor()
   {
-    testDoctor.setEducation("Via UC");
-    test.editDoctor(testDoctor);
+    test.addDoctor(dummyDoctor);
 
-    Doctor resultDoctor = resultCheck.getDoctorBySSN(testDoctor.getSsn());
-    assertEquals("Via UC", resultDoctor.getEducation());
+    Doctor doctorBySSN = resultCheck.getDoctorBySSN(dummyDoctor.getSsn());
+    doctorBySSN.setSpecialization("Spec");
+    doctorBySSN.setFirstName("FN");
+    doctorBySSN.setMiddleName("SN");
+    doctorBySSN.setLastName("LN");
+    doctorBySSN.setAddress(new Address("TS", "TN", "TZ", "TC"));
+    doctorBySSN.setEducation("Education");
+    doctorBySSN.setContactMiddleName("CM");
+    doctorBySSN.setContactFirstName("CF");
+    doctorBySSN.setContactLastName("CL");
+    doctorBySSN.setContactPhoneNumber("000000");
+    doctorBySSN.setEmail("dummy@dummy.com");
+    doctorBySSN.setPassword("Dummy12345");
+
+    test.editDoctor(doctorBySSN);
+    Doctor result = resultCheck.getDoctorBySSN(dummyDoctor.getSsn());
+
+    assertEquals("Spec", result.getSpecialization());
+    assertEquals("FN", result.getFirstName());
+    assertEquals("SN", result.getMiddleName());
+    assertEquals("LN", result.getLastName());
+    assertEquals("TS", result.getAddress().getStreet());
+    assertEquals("TN", result.getAddress().getNumber());
+    assertEquals("TZ", result.getAddress().getZipcode());
+    assertEquals("TC", result.getAddress().getCity());
+    assertEquals("Education", result.getEducation());
+    assertEquals("CM", result.getContactMiddleName());
+    assertEquals("CF", result.getContactFirstName());
+    assertEquals("CL", result.getContactLastName());
+    assertEquals("000000", result.getContactPhoneNumber());
+    assertEquals("dummy@dummy.com", result.getEmail());
+    assertEquals("Dummy12345", result.getPassword());
   }
 
   @Test public void editNurse()
   {
-    testNurse.setEducation("Via UC");
-    test.editNurse(testNurse);
+    test.addNurse(dummyNurse);
 
-    Nurse resultNurse = resultCheck.getNurseBySSN(testNurse.getSsn());
-    assertEquals("Via UC", resultNurse.getEducation());
+    Nurse nurseBySSN = resultCheck.getNurseBySSN(dummyNurse.getSsn());
+    nurseBySSN.setExperience("Spec");
+    nurseBySSN.setFirstName("FN");
+    nurseBySSN.setMiddleName("SN");
+    nurseBySSN.setLastName("LN");
+    nurseBySSN.setAddress(new Address("TS", "TN", "TZ", "TC"));
+    nurseBySSN.setEducation("Education");
+    nurseBySSN.setContactMiddleName("CM");
+    nurseBySSN.setContactFirstName("CF");
+    nurseBySSN.setContactLastName("CL");
+    nurseBySSN.setContactPhoneNumber("000000");
+    nurseBySSN.setEmail("dummy@dummy.com");
+    nurseBySSN.setPassword("Dummy12345");
+
+    test.editNurse(nurseBySSN);
+    Nurse result = resultCheck.getNurseBySSN(nurseBySSN.getSsn());
+
+    assertEquals("Spec", result.getExperience());
+    assertEquals("FN", result.getFirstName());
+    assertEquals("SN", result.getMiddleName());
+    assertEquals("LN", result.getLastName());
+    assertEquals("TS", result.getAddress().getStreet());
+    assertEquals("TN", result.getAddress().getNumber());
+    assertEquals("TZ", result.getAddress().getZipcode());
+    assertEquals("TC", result.getAddress().getCity());
+    assertEquals("Education", result.getEducation());
+    assertEquals("CM", result.getContactMiddleName());
+    assertEquals("CF", result.getContactFirstName());
+    assertEquals("CL", result.getContactLastName());
+    assertEquals("000000", result.getContactPhoneNumber());
+    assertEquals("dummy@dummy.com", result.getEmail());
+    assertEquals("Dummy12345", result.getPassword());
   }
 
   @Test public void removeDoctor()
   {
-    test.removeDoctor(testDoctor);
+    test.removeDoctor(dummyDoctor);
 
-    Doctor result = resultCheck.getDoctorBySSN(testDoctor.getSsn());
+    Doctor result = resultCheck.getDoctorBySSN(dummyDoctor.getSsn());
     assertNull(result);
   }
 
   @Test public void removeNurse()
   {
-    test.removeNurse(testNurse);
+    test.removeNurse(dummyNurse);
 
-    Nurse result = resultCheck.getNurseBySSN(testNurse.getSsn());
+    Nurse result = resultCheck.getNurseBySSN(dummyNurse.getSsn());
     assertNull(result);
+  }
+
+  private void createDummyData()
+  {
+    dummyDoctor = new Doctor("Test", "", "", 1010101010L, null,
+        new Address("", "", "", ""), "", "", "", "", new Date(1239781), "", "",
+        new Ward("Examination", 100), "123@123.123", "123ABcd123");
+
+    dummyNurse = new Nurse(1010101010L, 0, "Test", "", "", new Date(12312),
+        new Address("", "", "", ""), "", "", "", "", new Date(1234), "", "",
+        "123@123.com", "123Abcd123");
   }
 }

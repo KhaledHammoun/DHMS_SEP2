@@ -38,4 +38,9 @@ public class Ward implements Serializable
   {
     return wardName + ' ' + roomNumber;
   }
+
+  public Ward copy()
+  {
+    return new Ward(wardName, roomNumber);
+  }
 }

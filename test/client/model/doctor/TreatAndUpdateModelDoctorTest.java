@@ -1,97 +1,149 @@
 package client.model.doctor;
 
+import client.model.manager.EmployeeModelManager;
+import client.model.manager.EmployeeModelManagerImpl;
+import client.model.nurse.PatientModelNurse;
+import client.model.nurse.PatientModelNurseImpl;
 import client.networking.doctor.TreatAndUpdateClientDoctor;
 import client.networking.doctor.TreatAndUpdateClientDoctorRMI;
+import client.networking.manager.EmployeeClientManager;
+import client.networking.manager.EmployeeClientRMI;
+import client.networking.nurse.PatientClientNurse;
+import client.networking.nurse.PatientClientNurseRMI;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import shared.Diagnosis;
-import shared.Doctor;
-import shared.Patient;
-import shared.Treatment;
+import shared.*;
 
 import java.sql.Date;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class TreatAndUpdateModelDoctorTest
 {
   private TreatAndUpdateModelDoctor test;
-  private Patient testPatient;
+  private PatientModelNurse nurse;
+  private EmployeeModelManager manager;
+
+  private Patient dummyPatient;
+  private Diagnosis dummyDiagnosis;
+  private Doctor dummyDoctor;
+  private Treatment dummyTreatment;
 
   @BeforeEach public void setup()
   {
     TreatAndUpdateClientDoctor client = new TreatAndUpdateClientDoctorRMI();
     test = new TreatAndUpdateModelDoctorImpl(client);
 
-    testPatient = new Patient(null, null, null, 1856636939L, null, null, null,
-        null, null, null, "A-", null, 'M');
+    createDummyDoctor();
+    createDummyPatient();
+    createDummyDiagnosis();
+  }
+
+  @AfterEach public void undo()
+  {
+    nurse.removePatient(dummyPatient);
+    manager.removeDoctor(dummyDoctor);
   }
 
   //Tests are depended on passing on each other. Visually new diagnosis can be seen in database.
   @Test public void addDiagnosisToPatient()
   {
-    Diagnosis diagnosis = new Diagnosis("", 2, "", new Date(38724), 0);
-    test.addDiagnosisToPatient(testPatient, diagnosis);
+    test.addDiagnosisToPatient(dummyPatient, dummyDiagnosis);
 
-    ArrayList<Diagnosis> allDiseaseOfPatient = test
-        .getAllDiagnosisOfPatient(testPatient);
+    Diagnosis diagnosisFromDB = getDiagnosisFromDB(dummyDiagnosis);
+    assertNotNull(diagnosisFromDB);
+  }
 
-    boolean isPassed = false;
-    for (Diagnosis d : allDiseaseOfPatient)
+  @Test public void getAllDiagnosisOfPatient()
+  {
+    test.addDiagnosisToPatient(dummyPatient, dummyDiagnosis);
+
+    ArrayList<Diagnosis> allDiagnosisOfPatient = test.getAllDiagnosisOfPatient(dummyPatient);
+
+    assertNotEquals(0, allDiagnosisOfPatient.size());
+  }
+
+  @Test public void getAllTreatmentsOfPatient()
+  {
+    createDummyTreatment();
+
+    ArrayList<Treatment> allTreatmentsOfPatient = test.getAllTreatmentsOfPatient(dummyPatient, dummyDoctor);
+    assertNotEquals(0, allTreatmentsOfPatient.size());
+  }
+
+  @Test public void treatPatient()
+    {
+      int numberOfTreatmentsBeforeTreating = test.getAllTreatmentsOfPatient(dummyPatient, dummyDoctor).size();
+
+      createDummyTreatment();
+
+      int numberOfTreatmentsAfterTreating = test.getAllTreatmentsOfPatient(dummyPatient, dummyDoctor).size();
+
+      assertNotEquals(numberOfTreatmentsAfterTreating, numberOfTreatmentsBeforeTreating);
+    }
+
+
+    @Test public void editDiagnosis()
+    {
+      test.addDiagnosisToPatient(dummyPatient, dummyDiagnosis);
+
+      Diagnosis diagnosisFromDB = getDiagnosisFromDB(dummyDiagnosis);
+      diagnosisFromDB.setDescription("Editing Description");
+      diagnosisFromDB.setName("Edit Name");
+      diagnosisFromDB.setSeverityLevel(1);
+
+      test.editDiagnosis(diagnosisFromDB);
+
+      Diagnosis d = getDiagnosisFromDB(diagnosisFromDB);
+      assertEquals("Editing Description", d.getDescription());
+    }
+
+
+  private Diagnosis getDiagnosisFromDB(Diagnosis diagnosis)
+  {
+    ArrayList<Diagnosis> allDiagnosisOfPatient = test
+        .getAllDiagnosisOfPatient(dummyPatient);
+    for (Diagnosis d : allDiagnosisOfPatient)
     {
       if (d.getName().equals(diagnosis.getName())
           && d.getSeverityLevel() == diagnosis.getSeverityLevel() && d
           .getDescription().equals(diagnosis.getDescription()))
       {
-        isPassed = true;
-        break;
+        return d;
       }
     }
-    assertTrue(isPassed);
+    return null;
   }
 
-  @Test public void getAllDiagnosisOfPatient()
+  private void createDummyTreatment()
   {
-    ArrayList<Diagnosis> allDiseaseOfPatient = test
-        .getAllDiagnosisOfPatient(testPatient);
-
-    assertNotEquals(0, allDiseaseOfPatient.size());
+    Diagnosis diagnosisWithIdFromDB = getDiagnosisFromDB(dummyDiagnosis);
+    dummyTreatment = new Treatment("TestPills", "This is description");
+    test.treatPatient(dummyPatient, diagnosisWithIdFromDB, dummyDoctor, dummyTreatment);
+  }
+  private void createDummyDiagnosis()
+  {
+    dummyDiagnosis = new Diagnosis("TestDiagnosis", 2, "This is test diagnosis", new Date(999999999L));
   }
 
-  //Data added into database when checking.
-  @Test public void treatPatient()
+  private void createDummyPatient()
   {
-    Doctor doctor = new Doctor("", "", "", 9255072583L, null, null, null, null,
-        null, null, null, null, null, null, null, null);
+    PatientClientNurse c = new PatientClientNurseRMI();
+    nurse = new PatientModelNurseImpl(c);
 
-    Treatment treatment = new Treatment("Drops", "Halabala");
-
-    Diagnosis diagnosis = test.getAllDiagnosisOfPatient(testPatient).get(0);
-    test.treatPatient(testPatient, diagnosis, doctor, treatment);
-
+    dummyPatient = new Patient(null, null, null, 1010101010L, null,
+        new Address("", "", "", ""), null, null, null, null, "A-", null, 'M');
+    nurse.addPatient(dummyPatient);
   }
 
-  @Test public void editDiagnosis()
+  private void createDummyDoctor()
   {
-    Diagnosis diagnosis = test.getAllDiagnosisOfPatient(testPatient).get(0);
-    diagnosis.setDescription("Halabala");
-    test.editDiagnosis(diagnosis);
-
-    ArrayList<Diagnosis> allDiagnosisOfPatient = test
-        .getAllDiagnosisOfPatient(testPatient);
-
-    boolean isPassed = false;
-    for (Diagnosis d : allDiagnosisOfPatient)
-    {
-      if (d.getDescription().equals(diagnosis.getDescription()))
-      {
-        isPassed = true;
-        break;
-      }
-    }
-
-    assertTrue(isPassed);
+    EmployeeClientManager client = new EmployeeClientRMI();
+    manager = new EmployeeModelManagerImpl(client);
+    dummyDoctor = new Doctor("", "", "", 1010101010L, null, new Address("","","",""), null, null,
+        null, null, null, null, null, new Ward("Examination", 100), "test@test.com", "qwer12334A");
+    manager.addDoctor(dummyDoctor);
   }
 }

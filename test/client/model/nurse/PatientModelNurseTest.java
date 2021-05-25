@@ -27,9 +27,9 @@ class PatientModelNurseTest
     test = new PatientModelNurseImpl(client);
     patient = new Patient("Test", "", "", 1010101010L, new Date(123456),
         new Address("", "", "", ""), "", "", "", "", "B+", "", 'M');
+
     GetPatientDataClient dataClient = new GetPatientDataClientRMI();
     resultCheck = new GetPatientDataModelImpl(dataClient);
-
   }
 
   @Test public void addPatient()
@@ -38,23 +38,41 @@ class PatientModelNurseTest
 
     Patient patientBySSN = resultCheck.getPatientBySSN(patient.getSsn());
     assertNotEquals(null, patientBySSN);
+
+    removeDummyData();
   }
 
   @Test public void editPatient()
   {
+    addDummyData();
+
     patient.setMedical_description("Patient.editPatient() test");
     test.editPatient(patient);
 
     Patient patientBySSN = resultCheck.getPatientBySSN(patient.getSsn());
     assertEquals(patient.getMedical_description(),
         patientBySSN.getMedical_description());
+
+    removeDummyData();
   }
 
   @Test public void removePatient()
   {
+    addDummyData();
+
     test.removePatient(patient);
 
     Patient patientBySSN = resultCheck.getPatientBySSN(patient.getSsn());
     assertNull(patientBySSN);
+  }
+
+  private void addDummyData()
+  {
+    test.addPatient(patient);
+  }
+
+  private void removeDummyData()
+  {
+    test.removePatient(patient);
   }
 }
