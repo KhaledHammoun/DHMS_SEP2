@@ -33,7 +33,10 @@ public class AssignNurseViewModel
 
   private void updateNurseList(PropertyChangeEvent propertyChangeEvent)
   {
-    loadTables();
+    if (CurrentUser.getInstance().isDoctor())
+    {
+      loadTables();
+    }
   }
 
   public ObservableList<Nurse> getAvailableNurses()

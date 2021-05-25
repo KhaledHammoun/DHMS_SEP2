@@ -68,8 +68,9 @@ public class ViewModelFactory
     private void createManagerViewModels()
     {
         viewModels.put(View.EMPLOYEE, new EmployeeViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_EMPLOYEE),
-                                                            modelFactory.getModel(InterfaceEnum.SHARED_EMPLOYEE)));
-        viewModels.put(View.WARD, new WardViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_WARD)));
+                                                            modelFactory.getModel(InterfaceEnum.SHARED_EMPLOYEE),
+                                                            modelFactory.getModel(InterfaceEnum.CALLBACK)));
+        viewModels.put(View.WARD, new WardViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_WARD), modelFactory.getModel(InterfaceEnum.CALLBACK)));
         viewModels.put(View.ADD_EDIT_EMPLOYEE,
                        new AddEditEmployeeViewModel(modelFactory.getModel(InterfaceEnum.MANAGER_EMPLOYEE),
                                                     modelFactory.getModel(InterfaceEnum.SHARED_EMPLOYEE),
@@ -104,10 +105,12 @@ public class ViewModelFactory
         viewModels.put(View.ADD_PATIENT, new AddPatientViewModel(modelFactory.getModel(InterfaceEnum.NURSE_PATIENT)));
         viewModels.put(View.ALL_APPOINTMENTS,
                        new AllAppointmentsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_APPOINTMENT),
-                                                    modelFactory.getModel(InterfaceEnum.NURSE_APPOINTMENT)));
+                                                    modelFactory.getModel(InterfaceEnum.NURSE_APPOINTMENT),
+                                                    modelFactory.getModel(InterfaceEnum.CALLBACK)));
         viewModels.put(View.MAKE_APPOINTMENT,
                        new MakeAppointmentViewModel(modelFactory.getModel(InterfaceEnum.NURSE_APPOINTMENT),
                                                     modelFactory.getModel(InterfaceEnum.SHARED_EMPLOYEE),
-                                                    modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
+                                                    modelFactory.getModel(InterfaceEnum.SHARED_PATIENT),
+                                                    modelFactory.getModel(InterfaceEnum.CALLBACK)));
     }
 }

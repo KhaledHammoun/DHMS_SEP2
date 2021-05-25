@@ -37,6 +37,7 @@ public class MakeAppointmentViewController implements ViewController
   @FXML public void onEditPatientButton()
   {
     SelectionModel.getInstance().set(patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem());
+    SelectionModel.getInstance().setLastOpenedView(View.MAKE_APPOINTMENT);
     try
     {
       viewModel.editPatient();
@@ -96,6 +97,7 @@ public class MakeAppointmentViewController implements ViewController
         viewModel.appointmentDateProperty());
     timeMakeAppointmentTxtField.textProperty().bindBidirectional(viewModel.appointmentTimeProperty());
 
-    viewModel.loadData();
+    viewModel.loadPatientData();
+    viewModel.loadDoctorData();
   }
 }

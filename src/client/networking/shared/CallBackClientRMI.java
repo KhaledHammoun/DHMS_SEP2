@@ -35,7 +35,6 @@ public class CallBackClientRMI
     try
     {
       this.support = new PropertyChangeSupport(this);
-      System.out.println(support);
       pool.registerCallBackClient(this);
     }
     catch (RemoteException e)
