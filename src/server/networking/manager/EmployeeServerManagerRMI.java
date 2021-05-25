@@ -1,6 +1,5 @@
 package server.networking.manager;
 
-import client.model.manager.EmployeeModelManager;
 import server.model.manager.EmployeeServerModelManager;
 import server.model.manager.EmployeeServerModelManagerImpl;
 import shared.Doctor;
@@ -10,7 +9,6 @@ import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 
 public class EmployeeServerManagerRMI implements EmployeeServerManager
 {
@@ -30,37 +28,37 @@ public class EmployeeServerManagerRMI implements EmployeeServerManager
     }
 
     @Override
-    public String addDoctor(Doctor doctor)
+    public synchronized String addDoctor(Doctor doctor)
     {
         return modelManager.addDoctor(doctor);
     }
 
     @Override
-    public String addNurse(Nurse nurse)
+    public synchronized String addNurse(Nurse nurse)
     {
         return modelManager.addNurse(nurse);
     }
 
     @Override
-    public String editDoctor(Doctor doctor)
+    public synchronized String editDoctor(Doctor doctor)
     {
         return modelManager.editDoctor(doctor);
     }
 
     @Override
-    public String editNurse(Nurse nurse)
+    public synchronized String editNurse(Nurse nurse)
     {
         return modelManager.editNurse(nurse);
     }
 
     @Override
-    public String removeDoctor(Doctor doctor)
+    public synchronized String removeDoctor(Doctor doctor)
     {
         return modelManager.removeDoctor(doctor);
     }
 
     @Override
-    public String removeNurse(Nurse nurse)
+    public synchronized String removeNurse(Nurse nurse)
     {
         return modelManager.removeNurse(nurse);
     }

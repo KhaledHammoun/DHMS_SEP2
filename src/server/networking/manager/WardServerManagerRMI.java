@@ -28,25 +28,25 @@ public class WardServerManagerRMI implements WardServerManager
     }
 
     @Override
-    public void addWard(Ward ward)
+    public synchronized void addWard(Ward ward)
     {
         modelManager.addWard(ward);
     }
 
     @Override
-    public void editWard(Ward oldWard, Ward newWard)
+    public synchronized void editWard(Ward oldWard, Ward newWard)
     {
         modelManager.editWard(oldWard, newWard);
     }
 
     @Override
-    public void removeWard(Ward ward)
+    public synchronized void removeWard(Ward ward)
     {
         modelManager.removeWard(ward);
     }
 
     @Override
-    public ArrayList<Ward> getAllWards()
+    public synchronized ArrayList<Ward> getAllWards()
     {
         return modelManager.getAllWards();
     }

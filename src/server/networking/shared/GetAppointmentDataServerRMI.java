@@ -29,13 +29,13 @@ public class GetAppointmentDataServerRMI implements GetAppointmentDataServer
     }
 
     @Override
-    public ArrayList<Appointment> getAllAppointments()
+    public synchronized ArrayList<Appointment> getAllAppointments()
     {
         return sharedServerModel.getAllAppointments();
     }
 
     @Override
-    public ArrayList<Appointment> getAppointmentsForDoctor(Doctor doctor)
+    public synchronized ArrayList<Appointment> getAppointmentsForDoctor(Doctor doctor)
     {
         return sharedServerModel.getAppointmentsForDoctor(doctor);
     }

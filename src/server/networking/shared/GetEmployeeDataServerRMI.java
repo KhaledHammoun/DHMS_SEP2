@@ -29,25 +29,25 @@ public class GetEmployeeDataServerRMI implements GetEmployeeDataServer
     }
 
     @Override
-    public ArrayList<Doctor> getListOfAllDoctors()
+    public synchronized ArrayList<Doctor> getListOfAllDoctors()
     {
         return sharedServerModel.getListOfAllDoctors();
     }
 
     @Override
-    public ArrayList<Nurse> getListOfAllNurses()
+    public synchronized ArrayList<Nurse> getListOfAllNurses()
     {
         return sharedServerModel.getListOfAllNurses();
     }
 
     @Override
-    public Doctor getDoctorBySSN(long ssn)
+    public synchronized Doctor getDoctorBySSN(long ssn)
     {
         return sharedServerModel.getDoctorBySSN(ssn);
     }
 
     @Override
-    public Nurse getNurseBySSN(long ssn)
+    public synchronized Nurse getNurseBySSN(long ssn)
     {
         return sharedServerModel.getNurseBySSN(ssn);
     }

@@ -27,19 +27,19 @@ public class PatientServerNurseRMI implements PatientServerNurse
     }
 
     @Override
-    public void addPatient(Patient patient)
+    public synchronized void addPatient(Patient patient)
     {
         modelNurse.addPatient(patient);
     }
 
     @Override
-    public void editPatient(Patient patient)
+    public synchronized void editPatient(Patient patient)
     {
         modelNurse.editPatient(patient);
     }
 
     @Override
-    public void removePatient(Patient patient)
+    public synchronized void removePatient(Patient patient)
     {
         modelNurse.removePatient(patient);
     }
