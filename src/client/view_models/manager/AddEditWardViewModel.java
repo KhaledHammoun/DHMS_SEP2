@@ -40,7 +40,7 @@ public class AddEditWardViewModel
 
   private boolean validateInput()
   {
-    return wardNameProperty.get() == null || roomNumberProperty.get() == null;
+    return wardNameProperty.get() == null || wardNameProperty.get().isBlank() || roomNumberProperty.get() == null || roomNumberProperty.get().isBlank();
   }
 
   private void fillFields(Ward ward)
