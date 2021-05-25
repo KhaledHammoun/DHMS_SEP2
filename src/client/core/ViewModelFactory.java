@@ -85,18 +85,18 @@ public class ViewModelFactory
                        new AddEditSampleViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE),
                                                   modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
         viewModels.put(View.APPOINTMENTS,
-                       new AppointmentsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_APPOINTMENT)));
-        viewModels.put(View.ASSIGN_NURSE, new AssignNurseViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_NURSE)));
+                       new AppointmentsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_APPOINTMENT), modelFactory.getModel(InterfaceEnum.CALLBACK)));
+        viewModels.put(View.ASSIGN_NURSE, new AssignNurseViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_NURSE), modelFactory.getModel(InterfaceEnum.CALLBACK)));
         viewModels.put(View.PATIENT_INFO,
                        new EditMedicalDescriptionViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
         viewModels.put(View.PATIENTS_SAMPLE,
-                       new PatientsSampleViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE)));
+                       new PatientsSampleViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE), modelFactory.getModel(InterfaceEnum.CALLBACK)));
         viewModels.put(View.PATIENTS, new PatientsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT),
                                                             modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE),
-                                                            modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE)));
+                                                            modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE),
+                                                            modelFactory.getModel(InterfaceEnum.CALLBACK)));
         viewModels.put(View.TREAT_PATIENT,
-                       new TreatPatientViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE),
-                                                 modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
+                       new TreatPatientViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE), modelFactory.getModel(InterfaceEnum.CALLBACK)));
     }
 
     private void createNurseViewModels()

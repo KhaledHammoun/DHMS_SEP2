@@ -2,8 +2,10 @@ package server.model.doctor;
 
 import server.database.doctor.SampleDBAccessDoctor;
 import server.database.doctor.SampleDBAccessDoctorImpl;
+import server.model.shared.ServerPoolModelImpl;
 import shared.Patient;
 import shared.Sample;
+import shared.callback.UpdateType;
 
 import java.util.ArrayList;
 
@@ -26,12 +28,14 @@ public class SampleServerModelDoctorImpl implements SampleServerModelDoctor
     public void createSample(Sample sample)
     {
         dbAccessDoctor.createSample(sample);
+        ServerPoolModelImpl.getInstance().update(UpdateType.SAMPLE);
     }
 
     @Override
     public void editSample(Sample sample)
     {
         dbAccessDoctor.editSample(sample);
+        ServerPoolModelImpl.getInstance().update(UpdateType.SAMPLE);
     }
 
     @Override

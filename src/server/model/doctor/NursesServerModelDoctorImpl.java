@@ -2,8 +2,11 @@ package server.model.doctor;
 
 import server.database.doctor.NursesDBAccessDoctor;
 import server.database.doctor.NursesDBAccessDoctorImpl;
+import server.model.shared.ServerPoolModelImpl;
+import server.networking.shared.ServerPool;
 import shared.Doctor;
 import shared.Nurse;
+import shared.callback.UpdateType;
 
 import java.util.ArrayList;
 
@@ -26,6 +29,7 @@ public class NursesServerModelDoctorImpl implements NursesServerModelDoctor
     public void assignNurse(Nurse nurse, Doctor doctor)
     {
         dbAccessDoctor.assignNurse(nurse, doctor);
+        ServerPoolModelImpl.getInstance().update(UpdateType.NURSE);
     }
 
     @Override
