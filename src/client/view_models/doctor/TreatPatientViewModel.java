@@ -1,14 +1,16 @@
 package client.view_models.doctor;
 
 import client.model.doctor.TreatAndUpdateModelDoctor;
-import client.model.shared.GetPatientDataModel;
+import client.model.shared.CallBackModel;
 import client.shared.SelectionModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.*;
+import shared.callback.UpdateType;
 
+import java.beans.PropertyChangeEvent;
 import java.security.InvalidParameterException;
 
 public class TreatPatientViewModel
@@ -18,13 +20,17 @@ public class TreatPatientViewModel
   private StringProperty description;
   private Patient patient;
 
-  private GetPatientDataModel getPatientDataModel;
   private TreatAndUpdateModelDoctor treatAndUpdateModelDoctor;
 
   public TreatPatientViewModel(Object treatAndUpdateModelDoctor,
-      Object getPatientDataModel)
+      Object callBackModel)
   {
-    this.getPatientDataModel = (GetPatientDataModel) getPatientDataModel;
+    CallBackModel callModel = (CallBackModel) callBackModel;
+    callModel.addPropertyChangeListener(UpdateType.TREATMENT.toString(),
+        this::treatmentUpdated);
+    callModel.addPropertyChangeListener(UpdateType.DIAGNOSIS.toString(),
+        this::diagnosisUpdated);
+
     this.treatAndUpdateModelDoctor = (TreatAndUpdateModelDoctor) treatAndUpdateModelDoctor;
     description = new SimpleStringProperty();
 
@@ -32,9 +38,33 @@ public class TreatPatientViewModel
     treatments = FXCollections.observableArrayList();
   }
 
+  private void diagnosisUpdated(PropertyChangeEvent propertyChangeEvent)
+  {
+    if (CurrentUser.getInstance().isDoctor())
+    {
+      loadDiagnoses();
+    }
+  }
+
+  private void treatmentUpdated(PropertyChangeEvent propertyChangeEvent)
+  {
+    if (CurrentUser.getInstance().isDoctor())
+    {
+      loadTreatments();
+    }
+  }
+
   public void loadDiagnoses()
   {
-    diagnoses.setAll(treatAndUpdateModelDoctor.getAllDiagnosisOfPatient(patient));
+    diagnoses
+        .setAll(treatAndUpdateModelDoctor.getAllDiagnosisOfPatient(patient));
+  }
+
+  public void loadTreatments()
+  {
+    treatments.setAll(treatAndUpdateModelDoctor
+        .getAllTreatmentsOfPatient(patient,
+            (Doctor) CurrentUser.getInstance().getCurrentUser()));
   }
 
   public ObservableList<Diagnosis> getDiagnoses()
@@ -47,18 +77,9 @@ public class TreatPatientViewModel
     return treatments;
   }
 
-
   public StringProperty descriptionProperty()
   {
     return description;
-  }
-
-  //TODO
-  public void loadTreatments()
-  {
-    treatments.setAll(treatAndUpdateModelDoctor
-        .getAllTreatmentsOfPatient(patient,
-            (Doctor) CurrentUser.getInstance().getCurrentUser()));
   }
 
   public void loadSelectedPatient()
@@ -66,7 +87,8 @@ public class TreatPatientViewModel
     patient = (Patient) SelectionModel.getInstance().get();
   }
 
-  public void addTreatment(String medication, Diagnosis selectedDiagnosis) throws InvalidParameterException
+  public void addTreatment(String medication, Diagnosis selectedDiagnosis)
+      throws InvalidParameterException
   {
     if (validateInput(medication, selectedDiagnosis))
     {
@@ -79,6 +101,7 @@ public class TreatPatientViewModel
 
   private boolean validateInput(String medication, Diagnosis selectedDiagnosis)
   {
-    return medication == null || selectedDiagnosis == null || description.get() == null || patient == null;
+    return medication == null || selectedDiagnosis == null
+        || description.get() == null || patient == null;
   }
 }

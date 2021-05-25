@@ -1,12 +1,16 @@
 package client.view_models.doctor;
 
 import client.model.doctor.SampleModelDoctor;
+import client.model.shared.CallBackModel;
 import client.shared.SelectionModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.CurrentUser;
 import shared.Patient;
 import shared.Sample;
+import shared.callback.UpdateType;
 
+import java.beans.PropertyChangeEvent;
 import java.security.InvalidParameterException;
 
 public class PatientsSampleViewModel
@@ -16,10 +20,21 @@ public class PatientsSampleViewModel
   private SampleModelDoctor sampleModelDoctor;
   private Patient patient;
 
-  public PatientsSampleViewModel(Object sampleModelDoctor)
+  public PatientsSampleViewModel(Object sampleModelDoctor, Object callBackModel)
   {
+    ((CallBackModel) callBackModel)
+        .addPropertyChangeListener(UpdateType.SAMPLE.toString(),
+            this::sampleUpdated);
     this.sampleModelDoctor = (SampleModelDoctor) sampleModelDoctor;
     samples = FXCollections.observableArrayList();
+  }
+
+  private void sampleUpdated(PropertyChangeEvent propertyChangeEvent)
+  {
+    if (CurrentUser.getInstance().isDoctor())
+    {
+      loadSampleTable();
+    }
   }
 
   public ObservableList<Sample> getSamples()
@@ -30,7 +45,11 @@ public class PatientsSampleViewModel
   public void loadSelectedPatientData()
   {
     patient = (Patient) SelectionModel.getInstance().get();
-    samples.clear();
+    loadSampleTable();
+  }
+
+  private void loadSampleTable()
+  {
     if (patient == null)
     {
       samples.setAll(sampleModelDoctor.getAllSamples());

@@ -66,6 +66,6 @@ public class AddDiagnoseViewController implements ViewController
         endDate.valueProperty().bindBidirectional(addDiagnoseViewModel.endDateProperty());
 
         addDiagnoseViewModel.loadSelectedPatient();
-        diagnoseSeverityLevel.getItems().addAll(addDiagnoseViewModel.getSeverityLevels());
+        diagnoseSeverityLevel.getItems().setAll(addDiagnoseViewModel.getSeverityLevels());
     }
 }

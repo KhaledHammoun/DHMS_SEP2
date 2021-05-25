@@ -41,7 +41,6 @@ public class TreatPatientViewController implements ViewController
           .addTreatment(medicationTypeCB.getSelectionModel().getSelectedItem(),
               diagnosisTable.getSelectionModel().getSelectedItem());
       treatPatientViewModel.loadDiagnoses();
-      treatPatientViewModel.loadTreatments();
       Alerts.throwAlert(Alert.AlertType.INFORMATION, "Treatment was successfully added.");
     }
     catch (InvalidParameterException e)
