@@ -24,7 +24,7 @@ class WardModelManagerTest
   {
     ArrayList<Ward> allWards = test.getAllWards();
 
-    assertNotEquals(0, allWards.size());
+    assertNotNull(allWards);
   }
 
   @Test public void addWard()

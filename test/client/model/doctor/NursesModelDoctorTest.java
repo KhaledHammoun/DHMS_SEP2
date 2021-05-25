@@ -1,54 +1,104 @@
 package client.model.doctor;
 
+import client.model.manager.EmployeeModelManager;
+import client.model.manager.EmployeeModelManagerImpl;
 import client.networking.doctor.NurseClientDoctor;
 import client.networking.doctor.NurseClientDoctorRMI;
+import client.networking.manager.EmployeeClientManager;
+import client.networking.manager.EmployeeClientRMI;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import shared.Address;
 import shared.Doctor;
 import shared.Nurse;
+import shared.Ward;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class NursesModelDoctorTest
 {
+  private NursesModelDoctor test;
+  private EmployeeModelManager dummyDataManager;
+  private Nurse dummyNurse;
+  private Doctor dummyDoctor;
+
+  @BeforeEach public void setUp()
+  {
+    EmployeeClientManager c = new EmployeeClientRMI();
+    dummyDataManager = new EmployeeModelManagerImpl(c);
+
+    NurseClientDoctor client = new NurseClientDoctorRMI();
+    test = new NursesModelDoctorImpl(client);
+
+    createDummyNurse();
+    createDummyDoctor();
+  }
+
+  @AfterEach public void undo()
+  {
+    removeDummyNurse();
+    removeDummyDoctor();
+  }
+
   @Test public void getAllAvailableNurses()
   {
-    NurseClientDoctor client = new NurseClientDoctorRMI();
-    NursesModelDoctor test = new NursesModelDoctorImpl(client);
-
     ArrayList<Nurse> allAvailableNurses = test.getAllAvailableNurses();
     assertNotEquals(null, allAvailableNurses);
   }
 
   @Test public void assignNurse()
   {
-    NurseClientDoctor client = new NurseClientDoctorRMI();
-    NursesModelDoctor test = new NursesModelDoctorImpl(client);
+    test.assignNurse(dummyNurse, dummyDoctor);
 
-    ArrayList<Nurse> allAvailableNurses = test.getAllAvailableNurses();
-    int before = allAvailableNurses.size();
-    assertNotEquals(0, before);
+    boolean isAssigned = false;
+    for (Nurse nurse : test.getAllNursesAssignedToMe(dummyDoctor))
+    {
+      if (nurse.getSsn() == dummyNurse.getSsn()
+          && nurse.getDoctor_ssn() == dummyDoctor.getSsn())
+      {
+        isAssigned = true;
+        break;
+      }
+    }
 
-    Doctor doctorToAssign = new Doctor("", "", "", 9255072583L, null, null,
-        null, null, null, null, null, null, null, null, null, null);
-    test.assignNurse(allAvailableNurses.get(0), doctorToAssign);
-
-    allAvailableNurses = test.getAllAvailableNurses();
-    assertEquals(before - 1, allAvailableNurses.size());
+    assertTrue(isAssigned);
   }
 
   @Test public void getAllNursesAssignedToMe()
   {
-    NurseClientDoctor client = new NurseClientDoctorRMI();
-    NursesModelDoctor test = new NursesModelDoctorImpl(client);
+    test.assignNurse(dummyNurse, dummyDoctor);
 
-    Doctor doctorToAssign = new Doctor("", "", "", 9255072583L, null, null,
-        null, null, null, null, null, null, null, null, null, null);
-    ArrayList<Nurse> allNursesAssignedToMe = test
-        .getAllNursesAssignedToMe(doctorToAssign);
+    ArrayList<Nurse> allNursesAssignedToMe = test.getAllNursesAssignedToMe(dummyDoctor);
+    assertTrue(0 < allNursesAssignedToMe.size());
+  }
 
-    assertNotEquals(null, allNursesAssignedToMe);
+  private void createDummyNurse()
+  {
+    dummyNurse = new Nurse(1010101010L, 0, "Test", "", "", new Date(12312),
+        new Address("", "", "", ""), "", "", "", "", new Date(1234), "", "",
+        "123@123.com", "123Abcd123");
+    dummyDataManager.addNurse(dummyNurse);
+  }
+
+  private void removeDummyNurse()
+  {
+    dummyDataManager.removeNurse(dummyNurse);
+  }
+
+  private void createDummyDoctor()
+  {
+    dummyDoctor = new Doctor("", "", "", 1234567899L, null,
+        new Address("", "", "", ""), "", "", "", "", null, "", "",
+        new Ward("Examination", 100), "a@gmail.com", "123Abcdef");
+    dummyDataManager.addDoctor(dummyDoctor);
+  }
+
+  private void removeDummyDoctor()
+  {
+    dummyDataManager.removeDoctor(dummyDoctor);
   }
 }

@@ -110,10 +110,12 @@ public class TreatAndUpdateDBAccessDoctorImpl
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE diagnosis SET name = ?, description = ? WHERE"))
+            "UPDATE diagnosis SET name = ?, description = ?, severity_level = ? WHERE id = ?"))
     {
       preparedStatement.setString(1, diagnosis.getName());
       preparedStatement.setString(2, diagnosis.getDescription());
+      preparedStatement.setInt(3, diagnosis.getSeverityLevel());
+      preparedStatement.setInt(4, diagnosis.getId());
 
       preparedStatement.execute();
     }

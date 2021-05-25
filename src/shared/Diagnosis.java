@@ -2,6 +2,7 @@ package shared;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Objects;
 
 public class Diagnosis implements Serializable
 {
@@ -28,6 +29,15 @@ public class Diagnosis implements Serializable
     this.description = description;
     this.dateFrom = dateFrom;
   }
+
+  public Diagnosis(String name, int severityLevel, String description, int id)
+  {
+    this.name = name;
+    this.severityLevel = severityLevel;
+    this.description = description;
+    this.id = id;
+  }
+
 
   public Date getDateTo()
   {
@@ -93,5 +103,17 @@ public class Diagnosis implements Serializable
   {
     return "Disease{" + "name='" + name + '\'' + ", severityLevel="
         + severityLevel + ", description='" + description + '\'' + '}';
+  }
+
+  @Override public boolean equals(Object o)
+  {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    Diagnosis diagnosis = (Diagnosis) o;
+    return severityLevel == diagnosis.severityLevel
+        && Objects.equals(name, diagnosis.name) && Objects
+        .equals(description, diagnosis.description);
   }
 }
