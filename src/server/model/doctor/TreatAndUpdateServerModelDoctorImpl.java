@@ -2,10 +2,12 @@ package server.model.doctor;
 
 import server.database.doctor.TreatAndUpdateDBAccessDoctor;
 import server.database.doctor.TreatAndUpdateDBAccessDoctorImpl;
+import server.model.shared.ServerPoolModelImpl;
 import shared.Diagnosis;
 import shared.Doctor;
 import shared.Patient;
 import shared.Treatment;
+import shared.callback.UpdateType;
 
 import java.util.ArrayList;
 
@@ -23,12 +25,14 @@ public class TreatAndUpdateServerModelDoctorImpl
       Diagnosis diagnosis)
   {
     dbAccessDoctor.addDiagnosisToPatient(patient, diagnosis);
+    ServerPoolModelImpl.getInstance().update(UpdateType.DIAGNOSIS);
   }
 
   @Override public void treatPatient(Patient patient, Diagnosis diagnosis,
       Doctor doctor, Treatment treatment)
   {
     dbAccessDoctor.treatPatient(patient, diagnosis, doctor, treatment);
+    ServerPoolModelImpl.getInstance().update(UpdateType.TREATMENT);
   }
 
   @Override public ArrayList<Diagnosis> getAllDiseasesOfPatient(Patient patient)
@@ -40,6 +44,7 @@ public class TreatAndUpdateServerModelDoctorImpl
 
   {
     dbAccessDoctor.editDiagnosis(diagnosis);
+    ServerPoolModelImpl.getInstance().update(UpdateType.DIAGNOSIS);
   }
 
   @Override public ArrayList<Treatment> getAllTreatmentsOfPatient(

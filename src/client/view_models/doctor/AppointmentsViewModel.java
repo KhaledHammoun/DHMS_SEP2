@@ -1,12 +1,13 @@
 package client.view_models.doctor;
 
+import client.model.shared.CallBackModel;
 import client.model.shared.GetAppointmentDataModel;
-import client.model.shared.GetEmployeeDataModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.Appointment;
 import shared.CurrentUser;
 import shared.Doctor;
+import shared.callback.UpdateType;
 
 import java.beans.PropertyChangeEvent;
 import java.util.List;
@@ -16,26 +17,33 @@ public class AppointmentsViewModel
   private ObservableList<Appointment> appointments;
 
   private GetAppointmentDataModel getAppointmentDataModel;
+  private CallBackModel callBackModel;
 
-  public AppointmentsViewModel(Object getAppointmentDataModel)
+  public AppointmentsViewModel(Object getAppointmentDataModel, Object callBack)
   {
     this.getAppointmentDataModel = (GetAppointmentDataModel) getAppointmentDataModel;
-    //ToDo implement observer
-    //getAppointmentDataModel.addListener("NewAppointment", this::onNewAppointment);
+    this.callBackModel = (CallBackModel) callBack;
+    ((CallBackModel) callBack)
+        .addPropertyChangeListener(UpdateType.APPOINTMENT.toString(),
+            this::appointmentsUpdated);
     appointments = FXCollections.observableArrayList();
   }
 
-  private void onNewAppointment(PropertyChangeEvent evt)
+  private void appointmentsUpdated(PropertyChangeEvent propertyChangeEvent)
   {
-    appointments.add((Appointment) evt.getNewValue());
+    loadAppointments();
   }
 
   public void loadAppointments()
   {
-    Doctor currentDoctorUser = (Doctor) CurrentUser.getInstance().getCurrentUser();
-    List<Appointment> appointmentsList = getAppointmentDataModel
-        .getAppointmentsForDoctor(currentDoctorUser);
-    appointments.setAll(appointmentsList);
+    CurrentUser user = CurrentUser.getInstance();
+    if (user.isDoctor())
+    {
+      Doctor currentDoctorUser = (Doctor) user.getCurrentUser();
+      List<Appointment> appointmentsList = getAppointmentDataModel
+          .getAppointmentsForDoctor(currentDoctorUser);
+      appointments.setAll(appointmentsList);
+    }
   }
 
   public ObservableList<Appointment> getAppointments()

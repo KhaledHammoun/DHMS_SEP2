@@ -9,6 +9,7 @@ import server.networking.manager.WardServerManager;
 import server.networking.manager.WardServerManagerRMI;
 import server.networking.nurse.*;
 import server.networking.shared.*;
+import server.networking.shared.ServerPool;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
@@ -41,6 +42,7 @@ public class StartServer
         PatientServerNurse patientServerNurse = new PatientServerNurseRMI(registry);
 
         //Shared server start
+        ServerPool pool = new ServerPoolRMI(registry);
         GetAppointmentDataServer getAppointmentDataServer = new GetAppointmentDataServerRMI(registry);
         GetEmployeeDataServer getEmployeeDataServer = new GetEmployeeDataServerRMI(registry);
         GetPatientDataServer getPatientDataServer = new GetPatientDataServerRMI(registry);

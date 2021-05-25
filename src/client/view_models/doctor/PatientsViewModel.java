@@ -1,13 +1,15 @@
 package client.view_models.doctor;
 
 import client.model.doctor.SampleModelDoctor;
-
 import client.model.doctor.TreatAndUpdateModelDoctor;
+import client.model.shared.CallBackModel;
 import client.model.shared.GetPatientDataModel;
 import client.shared.SelectionModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.CurrentUser;
 import shared.Patient;
+import shared.callback.UpdateType;
 
 import java.beans.PropertyChangeEvent;
 import java.security.InvalidParameterException;
@@ -21,23 +23,26 @@ public class PatientsViewModel
   private TreatAndUpdateModelDoctor treatAndUpdateModelDoctor;
   private SampleModelDoctor sampleModelDoctor;
 
-
-  public PatientsViewModel(Object getPatientDataModel, Object treatAndUpdateModelDoctor,
-                           Object sampleModelDoctor)
+  public PatientsViewModel(Object getPatientDataModel,
+      Object treatAndUpdateModelDoctor, Object sampleModelDoctor,
+      Object callbackModel)
   {
+    ((CallBackModel) callbackModel)
+        .addPropertyChangeListener(UpdateType.PATIENT.toString(),
+            this::patientUpdated);
     this.getPatientDataModel = (GetPatientDataModel) getPatientDataModel;
     this.treatAndUpdateModelDoctor = (TreatAndUpdateModelDoctor) treatAndUpdateModelDoctor;
     this.sampleModelDoctor = (SampleModelDoctor) sampleModelDoctor;
-
-    //ToDo implement observer
-    //getPatientDataModel.addListener("NewPatient", this::onNewPatient);
     patients = FXCollections.observableArrayList();
 
   }
 
-  private void onNewPatient(PropertyChangeEvent evt)
+  private void patientUpdated(PropertyChangeEvent evt)
   {
-    patients.add((Patient) evt.getNewValue());
+    if (CurrentUser.getInstance().isDoctor())
+    {
+      loadPatients();
+    }
   }
 
   public void loadPatients()
@@ -49,11 +54,6 @@ public class PatientsViewModel
   public ObservableList<Patient> getPatients()
   {
     return patients;
-  }
-
-  public void editMedicalDescription(long ssn)
-  {
-
   }
 
   public void getAllDiseasesOfPatient(Patient patient)
@@ -73,7 +73,7 @@ public class PatientsViewModel
 
   public void isPatientSelected() throws InvalidParameterException
   {
-    if(SelectionModel.getInstance().isEmpty())
+    if (SelectionModel.getInstance().isEmpty())
     {
       throw new InvalidParameterException("Please select patient");
     }
