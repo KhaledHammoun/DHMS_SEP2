@@ -27,6 +27,7 @@ class PatientModelNurseTest
     test = new PatientModelNurseImpl(client);
     patient = new Patient("Test", "", "", 1010101010L, new Date(123456),
         new Address("", "", "", ""), "", "", "", "", "B+", "", 'M');
+
     GetPatientDataClient dataClient = new GetPatientDataClientRMI();
     resultCheck = new GetPatientDataModelImpl(dataClient);
   }

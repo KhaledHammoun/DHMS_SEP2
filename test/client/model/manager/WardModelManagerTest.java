@@ -2,6 +2,7 @@ package client.model.manager;
 
 import client.networking.manager.WardClientManager;
 import client.networking.manager.WardClientRMI;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import shared.Ward;
@@ -13,15 +14,29 @@ import static org.junit.jupiter.api.Assertions.*;
 class WardModelManagerTest
 {
   private WardModelManager test;
+  private Ward dummyWard;
 
   @BeforeEach public void setUp()
   {
     WardClientManager client = new WardClientRMI();
     test = new WardModelManagerImpl(client);
+
+    addDummyData();
+  }
+
+  @AfterEach private void undo()
+  {
+    test.removeWard(dummyWard);
+  }
+
+  private void addDummyData()
+  {
+    dummyWard = new Ward("Examination", 999);
   }
 
   @Test public void getAllWards()
   {
+    test.addWard(dummyWard);
     ArrayList<Ward> allWards = test.getAllWards();
 
     assertNotNull(allWards);
@@ -29,32 +44,30 @@ class WardModelManagerTest
 
   @Test public void addWard()
   {
-    Ward wardToAdd = new Ward("Examination", 133);
-    test.addWard(wardToAdd);
+    test.addWard(dummyWard);
 
-    assertTrue(isInDatabase(wardToAdd));
+    assertTrue(isInDatabase(dummyWard));
   }
 
   @Test public void editWard()
   {
-    Ward oldWard = new Ward("Examination", 133);
+    test.addWard(dummyWard);
 
-    Ward newWard = new Ward(oldWard.getWardName(), oldWard.getRoomNumber());
+    Ward wardToEdit = dummyWard.copy();
+    wardToEdit.setWardName("Nursery");
+    wardToEdit.setRoomNumber(10000);
 
-    newWard.setWardName("Nursery");
-    newWard.setRoomNumber(199);
+    test.editWard(dummyWard, wardToEdit);
 
-    test.editWard(oldWard, newWard);
-    assertTrue(isInDatabase(newWard));
+    assertTrue( isInDatabase(wardToEdit));
   }
 
   @Test public void removeWard()
   {
-    Ward wardToRemove = new Ward("Examination", 133);
-    test.addWard(wardToRemove);
+    test.addWard(dummyWard);
 
-    test.removeWard(wardToRemove);
-    assertFalse(isInDatabase(wardToRemove));
+    test.removeWard(dummyWard);
+    assertFalse(isInDatabase(dummyWard));
   }
 
   private boolean isInDatabase(Ward isInDBWard)
