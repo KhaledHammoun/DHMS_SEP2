@@ -21,13 +21,17 @@ public class EmployeeServerModelManagerImpl implements EmployeeServerModelManage
     @Override
     public String addDoctor(Doctor doctor)
     {
-        return dbAccessManager.addDoctor(doctor);
+        dbAccessManager.addDoctor(doctor);
+        ServerPoolModelImpl.getInstance().update(UpdateType.DOCTOR);
+        return null;
     }
 
     @Override
     public String addNurse(Nurse nurse)
     {
-        return dbAccessManager.addNurse(nurse);
+        dbAccessManager.addNurse(nurse);
+        ServerPoolModelImpl.getInstance().update(UpdateType.NURSE);
+        return null;
     }
 
     @Override

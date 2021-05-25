@@ -1,16 +1,20 @@
 package client.view_models.manager;
 
 import client.model.manager.EmployeeModelManager;
+import client.model.shared.CallBackModel;
 import client.model.shared.GetEmployeeDataModel;
 import client.shared.SelectionModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.CurrentUser;
 import shared.Doctor;
 import shared.Employee;
 import shared.Nurse;
+import shared.callback.UpdateType;
 
+import java.beans.PropertyChangeEvent;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
@@ -22,13 +26,31 @@ public class EmployeeViewModel
     private GetEmployeeDataModel getEmployeeDataModel;
     private StringProperty selectedEmployeeType;
 
-    public EmployeeViewModel(Object employeeModelManager, Object getEmployeeDataModel)
+    public EmployeeViewModel(Object employeeModelManager, Object getEmployeeDataModel, Object callBackModel)
     {
+        CallBackModel callBack = (CallBackModel) callBackModel;
+        callBack.addPropertyChangeListener(UpdateType.DOCTOR.toString(), this::employeeUpdated);
+        callBack.addPropertyChangeListener(UpdateType.NURSE.toString(), this::employeeUpdated);
         this.getEmployeeDataModel = (GetEmployeeDataModel) getEmployeeDataModel;
         this.employeeModelManager = (EmployeeModelManager) employeeModelManager;
         employeeType = FXCollections.observableArrayList("Doctor", "Nurse");
         employees = FXCollections.observableArrayList();
         selectedEmployeeType = new SimpleStringProperty();
+    }
+
+    private void employeeUpdated(PropertyChangeEvent propertyChangeEvent)
+    {
+        if (CurrentUser.getInstance().isManager() && !employees.isEmpty())
+        {
+            if (isDoctor())
+            {
+                setEmployees(getEmployeeDataModel.getListOfAllDoctors());
+            }
+            else
+              {
+                setEmployees(getEmployeeDataModel.getListOfAllNurses());
+            }
+        }
     }
 
     public ObservableList<Employee> employeesProperty()

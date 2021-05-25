@@ -31,7 +31,10 @@ public class AppointmentsViewModel
 
   private void appointmentsUpdated(PropertyChangeEvent propertyChangeEvent)
   {
-    loadAppointments();
+    if (CurrentUser.getInstance().isDoctor())
+    {
+      loadAppointments();
+    }
   }
 
   public void loadAppointments()

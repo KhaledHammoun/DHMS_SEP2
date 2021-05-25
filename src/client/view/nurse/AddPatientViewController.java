@@ -2,15 +2,13 @@ package client.view.nurse;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.shared.SelectionModel;
 import client.view.sharted.Alerts;
 import client.view.sharted.View;
 import client.view.sharted.ViewController;
 import client.view_models.nurse.AddPatientViewModel;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.security.InvalidParameterException;
 
@@ -54,7 +52,14 @@ public class AddPatientViewController implements ViewController
     public void onBackButtonAddPatient()
     {
         viewModel.clear();
-        viewHandler.openView(View.MAKE_APPOINTMENT);
+        if (SelectionModel.getInstance().getLastOpenedView() == View.NURSE_MAIN)
+        {
+            viewHandler.openView(View.NURSE_MAIN);
+        }
+        else
+        {
+            viewHandler.openView(View.MAKE_APPOINTMENT);
+        }
     }
 
     @FXML
