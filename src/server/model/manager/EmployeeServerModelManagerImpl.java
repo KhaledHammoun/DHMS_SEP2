@@ -2,8 +2,10 @@ package server.model.manager;
 
 import server.database.manager.EmployeeDBAccessImpl;
 import server.database.manager.EmployeeDBAccessManager;
+import server.model.shared.ServerPoolModelImpl;
 import shared.Doctor;
 import shared.Nurse;
+import shared.callback.UpdateType;
 
 import java.util.ArrayList;
 
@@ -19,36 +21,48 @@ public class EmployeeServerModelManagerImpl implements EmployeeServerModelManage
     @Override
     public String addDoctor(Doctor doctor)
     {
-        return dbAccessManager.addDoctor(doctor);
+        dbAccessManager.addDoctor(doctor);
+        ServerPoolModelImpl.getInstance().update(UpdateType.DOCTOR);
+        return null;
     }
 
     @Override
     public String addNurse(Nurse nurse)
     {
-        return dbAccessManager.addNurse(nurse);
+        dbAccessManager.addNurse(nurse);
+        ServerPoolModelImpl.getInstance().update(UpdateType.NURSE);
+        return null;
     }
 
     @Override
     public String editDoctor(Doctor doctor)
     {
-        return dbAccessManager.editDoctor(doctor);
+        dbAccessManager.editDoctor(doctor);
+        ServerPoolModelImpl.getInstance().update(UpdateType.DOCTOR);
+        return null;
     }
 
     @Override
     public String editNurse(Nurse nurse)
     {
-        return dbAccessManager.editNurse(nurse);
+        dbAccessManager.editNurse(nurse);
+        ServerPoolModelImpl.getInstance().update(UpdateType.NURSE);
+        return null ;
     }
 
     @Override
     public String removeDoctor(Doctor doctor)
     {
-        return dbAccessManager.removeDoctor(doctor);
+        dbAccessManager.removeDoctor(doctor);
+        ServerPoolModelImpl.getInstance().update(UpdateType.DOCTOR);
+        return null;
     }
 
     @Override
     public String removeNurse(Nurse nurse)
     {
-        return dbAccessManager.removeNurse(nurse);
+        dbAccessManager.removeNurse(nurse);
+        ServerPoolModelImpl.getInstance().update(UpdateType.NURSE);
+        return null;
     }
 }

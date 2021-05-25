@@ -97,6 +97,21 @@ public class CurrentUser implements Serializable
     }
   }
 
+  public boolean isNurse()
+  {
+    return user instanceof  Nurse;
+  }
+
+  public boolean isDoctor()
+  {
+    return user instanceof Doctor;
+  }
+
+  public boolean isManager()
+  {
+    return user instanceof Manager;
+  }
+
   public String getFullName()
   {
     return user.getFullName();

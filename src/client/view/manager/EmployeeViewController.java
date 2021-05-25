@@ -96,5 +96,6 @@ public class EmployeeViewController implements ViewController
         employeeTable.setItems(viewModel.employeesProperty());
         employeeTypeComboBox.valueProperty().bindBidirectional(viewModel.selectedEmployeeTypeProperty());
         employeeTypeComboBox.getSelectionModel().selectFirst();
+        viewModel.getEmployees();
     }
 }

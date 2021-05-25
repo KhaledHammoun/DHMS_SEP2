@@ -6,6 +6,7 @@ import client.networking.manager.EmployeeClientRMI;
 import client.networking.manager.WardClientRMI;
 import client.networking.nurse.AppointmentsClientNurseRMI;
 import client.networking.nurse.PatientClientNurseRMI;
+import client.networking.shared.CallBackClientRMI;
 import client.networking.shared.GetAppointmentDataClientRMI;
 import client.networking.shared.GetEmployeeDataClientRMI;
 import client.networking.shared.GetPatientDataClientRMI;
@@ -74,6 +75,7 @@ public class ClientFactory
         clients.put(InterfaceEnum.SHARED_APPOINTMENT, new GetAppointmentDataClientRMI());
         clients.put(InterfaceEnum.SHARED_EMPLOYEE, new GetEmployeeDataClientRMI());
         clients.put(InterfaceEnum.SHARED_PATIENT, new GetPatientDataClientRMI());
+        clients.put(InterfaceEnum.CALLBACK, new CallBackClientRMI());
     }
     public Object getClient(InterfaceEnum client)
     {

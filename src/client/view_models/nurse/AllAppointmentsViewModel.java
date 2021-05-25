@@ -1,10 +1,13 @@
 package client.view_models.nurse;
 
 import client.model.nurse.AppointmentsModelNurse;
+import client.model.shared.CallBackModel;
 import client.model.shared.GetAppointmentDataModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.Appointment;
+import shared.CurrentUser;
+import shared.callback.UpdateType;
 
 import java.beans.PropertyChangeEvent;
 import java.security.InvalidParameterException;
@@ -16,23 +19,30 @@ public class AllAppointmentsViewModel
   private GetAppointmentDataModel getAppointmentDataModel;
   private AppointmentsModelNurse appointmentsModelNurse;
 
-  public AllAppointmentsViewModel(Object getAppointmentDataModel, Object appointmentsModelNurse )
+  public AllAppointmentsViewModel(Object getAppointmentDataModel,
+      Object appointmentsModelNurse, Object callbackClient)
   {
+    ((CallBackModel) callbackClient)
+        .addPropertyChangeListener(UpdateType.APPOINTMENT.toString(),
+            this::appointmentUpdated);
+
     this.getAppointmentDataModel = (GetAppointmentDataModel) getAppointmentDataModel;
     this.appointmentsModelNurse = (AppointmentsModelNurse) appointmentsModelNurse;
-    //ToDo implement observer
-    //getAppointmentDataModel.addListener("NewAppointment",this::onNewAppointment);
     allAppointments = FXCollections.observableArrayList();
   }
 
-  private void onNewAppointment(PropertyChangeEvent evt)
+  private void appointmentUpdated(PropertyChangeEvent propertyChangeEvent)
   {
-    allAppointments.add((Appointment) evt.getNewValue());
+    if (CurrentUser.getInstance().isNurse())
+    {
+      loadAppointments();
+    }
   }
 
   public void loadAppointments()
   {
-    List<Appointment> appointmentList = getAppointmentDataModel.getAllAppointments();
+    List<Appointment> appointmentList = getAppointmentDataModel
+        .getAllAppointments();
     allAppointments.clear();
     allAppointments.addAll(appointmentList);
   }
@@ -42,11 +52,13 @@ public class AllAppointmentsViewModel
     return allAppointments;
   }
 
-  public void removeAnAppointment(Appointment appointment) throws InvalidParameterException
+  public void removeAnAppointment(Appointment appointment)
+      throws InvalidParameterException
   {
     if (appointment == null)
     {
-      throw new InvalidParameterException("Please select appointment to remove.");
+      throw new InvalidParameterException(
+          "Please select appointment to remove.");
     }
     appointmentsModelNurse.removeAppointment(appointment);
     loadAppointments();

@@ -134,7 +134,7 @@ public class AddEditEmployeeViewModel
                 return false;
             }
         }
-        if (employeeDob == null || selectedEmployeeWard == null || employeeDob.get() == null || selectedEmployeeWard.get() == null)
+        if (employeeDob == null || employeeDob.get() == null || (isDoctor && selectedEmployeeWard == null))
         {
             return false;
         }

@@ -2,6 +2,7 @@ package client.view.login;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.shared.SelectionModel;
 import client.view.sharted.View;
 import client.view.sharted.ViewController;
 import client.view_models.login.NurseMainViewModel;
@@ -24,6 +25,7 @@ public class NurseMainViewController implements ViewController
     @FXML
     public void onAddPatientButton()
     {
+        SelectionModel.getInstance().setLastOpenedView(View.NURSE_MAIN);
         viewHandler.openView(View.ADD_PATIENT);
     }
 
