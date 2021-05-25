@@ -1,13 +1,16 @@
 package client.view_models.doctor;
 
 import client.model.doctor.NursesModelDoctor;
+import client.model.shared.CallBackModel;
 import client.shared.SelectionModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import shared.CurrentUser;
 import shared.Doctor;
 import shared.Nurse;
+import shared.callback.UpdateType;
 
+import java.beans.PropertyChangeEvent;
 import java.security.InvalidParameterException;
 
 public class AssignNurseViewModel
@@ -16,12 +19,21 @@ public class AssignNurseViewModel
   private ObservableList<Nurse> assignedNurses;
 
   private NursesModelDoctor nursesModelDoctor;
+  private CallBackModel callBackModel;
 
-  public AssignNurseViewModel(Object nursesModelDoctor)
+  public AssignNurseViewModel(Object nursesModelDoctor, Object callBack)
   {
+    this.callBackModel = (CallBackModel) callBack;
+    callBackModel.addPropertyChangeListener(UpdateType.NURSE.toString(),
+        this::updateNurseList);
     this.nursesModelDoctor = (NursesModelDoctor) nursesModelDoctor;
     availableNurses = FXCollections.observableArrayList();
     assignedNurses = FXCollections.observableArrayList();
+  }
+
+  private void updateNurseList(PropertyChangeEvent propertyChangeEvent)
+  {
+    loadTables();
   }
 
   public ObservableList<Nurse> getAvailableNurses()
@@ -45,15 +57,13 @@ public class AssignNurseViewModel
         .getCurrentUser();
 
     nursesModelDoctor.assignNurse(nurse, currentDoctorUser);
-    loadTables();
   }
 
   public void loadTables()
   {
-    availableNurses.clear();
-    assignedNurses.clear();
     availableNurses.setAll(nursesModelDoctor.getAllAvailableNurses());
     assignedNurses.setAll(nursesModelDoctor.getAllNursesAssignedToMe(
         (Doctor) CurrentUser.getInstance().getCurrentUser()));
   }
+
 }

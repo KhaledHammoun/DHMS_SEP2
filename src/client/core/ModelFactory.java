@@ -6,6 +6,7 @@ import client.model.manager.EmployeeModelManagerImpl;
 import client.model.manager.WardModelManagerImpl;
 import client.model.nurse.AppointmentsModelNurseImpl;
 import client.model.nurse.PatientModelNurseImpl;
+import client.model.shared.CallBackModelImpl;
 import client.model.shared.GetAppointmentDataModelImpl;
 import client.model.shared.GetEmployeeDataModelImpl;
 import client.model.shared.GetPatientDataModelImpl;
@@ -77,6 +78,7 @@ public class ModelFactory
         models.put(InterfaceEnum.SHARED_APPOINTMENT, new GetAppointmentDataModelImpl(clientFactory.getClient(InterfaceEnum.SHARED_APPOINTMENT)));
         models.put(InterfaceEnum.SHARED_EMPLOYEE, new GetEmployeeDataModelImpl(clientFactory.getClient(InterfaceEnum.SHARED_EMPLOYEE)));
         models.put(InterfaceEnum.SHARED_PATIENT, new GetPatientDataModelImpl(clientFactory.getClient(InterfaceEnum.SHARED_PATIENT)));
+        models.put(InterfaceEnum.CALLBACK, new CallBackModelImpl(clientFactory.getClient(InterfaceEnum.CALLBACK)));
     }
 
     public Object getModel(InterfaceEnum model)
