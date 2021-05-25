@@ -10,7 +10,8 @@ public class Appointment implements Serializable
   private long doctorSSN;
   private long patientSSN;
 
-  public Appointment(Timestamp from, Timestamp to, long doctorSSN, long patientSSN)
+  public Appointment(Timestamp from, Timestamp to, long doctorSSN,
+      long patientSSN)
   {
     this.from = from;
     this.to = to;
@@ -56,6 +57,19 @@ public class Appointment implements Serializable
   public void setPatientSSN(long patientSSN)
   {
     this.patientSSN = patientSSN;
+  }
+
+  public boolean equals(Object object)
+  {
+    if (!(object instanceof Appointment))
+    {
+      return false;
+    }
+
+    Appointment other = (Appointment) object;
+
+    return other.getPatientSSN() == patientSSN
+        && other.getDoctorSSN() == doctorSSN && other.from.equals(from);
   }
 
   @Override public String toString()
