@@ -15,6 +15,9 @@ import java.security.InvalidParameterException;
 import java.sql.Date;
 import java.time.LocalDate;
 
+/**
+ * View model responsible for
+ */
 public class AddDiagnoseViewModel
 {
   private StringProperty name;
@@ -66,12 +69,6 @@ public class AddDiagnoseViewModel
   public ObservableList<String> getSeverityLevels()
   {
     return severityLevels;
-  }
-
-  public void addNewDiagnosisToPatient()
-  {
-    //TODO  Diagnosis diagnosis = new Diagnosis(name.getValue(), severityLevel.getValue(),description.getValue(),new Date(startDate.getValue()),null);
-
   }
 
   public void loadSelectedPatient()
