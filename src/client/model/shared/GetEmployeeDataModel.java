@@ -6,7 +6,7 @@ import shared.util.PropertyChangeSubject;
 
 import java.util.ArrayList;
 
-public interface GetEmployeeDataModel extends PropertyChangeSubject
+public interface GetEmployeeDataModel
 {
     ArrayList<Doctor> getListOfAllDoctors();
     ArrayList<Nurse> getListOfAllNurses();

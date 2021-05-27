@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class GetAppointmentDataModelImpl implements GetAppointmentDataModel
 {
     private GetAppointmentDataClient sharedClient;
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public GetAppointmentDataModelImpl(Object client)
     {
@@ -43,17 +42,5 @@ public class GetAppointmentDataModelImpl implements GetAppointmentDataModel
         {
             throw new RuntimeException("Error while fetching all appointments. Please try again.");
         }
-    }
-
-    @Override
-    public void addPropertyChangeListener(String name, PropertyChangeListener listener)
-    {
-        support.addPropertyChangeListener(name, listener);
-    }
-
-    @Override
-    public void removePropertyChangeListener(String name, PropertyChangeListener listener)
-    {
-        support.removePropertyChangeListener(name, listener);
     }
 }

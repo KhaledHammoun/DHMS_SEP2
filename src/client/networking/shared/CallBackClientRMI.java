@@ -14,7 +14,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 public class CallBackClientRMI
-    implements CallBack, Serializable, PropertyChangeSubject
+    implements CallBack, Serializable
 {
   private PropertyChangeSupport support;
   private ServerPool pool;
