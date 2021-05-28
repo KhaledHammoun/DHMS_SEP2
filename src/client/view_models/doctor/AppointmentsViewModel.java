@@ -17,12 +17,10 @@ public class AppointmentsViewModel
   private ObservableList<Appointment> appointments;
 
   private GetAppointmentDataModel getAppointmentDataModel;
-  private CallBackModel callBackModel;
 
   public AppointmentsViewModel(Object getAppointmentDataModel, Object callBack)
   {
     this.getAppointmentDataModel = (GetAppointmentDataModel) getAppointmentDataModel;
-    this.callBackModel = (CallBackModel) callBack;
     ((CallBackModel) callBack)
         .addPropertyChangeListener(UpdateType.APPOINTMENT.toString(),
             this::appointmentsUpdated);

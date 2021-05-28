@@ -1,7 +1,7 @@
 package shared;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,20 +12,20 @@ public class Validator
     String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,14}$";
     return matches(password, regex);
   }
+
   public static boolean isValidTelTimeFormat(String time)
   {
-    SimpleDateFormat sdf = new SimpleDateFormat("h:mm:ss");
     try
     {
-      sdf.parse(time);
+      LocalTime.parse(time);
       return true;
     }
-    catch (ParseException | NullPointerException e)
+    catch (DateTimeParseException | NullPointerException e)
     {
       return false;
     }
-
   }
+
   public static boolean isValidEmail(String email)
   {
     String regex = "^(.+)@(.+)$";
@@ -38,6 +38,7 @@ public class Validator
     Matcher matcher = pattern.matcher(toValidate);
     return matcher.matches();
   }
+
 
   public static boolean isValidSSN(long ssn)
   {

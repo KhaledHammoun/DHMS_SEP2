@@ -6,7 +6,7 @@ import shared.util.PropertyChangeSubject;
 
 import java.util.ArrayList;
 
-public interface GetAppointmentDataModel extends PropertyChangeSubject
+public interface GetAppointmentDataModel
 {
     ArrayList<Appointment> getAllAppointments();
     ArrayList<Appointment> getAppointmentsForDoctor(Doctor doctor);

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class GetEmployeeDataModelImpl implements GetEmployeeDataModel
 {
     private GetEmployeeDataClient sharedClient;
-    private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public GetEmployeeDataModelImpl(Object client)
     {
@@ -71,17 +70,5 @@ public class GetEmployeeDataModelImpl implements GetEmployeeDataModel
             throw new RuntimeException("Error while fetching nurse from the system. Please try again.");
 
         }
-    }
-
-    @Override
-    public void addPropertyChangeListener(String name, PropertyChangeListener listener)
-    {
-        support.addPropertyChangeListener(name, listener);
-    }
-
-    @Override
-    public void removePropertyChangeListener(String name, PropertyChangeListener listener)
-    {
-        support.removePropertyChangeListener(name, listener);
     }
 }
