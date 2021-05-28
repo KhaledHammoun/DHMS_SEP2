@@ -2,14 +2,17 @@ package client.view_models.login;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 import shared.CurrentUser;
 
 public class DoctorMainViewModel
 {
     private StringProperty currentUser;
+    private StringProperty nrOfAppointmentsProperty;
 
     public DoctorMainViewModel()
     {
+        nrOfAppointmentsProperty = new SimpleStringProperty();
         currentUser = new SimpleStringProperty();
     }
 
@@ -20,6 +23,12 @@ public class DoctorMainViewModel
 
     public void setCurrentUser()
     {
-        this.currentUser.set(CurrentUser.getInstance().getFullName());
+        currentUser.set(CurrentUser.getInstance().getFullName());
+        nrOfAppointmentsProperty.set(String.valueOf(CurrentUser.getInstance().getNrOfAppointments()));
+    }
+
+    public StringProperty nrOfAppointmentsProperty()
+    {
+        return nrOfAppointmentsProperty;
     }
 }
