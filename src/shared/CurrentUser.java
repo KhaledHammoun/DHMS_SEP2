@@ -12,6 +12,7 @@ public class CurrentUser implements Serializable
 {
   private Employee user;
   private static CurrentUser currentUser;
+  private int doctorsAppointments;
 
   private CurrentUser()
   {
@@ -59,6 +60,7 @@ public class CurrentUser implements Serializable
             r.getString("specialization"),
             new Ward(r.getString("ward_name"), r.getInt("room_number")),
             r.getString("email"), r.getString("password"));
+            doctorsAppointments = r.getInt("nr_appointments");
       }
 
       else if (loginUser.getAccessType() == AccessType.NURSE)
@@ -115,5 +117,10 @@ public class CurrentUser implements Serializable
   public String getFullName()
   {
     return user.getFullName();
+  }
+
+  public int getNrOfAppointments()
+  {
+    return doctorsAppointments;
   }
 }

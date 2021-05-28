@@ -3,7 +3,6 @@ package server.networking.shared;
 import client.networking.shared.CallBack;
 import server.model.shared.ServerPoolModel;
 import server.model.shared.ServerPoolModelImpl;
-import shared.callback.UpdateType;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
