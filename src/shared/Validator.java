@@ -40,9 +40,10 @@ public class Validator
     return matcher.matches();
   }
 
-  public static boolean isValidSSN(long SSN)
+
+  public static boolean isValidSSN(long ssn)
   {
-    return SSN > 999999999L && SSN < 10000000000L;
+    return ssn >= 1000000000L && ssn <= 9999999999L;
   }
 
   public static boolean isDobValid(LocalDate localDate)
