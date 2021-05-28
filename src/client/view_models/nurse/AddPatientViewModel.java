@@ -50,7 +50,7 @@ public class AddPatientViewModel
         contactLastName = new SimpleStringProperty();
         contactPhoneNo = new SimpleStringProperty();
         medicalDescriptionPatient = new SimpleStringProperty();
-        fields = new StringProperty[] {firstNamePatient, middleNamePatient, lastNamePatient,
+        fields = new StringProperty[] {firstNamePatient, lastNamePatient,
                                        bloodTypePatient, ssnPatient, streetPatient, streetNoPatient, cityPatient,
                                        zipCodePatient, contactFirstName, contactLastName, contactPhoneNo,
                                        medicalDescriptionPatient};
@@ -97,7 +97,7 @@ public class AddPatientViewModel
                 return false;
             }
         }
-        return dobPatient.get() != null;
+        return Validator.isDobValid(dobPatient.get());
     }
 
     public StringProperty firstNamePatientProperty()

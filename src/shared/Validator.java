@@ -1,5 +1,6 @@
 package shared;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
@@ -43,5 +44,23 @@ public class Validator
   public static boolean isValidSSN(long ssn)
   {
     return ssn >= 1000000000L && ssn <= 9999999999L;
+  }
+
+  public static boolean isDobValid(LocalDate localDate)
+  {
+    if (localDate == null)
+      return false;
+
+    return LocalDate.now().isAfter(localDate) && LocalDate.now().minusYears(130)
+        .isBefore(localDate);
+  }
+
+  public static boolean isAppointmentDateValid(LocalDate appointmentDate)
+  {
+    if (appointmentDate == null)
+    {
+      return false;
+    }
+    return appointmentDate.isAfter(LocalDate.now()) && appointmentDate.isBefore(LocalDate.now().plusYears(2));
   }
 }

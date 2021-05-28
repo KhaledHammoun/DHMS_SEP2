@@ -67,7 +67,7 @@ public class AddEditEmployeeViewModel
         password = new SimpleStringProperty();
         experience = new SimpleStringProperty();
         education = new SimpleStringProperty();
-        textFields = new StringProperty[] {employeeSnn, employeeFirstName, employeeMiddleName, employeeLastName,
+        textFields = new StringProperty[] {employeeSnn, employeeFirstName, employeeLastName,
                                            employeeStreet, employeeStreetNo, employeeCity, employeeZipCode,
                                            contactFirstName, contactLastName, contactPhoneNo, username, password,
                                            experience, education};
@@ -143,7 +143,7 @@ public class AddEditEmployeeViewModel
 
     public boolean validateLoginData()
     {
-        return Validator.isValidEmail(username.get()) && Validator.isValidPassword(password.get());
+        return Validator.isValidEmail(username.get()) && Validator.isValidPassword(password.get()) && Validator.isDobValid(employeeDob.get());
     }
     public void saveChanges() throws InvalidParameterException
     {
@@ -157,7 +157,7 @@ public class AddEditEmployeeViewModel
         }
         else if (!validateLoginData())
         {
-           throw new InvalidParameterException("Invalid email or password");
+           throw new InvalidParameterException("Invalid format of email/password/DOB");
         }
         getDataObject();
         if (toAdd && isDoctor)
