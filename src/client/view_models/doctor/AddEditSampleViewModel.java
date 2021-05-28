@@ -23,12 +23,9 @@ public class AddEditSampleViewModel
 
   private Sample sample;
   private SampleModelDoctor sampleModelDoctor;
-  private GetPatientDataModel getPatientDataModel;
 
-  public AddEditSampleViewModel(Object sampleModelDoctor,
-      Object getPatientDataModel)
+  public AddEditSampleViewModel(Object sampleModelDoctor)
   {
-    this.getPatientDataModel = (GetPatientDataModel) getPatientDataModel;
     this.sampleModelDoctor = (SampleModelDoctor) sampleModelDoctor;
     type = new SimpleStringProperty();
     deadline = new SimpleObjectProperty<>();
@@ -107,6 +104,8 @@ public class AddEditSampleViewModel
 
   private boolean validateInputs()
   {
-    return type.get() == null || priority.get() == null || deadline.get() == null;
+    if (deadline.get() == null)
+      return false;
+    return type.get() == null || priority.get() == null || deadline.get().isAfter(LocalDate.now());
   }
 }

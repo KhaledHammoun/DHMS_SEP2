@@ -90,7 +90,13 @@ public class AddDiagnoseViewModel
   {
     if (verifyInputs())
     {
-      throw new InvalidParameterException("Please fill in all the fields to create diagnosis.");
+      throw new InvalidParameterException(
+          "Please fill in all the fields to create diagnosis.");
+    }
+    if (!isDateValid())
+    {
+      throw new InvalidParameterException(
+          "Please select correct diagnosis dates.");
     }
     Diagnosis diagnosis = new Diagnosis(name.get(),
         Integer.parseInt(severityLevel.get()), description.get(),
@@ -102,6 +108,22 @@ public class AddDiagnoseViewModel
 
   private boolean verifyInputs()
   {
-    return name.get() == null || severityLevel.get() == null || description.get() == null || startDate.get() == null;
+    return name.get() == null || severityLevel.get() == null || description.get() == null;
+  }
+
+  private boolean isDateValid()
+  {
+    if (startDate.get() == null)
+    {
+      return false;
+    }
+    if (endDate.get() != null)
+    {
+      if (!(startDate.get().isBefore(endDate.get())))
+      {
+        return false;
+      }
+    }
+    return startDate.get().isAfter(LocalDate.now().minusYears(5));
   }
 }
