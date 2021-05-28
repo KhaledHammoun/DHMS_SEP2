@@ -83,6 +83,11 @@ public class AddEditSampleViewModel
     {
       throw new InvalidParameterException("Please fill the fields.");
     }
+
+    if (validateDate())
+    {
+      throw new InvalidParameterException("Please select correct Deadline");
+    }
     //Selected Sample before - Editing the sample / Not selected - Adding the sample
     if (sample == null)
     {
@@ -102,10 +107,15 @@ public class AddEditSampleViewModel
     }
   }
 
+  private boolean validateDate()
+  {
+     return deadline.get().isBefore(LocalDate.now());
+  }
+
   private boolean validateInputs()
   {
     if (deadline.get() == null)
       return false;
-    return type.get() == null || priority.get() == null || deadline.get().isAfter(LocalDate.now());
+    return type.get() == null || priority.get() == null;
   }
 }
