@@ -2,6 +2,8 @@ package shared;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValidatorTest
@@ -195,9 +197,6 @@ class ValidatorTest
     assertFalse(Validator.isValidEmail(mailWithoutAt));
   }
 
-  
-
-
   @Test void ssnMax()
   {
     long notValidSsn = 9999999999L;
@@ -232,5 +231,47 @@ class ValidatorTest
   {
     long notValidSsn = 1000000001L;
     assertTrue(Validator.isValidSSN(notValidSsn));
+  }
+
+  @Test void isAppointmentDateValid()
+  {
+    LocalDate date = LocalDate.now().plusWeeks(3);
+    assertTrue(Validator.isAppointmentDateValid(date));
+  }
+
+  @Test void appointmentDateNull()
+  {
+    LocalDate date = null;
+    assertFalse(Validator.isAppointmentDateValid(date));
+  }
+
+  @Test void appointedDateBeforeCurrentDate()
+  {
+    LocalDate notValidAppointmentDate = LocalDate.now().minusDays(1);
+    assertFalse(Validator.isAppointmentDateValid(notValidAppointmentDate));
+  }
+
+  @Test void appointmentDateTooLate()
+  {
+    LocalDate date = LocalDate.now().plusYears(3);
+    assertFalse(Validator.isAppointmentDateValid(date));
+  }
+
+  @Test void isDobValid()
+  {
+    LocalDate validDate = LocalDate.now().minusYears(60);
+    assertTrue(Validator.isDobValid(validDate));
+  }
+
+  @Test void dobTooOld()
+  {
+    LocalDate notValidDate = LocalDate.now().minusYears(200);
+    assertFalse(Validator.isDobValid(notValidDate));
+  }
+
+  @Test void dobAfterCurrentDate()
+  {
+    LocalDate notValidDate = LocalDate.now().plusDays(1);
+    assertFalse(Validator.isDobValid(notValidDate));
   }
 }
