@@ -8,14 +8,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #33557f;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.login.NurseMainViewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #33557f;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.login.NurseMainViewController">
    <children>
       <Label layoutX="442.0" layoutY="72.0" text="Logged in as: " textFill="#f8f2f2" AnchorPane.leftAnchor="442.0" AnchorPane.topAnchor="72.0" />
       <Label fx:id="loggedInAsLabel" layoutX="520.0" layoutY="72.0" text="Label" textFill="#f2efef" />
-      <Button layoutX="518.0" layoutY="256.0" mnemonicParsing="false" onAction="#onPatientsButton" prefHeight="30.0" prefWidth="100.0" text="Patients" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="255.0" />
-      <Button layoutX="494.0" layoutY="195.0" mnemonicParsing="false" onAction="#onAddPatientButton" prefHeight="30.0" prefWidth="100.0" text="Add patient" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="152.0" />
-      <Button layoutX="517.0" layoutY="205.0" mnemonicParsing="false" onAction="#onAppointmentsButton" prefHeight="30.0" prefWidth="100.0" text="Appointments" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="202.0" />
-      <Button layoutX="544.0" layoutY="439.0" mnemonicParsing="false" onAction="#onLogoutButton" prefHeight="30.0" prefWidth="100.0" text="Logout" AnchorPane.bottomAnchor="57.6" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="85.0" />
+      <Button layoutX="518.0" layoutY="256.0" mnemonicParsing="false" onAction="#onNewAppointmentButton" prefHeight="30.0" prefWidth="115.0" text="New appointment" />
+      <Button layoutX="517.0" layoutY="151.0" mnemonicParsing="false" onAction="#onPatientsButton" prefHeight="30.0" prefWidth="115.0" text="Patients" />
+      <Button layoutX="517.0" layoutY="205.0" mnemonicParsing="false" onAction="#onAppointmentsButton" prefHeight="30.0" prefWidth="115.0" text="Appointments" />
+      <Button layoutX="544.0" layoutY="439.0" mnemonicParsing="false" onAction="#onLogoutButton" prefHeight="30.0" prefWidth="115.0" text="Logout" AnchorPane.bottomAnchor="57.6" AnchorPane.leftAnchor="515.0" />
       <ImageView fitHeight="500.0" fitWidth="410.0" layoutX="-2.0" layoutY="-1.0">
          <image>
             <Image url="@../../images/nurse_background.jpg" />

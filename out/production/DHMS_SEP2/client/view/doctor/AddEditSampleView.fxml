@@ -5,6 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,7 +22,10 @@
       </Label>
 
       <Button layoutX="184.0" layoutY="424.0" mnemonicParsing="false" onAction="#onSaveButton" prefHeight="30.0" prefWidth="70.0" text="Save" />
-      <DatePicker fx:id="deadline" layoutX="23.0" layoutY="163.0" prefHeight="26.0" prefWidth="211.0" promptText="Deadline" />
+      <DatePicker fx:id="deadline" layoutX="23.0" layoutY="163.0" prefHeight="26.0" prefWidth="211.0" promptText="Deadline">
+         <tooltip>
+            <Tooltip text="Deadline" />
+         </tooltip></DatePicker>
       <ComboBox fx:id="priority" layoutX="23.0" layoutY="206.0" prefHeight="26.0" prefWidth="211.0" promptText="Priority" />
       <Button layoutX="23.0" layoutY="424.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="30.0" prefWidth="70.0" text="Back" />
       <Button layoutX="103.0" layoutY="424.0" mnemonicParsing="false" onAction="#onClearButton" prefHeight="30.0" prefWidth="70.0" text="Clear" />
@@ -37,7 +41,10 @@
                </color></DropShadow>
          </effect>
       </ImageView>
-      <TextArea fx:id="result" layoutX="21.0" layoutY="265.0" prefHeight="49.0" prefWidth="211.0" promptText="Write result..." wrapText="true" />
+      <TextArea fx:id="result" layoutX="21.0" layoutY="265.0" prefHeight="49.0" prefWidth="211.0" promptText="Write result..." wrapText="true">
+         <tooltip>
+            <Tooltip text="Result" />
+         </tooltip></TextArea>
       <ComboBox fx:id="sampleType" layoutX="22.0" layoutY="120.0" prefHeight="25.0" prefWidth="211.0" promptText="Type" />
 
    </children>
