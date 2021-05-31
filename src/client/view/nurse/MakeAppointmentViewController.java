@@ -79,6 +79,20 @@ public class MakeAppointmentViewController implements ViewController
     viewHandler.openView(View.ALL_APPOINTMENTS);
   }
 
+  @FXML
+  public void onRemovePatientButton()
+  {
+    try
+    {
+      viewModel.removePatient(patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem());
+      Alerts.throwAlert(Alert.AlertType.INFORMATION, "Patient successfully removed.");
+    }
+    catch (InvalidParameterException e)
+    {
+      Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
+    }
+  }
+
   @Override
   public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)
   {
@@ -100,4 +114,5 @@ public class MakeAppointmentViewController implements ViewController
     viewModel.loadPatientData();
     viewModel.loadDoctorData();
   }
+
 }

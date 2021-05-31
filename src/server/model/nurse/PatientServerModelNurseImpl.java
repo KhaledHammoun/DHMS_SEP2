@@ -33,5 +33,6 @@ public class PatientServerModelNurseImpl implements PatientServerModelNurse
     public void removePatient(Patient patient)
     {
         dbAccessNurse.removePatient(patient);
+        ServerPoolModelImpl.getInstance().update(UpdateType.PATIENT);
     }
 }

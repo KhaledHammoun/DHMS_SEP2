@@ -13,7 +13,6 @@ import java.util.Map;
 
 public class ViewFactory
 {
-  // TODO: 22/05/2021 Remove printouts.
   private static Map<View, Scene> scenes;
   private static List<View> views;
 
@@ -37,7 +36,6 @@ public class ViewFactory
     {
       for (View sceneName : views)
       {
-        System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
         Scene scene = null;
         Parent root = loadFXML(
             "../view/login/" + CamelCaseConverter.toCamelCase(sceneName.name())
@@ -60,7 +58,6 @@ public class ViewFactory
     {
       for (View sceneName : views)
       {
-        System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
         Scene scene = null;
         Parent root = loadFXML("../view/manager/" + CamelCaseConverter
             .toCamelCase(sceneName.name()) + "View.fxml");
@@ -82,7 +79,6 @@ public class ViewFactory
     {
       for (View sceneName : views)
       {
-        System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
         Scene scene = null;
         Parent root = loadFXML(
             "../view/doctor/" + CamelCaseConverter.toCamelCase(sceneName.name())
@@ -105,7 +101,6 @@ public class ViewFactory
     {
       for (View sceneName : views)
       {
-        System.out.println(CamelCaseConverter.toCamelCase(sceneName.name()));
         Scene scene = null;
         Parent root = loadFXML(
             "../view/nurse/" + CamelCaseConverter.toCamelCase(sceneName.name())

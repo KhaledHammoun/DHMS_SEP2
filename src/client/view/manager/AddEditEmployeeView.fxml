@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,20 +16,53 @@
       <Button layoutX="195.0" layoutY="447.0" mnemonicParsing="false" onAction="#onSaveButtonEmployee" prefHeight="30.0" prefWidth="70.0" text="Save" />
       <Button layoutX="113.0" layoutY="447.0" mnemonicParsing="false" onAction="#onClearButtonEmployee" prefHeight="30.0" prefWidth="70.0" text="Clear" />
       <Button layoutX="31.0" layoutY="447.0" mnemonicParsing="false" onAction="#onBackButtonEmployee" prefHeight="30.0" prefWidth="70.0" text="Back" />
-      <TextField fx:id="employeeSSNTextField" layoutX="32.0" layoutY="31.0" prefHeight="26.0" prefWidth="174.0" promptText="Employee SSN" />
-      <TextField fx:id="employeeFirstNameTextField" layoutX="33.0" layoutY="71.0" prefHeight="26.0" prefWidth="174.0" promptText="First name" />
-      <TextField fx:id="employeeMidNameTextField" layoutX="33.0" layoutY="111.0" prefHeight="26.0" prefWidth="174.0" promptText="Middle name" />
-      <TextField fx:id="employeeLastNameTextField" layoutX="34.0" layoutY="150.0" prefHeight="26.0" prefWidth="174.0" promptText="Last name" />
-      <DatePicker fx:id="employeeDOBDateField" layoutX="35.0" layoutY="191.0" prefHeight="26.0" prefWidth="174.0" promptText="Date of birth" />
-      <TextField fx:id="employeeStreetTextField" layoutX="32.0" layoutY="296.0" prefHeight="26.0" prefWidth="174.0" promptText="Street" />
-      <TextField fx:id="employeeStreetNoTextField" layoutX="240.0" layoutY="296.0" prefHeight="26.0" prefWidth="50.0" promptText="NO" />
-      <TextField fx:id="employeeZipCodeTextField" layoutX="240.0" layoutY="335.0" prefHeight="26.0" prefWidth="50.0" promptText="Zip" />
-      <TextField fx:id="employeeCityTextField" layoutX="31.0" layoutY="335.0" prefHeight="26.0" prefWidth="174.0" promptText="City" />
+      <TextField fx:id="employeeSSNTextField" layoutX="32.0" layoutY="31.0" prefHeight="26.0" prefWidth="174.0" promptText="Employee SSN">
+         <tooltip>
+            <Tooltip text="Employee SSN" />
+         </tooltip></TextField>
+      <TextField fx:id="employeeFirstNameTextField" layoutX="33.0" layoutY="71.0" prefHeight="26.0" prefWidth="174.0" promptText="First name">
+         <tooltip>
+            <Tooltip text="First name" />
+         </tooltip></TextField>
+      <TextField fx:id="employeeMidNameTextField" layoutX="33.0" layoutY="111.0" prefHeight="26.0" prefWidth="174.0" promptText="Middle name">
+         <tooltip>
+            <Tooltip text="Middle name" />
+         </tooltip></TextField>
+      <TextField fx:id="employeeLastNameTextField" layoutX="34.0" layoutY="150.0" prefHeight="26.0" prefWidth="174.0" promptText="Last name">
+         <tooltip>
+            <Tooltip text="Last name" />
+         </tooltip></TextField>
+      <DatePicker fx:id="employeeDOBDateField" layoutX="35.0" layoutY="191.0" prefHeight="26.0" prefWidth="174.0" promptText="Date of birth">
+         <tooltip>
+            <Tooltip text="Date of birth" />
+         </tooltip></DatePicker>
+      <TextField fx:id="employeeStreetTextField" layoutX="32.0" layoutY="296.0" prefHeight="26.0" prefWidth="174.0" promptText="Street">
+         <tooltip>
+            <Tooltip text="Street" />
+         </tooltip></TextField>
+      <TextField fx:id="employeeStreetNoTextField" layoutX="240.0" layoutY="296.0" prefHeight="26.0" prefWidth="50.0" promptText="NO">
+         <tooltip>
+            <Tooltip text="NO" />
+         </tooltip></TextField>
+      <TextField fx:id="employeeZipCodeTextField" layoutX="240.0" layoutY="335.0" prefHeight="26.0" prefWidth="50.0" promptText="Zip">
+         <tooltip>
+            <Tooltip text="Zip" />
+         </tooltip></TextField>
+      <TextField fx:id="employeeCityTextField" layoutX="31.0" layoutY="335.0" prefHeight="26.0" prefWidth="174.0" promptText="City">
+         <tooltip>
+            <Tooltip text="City" />
+         </tooltip></TextField>
       <Label layoutX="484.0" layoutY="8.0" text="Emergency contact :" />
       <Label layoutX="235.0" layoutY="8.0" text="Experience/Specialization:" />
       <ComboBox fx:id="employeeWardComboBox" layoutX="484.0" layoutY="378.0" prefHeight="26.0" prefWidth="200.0" promptText="Assign doctor to ward" />
-      <TextField fx:id="usernameTextField" layoutX="484.0" layoutY="296.0" prefHeight="26.0" prefWidth="200.0" promptText="Email" />
-      <TextField fx:id="passwordTextField" layoutX="484.0" layoutY="335.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
+      <TextField fx:id="usernameTextField" layoutX="484.0" layoutY="296.0" prefHeight="26.0" prefWidth="200.0" promptText="Email">
+         <tooltip>
+            <Tooltip text="Email" />
+         </tooltip></TextField>
+      <TextField fx:id="passwordTextField" layoutX="484.0" layoutY="335.0" prefHeight="26.0" prefWidth="200.0" promptText="Password">
+         <tooltip>
+            <Tooltip text="Password" />
+         </tooltip></TextField>
       <Label layoutX="34.0" layoutY="8.0" text="Employee data:" />
       <Label layoutX="36.0" layoutY="261.0" text="Employee address:" />
       <Label layoutX="484.0" layoutY="261.0" text="Login info:" />
@@ -37,9 +71,18 @@
             <DropShadow color="#33557f" radius="14.75" width="40.0" />
          </effect>
          <children>
-            <TextField fx:id="employeeEContactFNameTextField" layoutX="14.0" layoutY="23.0" prefHeight="26.0" prefWidth="174.0" promptText="FIrst name" />
-            <TextField fx:id="employeeEContactLNameTextField" layoutX="14.0" layoutY="74.0" prefHeight="26.0" prefWidth="174.0" promptText="Last name" />
-            <TextField fx:id="employeeEContactPhoneTextField" layoutX="13.0" layoutY="116.0" prefHeight="26.0" prefWidth="174.0" promptText="Phone number" />
+            <TextField fx:id="employeeEContactFNameTextField" layoutX="14.0" layoutY="23.0" prefHeight="26.0" prefWidth="174.0" promptText="FIrst name">
+               <tooltip>
+                  <Tooltip text="FIrst name" />
+               </tooltip></TextField>
+            <TextField fx:id="employeeEContactLNameTextField" layoutX="14.0" layoutY="74.0" prefHeight="26.0" prefWidth="174.0" promptText="Last name">
+               <tooltip>
+                  <Tooltip text="Last name" />
+               </tooltip></TextField>
+            <TextField fx:id="employeeEContactPhoneTextField" layoutX="13.0" layoutY="116.0" prefHeight="26.0" prefWidth="174.0" promptText="Phone number">
+               <tooltip>
+                  <Tooltip text="Phone number" />
+               </tooltip></TextField>
          </children>
       </AnchorPane>
       <TextArea fx:id="employeeExperienceTextArea" layoutX="235.0" layoutY="33.0" prefHeight="76.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;" wrapText="true">

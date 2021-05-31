@@ -50,7 +50,7 @@ public class ViewHandler
   {
     Scene scene = ViewFactory.getScene(view);
     FXMLLoader userData = (FXMLLoader) scene.getUserData();
-    ((ViewController) userData.getController()).init(ViewModelFactory.getViewModelFactory(), ViewHandler.getViewHandler());
+    ((ViewController) userData.getController()).init(ViewModelFactory.getViewModelFactory(), getViewHandler());
     stage.setScene(scene);
     stage.show();
   }

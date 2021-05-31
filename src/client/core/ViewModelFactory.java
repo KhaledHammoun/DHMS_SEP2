@@ -109,6 +109,7 @@ public class ViewModelFactory
                                                     modelFactory.getModel(InterfaceEnum.CALLBACK)));
         viewModels.put(View.MAKE_APPOINTMENT,
                        new MakeAppointmentViewModel(modelFactory.getModel(InterfaceEnum.NURSE_APPOINTMENT),
+                                                    modelFactory.getModel(InterfaceEnum.NURSE_PATIENT),
                                                     modelFactory.getModel(InterfaceEnum.SHARED_EMPLOYEE),
                                                     modelFactory.getModel(InterfaceEnum.SHARED_PATIENT),
                                                     modelFactory.getModel(InterfaceEnum.CALLBACK)));
