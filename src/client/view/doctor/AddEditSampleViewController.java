@@ -30,7 +30,6 @@ public class AddEditSampleViewController implements ViewController
     try
     {
       addEditSampleViewModel.saveChanges();
-      viewHandler.openView(View.PATIENTS);
       Alerts.throwAlert(Alert.AlertType.INFORMATION, "Sample was successfully added/edited");
     }
     catch (InvalidParameterException e)

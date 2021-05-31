@@ -23,12 +23,9 @@ public class AddEditSampleViewModel
 
   private Sample sample;
   private SampleModelDoctor sampleModelDoctor;
-  private GetPatientDataModel getPatientDataModel;
 
-  public AddEditSampleViewModel(Object sampleModelDoctor,
-      Object getPatientDataModel)
+  public AddEditSampleViewModel(Object sampleModelDoctor)
   {
-    this.getPatientDataModel = (GetPatientDataModel) getPatientDataModel;
     this.sampleModelDoctor = (SampleModelDoctor) sampleModelDoctor;
     type = new SimpleStringProperty();
     deadline = new SimpleObjectProperty<>();
@@ -86,6 +83,11 @@ public class AddEditSampleViewModel
     {
       throw new InvalidParameterException("Please fill the fields.");
     }
+
+    if (validateDate())
+    {
+      throw new InvalidParameterException("Please select correct Deadline");
+    }
     //Selected Sample before - Editing the sample / Not selected - Adding the sample
     if (sample == null)
     {
@@ -105,8 +107,15 @@ public class AddEditSampleViewModel
     }
   }
 
+  private boolean validateDate()
+  {
+     return deadline.get().isBefore(LocalDate.now());
+  }
+
   private boolean validateInputs()
   {
-    return type.get() == null || priority.get() == null || deadline.get() == null;
+    if (deadline.get() == null)
+      return false;
+    return type.get() == null || priority.get() == null;
   }
 }

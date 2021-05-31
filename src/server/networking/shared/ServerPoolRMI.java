@@ -14,50 +14,50 @@ import java.util.ArrayList;
 
 public class ServerPoolRMI implements ServerPool, PropertyChangeListener
 {
-    private ArrayList<CallBack> clients;
-    private ServerPoolModel model;
+  private ArrayList<CallBack> clients;
+  private ServerPoolModel model;
 
-    public ServerPoolRMI(Registry registry) throws AlreadyBoundException, RemoteException
+  public ServerPoolRMI(Registry registry)
+      throws AlreadyBoundException, RemoteException
+  {
+    clients = new ArrayList<>();
+
+    model = ServerPoolModelImpl.getInstance();
+    model.addPropertyChangeListener(null, this);
+
+    UnicastRemoteObject.exportObject(this, 0);
+    startServer(registry);
+  }
+
+  private void startServer(Registry registry)
+      throws AlreadyBoundException, RemoteException
+  {
+    registry.bind("ServerPool", this);
+    System.out.println("ServerPool is running");
+  }
+
+  @Override public void registerCallBackClient(CallBack client)
+  {
+    clients.add(client);
+  }
+
+  public void update(PropertyChangeEvent evt)
+  {
+    try
     {
-        clients = new ArrayList<>();
-
-        model = ServerPoolModelImpl.getInstance();
-        model.addPropertyChangeListener(null, this);
-
-        UnicastRemoteObject.exportObject(this, 0);
-        startServer(registry);
+      for (CallBack client : clients)
+      {
+        client.update(evt);
+      }
     }
-
-    private void startServer(Registry registry) throws AlreadyBoundException, RemoteException
+    catch (RemoteException e)
     {
-        registry.bind("ServerPool", this);
-        System.out.println("ServerPool is running");
+      e.printStackTrace();
     }
+  }
 
-    @Override
-    public synchronized void registerCallBackClient(CallBack client)
-    {
-        clients.add(client);
-    }
-
-    public void update(PropertyChangeEvent evt)
-    {
-        try
-        {
-            for (CallBack client : clients)
-            {
-                client.update(evt);
-            }
-        }
-        catch (RemoteException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt)
-    {
-        update(evt);
-    }
+  @Override public void propertyChange(PropertyChangeEvent evt)
+  {
+    update(evt);
+  }
 }

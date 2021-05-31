@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 public class DoctorMainViewController implements ViewController
 {
     @FXML
+    public Label nrOfAppointments;
+    @FXML
     private Label loggedInAsLabel;
 
     private ViewHandler viewHandler;
@@ -47,6 +49,7 @@ public class DoctorMainViewController implements ViewController
         this.viewHandler = viewHandler;
         this.doctorMainViewModel = (DoctorMainViewModel) viewModelFactory.getViewModel(View.DOCTOR_MAIN);
         loggedInAsLabel.textProperty().bind(doctorMainViewModel.currentUserProperty());
+        nrOfAppointments.textProperty().bind(doctorMainViewModel.nrOfAppointmentsProperty());
         doctorMainViewModel.setCurrentUser();
     }
 

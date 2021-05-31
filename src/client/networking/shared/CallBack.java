@@ -1,7 +1,5 @@
 package client.networking.shared;
 
-import shared.callback.UpdateType;
-
 import java.beans.PropertyChangeEvent;
 import java.rmi.Remote;
 import java.rmi.RemoteException;

@@ -2,10 +2,7 @@ package client.view_models.nurse;
 
 import client.model.nurse.PatientModelNurse;
 import client.shared.SelectionModel;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import shared.Address;
 import shared.Patient;
 import shared.Validator;
@@ -20,7 +17,7 @@ public class AddPatientViewModel
     private StringProperty middleNamePatient;
     private StringProperty lastNamePatient;
     private ObjectProperty<LocalDate> dobPatient;
-    private StringProperty genderPatient;
+    private Property<String> genderPatient;
     private StringProperty bloodTypePatient;
     private StringProperty ssnPatient;
     private StringProperty streetPatient;
@@ -53,7 +50,7 @@ public class AddPatientViewModel
         contactLastName = new SimpleStringProperty();
         contactPhoneNo = new SimpleStringProperty();
         medicalDescriptionPatient = new SimpleStringProperty();
-        fields = new StringProperty[] {firstNamePatient, middleNamePatient, lastNamePatient, genderPatient,
+        fields = new StringProperty[] {firstNamePatient, lastNamePatient,
                                        bloodTypePatient, ssnPatient, streetPatient, streetNoPatient, cityPatient,
                                        zipCodePatient, contactFirstName, contactLastName, contactPhoneNo,
                                        medicalDescriptionPatient};
@@ -68,7 +65,7 @@ public class AddPatientViewModel
             middleNamePatient.set(patient.getMiddleName());
             lastNamePatient.set(patient.getLastName());
             dobPatient.set(patient.getDob().toLocalDate());
-            genderPatient.set(String.valueOf(patient.getGender()));
+            genderPatient.setValue(String.valueOf(patient.getGender()));
             bloodTypePatient.set(patient.getBlood_type());
             ssnPatient.set(String.valueOf(patient.getSsn()));
             streetPatient.set(patient.getAddress().getStreet());
@@ -100,11 +97,7 @@ public class AddPatientViewModel
                 return false;
             }
         }
-        if (dobPatient.get() == null)
-        {
-            return false;
-        }
-        return true;
+        return Validator.isDobValid(dobPatient.get());
     }
 
     public StringProperty firstNamePatientProperty()
@@ -127,7 +120,7 @@ public class AddPatientViewModel
         return dobPatient;
     }
 
-    public StringProperty genderPatientProperty()
+    public Property<String> genderPatientProperty()
     {
         return genderPatient;
     }

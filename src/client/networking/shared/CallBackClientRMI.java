@@ -66,6 +66,5 @@ public class CallBackClientRMI
   @Override public synchronized void update(PropertyChangeEvent evt)
   {
     this.support.firePropertyChange(evt);
-
   }
 }

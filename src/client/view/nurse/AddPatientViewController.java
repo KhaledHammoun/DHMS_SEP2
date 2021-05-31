@@ -15,6 +15,10 @@ import java.security.InvalidParameterException;
 public class AddPatientViewController implements ViewController
 {
     @FXML
+    private ComboBox<String> genderCB;
+    @FXML
+    private ComboBox<String> bloodTypeCB;
+    @FXML
     private TextArea medicalDescryNurseToPatientTxtArea;
     @FXML
     private TextField firstNameTxtFieldPatient;
@@ -38,10 +42,6 @@ public class AddPatientViewController implements ViewController
     private TextField cityTxtFieldPatient;
     @FXML
     private TextField zipTxtFieldPatient;
-    @FXML
-    private TextField genderTxtFieldPatient;
-    @FXML
-    private TextField bloodTypeTxtFieldPatient;
     @FXML
     private TextField ssnTextFieldPatient;
 
@@ -101,9 +101,12 @@ public class AddPatientViewController implements ViewController
         streetNoTxtFieldPatient.textProperty().bindBidirectional(viewModel.streetNoPatientProperty());
         cityTxtFieldPatient.textProperty().bindBidirectional(viewModel.cityPatientProperty());
         zipTxtFieldPatient.textProperty().bindBidirectional(viewModel.zipCodePatientProperty());
-        genderTxtFieldPatient.textProperty().bindBidirectional(viewModel.genderPatientProperty());
-        bloodTypeTxtFieldPatient.textProperty().bindBidirectional(viewModel.bloodTypePatientProperty());
         ssnTextFieldPatient.textProperty().bindBidirectional(viewModel.ssnPatientProperty());
+        genderCB.valueProperty().bindBidirectional(viewModel.genderPatientProperty());
+        bloodTypeCB.valueProperty().bindBidirectional(viewModel.bloodTypePatientProperty());
+
+        genderCB.getItems().setAll("M", "F", "O");
+        bloodTypeCB.getItems().setAll("A+", "A-", "B+", "B-", "0+", "0-", "AB+", "AB-");
 
         viewModel.fillPatientData();
     }

@@ -108,6 +108,12 @@ public class MakeAppointmentViewModel
       throw new InvalidParameterException(
           "Invalid time. Please use \"hh:mm:ss\" format and time between 00:00:00 and 23:59:59.");
     }
+    else if (!Validator.isAppointmentDateValid(appointmentDate.get()))
+    {
+      throw new InvalidParameterException(
+          "Invalid date. Please select correct date.");
+    }
+
     Timestamp timestamp = Timestamp.valueOf(
         appointmentDate.get().toString() + " " + appointmentTime.get());
     Timestamp from = new Timestamp(timestamp.getTime());
