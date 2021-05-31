@@ -25,6 +25,8 @@
          </effect>
       </ImageView>
       <Button layoutX="515.0" layoutY="303.0" mnemonicParsing="false" onAction="#onSamplesButton" prefHeight="30.0" prefWidth="100.0" text="Samples" />
+      <Label layoutX="442.0" layoutY="98.0" prefHeight="17.0" prefWidth="142.0" text="Number of appointments:" textFill="WHITE" />
+      <Label fx:id="nrOfAppointments" layoutX="584.0" layoutY="98.0" text="Label" textFill="WHITE" />
    </children>
    <effect>
       <ColorAdjust brightness="-0.08" contrast="-0.08" />

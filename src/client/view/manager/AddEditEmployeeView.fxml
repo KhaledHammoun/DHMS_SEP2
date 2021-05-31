@@ -73,7 +73,7 @@
          <children>
             <TextField fx:id="employeeEContactFNameTextField" layoutX="14.0" layoutY="23.0" prefHeight="26.0" prefWidth="174.0" promptText="FIrst name">
                <tooltip>
-                  <Tooltip text="FIrst name" />
+                  <Tooltip text="First name" />
                </tooltip></TextField>
             <TextField fx:id="employeeEContactLNameTextField" layoutX="14.0" layoutY="74.0" prefHeight="26.0" prefWidth="174.0" promptText="Last name">
                <tooltip>
