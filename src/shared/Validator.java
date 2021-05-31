@@ -6,6 +6,9 @@ import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class responsible for validating the inputs before they are send to the database
+ */
 public class Validator
 {
   public static boolean isValidPassword(String password)

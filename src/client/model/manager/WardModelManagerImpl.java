@@ -6,15 +6,26 @@ import shared.Ward;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+/**
+ * Class containing methods the Manager(User) need to manage the hospitals wards
+ */
 public class WardModelManagerImpl implements WardModelManager
 {
   private WardClientManager clientManager;
 
+  /**
+   * Constructor where the corresponding client is passed as an argument
+   * @param client argument, which will be assigned to the local private field
+   */
   public WardModelManagerImpl(Object client)
   {
     clientManager = (WardClientManager) client;
   }
 
+  /**
+   * Adds ward to the database through the MVVM layers
+   * @param ward the object containing the ward data
+   */
   @Override
   public void addWard(Ward ward)
   {
@@ -28,6 +39,11 @@ public class WardModelManagerImpl implements WardModelManager
     }
   }
 
+  /**
+   * Edits ward from the database through the MVVM layers
+   * @param oldWard the old ward
+   * @param newWard the new ward
+   */
   @Override public void editWard(Ward oldWard, Ward newWard)
   {
     try
@@ -40,6 +56,10 @@ public class WardModelManagerImpl implements WardModelManager
     }
   }
 
+  /**
+   * Removes the ward from the database through the MVVM layers
+   * @param ward the ward to remove
+   */
   @Override public void removeWard(Ward ward)
   {
     try
@@ -52,6 +72,10 @@ public class WardModelManagerImpl implements WardModelManager
     }
   }
 
+  /**
+   * Gets all the wards stored in the database through the MVVM layers
+   * @return ArrayList of Ward objects
+   */
   @Override public ArrayList<Ward> getAllWards()
   {
     try
