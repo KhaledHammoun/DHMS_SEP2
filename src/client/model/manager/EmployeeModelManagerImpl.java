@@ -5,17 +5,28 @@ import shared.Doctor;
 import shared.Nurse;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
+/**
+ * Class containing methods the Manager(User) need to manage the employees
+ */
 public class EmployeeModelManagerImpl implements EmployeeModelManager
 {
     private EmployeeClientManager clientManager;
 
+    /**
+     * Constructor where the corresponding client is passed as an argument
+     * @param client argument, which will be assigned to the local private field
+     */
     public EmployeeModelManagerImpl(Object client)
     {
         clientManager = (EmployeeClientManager) client;
     }
 
+    /**
+     * Adds a doctor to the database through the MVVM layers
+     * @param doctor the object containing the doctors data
+     * @return null. For the future will return the data that was stored successfully to the database
+     */
     @Override
     public String addDoctor(Doctor doctor)
     {
@@ -29,6 +40,11 @@ public class EmployeeModelManagerImpl implements EmployeeModelManager
         }
     }
 
+    /**
+     * Adds a nurse to the database through the MVVM layers
+     * @param nurse the object containing the nurses data
+     * @return null. For the future will return the changes made to the database
+     */
     @Override
     public String addNurse(Nurse nurse)
     {
@@ -42,6 +58,11 @@ public class EmployeeModelManagerImpl implements EmployeeModelManager
         }
     }
 
+    /**
+     * Edits already existing doctor in the database through the MVVM layers
+     * @param doctor the object containing the doctors data
+     * @return null. For the future will return the changes made to the database
+     */
     @Override
     public String editDoctor(Doctor doctor)
     {
@@ -55,6 +76,11 @@ public class EmployeeModelManagerImpl implements EmployeeModelManager
         }
     }
 
+    /**
+     * Edits a nurse in the database through the MVVM layers
+     * @param nurse the object containing the nurses data
+     * @return null. For the future will return the changes made to the database
+     */
     @Override
     public String editNurse(Nurse nurse)
     {
@@ -68,6 +94,11 @@ public class EmployeeModelManagerImpl implements EmployeeModelManager
         }
     }
 
+    /**
+     * Removes already existing doctor from the database through the MVVM layers
+     * @param doctor the object containing the doctors data
+     * @return null. For the future will return the changes made to the database
+     */
     @Override
     public String removeDoctor(Doctor doctor)
     {
@@ -81,6 +112,11 @@ public class EmployeeModelManagerImpl implements EmployeeModelManager
         }
     }
 
+    /**
+     * Removes a nurse from the database through the MVVM layers
+     * @param nurse the object containing the nurses data
+     * @return null. For the future will return the changes made to the database
+     */
     @Override
     public String removeNurse(Nurse nurse)
     {

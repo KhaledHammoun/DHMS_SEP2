@@ -1,7 +1,15 @@
 package shared;
 
+/**
+ * Class responsible for converting the View enums to CamelCase for the path to the view. To be used in the ViewFactory
+ */
 public class CamelCaseConverter
 {
+    /**
+     * Converts the final field convention type to CamelCase
+     * @param s the string to convert
+     * @return the converter string
+     */
     public static String toCamelCase(String s)
     {
         String[] parts = s.split("_");

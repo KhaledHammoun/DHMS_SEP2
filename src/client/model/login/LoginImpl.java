@@ -6,6 +6,9 @@ import shared.LoginUser;
 
 import java.rmi.RemoteException;
 
+/**
+ * Class responsible for verifying the user data are correct
+ */
 public class LoginImpl implements Login
 {
   private LoginClient loginClient;
@@ -15,6 +18,11 @@ public class LoginImpl implements Login
     loginClient = (LoginClient) client;
   }
 
+  /**
+   * Checks if the user exists in the database trough the MVVM layers
+   * @param user contains the username, password and AccessType of the user wishing to login
+   * @return the AccessType of the user. NO_ACCESS prevents the login
+   */
   @Override public AccessType login(LoginUser user)
   {
     try

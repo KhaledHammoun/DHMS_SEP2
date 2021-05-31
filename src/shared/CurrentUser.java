@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Class responsible for storing the logged in user in the client
+ */
 public class CurrentUser implements Serializable
 {
   private Employee user;
@@ -32,6 +35,10 @@ public class CurrentUser implements Serializable
     return user;
   }
 
+  /**
+   * Sets the user by fetching the the user form the database
+   * @param loginUser the logged in username and password
+   */
   public void setUser(LoginUser loginUser)
   {
     try (Connection connection = DatabaseAccess.getInstance().getConnection())

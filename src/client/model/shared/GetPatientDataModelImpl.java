@@ -7,15 +7,26 @@ import shared.Sample;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+/**
+ * Class containing methods the Users need to fetch data for the patients
+ */
 public class GetPatientDataModelImpl implements GetPatientDataModel
 {
     private GetPatientDataClient sharedClient;
 
+    /**
+     * Constructor where the corresponding client is passed as an argument
+     * @param client argument, which will be assigned to the local private field
+     */
     public GetPatientDataModelImpl(Object client)
     {
         sharedClient = (GetPatientDataClient) client;
     }
 
+    /**
+     * Gets all the patients from the database through the MVVM layers
+     * @return ArrayList of Patient objects
+     */
     @Override
     public ArrayList<Patient> getAllPatients()
     {
@@ -29,6 +40,11 @@ public class GetPatientDataModelImpl implements GetPatientDataModel
         }
     }
 
+    /**
+     * Gets a specific patient from the database trough the MVVM layers
+     * @param ssn the ssn of the required patient
+     * @return Patient object
+     */
     @Override
     public Patient getPatientBySSN(long ssn)
     {
@@ -42,6 +58,11 @@ public class GetPatientDataModelImpl implements GetPatientDataModel
         }
     }
 
+    /**
+     * Gets all the samples of a specific patient
+     * @param ssn the ssn of the required patient
+     * @return ArrayList of Sample objects
+     */
     @Override public ArrayList<Sample> getPatientSamples(long ssn)
     {
         try

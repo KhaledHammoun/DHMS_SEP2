@@ -9,15 +9,27 @@ import shared.Treatment;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+/**
+ * The class responsible for the functions of the Doctor(User) for managing patients treatments and diagnosis
+ */
 public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
 {
   private TreatAndUpdateClientDoctor clientDoctor;
 
+  /**
+   * Constructor where the corresponding client is passed as argument
+   * @param client argument, which will be assigned to the private field variable
+   */
   public TreatAndUpdateModelDoctorImpl(Object client)
   {
     clientDoctor = (TreatAndUpdateClientDoctor) client;
   }
 
+  /**
+   * Adds diagnosis to a specific patient in the database through the MVVM layers
+   * @param patient the patient to whom the diagnosis belongs
+   * @param diagnosis the object containing the diagnosis data
+   */
   @Override public void addDiagnosisToPatient(Patient patient,
       Diagnosis diagnosis)
   {
@@ -32,6 +44,13 @@ public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
     }
   }
 
+  /**
+   * Adds treatment to a patient in the database through the MVVM layers
+   * @param patient the patient to whom the treatment belongs
+   * @param diagnosis the diagnosis the treatment refers to
+   * @param doctor the doctor issuing the tretment
+   * @param treatment the treatment details
+   */
   @Override public void treatPatient(Patient patient, Diagnosis diagnosis,
       Doctor doctor, Treatment treatment)
   {
@@ -46,6 +65,11 @@ public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
     }
   }
 
+  /**
+   * Gets all the diagnosis of a specific patient
+   * @param patient the patient whose diagnosis are required
+   * @return ArrayList of Diagnosis objects
+   */
   @Override public ArrayList<Diagnosis> getAllDiagnosisOfPatient(
       Patient patient)
   {
@@ -60,6 +84,10 @@ public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
     }
   }
 
+  /**
+   * Edit a diagnosis of already existing Diagnosis object
+   * @param diagnosis the edited diagnosis
+   */
   @Override public void editDiagnosis(Diagnosis diagnosis)
   {
     try
@@ -73,6 +101,12 @@ public class TreatAndUpdateModelDoctorImpl implements TreatAndUpdateModelDoctor
     }
   }
 
+  /**
+   * Gets all the treatments assigned to a patient
+   * @param patient the patient whose treatments has to be fetched
+   * @param doctor the doctor performing the treatment
+   * @return ArrayList of Treatment objects
+   */
   @Override public ArrayList<Treatment> getAllTreatmentsOfPatient(
       Patient patient, Doctor doctor)
   {
