@@ -10,7 +10,7 @@ public class Validator
 {
   public static boolean isValidPassword(String password)
   {
-    String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,14}$";
+    String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*[#]).{8,14}$";
     return matches(password, regex);
   }
 

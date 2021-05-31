@@ -2,7 +2,6 @@ package client.view.nurse;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import client.shared.SelectionModel;
 import client.view.sharted.Alerts;
 import client.view.sharted.View;
 import client.view.sharted.ViewController;
@@ -52,14 +51,7 @@ public class AddPatientViewController implements ViewController
     public void onBackButtonAddPatient()
     {
         viewModel.clear();
-        if (SelectionModel.getInstance().getLastOpenedView() == View.NURSE_MAIN)
-        {
-            viewHandler.openView(View.NURSE_MAIN);
-        }
-        else
-        {
-            viewHandler.openView(View.MAKE_APPOINTMENT);
-        }
+        viewHandler.openView(View.All_PATIENTS);
     }
 
     @FXML

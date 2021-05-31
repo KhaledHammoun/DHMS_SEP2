@@ -13,6 +13,7 @@ import client.view_models.manager.WardViewModel;
 import client.view_models.nurse.AddPatientViewModel;
 import client.view_models.nurse.AllAppointmentsViewModel;
 import client.view_models.nurse.MakeAppointmentViewModel;
+import client.view_models.nurse.AllPatientsViewModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -90,14 +91,15 @@ public class ViewModelFactory
                                                  modelFactory.getModel(InterfaceEnum.CALLBACK)));
         viewModels.put(View.ASSIGN_NURSE, new AssignNurseViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_NURSE),
                                                                    modelFactory.getModel(InterfaceEnum.CALLBACK)));
-        viewModels.put(View.PATIENT_INFO, new EditMedicalDescriptionViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
+        viewModels.put(View.PATIENT_INFO,
+                       new EditMedicalDescriptionViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT)));
         viewModels.put(View.PATIENTS_SAMPLE,
                        new PatientsSampleViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE),
                                                    modelFactory.getModel(InterfaceEnum.CALLBACK)));
         viewModels.put(View.PATIENTS, new PatientsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT),
-                                                            modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE),
-                                                            modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE),
-                                                            modelFactory.getModel(InterfaceEnum.CALLBACK)));
+                                                               modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE),
+                                                               modelFactory.getModel(InterfaceEnum.DOCTOR_SAMPLE),
+                                                               modelFactory.getModel(InterfaceEnum.CALLBACK)));
         viewModels.put(View.TREAT_PATIENT,
                        new TreatPatientViewModel(modelFactory.getModel(InterfaceEnum.DOCTOR_TREAT_UPDATE),
                                                  modelFactory.getModel(InterfaceEnum.CALLBACK)));
@@ -112,8 +114,12 @@ public class ViewModelFactory
                                                     modelFactory.getModel(InterfaceEnum.CALLBACK)));
         viewModels.put(View.MAKE_APPOINTMENT,
                        new MakeAppointmentViewModel(modelFactory.getModel(InterfaceEnum.NURSE_APPOINTMENT),
+                                                    modelFactory.getModel(InterfaceEnum.NURSE_PATIENT),
                                                     modelFactory.getModel(InterfaceEnum.SHARED_EMPLOYEE),
                                                     modelFactory.getModel(InterfaceEnum.SHARED_PATIENT),
                                                     modelFactory.getModel(InterfaceEnum.CALLBACK)));
+        viewModels.put(View.All_PATIENTS, new AllPatientsViewModel(modelFactory.getModel(InterfaceEnum.SHARED_PATIENT),
+                                                                   modelFactory.getModel(InterfaceEnum.NURSE_PATIENT),
+                                                                   modelFactory.getModel(InterfaceEnum.CALLBACK)));
     }
 }

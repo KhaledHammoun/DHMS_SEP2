@@ -27,7 +27,8 @@ public enum View
     //Nurse
     ALL_APPOINTMENTS,
     MAKE_APPOINTMENT,
-    ADD_PATIENT;
+    ADD_PATIENT,
+    All_PATIENTS;
 
 
     private static final List<View> LOGIN_VALUES = List.of(LOGIN, MANAGER_MAIN, DOCTOR_MAIN, NURSE_MAIN);
@@ -35,7 +36,8 @@ public enum View
                                                             PATIENT_INFO,
                                                             PATIENTS, TREAT_PATIENT);
     private static final List<View> MANAGER_VALUES = List.of(ADD_EDIT_EMPLOYEE, ADD_EDIT_WARD, WARD, EMPLOYEE);
-    private static final List<View> NURSE_VALUES = List.of(ALL_APPOINTMENTS, MAKE_APPOINTMENT, ADD_PATIENT);
+    private static final List<View> NURSE_VALUES = List.of(ALL_APPOINTMENTS, MAKE_APPOINTMENT, ADD_PATIENT,
+                                                           All_PATIENTS);
 
 
     public static List<View> getLoginValues()

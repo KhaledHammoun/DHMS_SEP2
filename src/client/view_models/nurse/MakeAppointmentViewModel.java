@@ -1,10 +1,10 @@
 package client.view_models.nurse;
 
 import client.model.nurse.AppointmentsModelNurse;
+import client.model.nurse.PatientModelNurse;
 import client.model.shared.CallBackModel;
 import client.model.shared.GetEmployeeDataModel;
 import client.model.shared.GetPatientDataModel;
-import client.shared.SelectionModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -30,8 +30,9 @@ public class MakeAppointmentViewModel
   private GetEmployeeDataModel getEmployeeDataModel;
   private AppointmentsModelNurse appointmentsModelNurse;
   private GetPatientDataModel getPatientDataModel;
+  private PatientModelNurse patientModelNurse;
 
-  public MakeAppointmentViewModel(Object appointmentsModelNurse,
+  public MakeAppointmentViewModel(Object appointmentsModelNurse, Object patientModelNurse,
       Object getEmployeeDataModel, Object getPatientDataModel,
       Object callBackModel)
   {
@@ -44,6 +45,8 @@ public class MakeAppointmentViewModel
     this.getEmployeeDataModel = (GetEmployeeDataModel) getEmployeeDataModel;
     this.getPatientDataModel = (GetPatientDataModel) getPatientDataModel;
     this.appointmentsModelNurse = (AppointmentsModelNurse) appointmentsModelNurse;
+    this.patientModelNurse = (PatientModelNurse) patientModelNurse;
+
     allPatients = FXCollections.observableArrayList();
     availableDoctors = FXCollections.observableArrayList();
     appointmentDate = new SimpleObjectProperty<>();
@@ -122,11 +125,13 @@ public class MakeAppointmentViewModel
 
   public void loadPatientData()
   {
+    allPatients.clear();
     allPatients.setAll(getPatientDataModel.getAllPatients());
   }
 
   public void loadDoctorData()
   {
+    availableDoctors.clear();
     availableDoctors.setAll(getEmployeeDataModel.getListOfAllDoctors());
   }
 
@@ -134,13 +139,5 @@ public class MakeAppointmentViewModel
   {
     appointmentDate.set(null);
     appointmentTime.set("");
-  }
-
-  public void editPatient() throws InvalidParameterException
-  {
-    if (SelectionModel.getInstance().isEmpty())
-    {
-      throw new InvalidParameterException("Please select patient to edit.");
-    }
   }
 }
