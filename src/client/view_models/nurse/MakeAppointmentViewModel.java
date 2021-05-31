@@ -5,7 +5,6 @@ import client.model.nurse.PatientModelNurse;
 import client.model.shared.CallBackModel;
 import client.model.shared.GetEmployeeDataModel;
 import client.model.shared.GetPatientDataModel;
-import client.shared.SelectionModel;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -126,11 +125,13 @@ public class MakeAppointmentViewModel
 
   public void loadPatientData()
   {
+    allPatients.clear();
     allPatients.setAll(getPatientDataModel.getAllPatients());
   }
 
   public void loadDoctorData()
   {
+    availableDoctors.clear();
     availableDoctors.setAll(getEmployeeDataModel.getListOfAllDoctors());
   }
 
@@ -138,22 +139,5 @@ public class MakeAppointmentViewModel
   {
     appointmentDate.set(null);
     appointmentTime.set("");
-  }
-
-  public void editPatient() throws InvalidParameterException
-  {
-    if (SelectionModel.getInstance().isEmpty())
-    {
-      throw new InvalidParameterException("Please select patient to edit.");
-    }
-  }
-
-  public void removePatient(Patient patient) throws InvalidParameterException
-  {
-    if (patient == null)
-    {
-      throw new InvalidParameterException("Please select patient to remove.");
-    }
-    patientModelNurse.removePatient(patient);
   }
 }

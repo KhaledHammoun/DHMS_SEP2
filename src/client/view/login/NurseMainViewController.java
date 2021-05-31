@@ -2,7 +2,6 @@ package client.view.login;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import client.shared.SelectionModel;
 import client.view.sharted.View;
 import client.view.sharted.ViewController;
 import client.view_models.login.NurseMainViewModel;
@@ -19,14 +18,7 @@ public class NurseMainViewController implements ViewController
     @FXML
     public void onPatientsButton()
     {
-        viewHandler.openView(View.MAKE_APPOINTMENT);
-    }
-
-    @FXML
-    public void onAddPatientButton()
-    {
-        SelectionModel.getInstance().setLastOpenedView(View.NURSE_MAIN);
-        viewHandler.openView(View.ADD_PATIENT);
+        viewHandler.openView(View.All_PATIENTS);
     }
 
     @FXML
@@ -49,5 +41,10 @@ public class NurseMainViewController implements ViewController
         loggedInAsLabel.textProperty().bind(nurseMainViewModel.currentUserProperty());
 
         nurseMainViewModel.setCurrentUser();
+    }
+
+    public void onNewAppointmentButton()
+    {
+        viewHandler.openView(View.MAKE_APPOINTMENT);
     }
 }

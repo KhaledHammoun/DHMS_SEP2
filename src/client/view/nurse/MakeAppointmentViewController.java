@@ -2,7 +2,6 @@ package client.view.nurse;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import client.shared.SelectionModel;
 import client.view.sharted.Alerts;
 import client.view.sharted.View;
 import client.view.sharted.ViewController;
@@ -12,8 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.Doctor;
 import shared.Patient;
-
-import java.security.InvalidParameterException;
+import client.shared.SelectionModel;
 
 public class MakeAppointmentViewController implements ViewController
 {
@@ -33,21 +31,6 @@ public class MakeAppointmentViewController implements ViewController
   private MakeAppointmentViewModel viewModel;
   private Patient patient;
   private Doctor doctor;
-
-  @FXML public void onEditPatientButton()
-  {
-    SelectionModel.getInstance().set(patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem());
-    SelectionModel.getInstance().setLastOpenedView(View.MAKE_APPOINTMENT);
-    try
-    {
-      viewModel.editPatient();
-      viewHandler.openView(View.ADD_PATIENT);
-    }
-    catch (InvalidParameterException e)
-    {
-      Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
-    }
-  }
 
   @FXML public void onSaveButton()
   {
@@ -76,22 +59,10 @@ public class MakeAppointmentViewController implements ViewController
 
   @FXML public void onSeeAllAppointmentsButton()
   {
+    SelectionModel.getInstance().setLastOpenedView(View.MAKE_APPOINTMENT);
     viewHandler.openView(View.ALL_APPOINTMENTS);
   }
 
-  @FXML
-  public void onRemovePatientButton()
-  {
-    try
-    {
-      viewModel.removePatient(patientsTableViewMakeAppointment.getSelectionModel().getSelectedItem());
-      Alerts.throwAlert(Alert.AlertType.INFORMATION, "Patient successfully removed.");
-    }
-    catch (InvalidParameterException e)
-    {
-      Alerts.throwAlert(Alert.AlertType.ERROR, e.getMessage());
-    }
-  }
 
   @Override
   public void init(ViewModelFactory viewModelFactory, ViewHandler viewHandler)

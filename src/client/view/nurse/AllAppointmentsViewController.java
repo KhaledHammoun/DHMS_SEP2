@@ -45,7 +45,15 @@ public class AllAppointmentsViewController implements ViewController
 
   @FXML public void onBackButton()
   {
-    viewHandler.openView(View.NURSE_MAIN);
+    if (client.shared.SelectionModel.getInstance().getLastOpenedView() == null)
+    {
+      viewHandler.openView(View.NURSE_MAIN);
+    }
+    else
+    {
+      client.shared.SelectionModel.getInstance().setLastOpenedView(null);
+      viewHandler.openView(View.MAKE_APPOINTMENT);
+    }
   }
 
   @Override
